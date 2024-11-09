@@ -59,7 +59,7 @@ Come discusso nella sezione [Personale](#Personale), abbiamo optato per un sempl
 
 <br/>
 
-### Standard linee guida e procedure
+### Standard, linee guida e procedure
 ---
 - **Standard**: Il progetto segue le convenzioni per la programmazione Java come definite da *Oracle*.<br/> La documentazione verrà realizzata seguendo gli standard UML (*Unified Modeling Language*), per garantire una rappresentazione chiara e strutturata del sistema software.  <br/> Saranno adottate le linee guida definite da *IEEE 830* per la stesura della specifica dei requisiti.<br/>
 - **Procedure**: le procedure seguite all'interno del team saranno:
