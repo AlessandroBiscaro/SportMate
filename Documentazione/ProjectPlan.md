@@ -1,25 +1,21 @@
+<p>
+       <h1 align="center">SportMate </h1> 
+</p>
 
-<div style="text-align: center;">
-<h1>
-     SportMate 
-    </h1>
-</div>
-<div style="text-align: center;">
-    <p>
-      <img src="https://hackmd.io/_uploads/BJxh3isZ1l.png" width="250" />   
-    </p>
-    <p class = "blockquote">
-        Università degli Studi di Bergamo<br/> Ingegneria Informatica<br/> Biscaro Alessandro 1087892 <br/> Fabbris Thomas 1086063<br/> Gambirasio Lorenzo Umberto 1087441
-    </p>
-</div>
+  <p align="center"  >
+      <img src="../Immagini/SportMate3MottoSmall.PNG" width="250" />   
+ </p> 
+ <p align="center"> <em> Università degli Studi di Bergamo <br/>
+Ingegneria Informatica <br/>
+Biscaro Alessandro 1087892 <br/>
+Fabbris Thomas 1086063 <br/>
+Gambirasio Lorenzo Umberto 1087441 </em>
+</p >
 
-<br/>
-
-
+  
 ## ProjectPlan
 
-
-
+<br/>
 
 ### Indice
 
