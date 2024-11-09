@@ -176,16 +176,3 @@ Il codice sorgente e la documentazione completa verranno consegnati tramite un r
 
 <br/>
 
-
-<style>
-.blockquote {
-  background-color: #ecf0f1; 
-  border-left: 5px solid #001d45; 
-  padding: 10px 20px; 
-  margin: 20px 0; 
-  font-style: italic; 
-  font-size: 1em;
-  color: #2c3e50; 
-}
-
-</style>
