@@ -1,5 +1,13 @@
-# SportMate
-Progetto di Ingegneria del Software realizzato da: 
-Biscaro Alessandro          1087892
-Fabbris Thomas              1086063
-Gambirasio Lorenzo Umberto  1087441
+<p>
+       <h1 align="center">SportMate </h1> 
+</p>
+
+  <p align="center"  >
+      <img src="Immagini/SportMate3MottoSmall.PNG" width="250" />   
+ </p> 
+ <p align="center"> <em> Università degli Studi di Bergamo <br/>
+Ingegneria Informatica <br/>
+Biscaro Alessandro 1087892 <br/>
+Fabbris Thomas 1086063 <br/>
+Gambirasio Lorenzo Umberto 1087441 </em>
+</p >
