@@ -22,13 +22,13 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 1. [Introduzione](#Introduzione)
 2. [Modello di processo](#Modello-di-processo)
 3. [Organizzazione del progetto](#Organizzazione-del-progetto)
-4. [Standard, linee guida e procedure](#Standard,-linee-guida-e-procedure)
-5. [Attività di gestione](Attività-di-gestione)
+4. [Standard, linee guida e procedure](#Standard-linee-guida-e-procedure)
+5. [Attività di gestione](#Attività-di-gestione)
 6. [Rischi](#Rischi)
 7. [Personale](#Personale)
 8. [Metodi e tecniche](#Metodi-e-tecniche)
 9. [Garanzia di qualità](#Garanzia-di-qualità)
-10. [Workpakages](#Workpakages)
+10. [Workpackages](#Workpakages)
 11. [Risorse](#Risorse)
 12. [Budget e programma](#Budget-e-programma)
 13. [Cambiamenti](#Cambiamenti)
@@ -59,7 +59,7 @@ Come discusso nella sezione [Personale](#Personale), abbiamo optato per un sempl
 
 <br/>
 
-### Standard, linee guida e procedure
+### Standard linee guida e procedure
 ---
 - **Standard**: Il progetto segue le convenzioni per la programmazione Java come definite da *Oracle*.<br/> La documentazione verrà realizzata seguendo gli standard UML (*Unified Modeling Language*), per garantire una rappresentazione chiara e strutturata del sistema software.  <br/> Saranno adottate le linee guida definite da *IEEE 830* per la stesura della specifica dei requisiti.<br/>
 - **Procedure**: le procedure seguite all'interno del team saranno:
