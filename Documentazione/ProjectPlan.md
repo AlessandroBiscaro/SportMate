@@ -54,8 +54,8 @@ Il progetto userà come ciclo di vita del software *Extreme Programming* (XP), u
 ### Organizzazione del progetto
 ---
 
-L'organizzazione del team di sviluppo scelta corrisponde ad un team agile di piccole dimensioni, orientato alla persona. Abbiamo prediletto brevi canali di comunicazione, senza ricorrere a riunioni formali, e incontri in presenza, durante i quali abbiamo avuto l'occasione di lavorare insieme nella stessa stanza. All'interno del team, non sono stati definiti ruoli o gerarchie di qualsiasi tipo, in quanto riteniamo che la qualità sia un *must* e che siamo tutti equamente responsabili di offrire un progetto software di qualità. 
-Come discusso nella sezione [Personale](#Personale), abbiamo optato per un semplice assegnamento delle attività, seguendo un principio di decomposizione funzionale.
+L'organizzazione del team di sviluppo scelta corrisponde ad un team agile di piccole dimensioni, orientato alla persona. Saranno prediletti brevi canali di comunicazione, senza ricorrere a riunioni formali, e incontri in presenza, durante i quali abbiamo avuto l'occasione di lavorare insieme nella stessa stanza. All'interno del team, non verranno definiti ruoli o gerarchie di qualsiasi tipo, in quanto riteniamo che la qualità sia un *must* e che siamo tutti equamente responsabili di offrire un progetto software di qualità. 
+Come discusso nella sezione [Personale](#Personale), opteremo per un semplice assegnamento delle attività, seguendo un principio di decomposizione funzionale.
 
 <br/>
 
@@ -74,7 +74,7 @@ Come discusso nella sezione [Personale](#Personale), abbiamo optato per un sempl
 ### Attività di gestione
 ---
 Le seguenti attività di gestione saranno definite per avere un controllo efficiente sull'intero progetto di sviluppo software e saranno guidate da obiettivi e priorità fissate:
-- **Incontri di aggiornamento**: verranno fissati circa tre incontri alla settimana, durante i quali verrà discusso lo stato di avanzamento del progetto, il lavoro svolto con relativi risultati e questioni problematiche e le nuove sfide da affrontare, al fine di valutare il progresso e priorizzare i futuri obiettivi.
+- **Incontri di aggiornamento**: verranno fissati circa tre incontri alla settimana, durante i quali verrà discusso lo stato di avanzamento del progetto, il lavoro svolto con relativi risultati o problematiche e le nuove sfide da affrontare, al fine di valutare il progresso e priorizzare i futuri obiettivi.
 - **Utilizzo di Git e *hosting* su GitHub**: al fine di garantire la tracciabilità, il controllo sullo sviluppo del software e la gestione di tutti gli artefatti prodotti nel corso del progetto, saranno utilizzati Git come SCM (*Software Configuration Management*) e GitHub come servizio di *hosting* per la repository. <br/> Queste attività di gestione saranno integrate con lo svolgimento degli incontri di aggiornamento per ottenere un quadro completo dello stato di avanzamento del progetto e per valutare le attività svolte da ciascun membro del team.
 - **Utilizzo della Kanban Board**: per una visualizzazione chiara del flusso di lavoro (*workflow*) e per rispettare il principio di limitazione del lavoro in corso, utilizzeremo una Kanban Board, una lavagna digitale suddivisa in righe e colonne, con note che rappresentano le attività o le cose da fare. Le colonne sulla board rappresentano lo stato del lavoro, come *Backlog, In Progress, Ready, In Review, Done*. Le note verranno spostate tra le colonne per ottenere aggiornamenti in tempo reale sull'avanzamento del progetto e consentire al team di monitorare il progresso.
 
@@ -116,9 +116,9 @@ I metodi e le tecniche utilizzate durante le fasi di ingegneria dei requisiti, p
 
 ### Garanzia di qualità
 ---
-I criteri che verranno presi in considerazione per valutare la qualità del sistema software sono:
+I criteri che verranno presi in considerazione per valutare la qualità del sistema software saranno:
 - **Correttezza**: il grado di soddisfacimento degli obiettivi della missione dell'utente e delle specifiche del sistema sarà assicurato da continui test di utilizzo.
-- **Affidabilità**: si porrà continua attenzione agli aspetti relativi alla stbilità e robustezza del sistema, al fine di garantire alte prestazioni se utilizzato in condizioni standard.
+- **Affidabilità**: si porrà continua attenzione agli aspetti relativi alla stabilità e robustezza del sistema, al fine di garantire alte prestazioni se utilizzato in condizioni standard.
 - **Integrità**: al fine di controllare l'accesso al software o ai dati da parte di persone non autorizzate, verrà usato un meccanismo di accesso definito basandosi sui concetti di ruolo e permesso (*role-based access control*).
 - **Usabilità**: l'interfaccia utente sarà sviluppata con particolare focus sulla semplicità di apprendimento del programma da parte dell'utente, utilizzando un design semplice ma sempre adeguato.
 - **Manutenibilità**: l'architettura del sistema verrà sviluppata minimizzando il grado di dipendenza tra i componenti, in modo da rendere le attività di correzione degli errori e inserimento di nuove funzionalità il più agevole possibile.
@@ -136,7 +136,7 @@ Il lavoro richiesto nelle vari fasi del progetto verrà suddiviso in attività a
 ---
 **Risorse per la programmazione e lo sviluppo**: per la creazione del progetto saranno utilizzati i software e tools elencati di seguito. 
 - **Eclipse IDE**: un ambiente di sviluppo integrato *multi-platform* con supporto al linguaggio Java, utilizzato per la stesura del codice.
-- **Maven**: uno strumento di gestione dei progetti software basati su Java e build automation.
+- **Maven**: uno strumento di gestione dei progetti software basati su Java e *build automation*.
 - **Papyrus**: un tool open source utile per la creazione dei vari diagrammi UML.
 - **SQLite**: una libreria software per implementare un *database embedded*, utile per gestire in modo efficiente i dati dell'applicazione.
 - **HackMD**: un editor real-time e collaborativo, utile per la stesura di file markdown.
@@ -149,10 +149,10 @@ Il lavoro richiesto nelle vari fasi del progetto verrà suddiviso in attività a
 ### Budget e programma
 ---
 
-Durante il progetto non è stato definito alcun budget in quanto non strettamente necessario per lo sviluppo del software. <br/> 
+Durante il progetto non verrà definito alcun budget in quanto non strettamente necessario per lo sviluppo del software. <br/> 
 Il progetto è suddiviso in *Milestones*:<br/>
 - **Inizio del progetto**: l'obiettivo è comprendere il problema da risolvere, individuare i suoi requisiti e descrivere i suoi obiettivi.<br/> Concluso in data: 06/11/2024
-- **Stesura *Project Plan***: l'obiettivo è generare il *project plan* completo. <br/> Concluso in data: 09/11/2024
+- **Stesura *Project Plan***: l'obiettivo è generare il *project plan* completo. <br/> Concluso in data: 12/11/2024
 - **Stesura Gestione del Progetto**: l'obiettivo è generare il documento contenente la gestione del progetto, indicando il tipo di processo utilizzato e l'organizzazione del lavoro. Inoltre verranno indicati eventuali strumenti di gestione della configurazione. 
 - **Stesura Specifica dei Requisiti**: l'obiettivo è generare il documento contenente i requisiti, la loro descrizione e le corrispondenti tecniche di specifica, oltre alla documentazione completa riguardo alla lista  dei fattori di qualità perseguiti. 
 - **Stesura Specifica Tecnica**: l'obiettivo è generare il documento contenente la specifica tecnica del progetto, indicando l'architettura e la descrizione del design. 
@@ -166,7 +166,7 @@ Il progetto è suddiviso in *Milestones*:<br/>
 
 ### Cambiamenti
 ---
-Essendo XP un metodo di sviluppo agile, i cambiamenti,inevitabili all'interno di un processo di sviluppo software, verranno gestiti in modo leggero, accettandoli e apportando piccole modifiche ad ogni iterazione.
+Essendo XP un metodo di sviluppo agile, i cambiamenti, inevitabili all'interno di un processo di sviluppo software, verranno gestiti in modo leggero, accettandoli e apportando piccole modifiche ad ogni iterazione.
 
 <br/>
 
