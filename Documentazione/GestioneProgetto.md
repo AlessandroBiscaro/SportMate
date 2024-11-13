@@ -49,18 +49,20 @@ Particolare rilevanza hanno assunto i test unitari eseguiti sia all'aggiunta di 
 ### Gestione della configurazione
 ---
 
-:::warning
-Lavori in corso! Creare diagramma UML state machine.
-:::
 Per questo progetto, la gestione della configurazione è stata affidata al sistema di *versioning* Git, utilizzando GitHub come servizio di *hosting*. <br/> Il codice all'interno del main branch è stato tenuto sempre attivo e funzionante tramite frequenti test unitari e una continua integrazione. <br/> Le piccole modifiche sono state gestite semplicemente attraverso commit sul main branch del repository, mentre per adattamenti  più importanti sono stati utilizzati branch secondari su cui poter lavorare separatamente senza modificare il branch principale implementando cambiamenti nel codice, e verificando attraverso i test la correttezza del sistema software, prima  di procedure con il *merge* con il main branch.<br/> 
 Le *Change Request* (CR) sono state gestite come segue:
-- **Individuazione** del problema da risolvere
-- **Creazione di issue** con descritto il problema da risolvere
-- **Creazione di un branch locale** a partire dal main branch
-- **Risoluzione del problema** sul branch locale
-- **Esecuzione di una *pull request***, in modo da effettuare il *merge* tra il branch locale e il main branch.
-- **Revisione** delle modifiche da parte degli altri membri del team, con successiva approvazione della *pull request*.
+- **Individuazione** delle modifiche da eseguire, come introduzione di nuove funzionalità o correzione di bug esistenti.
+- **Apertura di issue**, con relativa assegnazione.
+- **Creazione di un branch locale** a partire dal main branch.
+- **Implementazione delle modifiche** sul branch locale.
+- **Esecuzione di una *Pull Request***.
+- **Revisione** delle modifiche da parte degli altri membri del team, con eventuale approvazione della *Pull Request*; in caso negativo, si ritorna alla fase di implementazione delle modifiche.
 - **Chiusura del branch locale** e conseguente chiusura dell'issue.
+
+<p align="center"  >
+      <img src="../Diagrammi UML/Papyrus/Immagini/MacchinaStatiGestioneCR.png" width="700" />   
+    
+ </p> 
 
 La repository del progetto è stata organizzata nel seguente modo:
 - **Documentazione**: contiene tutta la documentazione relativa al progetto. Comprende *Project Plan*, *Gestione del Progetto*, *Specifica dei Requisiti*, *Specifica Tecnica*, *Piano di Test* e *Piano di Manutenzione*.
