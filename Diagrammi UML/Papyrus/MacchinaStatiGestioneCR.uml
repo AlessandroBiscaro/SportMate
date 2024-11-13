@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_1d4fsKDfEe-1RbtjgonzHw" name="MacchinaStatiGestioneCR">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_1gknUKDfEe-1RbtjgonzHw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_1egx0KDfEe-1RbtjgonzHw" name="Gestione Change Request (CR)">
+    <region xmi:type="uml:Region" xmi:id="_1f_YgKDfEe-1RbtjgonzHw" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_P2JeMKEzEe-xgrvobryg-A" source="_8szOwKEyEe-xgrvobryg-A" target="_pgwJQKE1Ee-xgrvobryg-A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_ipaI4KEzEe-xgrvobryg-A" source="_DkotEKDiEe-1RbtjgonzHw" target="_ZgWSoKEzEe-xgrvobryg-A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_-0ZGAKE1Ee-xgrvobryg-A" name="Inizio lavori" source="_pgwJQKE1Ee-xgrvobryg-A" target="_y6NMkKDgEe-1RbtjgonzHw">
+        <effect xmi:type="uml:Activity" xmi:id="_PJSQ0KE2Ee-xgrvobryg-A" name="Assegna Issue" isReentrant="false"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_yl4P0KE3Ee-xgrvobryg-A" source="_smQXEKE0Ee-xgrvobryg-A" target="_vYXK8KE3Ee-xgrvobryg-A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_8DA4oKE3Ee-xgrvobryg-A" source="_6FElQKE3Ee-xgrvobryg-A" target="_8szOwKEyEe-xgrvobryg-A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_u0RfEKE6Ee-xgrvobryg-A" name="Modifiche terminate" source="_nDo4gKEzEe-xgrvobryg-A" target="_X0eOAKDjEe-1RbtjgonzHw">
+        <effect xmi:type="uml:Activity" xmi:id="_1X3ScKE7Ee-xgrvobryg-A" name="Assegna PR per revisione"/>
+      </transition>
+      <subvertex xmi:type="uml:State" xmi:id="_y6NMkKDgEe-1RbtjgonzHw" name="Implementazione">
+        <region xmi:type="uml:Region" xmi:id="_DmBCkKDhEe-1RbtjgonzHw" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_3ThAcKEzEe-xgrvobryg-A" source="_ZgWSoKEzEe-xgrvobryg-A" target="_nDo4gKEzEe-xgrvobryg-A"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_DkotEKDiEe-1RbtjgonzHw" name=""/>
+          <subvertex xmi:type="uml:State" xmi:id="_ZgWSoKEzEe-xgrvobryg-A" name="Issue aperto">
+            <entry xmi:type="uml:Activity" xmi:id="_elUBUKEzEe-xgrvobryg-A" name="Crea branch locale da branch main" isReentrant="false"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_nDo4gKEzEe-xgrvobryg-A" name="Risoluzione problema">
+            <doActivity xmi:type="uml:Activity" xmi:id="_so7tEKEzEe-xgrvobryg-A" name="Implementa modifiche"/>
+            <exit xmi:type="uml:Activity" xmi:id="_utdwoKEzEe-xgrvobryg-A" name="Crea Pull Request (PR)"/>
+          </subvertex>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_X0eOAKDjEe-1RbtjgonzHw" name="Revisione">
+        <region xmi:type="uml:Region" xmi:id="_HGM9cKExEe-xgrvobryg-A" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_uuAJ4KE4Ee-xgrvobryg-A" source="_nu3NgKE4Ee-xgrvobryg-A" target="_DrN88KE0Ee-xgrvobryg-A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_F8N88KE5Ee-xgrvobryg-A" guard="_KUbWgKE9Ee-xgrvobryg-A" kind="local" source="_8RkckKE4Ee-xgrvobryg-A" target="_smQXEKE0Ee-xgrvobryg-A">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_LM5MYKE5Ee-xgrvobryg-A" name="Aprovato">
+              <specification xmi:type="uml:StringExpression" xmi:id="_OO7aAKE5Ee-xgrvobryg-A"/>
+            </ownedRule>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_T6DJwKE5Ee-xgrvobryg-A" name="Approvato">
+              <specification xmi:type="uml:InstanceValue" xmi:id="_T6DJwaE5Ee-xgrvobryg-A" name="Approvato"/>
+            </ownedRule>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_WR05cKE5Ee-xgrvobryg-A" name="Approvato">
+              <specification xmi:type="uml:LiteralBoolean" xmi:id="_gJLRsKE8Ee-xgrvobryg-A" name="Approvato " value="true"/>
+            </ownedRule>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_KUbWgKE9Ee-xgrvobryg-A" name="Approvato"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_xqxnkKE5Ee-xgrvobryg-A" guard="_Gq8HUKE9Ee-xgrvobryg-A" source="_8RkckKE4Ee-xgrvobryg-A" target="_nDo4gKEzEe-xgrvobryg-A">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_1fLtUKE5Ee-xgrvobryg-A" name="Non Approvato">
+              <specification xmi:type="uml:LiteralBoolean" xmi:id="_Rt9lUKE8Ee-xgrvobryg-A" name="Approvato"/>
+            </ownedRule>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_Gq8HUKE9Ee-xgrvobryg-A" name="Non Approvato"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_LuAYkKE9Ee-xgrvobryg-A" source="_DrN88KE0Ee-xgrvobryg-A" target="_8RkckKE4Ee-xgrvobryg-A"/>
+          <subvertex xmi:type="uml:State" xmi:id="_DrN88KE0Ee-xgrvobryg-A" name="In revisione">
+            <doActivity xmi:type="uml:Activity" xmi:id="_D8Cf0KE3Ee-xgrvobryg-A" name="Revisiona modifiche"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_smQXEKE0Ee-xgrvobryg-A" name="PR accettata">
+            <entry xmi:type="uml:Activity" xmi:id="_mnbWQKE2Ee-xgrvobryg-A" name="Merge Branch Locale In Main"/>
+          </subvertex>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_nu3NgKE4Ee-xgrvobryg-A" name=""/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_8RkckKE4Ee-xgrvobryg-A" kind="choice"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_8szOwKEyEe-xgrvobryg-A" name="Investigazione CR">
+        <doActivity xmi:type="uml:Activity" xmi:id="_BjEn4KE4Ee-xgrvobryg-A" name="Stabilisci modifiche"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_pgwJQKE1Ee-xgrvobryg-A" name="Modifiche individuate">
+        <entry xmi:type="uml:Activity" xmi:id="_uyUwkKE1Ee-xgrvobryg-A" name="Apri Issue"/>
+      </subvertex>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_vYXK8KE3Ee-xgrvobryg-A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_6FElQKE3Ee-xgrvobryg-A"/>
+    </region>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_CfRSYKDgEe-1RbtjgonzHw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CffU0KDgEe-1RbtjgonzHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
