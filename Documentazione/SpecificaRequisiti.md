@@ -20,19 +20,19 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 ### Indice
 
 1. [Introduzione](#1---Introduzione)<br/>
-1.1 [Obiettivi e scopo](#1-1---Obiettivi-e-scopo)<br/>
-1.2 [Definizioni, acronimi e termini](#1.2---Definizioni-acronimi-e-termini)
+1.1 [Obiettivi e scopo](#11---Obiettivi-e-scopo)<br/>
+1.2 [Definizioni, acronimi e termini](#12---Definizioni-acronimi-e-termini)
 2. [Descrizione generale](#2---Descrizione-generale)<br/>
-2.1 [Funzioni del prodotto](#2.1---Funzioni-del-prodotto)<br/>
-2.2 [Tecniche di elicitazione dei requisiti](#2.2---Tecniche-di-elicitazione-dei-requisiti)<br/>
-2.3 [Caratteristiche dell'utente](#2.3---Caratteristiche-dell'utente)<br/>
-2.4 [Vincoli](#2.4---Vincoli) <br/>
+2.1 [Funzioni del prodotto](#21---Funzioni-del-prodotto)<br/>
+2.2 [Tecniche di elicitazione dei requisiti](#22---Tecniche-di-elicitazione-dei-requisiti)<br/>
+2.3 [Caratteristiche dell'utente](#23---Caratteristiche-dell'utente)<br/>
+2.4 [Vincoli](#24---Vincoli) <br/>
 3. [Requisiti specifici](#3---Requisiti-specifici)<br/>
-3.1 [Requisiti funzionali](#3.1---Requisiti-funzionali)<br/>
-3.2 [Classificazione MoSCoW](#3.2---Classificazione-MoSCoW)<br/>
-3.3 [Requisiti di prestazione](#3.3---Requisiti-di-prestazione)<br/>
-3.4 [Attributi del sistema software](#3.4---Attributi-del-sistema-software)<br/>
-3.5 [Altri requisiti](#3.5---Altri-requisiti)<br/>
+3.1 [Requisiti funzionali](#31---Requisiti-funzionali)<br/>
+3.2 [Classificazione MoSCoW](#32---Classificazione-MoSCoW)<br/>
+3.3 [Requisiti di prestazione](#33---Requisiti-di-prestazione)<br/>
+3.4 [Attributi del sistema software](#34---Attributi-del-sistema-software)<br/>
+3.5 [Altri requisiti](#35---Altri-requisiti)<br/>
 
 
 ### 1 - Introduzione
