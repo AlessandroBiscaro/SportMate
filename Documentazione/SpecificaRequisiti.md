@@ -20,7 +20,7 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 ### Indice
 
 1. [Introduzione](#1---Introduzione)<br/>
-1.1 [Obiettivi e scopo](#1.1---Obiettivi-e-scopo)<br/>
+1.1 [Obiettivi e scopo](#1-1---Obiettivi-e-scopo)<br/>
 1.2 [Definizioni, acronimi e termini](#1.2---Definizioni-acronimi-e-termini)
 2. [Descrizione generale](#2---Descrizione-generale)<br/>
 2.1 [Funzioni del prodotto](#2.1---Funzioni-del-prodotto)<br/>
@@ -46,7 +46,6 @@ SportMate ha come obiettivo la realizzazione di un sistema innovativo di prenota
 - **Partita pubblica**: incontro sportivo organizzato attraverso l'applicazione aperto a tutti gli utenti della piattaforma, fino ad esaurimento posti
 - **Partita privata**: incontro sportivo organizzato attraverso l'applicazione, basato sull' invito da parte dell'utente organizzatore
 - **Utente organizzatore**: utente dell'applicazione proprietario di una partita pubblica o privata
-<br/>
 - **Utente finale**: rappresenta l'insieme di utenti che usufruiscono direttamente dei servizi forniti dall'applicazone, quali la prenotazione e l'organizzazione di partite private e pubbliche.
 - **Gestore**: rappresenta l'insieme di utenti che identificano i proprietari dei centri sportivi o campi disponibili alla prenotazione attraverso l'applicazione.<br/>
 
