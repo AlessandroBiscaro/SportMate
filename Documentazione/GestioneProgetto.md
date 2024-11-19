@@ -89,6 +89,6 @@ Nello specifico:
 
 Le **fasi di codifica** e **gestione della documentazione** sono state sviluppate cooperativamente da tutti i membri del team.
 
-Sono stati  coinvolti all'interno del progetto anche **collaboratori esterni**, nello specifico figure come *tester el software* in fase di sviluppo e *gestori di impianti* sportivi per la raccolta dei requisiti funzionali.
+Sono stati  coinvolti all'interno del progetto anche **collaboratori esterni**, nello specifico figure come *tester del software* in fase di sviluppo e *gestori di impianti* sportivi per la raccolta dei requisiti funzionali.
 
 <br/>
