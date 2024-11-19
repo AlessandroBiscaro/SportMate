@@ -94,7 +94,7 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.6|L'utente avrà la possibilità di monitorare e ricaricare il credito associato al profilo personale|
 |FUN.7|L'utente avrà la possibilità di esprimere il proprio *feedback* riguardo la sua esperienza d'uso di SportMate|
 |FUN.8| Il gestore avrà la possibilità di registrare il proprio centro sportivo su SportMate, indicando nome commerciale, indirizzo, dati di contatto, servizi disponibili, orari di apertura e credenziali di accesso|
-|FUN.9| Il gestore avrà la possibilità di inserire le disponibilità della propria struttura, indicando fascia oraria, tipologia di campo, prezzo ed eventuali servizi aggiuntivi |
+|FUN.9| Il gestore avrà la possibilità di gestire le disponibilità della propria struttura, indicando fascia oraria, tipologia di campo, prezzo ed eventuali servizi aggiuntivi |
 |FUN.10| Il gestore avrà la possibilità di visualizzare l'elenco delle fasce orarie prenotate e ancora disponibili del suo centro sportivo |
 |FUN.11|L'utente avrà la possibilità di registrarsi alla piattaforma, indicando dati personali, mail e password |
 |FUN.12|L'utente avrà la possibilità di interagire con gli altri partecipanti di una partita pubblica a cui si è unito tramite una chat in tempo reale|
