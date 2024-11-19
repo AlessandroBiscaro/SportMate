@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_VeACcKZgEe-lz6O-MHu9ZQ" name="UseCaseDiagram">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_VfOxgKZgEe-lz6O-MHu9ZQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_8SZDsKZhEe--rM8x7evqLw" name="UseCaseDiagram">
+    <packagedElement xmi:type="uml:Actor" xmi:id="_AjGq8KZiEe--rM8x7evqLw" name="Utente" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_HBPMAKZiEe--rM8x7evqLw" name="Utente Finale">
+      <generalization xmi:type="uml:Generalization" xmi:id="_N2yukKZiEe--rM8x7evqLw" general="_AjGq8KZiEe--rM8x7evqLw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_A6QmsKZiEe--rM8x7evqLw" name="Utente Organizzatore">
+      <generalization xmi:type="uml:Generalization" xmi:id="_M-_j4KZiEe--rM8x7evqLw" general="_AjGq8KZiEe--rM8x7evqLw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_Q5Py8KZiEe--rM8x7evqLw" name="Gestore"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_891uQKZ-Ee--rM8x7evqLw" name="SportMate">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_Rvoy8KZjEe--rM8x7evqLw">
+        <body>Condition: 
+disponibilità non ancora aggiornata</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_5o-BAKZ6Ee--rM8x7evqLw">
+        <body>Condition:
+Apertura chat da parte dell'organizzatore</body>
+      </ownedComment>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_py1isKZiEe--rM8x7evqLw" name="Registrazione centro"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_3GhmUKZiEe--rM8x7evqLw" name="Controlla disponibilità campi">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_CaGMUKZjEe--rM8x7evqLw" name="ExtensionPoint1"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_tu1eMKZiEe--rM8x7evqLw" name="Gestisci disponibilità campi">
+        <extend xmi:type="uml:Extend" xmi:id="_CZnEIKZjEe--rM8x7evqLw" extendedCase="_3GhmUKZiEe--rM8x7evqLw" extensionLocation="_CaGMUKZjEe--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_008_wKZ3Ee--rM8x7evqLw" name="Ricerca tramite elenco">
+        <generalization xmi:type="uml:Generalization" xmi:id="_-ZobAKZ3Ee--rM8x7evqLw" general="_xxJQgKZ3Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5oHMwKZ3Ee--rM8x7evqLw" name="Ricerca tramite mappa">
+        <generalization xmi:type="uml:Generalization" xmi:id="_9kb4YKZ3Ee--rM8x7evqLw" general="_xxJQgKZ3Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_tidiMKZ6Ee--rM8x7evqLw" name="Scrivi in chat di squadra">
+        <generalization xmi:type="uml:Generalization" xmi:id="_15v9QKZ6Ee--rM8x7evqLw" general="_aNpCkKZ6Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_cb50cKZ7Ee--rM8x7evqLw" name="Unisciti a partita pubblica">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_gW6RcKZ7Ee--rM8x7evqLw" name="ExtensionPoint1"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_xxJQgKZ3Ee--rM8x7evqLw" name="Ricerca campi" isAbstract="true"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_dfMm0KZiEe--rM8x7evqLw" name="Gestisci credito"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_YS3r4KZiEe--rM8x7evqLw" name="Esprimi feedback"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_R___oKZiEe--rM8x7evqLw" name="Registrazione utente"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_aNpCkKZ6Ee--rM8x7evqLw" name="Chat" isAbstract="true"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_pNqsMKZ6Ee--rM8x7evqLw" name="Scrivi in chat privata">
+        <generalization xmi:type="uml:Generalization" xmi:id="_2UrlwKZ6Ee--rM8x7evqLw" general="_aNpCkKZ6Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_lDiOEKZ6Ee--rM8x7evqLw" name="Scrivi in chat pubblica">
+        <generalization xmi:type="uml:Generalization" xmi:id="_1T76cKZ6Ee--rM8x7evqLw" general="_aNpCkKZ6Ee--rM8x7evqLw"/>
+        <extend xmi:type="uml:Extend" xmi:id="_gW2AAKZ7Ee--rM8x7evqLw" extendedCase="_cb50cKZ7Ee--rM8x7evqLw" extensionLocation="_gW6RcKZ7Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_HlmbUKZ4Ee--rM8x7evqLw" name="Organizza partita privata">
+        <generalization xmi:type="uml:Generalization" xmi:id="_Oa3qAKZ4Ee--rM8x7evqLw" general="_EFqwwKZ4Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_KM8RAKZ4Ee--rM8x7evqLw" name="Organizza partita pubblica">
+        <generalization xmi:type="uml:Generalization" xmi:id="_P55MwKZ4Ee--rM8x7evqLw" general="_EFqwwKZ4Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_EFqwwKZ4Ee--rM8x7evqLw" name="Organizza partita" isAbstract="true">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_r06GIKZ4Ee--rM8x7evqLw" name="ExtensionPoint1"/>
+        <include xmi:type="uml:Include" xmi:id="_--uPoKZ4Ee--rM8x7evqLw" addition="_qJaNoKZ4Ee--rM8x7evqLw"/>
+        <include xmi:type="uml:Include" xmi:id="_klF0AKZ5Ee--rM8x7evqLw" addition="_ADNLcKZ5Ee--rM8x7evqLw"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_ADNLcKZ5Ee--rM8x7evqLw" name="Scegli modalità di pagamento"/>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_qJaNoKZ4Ee--rM8x7evqLw" name="Configura squadre"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WfzLwKZiEe--rM8x7evqLw" memberEnd="_WgBOMKZiEe--rM8x7evqLw _WgGGsKZiEe--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Wf7uoKZiEe--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Wf-K4KZiEe--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_WgBOMKZiEe--rM8x7evqLw" name="registrazione utente" type="_R___oKZiEe--rM8x7evqLw" association="_WfzLwKZiEe--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_WgGGsKZiEe--rM8x7evqLw" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_WfzLwKZiEe--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bzQpcKZiEe--rM8x7evqLw" memberEnd="_bzYlQKZiEe--rM8x7evqLw _bzbokKZiEe--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bzVh8KZiEe--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bzXXIKZiEe--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bzYlQKZiEe--rM8x7evqLw" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_bzQpcKZiEe--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bzbokKZiEe--rM8x7evqLw" name="esprimi feedback" type="_YS3r4KZiEe--rM8x7evqLw" association="_bzQpcKZiEe--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_g7QeAKZiEe--rM8x7evqLw" memberEnd="_g7fHgKZiEe--rM8x7evqLw _g7ix4KZiEe--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_g7Zn8KZiEe--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_g7crQKZiEe--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_g7fHgKZiEe--rM8x7evqLw" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_g7QeAKZiEe--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_g7ix4KZiEe--rM8x7evqLw" name="gestisci credito" type="_dfMm0KZiEe--rM8x7evqLw" association="_g7QeAKZiEe--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_s7MawKZiEe--rM8x7evqLw" memberEnd="_s7XZ4KZiEe--rM8x7evqLw _s7adMKZiEe--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s7TIcKZiEe--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s7VksKZiEe--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_s7XZ4KZiEe--rM8x7evqLw" name="registrazione centro" type="_py1isKZiEe--rM8x7evqLw" association="_s7MawKZiEe--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_s7adMKZiEe--rM8x7evqLw" name="gestore" type="_Q5Py8KZiEe--rM8x7evqLw" association="_s7MawKZiEe--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_7LpBkKZiEe--rM8x7evqLw" memberEnd="_7L1O0KZiEe--rM8x7evqLw _7L4SIKZiEe--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7LxkcKZiEe--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7LzZoKZiEe--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_7L1O0KZiEe--rM8x7evqLw" name="controlla disponibilità campi" type="_3GhmUKZiEe--rM8x7evqLw" association="_7LpBkKZiEe--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_7L4SIKZiEe--rM8x7evqLw" name="gestore" type="_Q5Py8KZiEe--rM8x7evqLw" association="_7LpBkKZiEe--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Ae6FcKZ4Ee--rM8x7evqLw" memberEnd="_AfFEkKZ4Ee--rM8x7evqLw _AfHg0KZ4Ee--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_AfAzIKZ4Ee--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AfCoUKZ4Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_AfFEkKZ4Ee--rM8x7evqLw" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_Ae6FcKZ4Ee--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_AfHg0KZ4Ee--rM8x7evqLw" name="ricerca campi" type="_xxJQgKZ3Ee--rM8x7evqLw" association="_Ae6FcKZ4Ee--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Qy1m8KZ4Ee--rM8x7evqLw" memberEnd="_Qy__AKZ4Ee--rM8x7evqLw _QzCbQKZ4Ee--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Qy8UoKZ4Ee--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Qy-J0KZ4Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Qy__AKZ4Ee--rM8x7evqLw" name="utente organizzatore" type="_A6QmsKZiEe--rM8x7evqLw" association="_Qy1m8KZ4Ee--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QzCbQKZ4Ee--rM8x7evqLw" name="organizza partita" type="_EFqwwKZ4Ee--rM8x7evqLw" association="_Qy1m8KZ4Ee--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MeYAwKZ7Ee--rM8x7evqLw" memberEnd="_Me0ssKZ7Ee--rM8x7evqLw _Me4XEKZ7Ee--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MeumEKZ7Ee--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Mey3gKZ7Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Me0ssKZ7Ee--rM8x7evqLw" name="utente organizzatore" type="_A6QmsKZiEe--rM8x7evqLw" association="_MeYAwKZ7Ee--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Me4XEKZ7Ee--rM8x7evqLw" name="scrivi in chat privata" type="_pNqsMKZ6Ee--rM8x7evqLw" association="_MeYAwKZ7Ee--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_OczcUKZ7Ee--rM8x7evqLw" memberEnd="_Oc474KZ7Ee--rM8x7evqLw _Oc5i8KZ7Ee--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Oc3GsKZ7Ee--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Oc4U0KZ7Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Oc474KZ7Ee--rM8x7evqLw" name="scrivi in chat privata" type="_pNqsMKZ6Ee--rM8x7evqLw" association="_OczcUKZ7Ee--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Oc5i8KZ7Ee--rM8x7evqLw" name="gestore" type="_Q5Py8KZiEe--rM8x7evqLw" association="_OczcUKZ7Ee--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pKsbQKZ7Ee--rM8x7evqLw" memberEnd="_pKyh4KZ7Ee--rM8x7evqLw _pKzI8KZ7Ee--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pKwFoKZ7Ee--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pKxTwKZ7Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pKyh4KZ7Ee--rM8x7evqLw" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_pKsbQKZ7Ee--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_pKzI8KZ7Ee--rM8x7evqLw" name="scrivi in chat di squadra" type="_tidiMKZ6Ee--rM8x7evqLw" association="_pKsbQKZ7Ee--rM8x7evqLw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_3FMAMKZ7Ee--rM8x7evqLw" memberEnd="_3FgJQKZ7Ee--rM8x7evqLw _3FilgKZ7Ee--rM8x7evqLw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3FapsKZ7Ee--rM8x7evqLw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3FdtAKZ7Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_3FgJQKZ7Ee--rM8x7evqLw" name="utente finale" type="_HBPMAKZiEe--rM8x7evqLw" association="_3FMAMKZ7Ee--rM8x7evqLw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_3FilgKZ7Ee--rM8x7evqLw" name="unisciti a partita pubblica" type="_cb50cKZ7Ee--rM8x7evqLw" association="_3FMAMKZ7Ee--rM8x7evqLw"/>
+  </packagedElement>
+</uml:Model>
