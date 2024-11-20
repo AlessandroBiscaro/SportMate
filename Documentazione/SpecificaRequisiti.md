@@ -139,3 +139,8 @@ I seguenti fattori di qualità, definiti all'interno della tassonomia di McCall,
 - Usabilità: sforzo richiesto per apprendere e utilizzare il programma.
 - Manutenibilità: sforzo necessario per individuare e correggere gli errori presenti nel sistema una volta operativo.
 - Flessibilità: sforzo necessario per modificare il sistema una volta operativo.
+
+<p align="center"  >
+      <img src="../Diagrammi UML/Immagini/UseCaseDiagram.png" width="700" />   
+    
+ </p> 
