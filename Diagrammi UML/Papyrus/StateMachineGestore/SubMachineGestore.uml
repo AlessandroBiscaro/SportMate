@@ -9,11 +9,8 @@
         <body>click Login button
 /do InserisciDati</body>
       </ownedComment>
-      <ownedComment xmi:type="uml:Comment" xmi:id="_SKKVcKdYEe-MJ432SbipBQ">
-        <body>click registration button</body>
-      </ownedComment>
       <transition xmi:type="uml:Transition" xmi:id="_krwz8KdOEe-MJ432SbipBQ" source="_ittL0KdOEe-MJ432SbipBQ" target="_jQ-4AKdOEe-MJ432SbipBQ"/>
-      <transition xmi:type="uml:Transition" xmi:id="_P8w_4KdPEe-MJ432SbipBQ" kind="local" source="_jQ-4AKdOEe-MJ432SbipBQ" target="_LHPbYKdPEe-MJ432SbipBQ">
+      <transition xmi:type="uml:Transition" xmi:id="_P8w_4KdPEe-MJ432SbipBQ" name="click registration button " kind="local" source="_jQ-4AKdOEe-MJ432SbipBQ" target="_LHPbYKdPEe-MJ432SbipBQ">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_3u-wwKdPEe-MJ432SbipBQ" name="click registrazione">
           <specification xmi:type="uml:LiteralString" xmi:id="_38iPIKdQEe-MJ432SbipBQ" name="LiteralString" value="click registrazione"/>
         </ownedRule>
@@ -26,7 +23,8 @@
           <specification xmi:type="uml:LiteralString" xmi:id="_Enx9QKdSEe-MJ432SbipBQ" name="LiteralString" value="dati corretti"/>
         </ownedRule>
       </transition>
-      <transition xmi:type="uml:Transition" xmi:id="_R8ZN8KdSEe-MJ432SbipBQ" kind="local" source="_jQ-4AKdOEe-MJ432SbipBQ" target="_QpCIoKdSEe-MJ432SbipBQ">
+      <transition xmi:type="uml:Transition" xmi:id="_R8ZN8KdSEe-MJ432SbipBQ" name="click Login button" kind="local" source="_jQ-4AKdOEe-MJ432SbipBQ" target="_QpCIoKdSEe-MJ432SbipBQ">
+        <effect xmi:type="uml:Activity" xmi:id="_wEjbcKfuEe-MJ432SbipBQ" name="InserisciDati"/>
         <trigger xmi:type="uml:Trigger" xmi:id="_3YXY0KdVEe-MJ432SbipBQ" name="click Login" event="_NQrv8KdWEe-MJ432SbipBQ"/>
       </transition>
       <transition xmi:type="uml:Transition" xmi:id="_a3eSkKdSEe-MJ432SbipBQ" guard="_qGh2sKdSEe-MJ432SbipBQ" kind="local" source="_QpCIoKdSEe-MJ432SbipBQ" target="_XtitMKdSEe-MJ432SbipBQ">
