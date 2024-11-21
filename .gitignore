@@ -19,7 +19,7 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
 
@@ -45,7 +45,7 @@ local.properties
 # Java annotation processor (APT)
 .factorypath
 
-#Sonarlint plugin 
+# Sonarlint plugin 
 .sonarlint
 
 # Code Recommenders
@@ -54,3 +54,20 @@ local.properties
 # Annotation Processing
 .apt_generated/
 .apt_generated_test/
+
+# MacOs General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#MacOs thumbnail cache files
+._*
+
+# iCloud generated files
+*.icloud
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.d
