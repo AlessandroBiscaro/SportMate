@@ -3,7 +3,7 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_h1KaQKdOEe-MJ432SbipBQ">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:StateMachine" xmi:id="_hz4A0KdOEe-MJ432SbipBQ" name="SubMachineGestore" visibility="package">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_hz4A0KdOEe-MJ432SbipBQ" name="State Machine Gestore" visibility="package">
     <region xmi:type="uml:Region" xmi:id="_h0E1IKdOEe-MJ432SbipBQ" name="Region1">
       <ownedComment xmi:type="uml:Comment" xmi:id="_HX5FsKdYEe-MJ432SbipBQ">
         <body>click Login button

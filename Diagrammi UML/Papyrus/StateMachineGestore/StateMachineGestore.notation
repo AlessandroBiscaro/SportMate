@@ -2,7 +2,7 @@
 <notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_h0JtoKdOEe-MJ432SbipBQ" type="PapyrusUMLStateMachineDiagram" name="State Machine Diagram" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_h0JtoadOEe-MJ432SbipBQ" type="StateMachine_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_h0JtoqdOEe-MJ432SbipBQ" type="StateMachine_NameLabel">
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h0Jto6dOEe-MJ432SbipBQ" width="1091" height="16"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h0Jto6dOEe-MJ432SbipBQ" width="1091" height="25"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_h0JtpKdOEe-MJ432SbipBQ" type="StateMachine_RegionCompartment">
       <children xmi:type="notation:Shape" xmi:id="_h0JtpadOEe-MJ432SbipBQ" type="Region_Shape">
@@ -12,7 +12,7 @@
         <children xmi:type="notation:BasicCompartment" xmi:id="_h0JtqKdOEe-MJ432SbipBQ" type="Region_SubvertexCompartment">
           <children xmi:type="notation:Shape" xmi:id="_NwQyYKgbEe-KGazT1mKnBA" type="State_Shape">
             <children xmi:type="notation:DecorationNode" xmi:id="_NwVD0KgbEe-KGazT1mKnBA" type="State_NameLabel">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OXRIAKgbEe-KGazT1mKnBA" width="521" height="16"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OXRIAKgbEe-KGazT1mKnBA" width="521" height="25"/>
             </children>
             <children xmi:type="notation:DecorationNode" xmi:id="_NwVq4KgbEe-KGazT1mKnBA" type="State_FloatingNameLabel">
               <layoutConstraint xmi:type="notation:Location" xmi:id="_NwVq4agbEe-KGazT1mKnBA" x="40"/>
@@ -95,10 +95,10 @@
                 <element xmi:type="uml:Region" href="StateMachineGestore.uml#_P1hOsKgbEe-KGazT1mKnBA"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_P1nVUKgbEe-KGazT1mKnBA" width="521" height="225"/>
               </children>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NwWR8agbEe-KGazT1mKnBA" y="16" width="521" height="225"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NwWR8agbEe-KGazT1mKnBA" y="25" width="521" height="225"/>
             </children>
             <element xmi:type="uml:State" href="StateMachineGestore.uml#_NtZEkKgbEe-KGazT1mKnBA"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NwRZcKgbEe-KGazT1mKnBA" x="109" y="34" width="521" height="241"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NwRZcKgbEe-KGazT1mKnBA" x="109" y="34" width="521" height="250"/>
           </children>
           <children xmi:type="notation:Shape" xmi:id="_kZfpEKgbEe-KGazT1mKnBA" type="Pseudostate_InitialShape">
             <children xmi:type="notation:DecorationNode" xmi:id="_kZj6gKgbEe-KGazT1mKnBA" type="Pseudostate_InitialFloatingNameLabel">
@@ -226,7 +226,7 @@
         <element xmi:type="uml:Region" href="StateMachineGestore.uml#_h0E1IKdOEe-MJ432SbipBQ"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h0JtqqdOEe-MJ432SbipBQ" width="1091" height="660"/>
       </children>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h0Jtq6dOEe-MJ432SbipBQ" y="16" width="1091" height="660"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h0Jtq6dOEe-MJ432SbipBQ" y="25" width="1091" height="651"/>
     </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_uBskUKgZEe-KGazT1mKnBA" type="compartment_shape_display">
       <styles xmi:type="notation:TitleStyle" xmi:id="_uBskUagZEe-KGazT1mKnBA"/>
