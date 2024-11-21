@@ -1,13 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9RiFQKdNEe-MJ432SbipBQ" name="StateMachineGestore">
-  <packageImport xmi:type="uml:PackageImport" xmi:id="_9UyNkKdNEe-MJ432SbipBQ">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hzaGwKdOEe-MJ432SbipBQ" name="SubMachineGestore">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_h1KaQKdOEe-MJ432SbipBQ">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:StateMachine" xmi:id="_9SThUKdNEe-MJ432SbipBQ" name="StateMachine1">
-    <region xmi:type="uml:Region" xmi:id="_9Ssi4KdNEe-MJ432SbipBQ" name="Region1">
-      <transition xmi:type="uml:Transition" xmi:id="_STQ8MKdaEe-MJ432SbipBQ" source="_IhYLYKdaEe-MJ432SbipBQ" target="_KNDDAKdaEe-MJ432SbipBQ"/>
-      <subvertex xmi:type="uml:Pseudostate" xmi:id="_IhYLYKdaEe-MJ432SbipBQ"/>
-      <subvertex xmi:type="uml:State" xmi:id="_KNDDAKdaEe-MJ432SbipBQ" name="Registrazione_Login"/>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_hz4A0KdOEe-MJ432SbipBQ" name="SubMachineGestore" visibility="package">
+    <region xmi:type="uml:Region" xmi:id="_h0E1IKdOEe-MJ432SbipBQ" name="Region1">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_HX5FsKdYEe-MJ432SbipBQ">
+        <body>click Login button
+/do InserisciDati</body>
+      </ownedComment>
+      <transition xmi:type="uml:Transition" xmi:id="_R8ZN8KdSEe-MJ432SbipBQ" name="click Login button" kind="local" source="_jQ-4AKdOEe-MJ432SbipBQ" target="_QpCIoKdSEe-MJ432SbipBQ">
+        <effect xmi:type="uml:Activity" xmi:id="_wEjbcKfuEe-MJ432SbipBQ" name="InserisciDati"/>
+        <trigger xmi:type="uml:Trigger" xmi:id="_3YXY0KdVEe-MJ432SbipBQ" name="click Login" event="_NQrv8KdWEe-MJ432SbipBQ"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_gwqTgKdSEe-MJ432SbipBQ" guard="_-X_A4KdWEe-MJ432SbipBQ" kind="local" source="_QpCIoKdSEe-MJ432SbipBQ" target="_jQ-4AKdOEe-MJ432SbipBQ">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_-X_A4KdWEe-MJ432SbipBQ" name="guard constraint">
+          <specification xmi:type="uml:LiteralString" xmi:id="_AymCIKdXEe-MJ432SbipBQ" name="LiteralString" value="dati errati"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_mOFMIKgbEe-KGazT1mKnBA" source="_kXh6MKgbEe-KGazT1mKnBA" target="_NtZEkKgbEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_AQPGcKgcEe-KGazT1mKnBA" name="trnLoginHome" guard="_ZlXisKgcEe-KGazT1mKnBA" source="_NtZEkKgbEe-KGazT1mKnBA" target="_13fJ8KgbEe-KGazT1mKnBA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_ZlXisKgcEe-KGazT1mKnBA" name="Guardia">
+          <specification xmi:type="uml:LiteralString" xmi:id="_eYQp8KgcEe-KGazT1mKnBA" name="Guardia" value="tipo=Gestore"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_5sjhkKgcEe-KGazT1mKnBA" name="trnLogout" source="_13fJ8KgbEe-KGazT1mKnBA" target="_2GbIYKgcEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_aLPacKgdEe-KGazT1mKnBA" name="trnClickChat" source="_13fJ8KgbEe-KGazT1mKnBA" target="_RXUGsKgdEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_atGKUKgdEe-KGazT1mKnBA" name="trnClickHome" source="_RXUGsKgdEe-KGazT1mKnBA" target="_13fJ8KgbEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_7SJw8KgdEe-KGazT1mKnBA" name="trnDatiHome" guard="_OuTnoKgeEe-KGazT1mKnBA" kind="local" source="_tJAsAKgdEe-KGazT1mKnBA" target="_13fJ8KgbEe-KGazT1mKnBA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_OuTnoKgeEe-KGazT1mKnBA" name="Guardia">
+          <specification xmi:type="uml:LiteralString" xmi:id="_T9uS0KgeEe-KGazT1mKnBA" name="Guard" value="dati corretti"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_-dGC8KgdEe-KGazT1mKnBA" name="trnClickAgg" source="_13fJ8KgbEe-KGazT1mKnBA" target="_tJAsAKgdEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_9ojyMKgeEe-KGazT1mKnBA" name="trnClickHome" source="_xr8PMKgeEe-KGazT1mKnBA" target="_13fJ8KgbEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_DRBPgKgfEe-KGazT1mKnBA" name="trnClickDisp" source="_13fJ8KgbEe-KGazT1mKnBA" target="_xr8PMKgeEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_ofIE4KgfEe-KGazT1mKnBA" name="trnSalvaMod" guard="_811fUKgfEe-KGazT1mKnBA" source="_ZLwBcKgfEe-KGazT1mKnBA" target="_xr8PMKgeEe-KGazT1mKnBA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_811fUKgfEe-KGazT1mKnBA" name="Guard">
+          <specification xmi:type="uml:LiteralString" xmi:id="_AgVbIKggEe-KGazT1mKnBA" name="Guard" value="dati corretti"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_pHGD0KgfEe-KGazT1mKnBA" name="trnInsDisp" source="_xr8PMKgeEe-KGazT1mKnBA" target="_ZLwBcKgfEe-KGazT1mKnBA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_qT2K0KgfEe-KGazT1mKnBA" name="trnModDisp" source="_xr8PMKgeEe-KGazT1mKnBA" target="_ZLwBcKgfEe-KGazT1mKnBA"/>
+      <subvertex xmi:type="uml:State" xmi:id="_NtZEkKgbEe-KGazT1mKnBA" name="Login">
+        <region xmi:type="uml:Region" xmi:id="_P1hOsKgbEe-KGazT1mKnBA" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_krwz8KdOEe-MJ432SbipBQ" source="_ittL0KdOEe-MJ432SbipBQ" target="_jQ-4AKdOEe-MJ432SbipBQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_a3eSkKdSEe-MJ432SbipBQ" guard="_qGh2sKdSEe-MJ432SbipBQ" kind="local" source="_QpCIoKdSEe-MJ432SbipBQ" target="_XtitMKdSEe-MJ432SbipBQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_qGh2sKdSEe-MJ432SbipBQ" name="guardConstraint">
+              <specification xmi:type="uml:LiteralString" xmi:id="_uIwWAKdSEe-MJ432SbipBQ" name="LiteralString" value="dati corretti"/>
+            </ownedRule>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_8eOcMKdREe-MJ432SbipBQ" name="Click Invio Registrazione" guard="_A8nTEKdSEe-MJ432SbipBQ" kind="local" source="_LHPbYKdPEe-MJ432SbipBQ" target="_jQ-4AKdOEe-MJ432SbipBQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_A8nTEKdSEe-MJ432SbipBQ" name="guardConstraint">
+              <specification xmi:type="uml:LiteralString" xmi:id="_Enx9QKdSEe-MJ432SbipBQ" name="LiteralString" value="dati corretti"/>
+            </ownedRule>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_P8w_4KdPEe-MJ432SbipBQ" name="click registration button " kind="local" source="_jQ-4AKdOEe-MJ432SbipBQ" target="_LHPbYKdPEe-MJ432SbipBQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_3u-wwKdPEe-MJ432SbipBQ" name="click registrazione">
+              <specification xmi:type="uml:LiteralString" xmi:id="_38iPIKdQEe-MJ432SbipBQ" name="LiteralString" value="click registrazione"/>
+            </ownedRule>
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_uAoKMKdREe-MJ432SbipBQ" name="guardConstraint">
+              <specification xmi:type="uml:LiteralString" xmi:id="_y5QGAKdREe-MJ432SbipBQ" name="LiteralString" value="click registrazione"/>
+            </ownedRule>
+          </transition>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_ittL0KdOEe-MJ432SbipBQ"/>
+          <subvertex xmi:type="uml:State" xmi:id="_jQ-4AKdOEe-MJ432SbipBQ" name="In attesa di autenticazione"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_QpCIoKdSEe-MJ432SbipBQ" kind="choice"/>
+          <subvertex xmi:type="uml:FinalState" xmi:id="_XtitMKdSEe-MJ432SbipBQ"/>
+          <subvertex xmi:type="uml:State" xmi:id="_LHPbYKdPEe-MJ432SbipBQ" name="In Registrazione">
+            <doActivity xmi:type="uml:Activity" xmi:id="_YOjP4KdPEe-MJ432SbipBQ" name="InserisciDati"/>
+          </subvertex>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_kXh6MKgbEe-KGazT1mKnBA"/>
+      <subvertex xmi:type="uml:State" xmi:id="_13fJ8KgbEe-KGazT1mKnBA" name="Homapage">
+        <doActivity xmi:type="uml:Activity" xmi:id="_8x9BsKgbEe-KGazT1mKnBA" name="Visualizza dati"/>
+      </subvertex>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_2GbIYKgcEe-KGazT1mKnBA" name="FinalStateLogout"/>
+      <subvertex xmi:type="uml:State" xmi:id="_RXUGsKgdEe-KGazT1mKnBA" name="In Chat">
+        <doActivity xmi:type="uml:Activity" xmi:id="_YeY3EKgdEe-KGazT1mKnBA" name="interagisci"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_tJAsAKgdEe-KGazT1mKnBA" name="AggDati">
+        <doActivity xmi:type="uml:Activity" xmi:id="_2hfeUKgdEe-KGazT1mKnBA" name="Compila Dati"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_xr8PMKgeEe-KGazT1mKnBA" name="VisDisp">
+        <doActivity xmi:type="uml:Activity" xmi:id="_4EMxwKgeEe-KGazT1mKnBA" name="Visualizza Elenco"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_ZLwBcKgfEe-KGazT1mKnBA" name="AggDisp">
+        <doActivity xmi:type="uml:Activity" xmi:id="_fuzewKgfEe-KGazT1mKnBA" name="Compila Dati"/>
+      </subvertex>
     </region>
   </packagedElement>
+  <packagedElement xmi:type="uml:SignalEvent" xmi:id="_NQrv8KdWEe-MJ432SbipBQ"/>
 </uml:Model>
