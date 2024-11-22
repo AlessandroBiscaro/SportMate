@@ -98,7 +98,7 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.9| Il gestore avrà la possibilità di gestire le disponibilità della propria struttura, indicando fascia oraria, tipologia di campo, prezzo ed eventuali servizi aggiuntivi |
 |FUN.10| Il gestore avrà la possibilità di visualizzare l'elenco delle fasce orarie prenotate e ancora disponibili del suo centro sportivo |
 |FUN.11|L'utente avrà la possibilità di registrarsi alla piattaforma, indicando dati personali, mail e password |
-|FUN.12|L'utente avrà la possibilità di interagire con gli altri partecipanti di una partita pubblica a cui si è unito tramite una chat in tempo reale|
+|FUN.12|L'utente avrà la possibilità di interagire con l'utente organizzatore di una partita pubblica a cui si è unito tramite una chat in tempo reale|
 |FUN.13|L'utente organizzatore avrà la possibilità di interagire con il gestore del centro sportivo tramite una chat privata in tempo reale|
 |FUN.14|L'utente organizzatore avrà la possibilità di generare le squadre per l'incontro, in maniera casuale o scegliendo autonomamente sulla base del livello dei giocatori, specificando colori della divisa e caricando poi il risultato finale|
 |FUN.15|Il gestore avrà la possibilità di gestire i dati del centro all'interno della sua homepage|
