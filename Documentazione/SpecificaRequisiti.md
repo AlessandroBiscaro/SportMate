@@ -101,8 +101,9 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.12|L'utente avrà la possibilità di interagire con gli altri partecipanti di una partita pubblica a cui si è unito tramite una chat in tempo reale|
 |FUN.13|L'utente organizzatore avrà la possibilità di interagire con il gestore del centro sportivo tramite una chat privata in tempo reale|
 |FUN.14|L'utente organizzatore avrà la possibilità di generare le squadre per l'incontro, in maniera casuale o scegliendo autonomamente sulla base del livello dei giocatori, specificando colori della divisa e caricando poi il risultato finale|
-|FUN.15|L'utente avrà la possibilità di confrontarsi con i membri della sua squadra per la partita attraverso una chat di gruppo in tempo reale|
-|FUN.16|Il gestore avrà la possibilità di gestire i dati del centro all'interno della sua homepage|
+|FUN.15|Il gestore avrà la possibilità di gestire i dati del centro all'interno della sua homepage|
+|FUN.16| L'utente finale avrà la possibilità di abbandonare una partita pubblica a cui risulta già unito, entro 6 ore dall'inizio dell'incontro|
+|FUN.17| L'utente organizzatore avrà la possibilità di cancellare una partita pubblica o privata già organizzata|
 
 #### 3.2 - Classificazione MoSCoW
 
@@ -112,10 +113,12 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 | FUN.1     | FUN.3.2 | FUN.6.2 |   FUN.12   |
 |FUN.2|FUN.5|FUN.7|FUN.13|
 |FUN.3.1|FUN.10||FUN.14|
-|FUN.4|FUN.6.1||FUN.15|
-|FUN.8|FUN.16
+|FUN.4|FUN.6.1|
+|FUN.8|FUN.15
 |FUN.9|
 |FUN.11|
+|FUN.16|
+|FUN.17|
 
 
 #### 3.3 - Requisiti di prestazione
