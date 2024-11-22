@@ -91,7 +91,8 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.3.2|L'utente finale avrà la possibilità di ricercare i campi disponibili, consultando la mappa dei centri affiliati|
 |FUN.4|L'utente finale avrà la possibilità di unirsi ad una partita pubblica organizzata da un altro utente, tramite l'interfaccia dedicata|
 |FUN.5|L'utente organizzatore avrà la possibilità di selezionare la modalità di pagamento desiderata al momento della prenotazione, scegliendo tra il pagamento presso la struttura e l'utilizzo del credito ricaricabile collegato al profilo personale|
-|FUN.6|L'utente avrà la possibilità di monitorare e ricaricare il credito associato al profilo personale|
+|FUN.6.1|L'utente avrà la possibilità di gestire i propri dati personali all'interno della sua homepage|
+|FUN.6.2|L'utente avrà la possibilità di monitorare e ricaricare il credito associato al profilo personale|
 |FUN.7|L'utente avrà la possibilità di esprimere il proprio *feedback* riguardo la sua esperienza d'uso di SportMate|
 |FUN.8| Il gestore avrà la possibilità di registrare il proprio centro sportivo su SportMate, indicando nome commerciale, indirizzo, dati di contatto, servizi disponibili, orari di apertura e credenziali di accesso|
 |FUN.9| Il gestore avrà la possibilità di gestire le disponibilità della propria struttura, indicando fascia oraria, tipologia di campo, prezzo ed eventuali servizi aggiuntivi |
@@ -101,18 +102,18 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.13|L'utente organizzatore avrà la possibilità di interagire con il gestore del centro sportivo tramite una chat privata in tempo reale|
 |FUN.14|L'utente organizzatore avrà la possibilità di generare le squadre per l'incontro, in maniera casuale o scegliendo autonomamente sulla base del livello dei giocatori, specificando colori della divisa e caricando poi il risultato finale|
 |FUN.15|L'utente avrà la possibilità di confrontarsi con i membri della sua squadra per la partita attraverso una chat di gruppo in tempo reale|
-
+|FUN.16|Il gestore avrà la possibilità di gestire i dati del centro all'interno della sua homepage|
 
 #### 3.2 - Classificazione MoSCoW
 
 
 | Must Have | Should Have  |  Could Have | Won't Have |
 | :--------: | :--------: | :--: | :--------: | 
-| FUN.1     | FUN.3.2 | FUN.6 |   FUN.12   |
+| FUN.1     | FUN.3.2 | FUN.6.2 |   FUN.12   |
 |FUN.2|FUN.5|FUN.7|FUN.13|
 |FUN.3.1|FUN.10||FUN.14|
-|FUN.4|||FUN.15|
-|FUN.8|
+|FUN.4|FUN.6.1||FUN.15|
+|FUN.8|FUN.16
 |FUN.9|
 |FUN.11|
 
@@ -142,5 +143,12 @@ I seguenti fattori di qualità, definiti all'interno della tassonomia di McCall,
 
 <p align="center"  >
       <img src="../Diagrammi UML/Immagini/UseCaseDiagram.png" width="700" />   
+    
+ </p> 
+ 
+<br/>
+
+<p align="center"  >
+      <img src="../Diagrammi UML/Immagini/MacchinaStatiGestore.png" width="700" />   
     
  </p> 
