@@ -4,22 +4,19 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_8SZDsKZhEe--rM8x7evqLw" name="UseCaseDiagram">
-    <packagedElement xmi:type="uml:Actor" xmi:id="_AjGq8KZiEe--rM8x7evqLw" name="Utente" isAbstract="true"/>
-    <packagedElement xmi:type="uml:Actor" xmi:id="_HBPMAKZiEe--rM8x7evqLw" name="Utente Finale">
-      <generalization xmi:type="uml:Generalization" xmi:id="_N2yukKZiEe--rM8x7evqLw" general="_AjGq8KZiEe--rM8x7evqLw"/>
-    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_AjGq8KZiEe--rM8x7evqLw" name="Utente finale"/>
     <packagedElement xmi:type="uml:Actor" xmi:id="_A6QmsKZiEe--rM8x7evqLw" name="Utente Organizzatore">
       <generalization xmi:type="uml:Generalization" xmi:id="_M-_j4KZiEe--rM8x7evqLw" general="_AjGq8KZiEe--rM8x7evqLw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Actor" xmi:id="_Q5Py8KZiEe--rM8x7evqLw" name="Gestore"/>
-    <packagedElement xmi:type="uml:Component" xmi:id="_891uQKZ-Ee--rM8x7evqLw" name="SportMate" useCase="_gXvzUKdJEe-MJ432SbipBQ _l0qH8KdJEe-MJ432SbipBQ _2gM4MKdJEe-MJ432SbipBQ _CPyEwKdKEe-MJ432SbipBQ">
+    <packagedElement xmi:type="uml:Component" xmi:id="_891uQKZ-Ee--rM8x7evqLw" name="SportMate" useCase="_gXvzUKdJEe-MJ432SbipBQ _l0qH8KdJEe-MJ432SbipBQ _2gM4MKdJEe-MJ432SbipBQ _CPyEwKdKEe-MJ432SbipBQ _LDnicKl6Ee-soIkaQ95A1w _-uIhkKl7Ee-soIkaQ95A1w">
       <ownedComment xmi:type="uml:Comment" xmi:id="_Rvoy8KZjEe--rM8x7evqLw">
         <body>Condition: 
 disponibilità non ancora aggiornata</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_5o-BAKZ6Ee--rM8x7evqLw">
         <body>Condition:
-Apertura chat da parte dell'organizzatore</body>
+Apertura chat</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_udtBYKdJEe-MJ432SbipBQ">
         <body>Condition:
@@ -28,6 +25,14 @@ Necessaria modifica dei dati</body>
       <ownedComment xmi:type="uml:Comment" xmi:id="_Mgm0UKdKEe-MJ432SbipBQ">
         <body>Condition:
 Necessaria modifica dei dati</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_xThWkKl7Ee-soIkaQ95A1w">
+        <body>Condition:
+già unito alla partita</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_HxmtMKl8Ee-soIkaQ95A1w">
+        <body>Condition:
+partita già creata</body>
       </ownedComment>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_py1isKZiEe--rM8x7evqLw" name="Registrazione centro"/>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_3GhmUKZiEe--rM8x7evqLw" name="Controlla disponibilità campi">
@@ -42,21 +47,19 @@ Necessaria modifica dei dati</body>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5oHMwKZ3Ee--rM8x7evqLw" name="Ricerca tramite mappa">
         <generalization xmi:type="uml:Generalization" xmi:id="_9kb4YKZ3Ee--rM8x7evqLw" general="_xxJQgKZ3Ee--rM8x7evqLw"/>
       </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_tidiMKZ6Ee--rM8x7evqLw" name="Scrivi in chat di squadra">
-        <generalization xmi:type="uml:Generalization" xmi:id="_15v9QKZ6Ee--rM8x7evqLw" general="_aNpCkKZ6Ee--rM8x7evqLw"/>
-      </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_cb50cKZ7Ee--rM8x7evqLw" name="Unisciti a partita pubblica">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_gW6RcKZ7Ee--rM8x7evqLw" name="ExtensionPoint1"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_uay18Kl7Ee-soIkaQ95A1w" name="ExtensionPoint2"/>
       </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_xxJQgKZ3Ee--rM8x7evqLw" name="Ricerca campi" isAbstract="true"/>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_dfMm0KZiEe--rM8x7evqLw" name="Gestisci credito"/>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_YS3r4KZiEe--rM8x7evqLw" name="Esprimi feedback"/>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_R___oKZiEe--rM8x7evqLw" name="Registrazione utente"/>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_aNpCkKZ6Ee--rM8x7evqLw" name="Chat" isAbstract="true"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_pNqsMKZ6Ee--rM8x7evqLw" name="Scrivi in chat privata">
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_pNqsMKZ6Ee--rM8x7evqLw" name="Scrivi in chat con gestore">
         <generalization xmi:type="uml:Generalization" xmi:id="_2UrlwKZ6Ee--rM8x7evqLw" general="_aNpCkKZ6Ee--rM8x7evqLw"/>
       </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_lDiOEKZ6Ee--rM8x7evqLw" name="Scrivi in chat pubblica">
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_lDiOEKZ6Ee--rM8x7evqLw" name="Scrivi in chat con organizzatore">
         <generalization xmi:type="uml:Generalization" xmi:id="_1T76cKZ6Ee--rM8x7evqLw" general="_aNpCkKZ6Ee--rM8x7evqLw"/>
         <extend xmi:type="uml:Extend" xmi:id="_gW2AAKZ7Ee--rM8x7evqLw" extendedCase="_cb50cKZ7Ee--rM8x7evqLw" extensionLocation="_gW6RcKZ7Ee--rM8x7evqLw"/>
       </ownedUseCase>
@@ -68,6 +71,7 @@ Necessaria modifica dei dati</body>
       </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_EFqwwKZ4Ee--rM8x7evqLw" name="Organizza partita" isAbstract="true">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_r06GIKZ4Ee--rM8x7evqLw" name="ExtensionPoint1"/>
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_E4M3IKl8Ee-soIkaQ95A1w" name="ExtensionPoint4"/>
         <include xmi:type="uml:Include" xmi:id="_--uPoKZ4Ee--rM8x7evqLw" addition="_qJaNoKZ4Ee--rM8x7evqLw"/>
         <include xmi:type="uml:Include" xmi:id="_klF0AKZ5Ee--rM8x7evqLw" addition="_ADNLcKZ5Ee--rM8x7evqLw"/>
       </ownedUseCase>
@@ -84,6 +88,12 @@ Necessaria modifica dei dati</body>
       </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_CPyEwKdKEe-MJ432SbipBQ" name="Modifica dati personali" subject="_891uQKZ-Ee--rM8x7evqLw">
         <extend xmi:type="uml:Extend" xmi:id="_FM_cwKdKEe-MJ432SbipBQ" extendedCase="_2gM4MKdJEe-MJ432SbipBQ" extensionLocation="_FNLC8KdKEe-MJ432SbipBQ"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_LDnicKl6Ee-soIkaQ95A1w" name="Abbandona partita pubblica" subject="_891uQKZ-Ee--rM8x7evqLw">
+        <extend xmi:type="uml:Extend" xmi:id="_uaTtwKl7Ee-soIkaQ95A1w" extendedCase="_cb50cKZ7Ee--rM8x7evqLw" extensionLocation="_uay18Kl7Ee-soIkaQ95A1w"/>
+      </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-uIhkKl7Ee-soIkaQ95A1w" name="Elimina partita" subject="_891uQKZ-Ee--rM8x7evqLw">
+        <extend xmi:type="uml:Extend" xmi:id="_E33f8Kl8Ee-soIkaQ95A1w" extendedCase="_EFqwwKZ4Ee--rM8x7evqLw" extensionLocation="_E4M3IKl8Ee-soIkaQ95A1w"/>
       </ownedUseCase>
     </packagedElement>
   </packagedElement>
@@ -150,20 +160,6 @@ Necessaria modifica dei dati</body>
     <ownedEnd xmi:type="uml:Property" xmi:id="_Oc474KZ7Ee--rM8x7evqLw" name="scrivi in chat privata" type="_pNqsMKZ6Ee--rM8x7evqLw" association="_OczcUKZ7Ee--rM8x7evqLw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_Oc5i8KZ7Ee--rM8x7evqLw" name="gestore" type="_Q5Py8KZiEe--rM8x7evqLw" association="_OczcUKZ7Ee--rM8x7evqLw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_pKsbQKZ7Ee--rM8x7evqLw" memberEnd="_pKyh4KZ7Ee--rM8x7evqLw _pKzI8KZ7Ee--rM8x7evqLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pKwFoKZ7Ee--rM8x7evqLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pKxTwKZ7Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_pKyh4KZ7Ee--rM8x7evqLw" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_pKsbQKZ7Ee--rM8x7evqLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_pKzI8KZ7Ee--rM8x7evqLw" name="scrivi in chat di squadra" type="_tidiMKZ6Ee--rM8x7evqLw" association="_pKsbQKZ7Ee--rM8x7evqLw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_3FMAMKZ7Ee--rM8x7evqLw" memberEnd="_3FgJQKZ7Ee--rM8x7evqLw _3FilgKZ7Ee--rM8x7evqLw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3FapsKZ7Ee--rM8x7evqLw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3FdtAKZ7Ee--rM8x7evqLw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_3FgJQKZ7Ee--rM8x7evqLw" name="utente finale" type="_HBPMAKZiEe--rM8x7evqLw" association="_3FMAMKZ7Ee--rM8x7evqLw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_3FilgKZ7Ee--rM8x7evqLw" name="unisciti a partita pubblica" type="_cb50cKZ7Ee--rM8x7evqLw" association="_3FMAMKZ7Ee--rM8x7evqLw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_kNkOUKdJEe-MJ432SbipBQ" memberEnd="_kN8BwKdJEe-MJ432SbipBQ _kN928KdJEe-MJ432SbipBQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kN0F8KdJEe-MJ432SbipBQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kN4XYKdJEe-MJ432SbipBQ" key="nature" value="UML_Nature"/>
@@ -177,5 +173,12 @@ Necessaria modifica dei dati</body>
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_BWpdUKdKEe-MJ432SbipBQ" name="utente" type="_AjGq8KZiEe--rM8x7evqLw" association="_BWRC0KdKEe-MJ432SbipBQ"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_BWr5kKdKEe-MJ432SbipBQ" name="homepage utente" type="_2gM4MKdJEe-MJ432SbipBQ" association="_BWRC0KdKEe-MJ432SbipBQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_hwz2oKl7Ee-soIkaQ95A1w" memberEnd="_hxFjcKl7Ee-soIkaQ95A1w _hxImwKl7Ee-soIkaQ95A1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hxBSAKl7Ee-soIkaQ95A1w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hxDuQKl7Ee-soIkaQ95A1w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_hxFjcKl7Ee-soIkaQ95A1w" name="utente finale" type="_AjGq8KZiEe--rM8x7evqLw" association="_hwz2oKl7Ee-soIkaQ95A1w"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_hxImwKl7Ee-soIkaQ95A1w" name="unisciti a partita pubblica" type="_cb50cKZ7Ee--rM8x7evqLw" association="_hwz2oKl7Ee-soIkaQ95A1w"/>
   </packagedElement>
 </uml:Model>
