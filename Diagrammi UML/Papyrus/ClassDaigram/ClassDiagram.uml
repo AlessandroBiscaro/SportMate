@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2hH5UKl6Ee-bKaEEggugGg" name="ClassDiagram">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_2kXakKl6Ee-bKaEEggugGg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_tf4F0Kl7Ee-bKaEEggugGg" name="SportMate">
+    <packagedElement xmi:type="uml:Class" xmi:id="_FZtowKl8Ee-bKaEEggugGg" name="UtenteFinale">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_efTa4KmBEe-bKaEEggugGg" name="idUtente" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_i4gPwKmBEe-bKaEEggugGg" name="nome" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nnixwKmBEe-bKaEEggugGg" name="cognome" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NXr9MKmCEe-bKaEEggugGg" name="dataNascita" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_QpRpwKmCEe-bKaEEggugGg" name="mail" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TzwBsKmCEe-bKaEEggugGg" name="telefono" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YfjpgKmCEe-bKaEEggugGg" name="password" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_g3N4AKmCEe-bKaEEggugGg" name="credito" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sb41EKmCEe-bKaEEggugGg" name="livello" visibility="private" type="_uFleIKl_Ee-bKaEEggugGg" isUnique="false"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_4FQr8KmCEe-bKaEEggugGg" name="pathImg" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_xIsF8KmDEe-bKaEEggugGg" name="ricercaPartita">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xIsF8amDEe-bKaEEggugGg" name="dataOra" isUnique="false" effect="read">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_D8kbsKmEEe-bKaEEggugGg" name="ricercaPartita">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_D8kbsamEEe-bKaEEggugGg" name="idCentroSportivo" isUnique="false" effect="read">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_PYtogKl8Ee-bKaEEggugGg" name="TipoCampo">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_dEKr4Kl8Ee-bKaEEggugGg" name="CALCIO5" visibility="public">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_X4AVwKmMEe-bKaEEggugGg" name="LiteralReal" value="1.0"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_j8ICMKl8Ee-bKaEEggugGg" name="CALCIO7">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_aQcz0KmMEe-bKaEEggugGg" name="LiteralReal" value="2.0"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_quNaAKl8Ee-bKaEEggugGg" name="BASKET3">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_djmmoKmMEe-bKaEEggugGg" name="LiteralReal" value="3.0"/>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_4z9zwKl8Ee-bKaEEggugGg" name="ModPagamento">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_YV5wgKl9Ee-bKaEEggugGg" name="CONTANTI">
+        <specification xmi:type="uml:LiteralString" xmi:id="_YV5wgal9Ee-bKaEEggugGg" name="LiteralString" value="CONTANTI"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_iv5qMKl9Ee-bKaEEggugGg" name="CREDITO">
+        <specification xmi:type="uml:LiteralString" xmi:id="_iv5qMal9Ee-bKaEEggugGg" name="LiteralReal" value="CREDITO"/>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_5UvwIKl9Ee-bKaEEggugGg" name="Coordinate">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TvhJUKl_Ee-bKaEEggugGg" name="latitudine" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+        <defaultValue xmi:type="uml:LiteralNull" xmi:id="_TvhJUal_Ee-bKaEEggugGg" name="LiteralNull"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dGUgoKl_Ee-bKaEEggugGg" name="longitudine" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+        <defaultValue xmi:type="uml:LiteralNull" xmi:id="_dGUgoal_Ee-bKaEEggugGg" name="LiteralNull"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_uFleIKl_Ee-bKaEEggugGg" name="Livello">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_8zcZsKl_Ee-bKaEEggugGg" name="PRINCIPIANTE">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_8zcZsal_Ee-bKaEEggugGg" name="Literalreal" value="1.0"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Ad1n0KmAEe-bKaEEggugGg" name="ESORDIENTE">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_Ad1n0amAEe-bKaEEggugGg" name="LiteralReal" value="2.0"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_G3Oy0KmAEe-bKaEEggugGg" name="DILETTANTE">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_G3Oy0amAEe-bKaEEggugGg" name="LiteralReal" value="3.0"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_JwVt8KmAEe-bKaEEggugGg" name="ESPERTO">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_JwVt8amAEe-bKaEEggugGg" value="4.0"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Ob1zwKmAEe-bKaEEggugGg" name="PROFESSIONISTA">
+        <specification xmi:type="uml:LiteralReal" xmi:id="_Ob1zwamAEe-bKaEEggugGg" name="LiteralReal" value="5.0"/>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YqDXYKmEEe-bKaEEggugGg" name="Gestore">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_n1ltcKmEEe-bKaEEggugGg" name="idGestore" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qryegKmEEe-bKaEEggugGg" name="nome" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_s_AeUKmEEe-bKaEEggugGg" name="cognome" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wEXFsKmEEe-bKaEEggugGg" name="dataNascita" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1muiEKmEEe-bKaEEggugGg" name="mail" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_5UGLsKmEEe-bKaEEggugGg" name="telefono" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8M3voKmEEe-bKaEEggugGg" name="password" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QV23IKmFEe-bKaEEggugGg" name="UtenteOrganizzatore">
+      <generalization xmi:type="uml:Generalization" xmi:id="_X87WMKmFEe-bKaEEggugGg" general="_FZtowKl8Ee-bKaEEggugGg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_TIHG4KmGEe-bKaEEggugGg" name="CentroSportivo">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_X94jAKmGEe-bKaEEggugGg" name="idCentro" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_agiF8KmGEe-bKaEEggugGg" name="nomeCommerciale" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dY0hsKmGEe-bKaEEggugGg" name="indirizzo" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_i7PocKmGEe-bKaEEggugGg" name="coordinate" visibility="private" type="_5UvwIKl9Ee-bKaEEggugGg" isUnique="false"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_m4zDIKmGEe-bKaEEggugGg" name="credito" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Qck4QKmHEe-bKaEEggugGg" name="tipologieCampi" visibility="private" isUnique="false">
+        <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_K2iP8GMnEeydfJuFsrdeeg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sd4m4KmHEe-bKaEEggugGg" name="dataApertura" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0QhcwKmHEe-bKaEEggugGg" name="orarioChiusura" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JzyJ4KmIEe-bKaEEggugGg" name="Disponibilita">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gdC1wKmIEe-bKaEEggugGg" name="dataOra" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ohYfoKmIEe-bKaEEggugGg" name="tipoCampo" visibility="private" type="_PYtogKl8Ee-bKaEEggugGg" isUnique="false"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_tAsjkKmIEe-bKaEEggugGg" name="prezzo" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_914YAKmIEe-bKaEEggugGg" name="Feedback">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GNe8IKmJEe-bKaEEggugGg" name="idFeedback" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_JQkSoKmJEe-bKaEEggugGg" name="oggetto" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RYHokKmJEe-bKaEEggugGg" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_UelDMKmJEe-bKaEEggugGg" name="like" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XEShMKmJEe-bKaEEggugGg" name="data" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iKxtcKmJEe-bKaEEggugGg" name="MessaggiOG">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_mQ080KmJEe-bKaEEggugGg" name="idMessaggio" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_svKSMKmJEe-bKaEEggugGg" name="stato" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wPXpkKmJEe-bKaEEggugGg" name="testo" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0Al4cKmJEe-bKaEEggugGg" name="dataOra" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7lUOIKmJEe-bKaEEggugGg" name="MessaggiOF">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LBkgwKmKEe-bKaEEggugGg" name="idMessaggio" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OWYgcKmKEe-bKaEEggugGg" name="stato" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_QuuQ0KmKEe-bKaEEggugGg" name="testo" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VPXKcKmKEe-bKaEEggugGg" name="dataOra" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kYnBgKmKEe-bKaEEggugGg" name="Transizione">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qLZfgKmKEe-bKaEEggugGg" name="idTransizione" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_tl0X8KmKEe-bKaEEggugGg" name="importo" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xs47AKmKEe-bKaEEggugGg" name="dataOra" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5EjsIKmKEe-bKaEEggugGg" name="Partita">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_JhkRIKmLEe-bKaEEggugGg" name="idPartita" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_PVFH4KmLEe-bKaEEggugGg" name="postiTotali" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TXwTIKmLEe-bKaEEggugGg" name="risultato" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_abGaEKmLEe-bKaEEggugGg" name="stato" visibility="private" isUnique="false" isDerived="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eaMF0KmLEe-bKaEEggugGg" name="modPagamento" visibility="private" type="_4z9zwKl8Ee-bKaEEggugGg" isUnique="false"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_jlDoMKmLEe-bKaEEggugGg" name="PartitaPubblica">
+      <generalization xmi:type="uml:Generalization" xmi:id="_8C3a4KmLEe-bKaEEggugGg" general="_5EjsIKmKEe-bKaEEggugGg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_CfL-EKmMEe-bKaEEggugGg" name="postiMancanti" visibility="private" isUnique="false" isDerived="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2i81kKmLEe-bKaEEggugGg" name="PartitaPrivata">
+      <generalization xmi:type="uml:Generalization" xmi:id="_9cgHUKmLEe-bKaEEggugGg" general="_5EjsIKmKEe-bKaEEggugGg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LhfFAKmMEe-bKaEEggugGg" name="ServiziAggiuntivi">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_iOzKcKmMEe-bKaEEggugGg" name="idServizi" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rkDCkKmMEe-bKaEEggugGg" name="nomeServizio" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wCu0YKmMEe-bKaEEggugGg" name="descrizione" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6KtxAKmMEe-bKaEEggugGg" name="Squadra">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-wj6wKmMEe-bKaEEggugGg" name="codSquadra" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_AjreMKmNEe-bKaEEggugGg" name="nome" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_EN_z0KmNEe-bKaEEggugGg" name="coloreMaglie" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
