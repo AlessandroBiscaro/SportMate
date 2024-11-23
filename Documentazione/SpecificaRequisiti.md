@@ -145,7 +145,7 @@ I seguenti fattori di qualità, definiti all'interno della tassonomia di McCall,
 - Flessibilità: sforzo necessario per modificare il sistema una volta operativo.
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/UseCaseDiagram.png" width="700" />   
+      <img src="../Diagrammi UML/Immagini/UseCaseDiagram2.png" width="700" />   
     
  </p> 
  
