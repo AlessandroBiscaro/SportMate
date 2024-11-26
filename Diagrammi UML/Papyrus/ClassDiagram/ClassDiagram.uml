@@ -63,7 +63,6 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wsZn4asKEe-Gr7DEaBJ9Kg" name="partitaPubblica" type="_jlDoMKmLEe-bKaEEggugGg" isUnique="false" direction="inout" effect="update"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_BhXZ4KsLEe-Gr7DEaBJ9Kg" name="modificaDatiPers"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_4LQJoKsLEe-Gr7DEaBJ9Kg" name="modificaCredito"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Blw8QKsMEe-Gr7DEaBJ9Kg" name="ricaricaCredito">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_Blw8QasMEe-Gr7DEaBJ9Kg" name="importo" isUnique="false" effect="read">
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
@@ -98,6 +97,9 @@
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_INPKEKsNEe-Gr7DEaBJ9Kg" name="abbandonaPartPubb">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_INPKEasNEe-Gr7DEaBJ9Kg" name="partitaPubblica" type="_jlDoMKmLEe-bKaEEggugGg" isUnique="false" direction="inout" effect="update"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_tN3aEKw_Ee-ue7GcVIMhaw" name="pagaPartita">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tN3aEaw_Ee-ue7GcVIMhaw" name="partita" type="_5EjsIKmKEe-bKaEEggugGg" isUnique="false" direction="inout" effect="update"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Enumeration" xmi:id="_PYtogKl8Ee-bKaEEggugGg" name="TipoCampo">
@@ -169,7 +171,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_TS7A4asUEe-Gr7DEaBJ9Kg" name="centrosportivo" type="_TIHG4KmGEe-bKaEEggugGg" association="_TS5ywKsUEe-Gr7DEaBJ9Kg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_6VZW4qsUEe-Gr7DEaBJ9Kg" name="messaggiog" type="_iKxtcKmJEe-bKaEEggugGg" association="_6VXhsKsUEe-Gr7DEaBJ9Kg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_6VZW4qsUEe-Gr7DEaBJ9Kg" name="messaggiOG" type="_iKxtcKmJEe-bKaEEggugGg" association="_6VXhsKsUEe-Gr7DEaBJ9Kg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Jk3kKsUEe-Gr7DEaBJ9Kg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__E8PMKsUEe-Gr7DEaBJ9Kg" value="*"/>
       </ownedAttribute>
@@ -177,7 +179,7 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wGdFYasOEe-Gr7DEaBJ9Kg" name="centroSportivo" type="_TIHG4KmGEe-bKaEEggugGg" isUnique="false" effect="read"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wGdFYqsOEe-Gr7DEaBJ9Kg" name="servAgg" type="_LhfFAKmMEe-bKaEEggugGg" isUnique="false" effect="read"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_zysGkKsOEe-Gr7DEaBJ9Kg" name="aggservAgg">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_zysGkKsOEe-Gr7DEaBJ9Kg" name="aggsServAgg">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_zysGkasOEe-Gr7DEaBJ9Kg" name="servizioAggiuntivo" type="_LhfFAKmMEe-bKaEEggugGg" isUnique="false" effect="read"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_iiIIQKsPEe-Gr7DEaBJ9Kg" name="insDisp">
@@ -230,8 +232,10 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_gUcd0KsREe-Gr7DEaBJ9Kg" name="generaSqCasuale"/>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_jbl08KsREe-Gr7DEaBJ9Kg" name="generaSqManuale"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gUcd0KsREe-Gr7DEaBJ9Kg" name="generaSquadre">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_R_PFkKw_Ee-ue7GcVIMhaw" name="partita" type="_5EjsIKmKEe-bKaEEggugGg" isUnique="false" effect="read"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_XSNbEKw_Ee-ue7GcVIMhaw" name="casuale" isUnique="false" effect="read"/>
+      </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_wIeXQKsREe-Gr7DEaBJ9Kg" name="cancellaPart">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wIeXQasREe-Gr7DEaBJ9Kg" name="partita" type="_5EjsIKmKEe-bKaEEggugGg" isUnique="false" direction="inout" effect="update"/>
       </ownedOperation>
@@ -253,7 +257,7 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_Qck4QKmHEe-bKaEEggugGg" name="tipologieCampi" visibility="private" isUnique="false">
         <type xmi:type="uml:Interface" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_K2iP8GMnEeydfJuFsrdeeg"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_sd4m4KmHEe-bKaEEggugGg" name="dataApertura" visibility="private" isUnique="false">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sd4m4KmHEe-bKaEEggugGg" name="orarioApertura" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_0QhcwKmHEe-bKaEEggugGg" name="orarioChiusura" visibility="private" isUnique="false">
@@ -272,7 +276,7 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_gdC1wKmIEe-bKaEEggugGg" name="dataOra" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ohYfoKmIEe-bKaEEggugGg" name="tipoCampo" visibility="private" type="_PYtogKl8Ee-bKaEEggugGg" isUnique="false"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ohYfoKmIEe-bKaEEggugGg" name="tipologiaCampo" visibility="private" type="_PYtogKl8Ee-bKaEEggugGg" isUnique="false"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_tAsjkKmIEe-bKaEEggugGg" name="prezzo" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_KgG0cPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
@@ -285,10 +289,10 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_JQkSoKmJEe-bKaEEggugGg" name="oggetto" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_RYHokKmJEe-bKaEEggugGg" visibility="private" isUnique="false">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RYHokKmJEe-bKaEEggugGg" name="testo" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_UelDMKmJEe-bKaEEggugGg" name="like" visibility="private" isUnique="false">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_UelDMKmJEe-bKaEEggugGg" name="numLike" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_XEShMKmJEe-bKaEEggugGg" name="data" visibility="private" isUnique="false">
@@ -356,11 +360,11 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hlHesKsVEe-Gr7DEaBJ9Kg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hfqW8KsVEe-Gr7DEaBJ9Kg" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_NoFTEqsWEe-Gr7DEaBJ9Kg" name="squadra" type="_6KtxAKmMEe-bKaEEggugGg" association="_NoEE8KsWEe-Gr7DEaBJ9Kg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NoFTEqsWEe-Gr7DEaBJ9Kg" name="squadra" type="_6KtxAKmMEe-bKaEEggugGg" aggregation="composite" association="_NoEE8KsWEe-Gr7DEaBJ9Kg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NoF6IKsWEe-Gr7DEaBJ9Kg" value="2"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NoF6IasWEe-Gr7DEaBJ9Kg" value="2"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ms4NQqsWEe-Gr7DEaBJ9Kg" name="transizione" type="_kYnBgKmKEe-bKaEEggugGg" association="_ms2_IKsWEe-Gr7DEaBJ9Kg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ms4NQqsWEe-Gr7DEaBJ9Kg" name="transizione" type="_kYnBgKmKEe-bKaEEggugGg" aggregation="composite" association="_ms2_IKsWEe-Gr7DEaBJ9Kg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ms40UKsWEe-Gr7DEaBJ9Kg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ms40UasWEe-Gr7DEaBJ9Kg" value="1"/>
       </ownedAttribute>
@@ -388,7 +392,7 @@
       <generalization xmi:type="uml:Generalization" xmi:id="_9cgHUKmLEe-bKaEEggugGg" general="_5EjsIKmKEe-bKaEEggugGg"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_LhfFAKmMEe-bKaEEggugGg" name="ServiziAggiuntivi">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_iOzKcKmMEe-bKaEEggugGg" name="idServizi" visibility="private">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_iOzKcKmMEe-bKaEEggugGg" name="idServizio" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_rkDCkKmMEe-bKaEEggugGg" name="nomeServizio" visibility="private" isUnique="false">
