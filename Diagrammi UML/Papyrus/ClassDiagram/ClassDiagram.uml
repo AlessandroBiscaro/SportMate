@@ -349,9 +349,6 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_PVFH4KmLEe-bKaEEggugGg" name="postiTotali" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TXwTIKmLEe-bKaEEggugGg" name="risultato" visibility="private" isUnique="false">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
-      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_abGaEKmLEe-bKaEEggugGg" name="stato" visibility="private" isUnique="false" isDerived="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
@@ -368,6 +365,12 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ms40UKsWEe-Gr7DEaBJ9Kg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ms40UasWEe-Gr7DEaBJ9Kg" value="1"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_BYV2IK4_Ee-LEOBv4fXVyw" name="goalSquadraCasa" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GG4o4K4_Ee-LEOBv4fXVyw" name="goalSquadraTrasferta" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_iDPXYKsQEe-Gr7DEaBJ9Kg" name="setRisFin">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_iDPXYasQEe-Gr7DEaBJ9Kg" name="goal-ptCasa" isUnique="false" effect="read">
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
@@ -376,7 +379,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_jmAxsKsQEe-Gr7DEaBJ9Kg" name="setColori"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_jmAxsKsQEe-Gr7DEaBJ9Kg" name="setColoriMaglie"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_jlDoMKmLEe-bKaEEggugGg" name="PartitaPubblica">
       <generalization xmi:type="uml:Generalization" xmi:id="_8C3a4KmLEe-bKaEEggugGg" general="_5EjsIKmKEe-bKaEEggugGg"/>
@@ -403,14 +406,17 @@
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_6KtxAKmMEe-bKaEEggugGg" name="Squadra">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-wj6wKmMEe-bKaEEggugGg" name="codSquadra" visibility="private">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-wj6wKmMEe-bKaEEggugGg" name="idSquadra" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_AjreMKmNEe-bKaEEggugGg" name="nome" visibility="private" isUnique="false">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_AjreMKmNEe-bKaEEggugGg" name="nomeSquadra" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_EN_z0KmNEe-bKaEEggugGg" name="coloreMaglie" visibility="private" isUnique="false">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_EN_z0KmNEe-bKaEEggugGg" name="coloreMaglia" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0kWmQK4-Ee-LEOBv4fXVyw" name="inCasa" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_f-GnEPaLEeW5KOK8aDMdgA"/>
       </ownedAttribute>
     </packagedElement>
   </packagedElement>
