@@ -43,11 +43,11 @@ SportMate ha come obiettivo la realizzazione di un sistema innovativo di prenota
 
 #### 1.2 - Definizioni, acronimi e termini
 ##### Termini e definizioni:
-- **Partita pubblica**: incontro sportivo organizzato attraverso l'applicazione aperto a tutti gli utenti della piattaforma, fino ad esaurimento posti
+- **Partita pubblica**: incontro sportivo organizzato attraverso l'applicazione aperto a tutti gli utenti, fino ad esaurimento posti
 - **Partita privata**: incontro sportivo organizzato attraverso l'applicazione, basato sull' invito da parte dell'utente organizzatore
-- **Utente organizzatore**: utente dell'applicazione proprietario di una partita pubblica o privata
-- **Utente finale**: rappresenta l'insieme di utenti che usufruiscono direttamente dei servizi forniti dall'applicazone, quali la prenotazione e l'organizzazione di partite private e pubbliche.
-- **Gestore**: rappresenta l'insieme di utenti che identificano i proprietari dei centri sportivi o campi disponibili alla prenotazione attraverso l'applicazione.<br/>
+- **Utente organizzatore**: rappresenta l'insieme di utenti proprietari di una partita pubblica o privata
+- **Utente finale**: rappresenta l'insieme di utenti che usufruiscono direttamente dei servizi forniti dall'applicazone, come la prenotazione di partite private e pubbliche.
+- **Gestore**: rappresenta l'insieme di utenti che identificano i proprietari dei centri sportivi disponibili alla prenotazione attraverso l'applicazione.<br/>
 
 ##### Acronimi:
 - **GUI**: *Graphical User Interface*
@@ -64,13 +64,13 @@ Questo software innovativo fornisce due differenti categorie di funzionalità:
 Gli utenti del sistema possono selezionare una delle funzionalità elencate nella sezione [Requisiti funzionali](#Requisiti-funzionali) attraverso il menù laterale dell'interfaccia utente (GUI).
 
 #### 2.2 - Tecniche di elicitazione dei requisiti
-La principale fonte di informazione per il processo di elicitazione dei requisiti sono gli utenti finali dell'applicazione. Pertanto abbiamo coinvolto amici e colleghi, che identificano un campione rappresentativo dell'insieme degli utenti finali, grazie ai quali ci è stato possibile raccogliere requisiti realistici e concreti su ciò che vorrebbero trovare in un'applicazione come SportMate. <br/> Un'altra fonte di informazione per la fase di ingegneria dei requisiti sono i gestori, tramite i quali abbiamo potuto identificare funzionalità chiave per ottimizzare le prenotazioni e l'occupazione dei campi.
-La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti finali è l'*intervista aperta*. <br/> Abbiamo invece preferito un'analisi basata su scenari creati artificialmente e discussi con i gestori.
+La principale fonte di informazione per il processo di elicitazione dei requisiti sono gli utenti dell'applicazione. Pertanto abbiamo coinvolto amici e colleghi, che identificano un campione rappresentativo dell'insieme degli utenti, grazie ai quali ci è stato possibile raccogliere requisiti realistici e concreti su ciò che vorrebbero trovare in un'applicazione come SportMate. <br/> Un'altra fonte di informazione per la fase di ingegneria dei requisiti sono i gestori, tramite i quali abbiamo potuto identificare funzionalità chiave per ottimizzare le prenotazioni e l'occupazione dei campi.<br/>
+La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti è stata l'*intervista aperta*;al contrario, abbiamo preferito un'analisi basata su scenari creati artificialmente e discussi con i gestori.
 
 
 #### 2.3 - Caratteristiche dell'utente
 
-I gestori saranno formati riguardo al funzionamento del sistema software, come riportato nella sezione [Requisiti funzionali](#3.1---Requisiti-funzionali).<br/> Gli utenti finali useranno occasionalmente SportMate, non necessitando di alcuna conoscenza specifica sul sistema.
+I gestori saranno formati riguardo al funzionamento del sistema softwar.<br/> Gli utenti finali useranno occasionalmente SportMate, non necessitando di alcuna conoscenza specifica sul funzionamento del sistema.
 
 #### 2.4 - Vincoli
 
@@ -91,7 +91,7 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.3.2|L'utente finale avrà la possibilità di ricercare i campi disponibili, consultando la mappa dei centri affiliati|
 |FUN.4|L'utente finale avrà la possibilità di unirsi ad una partita pubblica organizzata da un altro utente, tramite l'interfaccia dedicata|
 |FUN.5|L'utente organizzatore avrà la possibilità di selezionare la modalità di pagamento desiderata al momento della prenotazione, scegliendo tra il pagamento presso la struttura e l'utilizzo del credito ricaricabile collegato al profilo personale|
-|FUN.6.1|L'utente avrà la possibilità di gestire i propri dati personali all'interno della sua homepage|
+|FUN.6.1|L'utente avrà la possibilità di gestire i propri dati personali|
 |FUN.6.2|L'utente avrà la possibilità di monitorare e ricaricare il credito associato al profilo personale|
 |FUN.7|L'utente avrà la possibilità di esprimere il proprio *feedback* riguardo la sua esperienza d'uso di SportMate|
 |FUN.8| Il gestore avrà la possibilità di registrare il proprio centro sportivo su SportMate, indicando nome commerciale, indirizzo, dati di contatto, servizi disponibili, orari di apertura e credenziali di accesso|
@@ -101,7 +101,7 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 |FUN.12|L'utente avrà la possibilità di interagire con l'utente organizzatore di una partita pubblica a cui si è unito tramite una chat in tempo reale|
 |FUN.13|L'utente organizzatore avrà la possibilità di interagire con il gestore del centro sportivo tramite una chat privata in tempo reale|
 |FUN.14|L'utente organizzatore avrà la possibilità di generare le squadre per l'incontro, in maniera casuale o scegliendo autonomamente sulla base del livello dei giocatori, specificando colori della divisa e caricando poi il risultato finale|
-|FUN.15|Il gestore avrà la possibilità di gestire i dati del centro all'interno della sua homepage|
+|FUN.15|Il gestore avrà la possibilità di gestire i dati del centro|
 |FUN.16| L'utente finale avrà la possibilità di abbandonare una partita pubblica a cui risulta già unito, entro 6 ore dall'inizio dell'incontro|
 |FUN.17| L'utente organizzatore avrà la possibilità di cancellare una partita pubblica o privata già organizzata|
 
@@ -110,11 +110,11 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 
 | Must Have | Should Have  |  Could Have | Won't Have |
 | :--------: | :--------: | :--: | :--------: | 
-| FUN.1     | FUN.3.2 | FUN.6.2 |   FUN.12   |
-|FUN.2|FUN.5|FUN.7|FUN.13|
-|FUN.3.1|FUN.10||FUN.14|
-|FUN.4|FUN.6.1|
-|FUN.8|FUN.15
+|FUN.1|FUN.5|FUN.3.2|FUN.12|
+|FUN.2|FUN.6.1|FUN.6.2|FUN.13|
+|FUN.3.1|FUN.10|FUN.7|
+|FUN.4|FUN.15|FUN.14|
+|FUN.8|
 |FUN.9|
 |FUN.11|
 |FUN.16|
@@ -125,21 +125,21 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 
 Il sistema software necessita, per la sua corretta esecuzione, dei seguenti requisiti minimi:
 - Sistema operativo: Windows 10 o versioni successive; OS X 10.8.3 o versioni successive
-- RAM: almeno 1 GB per 32 bit; 2 GB per 64 bit
+- RAM: almeno 1 GB per SO a 32 bit; 2 GB per SO a 64 bit
 - Spazio di archiviazione: almeno 128 MB 
 :::danger
 Aggiornare dopo creazione DBMS!!
 :::
-- Processore: almeno 1 GHz come frequenza di clock
+- Processore: almeno 1 GHz di frequenza di clock
 - Browser Internet: Microsoft Edge, Google Chrome, Mozilla Firefox, Safari
 
 
 #### 3.4 - Attributi del sistema software
 
 I seguenti fattori di qualità, definiti all'interno della tassonomia di McCall, faranno da base per l'intero processo di sviluppo software:
-- Correttezza: misura in cui il programma soddisfa i suoi requisiti e soddisfa gli obiettivi della missione dell'utente.
+- Correttezza: misura in cui il programma soddisfa i suoi requisiti e gli obiettivi della missione dell'utente.
 - Affidabilità: misura in cui ci si può aspettare che il programma svolga la funzione prevista con la precisione richiesta.
-- Integrità: misura in cui è possibile controllare l'accesso al software o ai dati da parte di persone non autorizzare.
+- Integrità: misura in cui è possibile controllare l'accesso al software o ai dati da parte di persone non autorizzate.
 - Usabilità: sforzo richiesto per apprendere e utilizzare il programma.
 - Manutenibilità: sforzo necessario per individuare e correggere gli errori presenti nel sistema una volta operativo.
 - Flessibilità: sforzo necessario per modificare il sistema una volta operativo.
