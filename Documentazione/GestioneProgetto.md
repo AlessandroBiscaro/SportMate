@@ -77,7 +77,7 @@ Inoltre, è stata utilizzata una Kanban Board per una visualizzazione immediata 
 
 ### Organizzazione del team
 ---
-Il team è composto da 3 persone, di pari competenze e conoscenze, senza gerarchie interne, basandosi su un modello di team *eXtreme Programming (XP)* come specificato nel [Modello di Processo](#Modello-di-processo), Indipendentemente dalla modalità di lavoro, i membri sono sempre a stretto contatto e il confronto é stato continuo.
+Il team è composto da 3 persone, di pari competenze e conoscenze, senza gerarchie interne, basandosi su un modello di team *eXtreme Programming (XP)* come specificato nel [Modello di Processo](#Modello-di-processo). Indipendentemente dalla modalità di lavoro, i membri sono sempre rimasti a stretto contatto e il confronto tra loro é stato continuo.
 
 Tutti i membri del team sono stati coinvolti attivamente in tutte le fasi del progetto. 
 Nello specifico:
@@ -85,7 +85,6 @@ Nello specifico:
 - **Biscaro Alessandro** si è dedicato prioritariamente allo *sviluppo della logica del programma* ed allo *sviluppo dell'interfaccia grafica GUI*
 - **Gambirasio Lorenzo** si è dedicato maggiormente alla *fase di modellazione*
 - **Fabbris Thomas** si è dedicato principalmente alla *fase di testing*
-
 
 Le **fasi di codifica** e **gestione della documentazione** sono state sviluppate cooperativamente da tutti i membri del team.
 
