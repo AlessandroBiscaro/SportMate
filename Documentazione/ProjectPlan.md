@@ -153,13 +153,11 @@ Durante il progetto non verrà definito alcun budget in quanto non strettamente 
 Il progetto è suddiviso in *Milestones*:<br/>
 - **Inizio del progetto**: l'obiettivo è comprendere il problema da risolvere, individuare i suoi requisiti e descrivere i suoi obiettivi.<br/> Concluso in data: 06/11/2024
 - **Stesura *Project Plan***: l'obiettivo è generare il *project plan* completo. <br/> Concluso in data: 12/11/2024
-- **Stesura Gestione del Progetto**: l'obiettivo è generare il documento contenente la gestione del progetto, indicando il tipo di processo utilizzato e l'organizzazione del lavoro. Inoltre verranno indicati eventuali strumenti di gestione della configurazione. 
-- **Stesura Specifica dei Requisiti**: l'obiettivo è generare il documento contenente i requisiti, la loro descrizione e le corrispondenti tecniche di specifica, oltre alla documentazione completa riguardo alla lista  dei fattori di qualità perseguiti. 
-- **Stesura Specifica Tecnica**: l'obiettivo è generare il documento contenente la specifica tecnica del progetto, indicando l'architettura e la descrizione del design. 
-- **Stesura Piano di Test**: l'obiettivo è generare il documento contenente i casi di test con la loro descrizione.
-- **Stesura Piano di Manutenzione**: l'obiettivo è generare il documento contenente eventuali attività di *refactoring*.
+- **Documentazione**: l'obiettivo è generare i documenti contenenti le informazioni riguardanti il progetto, tra cui **Gestione del progetto**, che indica il tipo di processo utilizzato e l'organizzazione, oltre ad eventuali strumenti di gestione della configurazione; **Specifica dei Requisiti**, che contiene i requisiti con la loro descrizione e corrispondenti tecniche di specifica, oltre alla lista dei fattori di qualità perseguiti; **Specifica Tecnica**, che contiene l'architettura e la descrizione del design; **Piano di Test**, che contiene i casi di test con la loro descrizione; **Piano di Manutenzione**, che contiene eventuali attività di *refactoring*.
+- **Creazione struttura a 3 livelli**: l'obiettivo è la creazione di un *DBMS embedded* tramite SQLite, la creazione del livello business tramite Jooq e la creazione del livello di presentazione tramite Vaadin.
 - **Generazione dei modelli UML**: l'obiettivo è ottenere una descrizione dell'architetttura del software tramite diagrammi UML.
 - **Generazione del codice**: l'obiettivo è sviluppare il codice partendo dai modelli UML, al fine di ottenere le prime versioni del sistema software.
+- **Testing del codice**: l'obiettivo è effettuare vari casi di test, tra cui sia test unitari sul codice, che test di accettazione per dimostrare al cliente che le funzionalità siano state implementate correttamente.
 - **Conclusione del progetto**: l'obiettivo è verificare e validare il software, consegnando la versione definitiva del progetto agli utenti finali.
 
 <br/>
