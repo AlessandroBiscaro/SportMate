@@ -49,17 +49,18 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E2yckKsWEe-Gr7DEaBJ9Kg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5TEhwasVEe-Gr7DEaBJ9Kg" value="*"/>
       </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_xIsF8KmDEe-bKaEEggugGg" name="ricercaPartita">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_xIsF8KmDEe-bKaEEggugGg" name="ricercaPartitaPubblica">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_xIsF8amDEe-bKaEEggugGg" name="dataOra" isUnique="false" effect="read">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
         </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_k13yoLCYEe-7P5rZt0wjjw" name="tipologiaCampo" type="_PYtogKl8Ee-bKaEEggugGg" isUnique="false" effect="read"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_D8kbsKmEEe-bKaEEggugGg" name="ricercaPartita">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_D8kbsKmEEe-bKaEEggugGg" name="ricercaPartitaPubblica">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_D8kbsamEEe-bKaEEggugGg" name="idCentroSportivo" isUnique="false" effect="read">
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_wsZn4KsKEe-Gr7DEaBJ9Kg" name="uniscitiPartita" concurrency="concurrent">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_wsZn4KsKEe-Gr7DEaBJ9Kg" name="uniscitiPartitaPubblica" concurrency="concurrent">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wsZn4asKEe-Gr7DEaBJ9Kg" name="partitaPubblica" type="_jlDoMKmLEe-bKaEEggugGg" isUnique="false" direction="inout" effect="update"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_BhXZ4KsLEe-Gr7DEaBJ9Kg" name="modificaDatiPers"/>
@@ -95,7 +96,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_XxJZwGx-Eey_s9B0BvHgkw"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_INPKEKsNEe-Gr7DEaBJ9Kg" name="abbandonaPartPubb">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_INPKEKsNEe-Gr7DEaBJ9Kg" name="abbandonaPartitaPubblica">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_INPKEasNEe-Gr7DEaBJ9Kg" name="partitaPubblica" type="_jlDoMKmLEe-bKaEEggugGg" isUnique="false" direction="inout" effect="update"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_tN3aEKw_Ee-ue7GcVIMhaw" name="pagaPartita">
@@ -380,6 +381,7 @@
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_jmAxsKsQEe-Gr7DEaBJ9Kg" name="setColoriMaglie"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sxYbMLCZEe-7P5rZt0wjjw" name="getNumPrenotazioni" isQuery="true"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_jlDoMKmLEe-bKaEEggugGg" name="PartitaPubblica">
       <generalization xmi:type="uml:Generalization" xmi:id="_8C3a4KmLEe-bKaEEggugGg" general="_5EjsIKmKEe-bKaEEggugGg"/>
