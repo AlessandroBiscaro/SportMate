@@ -2,7 +2,7 @@
 <notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2hcCYKl6Ee-bKaEEggugGg" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_tgGvUKl7Ee-bKaEEggugGg" type="Package_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_tgIkgKl7Ee-bKaEEggugGg" type="Package_NameLabel"/>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_tgJLkKl7Ee-bKaEEggugGg" type="Package_PackagedElementCompartment">
+    <children xmi:type="notation:BasicCompartment" xmi:id="_tgJLkKl7Ee-bKaEEggugGg" type="Package_PackagedElementCompartment" collapsed="true">
       <children xmi:type="notation:Shape" xmi:id="_FZ-ugKl8Ee-bKaEEggugGg" type="Class_Shape_CN">
         <children xmi:type="notation:DecorationNode" xmi:id="_FZ_VkKl8Ee-bKaEEggugGg" type="Class_NameLabel_CN"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_FZ_Vkal8Ee-bKaEEggugGg" type="Class_FloatingNameLabel_CN">
@@ -985,11 +985,11 @@
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_TTawI6sUEe-Gr7DEaBJ9Kg" type="Association_SourceMultiplicityLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_KPZDgKsXEe-Gr7DEaBJ9Kg" name="IS_UPDATED_POSITION" booleanValue="true"/>
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_TTawJKsUEe-Gr7DEaBJ9Kg" x="215" y="20"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_TTawJKsUEe-Gr7DEaBJ9Kg" x="26" y="-10"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_TTawJasUEe-Gr7DEaBJ9Kg" type="Association_TargetMultiplicityLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_KPz6QKsXEe-Gr7DEaBJ9Kg" name="IS_UPDATED_POSITION" booleanValue="true"/>
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_TTawJqsUEe-Gr7DEaBJ9Kg" x="-219" y="-20"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_TTawJqsUEe-Gr7DEaBJ9Kg" x="-34" y="-10"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_TTaJEasUEe-Gr7DEaBJ9Kg"/>
     <element xmi:type="uml:Association" href="ClassDiagram.uml#_TS5ywKsUEe-Gr7DEaBJ9Kg"/>
@@ -1016,11 +1016,11 @@
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_W1V-xqsUEe-Gr7DEaBJ9Kg" type="Association_SourceMultiplicityLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_KUxSwKsXEe-Gr7DEaBJ9Kg" name="IS_UPDATED_POSITION" booleanValue="true"/>
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_W1V-x6sUEe-Gr7DEaBJ9Kg" x="225" y="20"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_W1V-x6sUEe-Gr7DEaBJ9Kg" x="25" y="-10"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_W1V-yKsUEe-Gr7DEaBJ9Kg" type="Association_TargetMultiplicityLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_KVMwkKsXEe-Gr7DEaBJ9Kg" name="IS_UPDATED_POSITION" booleanValue="true"/>
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_W1V-yasUEe-Gr7DEaBJ9Kg" x="-229" y="-20"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_W1V-yasUEe-Gr7DEaBJ9Kg" x="-35" y="-10"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_W1VXsasUEe-Gr7DEaBJ9Kg"/>
     <element xmi:type="uml:Association" href="ClassDiagram.uml#_W01ocKsUEe-Gr7DEaBJ9Kg"/>
@@ -1109,11 +1109,11 @@
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_6V6UQasUEe-Gr7DEaBJ9Kg" type="Association_SourceMultiplicityLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_KR6zEKsXEe-Gr7DEaBJ9Kg" name="IS_UPDATED_POSITION" booleanValue="true"/>
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_6V6UQqsUEe-Gr7DEaBJ9Kg" x="56" y="20"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6V6UQqsUEe-Gr7DEaBJ9Kg" x="15" y="14"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_6V6UQ6sUEe-Gr7DEaBJ9Kg" type="Association_TargetMultiplicityLabel">
       <styles xmi:type="notation:BooleanValueStyle" xmi:id="_KSWQ4KsXEe-Gr7DEaBJ9Kg" name="IS_UPDATED_POSITION" booleanValue="true"/>
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_6V6URKsUEe-Gr7DEaBJ9Kg" x="-70" y="24"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6V6URKsUEe-Gr7DEaBJ9Kg" x="-25" y="15"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_6V5tMasUEe-Gr7DEaBJ9Kg"/>
     <element xmi:type="uml:Association" href="ClassDiagram.uml#_6VXhsKsUEe-Gr7DEaBJ9Kg"/>
