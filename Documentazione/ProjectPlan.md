@@ -17,6 +17,18 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 
 <br/>
 
+### Cronologia delle versioni
+---
+
+|VERSIONE|DATA|CHANGELOG|
+|--------|----|---------|
+|1.0|08/11/2024|Prima versione|
+|1.1|11/11/2024|Correzione sezioni 3, 5, 9, 12 e 13|
+|1.2|30/11/2024|Modifica milestone del progetto (sezione 12)|
+|1.3|02/12/2024|Aggiunta cronologia delle versioni|
+
+<br/>
+
 ### Indice
 
 1. [Introduzione](#Introduzione)
