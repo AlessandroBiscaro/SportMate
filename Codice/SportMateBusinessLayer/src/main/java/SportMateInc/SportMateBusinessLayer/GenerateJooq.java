@@ -38,3 +38,4 @@ public class GenerateJooq {
 		GenerationTool.generate(configuration);
 	}
 }
+
