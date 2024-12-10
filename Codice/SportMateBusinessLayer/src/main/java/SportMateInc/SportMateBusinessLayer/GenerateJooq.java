@@ -1,13 +1,14 @@
 package SportMateInc.SportMateBusinessLayer;
-/*
- * GenerateJooq
- */
+
+
 import org.jooq.codegen.GenerationTool;
+import org.jooq.codegen.JavaGenerator;
 import org.jooq.meta.jaxb.Configuration;
 import org.jooq.meta.jaxb.Database;
 import org.jooq.meta.jaxb.Generator;
 import org.jooq.meta.jaxb.Jdbc;
 import org.jooq.meta.jaxb.Target;
+
 import sport_mate_inc.sport_mate_db_layer.SportMateDB;
 /**
  * La classe contiene i metodi necessari per interfacciarsi con 
@@ -28,14 +29,23 @@ public class GenerateJooq {
 	 */
 	
 	public static void generateJooq() throws Exception {
-		Jdbc jdbc = new Jdbc().withDriver("org.sqlite.JDBC").withUrl(DB_URL);
+		Jdbc JDBC = new Jdbc().withDriver("org.sqlite.JDBC").withUrl(DB_URL);
 		Database database = new Database().withName("org.jooq.meta.sqlite.SQLiteDatabase").withIncludes(".*")
 				.withExcludes("");
 		
 		Target target = new Target().withPackageName("SportMateInc.SportMateBusinessLayer").withDirectory("src-generated/");
 		Generator generator = new Generator().withDatabase(database).withTarget(target);
-		Configuration configuration = new Configuration().withJdbc(jdbc).withGenerator(generator);
+		Configuration configuration = new Configuration().withJdbc(JDBC).withGenerator(generator);
 		GenerationTool.generate(configuration);
+	}
+	
+	public static void main(String[] args) {
+		try {
+			generateJooq();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 
