@@ -43,7 +43,6 @@ public class GenerateJooq {
 		try {
 			generateJooq();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

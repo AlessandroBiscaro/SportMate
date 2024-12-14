@@ -63,16 +63,16 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
     }
 
     /**
-     * Setter for <code>Partite.sato</code>.
+     * Setter for <code>Partite.stato</code>.
      */
-    public void setSato(Integer value) {
+    public void setStato(Integer value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>Partite.sato</code>.
+     * Getter for <code>Partite.stato</code>.
      */
-    public Integer getSato() {
+    public Integer getStato() {
         return (Integer) get(3);
     }
 
@@ -105,16 +105,16 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
     }
 
     /**
-     * Setter for <code>Partite.idDisponibilità</code>.
+     * Setter for <code>Partite.idDisponibilita</code>.
      */
-    public void setIddisponibilità(Integer value) {
+    public void setIddisponibilita(Integer value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>Partite.idDisponibilità</code>.
+     * Getter for <code>Partite.idDisponibilita</code>.
      */
-    public Integer getIddisponibilità() {
+    public Integer getIddisponibilita() {
         return (Integer) get(6);
     }
 
@@ -177,7 +177,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public Field<Integer> field4() {
-        return Partite.PARTITE.SATO;
+        return Partite.PARTITE.STATO;
     }
 
     @Override
@@ -192,7 +192,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public Field<Integer> field7() {
-        return Partite.PARTITE.IDDISPONIBILITÀ;
+        return Partite.PARTITE.IDDISPONIBILITA;
     }
 
     @Override
@@ -222,7 +222,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public Integer component4() {
-        return getSato();
+        return getStato();
     }
 
     @Override
@@ -237,7 +237,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public Integer component7() {
-        return getIddisponibilità();
+        return getIddisponibilita();
     }
 
     @Override
@@ -267,7 +267,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public Integer value4() {
-        return getSato();
+        return getStato();
     }
 
     @Override
@@ -282,7 +282,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public Integer value7() {
-        return getIddisponibilità();
+        return getIddisponibilita();
     }
 
     @Override
@@ -315,7 +315,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public PartiteRecord value4(Integer value) {
-        setSato(value);
+        setStato(value);
         return this;
     }
 
@@ -333,7 +333,7 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
 
     @Override
     public PartiteRecord value7(Integer value) {
-        setIddisponibilità(value);
+        setIddisponibilita(value);
         return this;
     }
 
@@ -377,16 +377,16 @@ public class PartiteRecord extends TableRecordImpl<PartiteRecord> implements Rec
     /**
      * Create a detached, initialised PartiteRecord
      */
-    public PartiteRecord(Integer idpartita, Integer postitotali, Integer pubblica, Integer sato, String modpagamento, Integer idorganizzatore, Integer iddisponibilità, Integer goalsquadracasa, Integer goalsquadratrasferta) {
+    public PartiteRecord(Integer idpartita, Integer postitotali, Integer pubblica, Integer stato, String modpagamento, Integer idorganizzatore, Integer iddisponibilita, Integer goalsquadracasa, Integer goalsquadratrasferta) {
         super(Partite.PARTITE);
 
         setIdpartita(idpartita);
         setPostitotali(postitotali);
         setPubblica(pubblica);
-        setSato(sato);
+        setStato(stato);
         setModpagamento(modpagamento);
         setIdorganizzatore(idorganizzatore);
-        setIddisponibilità(iddisponibilità);
+        setIddisponibilita(iddisponibilita);
         setGoalsquadracasa(goalsquadracasa);
         setGoalsquadratrasferta(goalsquadratrasferta);
         resetChangedOnNotNull();

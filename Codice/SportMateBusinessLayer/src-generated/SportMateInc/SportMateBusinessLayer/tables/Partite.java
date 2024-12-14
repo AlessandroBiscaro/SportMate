@@ -63,9 +63,9 @@ public class Partite extends TableImpl<PartiteRecord> {
     public final TableField<PartiteRecord, Integer> PUBBLICA = createField(DSL.name("pubblica"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * The column <code>Partite.sato</code>.
+     * The column <code>Partite.stato</code>.
      */
-    public final TableField<PartiteRecord, Integer> SATO = createField(DSL.name("sato"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<PartiteRecord, Integer> STATO = createField(DSL.name("stato"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>Partite.modPagamento</code>.
@@ -78,9 +78,9 @@ public class Partite extends TableImpl<PartiteRecord> {
     public final TableField<PartiteRecord, Integer> IDORGANIZZATORE = createField(DSL.name("idOrganizzatore"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * The column <code>Partite.idDisponibilità</code>.
+     * The column <code>Partite.idDisponibilita</code>.
      */
-    public final TableField<PartiteRecord, Integer> IDDISPONIBILITÀ = createField(DSL.name("idDisponibilità"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<PartiteRecord, Integer> IDDISPONIBILITA = createField(DSL.name("idDisponibilita"), SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>Partite.goalSquadraCasa</code>.
