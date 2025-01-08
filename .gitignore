@@ -71,3 +71,26 @@ Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.d
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# SonarQube
+.sonar/
+.sonarqube/
+.scannerwork/
