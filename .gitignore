@@ -71,3 +71,7 @@ Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.d
+
+# Vaadin
+.vaadin-designer
+.designer
