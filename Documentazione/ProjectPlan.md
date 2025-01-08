@@ -26,6 +26,7 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 |1.1|11/11/2024|Correzione sezioni 3, 5, 9, 12 e 13|
 |1.2|30/11/2024|Modifica milestone del progetto (sezione 12)|
 |1.3|02/12/2024|Aggiunta cronologia delle versioni|
+|1.4|08/01/2025|Modifica workpackages (sezione 10)|
 
 <br/>
 
@@ -140,8 +141,10 @@ I criteri che verranno presi in considerazione per valutare la qualità del sist
 ### Workpackages
 ---
 Il lavoro richiesto nelle vari fasi del progetto verrà suddiviso in attività assegnabili ai singoli membri del team.
-
-
+La disposizione dei vari elementi del sistema sarà articolata in tre pacchetti di lavoro, corrispondenti ai livelli da cui sarà composta l'architettura a strati del progetto software:
+- **SportMatePresentationLayer**: corrispondente al layer di presentazione, rappresenta l'interfaccia utente ed il livello di comunicazione dell'applicazione con cui interagisce direttamente l'utente finale; svilupperemo una *web application*, sfruttando le funzionalità offerte dal framework *open-source* Vaadin.
+- **SporMateBusinessLayer**: corrispondente al *layer* di business e persistenza, si occupa dell'elaborazione delle informazioni raccolte nel livello di presentazione attraverso la logica di business; inoltre, può anche manipolare i dati presenti nel *layer* dati.
+- **SportMateDBLayer**: corrisponde al livello dati in vengono archiviate e gestite su un database le informazioni elaborate dall'applicazione; in particolare, verrà utilizzato il *DBMS* relazionale SQLite per garantire la persistenza.
 <br/>
 
 ### Risorse
