@@ -4,7 +4,7 @@
  * Versione 1.0
  */
 
-package sport_mate_inc.sport_mate_db_layer.exceptions;
+package sportmateinc.sportmatedblayer.exceptions;
 
 /**
  * {@code InvalidOperationException} è lanciata quando il fallimento durante 

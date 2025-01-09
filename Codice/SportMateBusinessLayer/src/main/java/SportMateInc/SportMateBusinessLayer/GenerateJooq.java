@@ -9,7 +9,7 @@ import org.jooq.meta.jaxb.Generator;
 import org.jooq.meta.jaxb.Jdbc;
 import org.jooq.meta.jaxb.Target;
 
-import sport_mate_inc.sport_mate_db_layer.SportMateDB;
+import sportmateinc.sportmatedblayer.SportMateDB;
 /**
  * La classe contiene i metodi necessari per interfacciarsi con 
  * <i>SportMateDB</i>, senza la necessità di scrivere istruzioni

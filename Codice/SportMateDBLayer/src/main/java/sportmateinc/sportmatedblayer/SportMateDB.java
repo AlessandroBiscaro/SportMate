@@ -1,7 +1,7 @@
 /*
  * SportMateDB
  */
-package sport_mate_inc.sport_mate_db_layer;
+package sportmateinc.sportmatedblayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import sport_mate_inc.sport_mate_db_layer.exceptions.InvalidOperationException;
+import sportmateinc.sportmatedblayer.exceptions.InvalidOperationException;
 
 /**
  * La classe fornisce un'utile astrazione per gestire la connessione 
@@ -95,6 +95,14 @@ public class SportMateDB {
 	 */
 	public static String getDbUrl() {
 		return DB_URL;
+	}
+	
+	public boolean isClosed() throws SQLException {
+		return connection.isClosed();
+	}
+	
+	public boolean isValid(int timeout) throws SQLException {
+		return connection.isValid(timeout);
 	}
 	
 	
