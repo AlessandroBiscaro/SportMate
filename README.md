@@ -11,4 +11,4 @@ Biscaro Alessandro 1087892 <br/>
 Fabbris Thomas 1086063 <br/>
 Gambirasio Lorenzo Umberto 1087441 <em/>
 </p >
-![SportMateDBLayer](https://github.com/AlessandroBiscaro/SportMate/actions/workflows/SportMateDBLayerMaven.yml/badge.svg)
+[SportMateDBLayer](https://github.com/AlessandroBiscaro/SportMate/actions/workflows/SportMateDBLayerMaven.yml/badge.svg)
