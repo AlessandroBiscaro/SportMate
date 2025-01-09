@@ -10,5 +10,5 @@ Ingegneria Informatica <br/>
 Biscaro Alessandro 1087892 <br/>
 Fabbris Thomas 1086063 <br/>
 Gambirasio Lorenzo Umberto 1087441 <br/>
-![example workflow] https://github.com/AlessandroBiscaro/SportMate/actions/workflows/SportMateDBLayerMaven.yml/badge.svg  </em>
+![example workflow](https://github.com/AlessandroBiscaro/SportMate/actions/workflows/SportMateDBLayerMaven.yml/badge.svg)</em>
 </p >
