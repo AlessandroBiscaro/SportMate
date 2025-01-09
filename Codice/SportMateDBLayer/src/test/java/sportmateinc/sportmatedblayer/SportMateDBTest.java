@@ -31,6 +31,19 @@ public class SportMateDBTest {
 		connection.chiudiConnessione();
 		assertTrue("Connessione aperta", connection.isClosed());
 	}
+	
+	@SuppressWarnings("null")
+	@Test(expected = InvalidOperationException.class)
+	public final void testChiudiConnessioneIllegale() throws InvalidOperationException {
+		SportMateDB c1 = null;
+		c1.chiudiConnessione();
+	}
+	
+	@Test(expected = InvalidOperationException.class)
+	public final void testApriConnessioneIllegale() throws InvalidOperationException {
+		connection.apriConnessione();
+	}
+
 
 	@Test
 	public final void testGetInstance() {
