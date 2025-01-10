@@ -7,11 +7,11 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <properties>
-        <java.version>21</java.version>
-        <vaadin.version>24.6.1</vaadin.version>
-    </properties>
-
+	<groupId>SportMateInc</groupId>
+    <artifactId>SportMatePresentationLayer</artifactId>
+    <name>SportMatePresentationLayer</name>
+    <url>https://github.com/AlessandroBiscaro/SportMate</url>
+    
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -41,6 +41,11 @@
     </dependencyManagement>
 
     <dependencies>
+    	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <!-- Replace artifactId with vaadin-core to use only free components -->
@@ -91,6 +96,23 @@
             <artifactId>vaadin-testbench-junit5</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>SportMateInc</groupId>
+			<artifactId>SportMateBusinessLayer</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -140,6 +162,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<!--configuration>
+                    <excludes>
+                        <exclude>Package of tests not working properly</exclude>
+                    </excludes>
+                </configuration-->
+				</plugin>
         </plugins>
     </build>
 
@@ -224,10 +254,14 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
-    <groupId>SportMateInc</groupId>
-    <artifactId>SportMatePresentationLayer</artifactId>
-    <name>SportMatePresentationLayer</name>
-    <url>https://github.com/AlessandroBiscaro/SportMate</url>
+    
+    <properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>17</maven.compiler.release>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
+        <vaadin.version>24.6.1</vaadin.version>
+    </properties>
 </project>
