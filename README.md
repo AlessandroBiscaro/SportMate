@@ -14,5 +14,7 @@ Gambirasio Lorenzo Umberto 1087441 <em/>
 
 <p align="center">
        <img src="https://github.com/AlessandroBiscaro/SportMate/actions/workflows/SportMateDBLayerMaven.yml/badge.svg" />
+       <br/>
+       <img src="https://github.com/AlessandroBiscaro/SportMate/actions/workflows/SportMateBusinessLayerMaven.yaml/badge.svg" />
 </p>
 
