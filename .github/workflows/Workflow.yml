@@ -17,3 +17,7 @@ jobs:
     if: ${{ always() }}
     needs: call-SportMateDBLayerMaven
     uses: ./.github/workflows/SportMateBusinessLayerMaven.yml
+  call-SportMatePresentationLayerMaven:
+    if: ${{ always() }}
+    needs: call-SportMateBusinessLayerMaven
+    uses: ./.github/workflows/SportMatePresentationLayerMaven.yml
