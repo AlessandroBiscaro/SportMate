@@ -94,14 +94,6 @@ buildNumber.properties
 .sonarqube/
 .scannerwork/
 
-# Vaadin 
-.vaadin-designer
-.designer
-node_modules/
-src/main/frontend/generated/
-pnpmfile.js
-vite.generated.ts
-
 # Browser drivers for local integration tests
 drivers/
 
