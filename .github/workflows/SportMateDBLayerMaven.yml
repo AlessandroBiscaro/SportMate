@@ -9,11 +9,7 @@
 name: SportMate DB Layer
 
 on:
-  push:
-    branches: [ "main" ]
-    paths: ["Codice/**"]
-  pull_request:
-    branches: [ "main" ]
+ workflow_call:
 jobs:
   build:
     runs-on: ubuntu-latest
