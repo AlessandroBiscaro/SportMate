@@ -1,0 +1,19 @@
+name: Workflow
+on:
+  push:
+    branches: [ "main" ]
+    paths: ["Codice/**"]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+  call-SportMateDBLayerMaven:
+    uses: ./.github/workflows/SportMateDBLayerMaven.yml
+  call-SportMateBusinessLayerMaven:
+    if: ${{ always() }}
+    needs: call-SportMateDBLayerMaven
+    uses: ./.github/workflows/SportMateBusinessLayerMaven.yml

@@ -2,14 +2,13 @@ package SportMateInc.SportMateBusinessLayer;
 
 
 import org.jooq.codegen.GenerationTool;
-import org.jooq.codegen.JavaGenerator;
 import org.jooq.meta.jaxb.Configuration;
 import org.jooq.meta.jaxb.Database;
 import org.jooq.meta.jaxb.Generator;
 import org.jooq.meta.jaxb.Jdbc;
 import org.jooq.meta.jaxb.Target;
 
-import sport_mate_inc.sport_mate_db_layer.SportMateDB;
+import sportmateinc.sportmatedblayer.SportMateDB;
 /**
  * La classe contiene i metodi necessari per interfacciarsi con 
  * <i>SportMateDB</i>, senza la necessità di scrivere istruzioni
@@ -37,14 +36,6 @@ public class GenerateJooq {
 		Generator generator = new Generator().withDatabase(database).withTarget(target);
 		Configuration configuration = new Configuration().withJdbc(JDBC).withGenerator(generator);
 		GenerationTool.generate(configuration);
-	}
-	
-	public static void main(String[] args) {
-		try {
-			generateJooq();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }
 

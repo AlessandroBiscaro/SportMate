@@ -9,5 +9,11 @@
 Ingegneria Informatica <br/>
 Biscaro Alessandro 1087892 <br/>
 Fabbris Thomas 1086063 <br/>
-Gambirasio Lorenzo Umberto 1087441 </em>
+Gambirasio Lorenzo Umberto 1087441 <em/>
 </p >
+
+<p align="center">
+       <img src="https://github.com/AlessandroBiscaro/SportMate/actions/workflows/Workflow.yml/badge.svg" />
+       <br/>
+</p>
+
