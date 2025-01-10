@@ -72,9 +72,7 @@ Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.d
 
-
 # Maven
-target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
