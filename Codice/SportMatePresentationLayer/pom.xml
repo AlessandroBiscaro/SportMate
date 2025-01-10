@@ -108,11 +108,6 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>SportMateInc</groupId>
-			<artifactId>SportMateBusinessLayer</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
     </dependencies>
 
     <build>
