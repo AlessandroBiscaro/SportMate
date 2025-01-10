@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: SportMateDBLayer
+name: SportMate DB Layer
 
 on:
   push:
