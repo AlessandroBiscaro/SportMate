@@ -11,7 +11,7 @@ name: SportMate Business Layer
 on:
   push:
     branches: [ "main" ]
-    paths: ["Codice/SportMateBusinessLayer/**"]
+    paths: ["Codice/**"]
   pull_request:
     branches: [ "main" ]
 jobs:
