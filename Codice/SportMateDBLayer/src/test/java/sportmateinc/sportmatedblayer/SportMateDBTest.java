@@ -13,6 +13,7 @@ public class SportMateDBTest {
 
 	@Test
 	public final void testApriConnessione() throws SQLException {
+		//metodo che controlla se la connessione è aperta correttamente
 		SportMateDB connection = SportMateDB.instance();
 		connection.apriConnessione();
 		Statement stmt = null;
