@@ -8,12 +8,11 @@ import java.sql.Statement;
 
 import org.junit.Test;
 
-import sportmateinc.sportmatedblayer.exceptions.InvalidOperationException;
 
 public class SportMateDBTest {
 
 	@Test
-	public final void testApriConnessione() throws SQLException, InvalidOperationException {
+	public final void testApriConnessione() throws SQLException {
 		SportMateDB connection = SportMateDB.instance();
 		connection.apriConnessione();
 		Statement stmt = null;
@@ -30,7 +29,7 @@ public class SportMateDBTest {
 	}
 
 	@Test
-	public final void testChiudiConnessione() throws SQLException, InvalidOperationException {
+	public final void testChiudiConnessione() throws SQLException {
 		SportMateDB connection = SportMateDB.instance();
 		connection.apriConnessione();
 		connection.chiudiConnessione();

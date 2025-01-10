@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import sportmateinc.sportmatedblayer.exceptions.InvalidOperationException;
 
 /**
  * La classe fornisce un'utile astrazione per gestire la connessione al database
@@ -48,7 +47,7 @@ public class SportMateDB {
 	 * Instaura una nuova connessione a <i>SportMateDB</i>.
 	 */
 
-	public void apriConnessione() throws InvalidOperationException {
+	public void apriConnessione() {
 		try {
 			connection = DriverManager.getConnection(DB_URL);
 			LOGGER.info("Connection to SportMateDB successfully started!");
