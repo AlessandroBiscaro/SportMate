@@ -60,10 +60,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>SportMateInc</groupId>
-			<artifactId>SportMateDBLayer</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		<groupId>SportMateInc</groupId>
+		<artifactId>SportMateDBLayer</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 	</dependencies>
 
 	<build>
