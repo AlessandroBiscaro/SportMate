@@ -7,13 +7,8 @@
 # documentation.
 
 name: SportMate Business Layer
-
 on:
-  push:
-    branches: [ "main" ]
-    paths: ["Codice/**"]
-  pull_request:
-    branches: [ "main" ]
+  workflow_call:
 jobs:
   build:
     runs-on: ubuntu-latest
