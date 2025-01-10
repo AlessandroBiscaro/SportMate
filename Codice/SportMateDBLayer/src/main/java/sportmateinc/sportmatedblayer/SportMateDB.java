@@ -81,7 +81,7 @@ public class SportMateDB {
 	/**
 	 * Restituisce l'URL di connessione a <i>SportMateDB</i>.
 	 * 
-	 * @return l'URL di connessione a SportMateDB
+	 * @return l'URL di connessione a <i>SportMateDB</i>
 	 */
 	public static String getDbUrl() {
 		return DB_URL;
