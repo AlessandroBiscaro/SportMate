@@ -1,6 +1,7 @@
 package sportmateinc.sportmatepresentationlayer.application.views.homepage;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
@@ -28,7 +29,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @AnonymousAllowed
 public class HomepageView extends Composite<VerticalLayout> {
 	 HorizontalLayout layoutRow = new HorizontalLayout();
-     H1 titoloHomePage;
+     H1 titoloHomePage = new H1();
      HorizontalLayout layoutRow2 = new HorizontalLayout();
      VerticalLayout layoutColumn2 = new VerticalLayout();
      Paragraph textSmall = new Paragraph();
@@ -57,11 +58,9 @@ public class HomepageView extends Composite<VerticalLayout> {
         setBtnBasket3v3();
         setBtnFeedback();
         setLayoutRow4();
-        
     }
     
     private void setTitolo() {
-    	 titoloHomePage = new H1();
     	 titoloHomePage.setText("SportMate");
          titoloHomePage.setWidth("max-content");
          titoloHomePage.setHeight("80px");
@@ -124,24 +123,28 @@ public class HomepageView extends Composite<VerticalLayout> {
     	 btnCalcio5.setText("Calcio a 5");
          btnCalcio5.setWidth("127px");
          btnCalcio5.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+         btnCalcio5.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
     }
 
     private void setBtnCalcio7() {
     	 btnCalcio7.setText("Calcio a 7");
          btnCalcio7.setWidth("127px");
          btnCalcio7.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+         btnCalcio7.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
     }
     
     private void setBtnBasket3v3() {
     	btnBasket3v3.setText("Basket 3v3");
         btnBasket3v3.setWidth("min-content");
         btnBasket3v3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        btnBasket3v3.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
     }
     
     private void setBtnFeedback() {
     	 btnFeedback.setText("Feedback");
          btnFeedback.setWidth("min-content");
          btnFeedback.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+         btnFeedback.addClickListener(e -> UI.getCurrent().getPage().setLocation("/feedback"));
     }
     
     private void setLayoutRow4() {
