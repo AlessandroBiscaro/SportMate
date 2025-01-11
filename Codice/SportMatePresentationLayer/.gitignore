@@ -1,1 +1,8 @@
 /target/
+# Vaadin 
+.vaadin-designer
+.designer
+node_modules/
+src/main/frontend/generated/
+pnpmfile.js
+vite.generated.ts
