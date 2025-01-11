@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.login;
+package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;

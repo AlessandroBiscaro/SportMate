@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.feedback;
+package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;

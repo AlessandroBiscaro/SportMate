@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.chat;
+package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.collaborationengine.CollaborationAvatarGroup;
 import com.vaadin.collaborationengine.CollaborationMessageInput;

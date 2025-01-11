@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.datipagamento;
+package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;

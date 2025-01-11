@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.registration;
+package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.UI;
@@ -20,7 +20,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Route("registration")
 @Menu(order = 1, icon = LineAwesomeIconUrl.USER_EDIT_SOLID)
 @AnonymousAllowed
-public class RegistrationView extends Composite<VerticalLayout> {
+public class RegistrazioneView extends Composite<VerticalLayout> {
 
 	H1 sportMateH1;
 	VerticalLayout verticalLayout;
@@ -28,7 +28,7 @@ public class RegistrationView extends Composite<VerticalLayout> {
 	Button btnUtente;
 	Button btnGestore;
 
-	public RegistrationView() {
+	public RegistrazioneView() {
 		getContent().setWidth("100%");
 		getContent().getStyle().set("flex-grow", "1");
 
