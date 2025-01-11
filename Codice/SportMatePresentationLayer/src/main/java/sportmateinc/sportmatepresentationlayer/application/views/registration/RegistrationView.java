@@ -1,6 +1,7 @@
 package sportmateinc.sportmatepresentationlayer.application.views.registration;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
@@ -15,41 +16,69 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Registration")
+@PageTitle("Registrazione")
 @Route("registration")
 @Menu(order = 1, icon = LineAwesomeIconUrl.USER_EDIT_SOLID)
 @AnonymousAllowed
 public class RegistrationView extends Composite<VerticalLayout> {
 
-    public RegistrationView() {
-        H1 h1 = new H1();
-        VerticalLayout layoutColumn2 = new VerticalLayout();
-        H5 h5 = new H5();
-        Button buttonPrimary = new Button();
-        Button buttonPrimary2 = new Button();
-        getContent().setWidth("100%");
-        getContent().getStyle().set("flex-grow", "1");
-        h1.setText("SportMate");
-        getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
-        h1.setWidth("max-content");
-        layoutColumn2.setWidthFull();
-        getContent().setFlexGrow(1.0, layoutColumn2);
-        layoutColumn2.setWidth("100%");
-        layoutColumn2.setHeight("min-content");
-        layoutColumn2.setJustifyContentMode(JustifyContentMode.CENTER);
-        layoutColumn2.setAlignItems(Alignment.CENTER);
-        h5.setText("Seleziona tipologia di registrazione:");
-        h5.setWidth("max-content");
-        buttonPrimary.setText("Utente");
-        buttonPrimary.setWidth("107px");
-        buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        buttonPrimary2.setText("Gestore");
-        buttonPrimary2.setWidth("min-content");
-        buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        getContent().add(h1);
-        getContent().add(layoutColumn2);
-        layoutColumn2.add(h5);
-        layoutColumn2.add(buttonPrimary);
-        layoutColumn2.add(buttonPrimary2);
-    }
+	H1 sportMateH1;
+	VerticalLayout verticalLayout;
+	H5 tipoRegistrazioneTitolo;
+	Button btnUtente;
+	Button btnGestore;
+
+	public RegistrationView() {
+		getContent().setWidth("100%");
+		getContent().getStyle().set("flex-grow", "1");
+
+		setSportMateTitle();
+		setVerticalLayout();
+
+		getContent().add(sportMateH1, verticalLayout);
+	}
+
+	private void setVerticalLayout() {
+		verticalLayout = new VerticalLayout();
+		verticalLayout.setWidth("100%");
+		verticalLayout.setHeight("min-content");
+		verticalLayout.setJustifyContentMode(JustifyContentMode.CENTER);
+		verticalLayout.setAlignItems(Alignment.CENTER);
+		verticalLayout.setWidthFull();
+		
+		setSubtitle();
+		setButtons();
+		
+		getContent().setFlexGrow(1.0, verticalLayout);
+		verticalLayout.add(tipoRegistrazioneTitolo);
+		verticalLayout.add(btnUtente);
+		verticalLayout.add(btnGestore);
+	}
+
+	private void setSubtitle() {
+		tipoRegistrazioneTitolo = new H5();
+		tipoRegistrazioneTitolo.setText("Seleziona tipologia di registrazione:");
+		tipoRegistrazioneTitolo.setWidth("max-content");
+	}
+
+	private void setButtons() {
+		btnUtente = new Button();
+		btnGestore = new Button();
+		btnUtente.setText("Utente");
+		btnUtente.setWidth("max-content");
+		btnUtente.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnGestore.setText("Gestore");
+		btnGestore.setWidth("max-content");
+		btnGestore.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		
+		btnUtente.addClickListener(e -> UI.getCurrent().getPage().setLocation("/regitrazioneUtente"));
+		btnGestore.addClickListener(e -> UI.getCurrent().getPage().setLocation("/regitrazioneGestore"));
+	}
+
+	private void setSportMateTitle() {
+		sportMateH1 = new H1();
+		sportMateH1.setText("SportMate");
+		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, sportMateH1);
+		sportMateH1.setWidth("max-content");
+	}
 }
