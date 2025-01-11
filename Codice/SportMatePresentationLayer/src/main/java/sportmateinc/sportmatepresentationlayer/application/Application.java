@@ -2,6 +2,7 @@ package sportmateinc.sportmatepresentationlayer.application;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.component.page.Push;
+import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
 
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePersonRepository;
@@ -22,7 +23,7 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @Theme(value = "sportmatepresentationlayer")
-@Push
+@PWA(name = "SportMate", shortName = "SportMate", offlinePath = "offline.html", offlineResources = {"images/offline.png"})
 public class Application implements AppShellConfigurator {
 
     public static void main(String[] args) {
