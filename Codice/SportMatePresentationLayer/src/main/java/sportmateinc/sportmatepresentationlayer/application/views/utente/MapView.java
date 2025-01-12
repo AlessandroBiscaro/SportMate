@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.map;
+package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.ListItem;

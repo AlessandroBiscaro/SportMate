@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.prenotazionecampo;
+package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;

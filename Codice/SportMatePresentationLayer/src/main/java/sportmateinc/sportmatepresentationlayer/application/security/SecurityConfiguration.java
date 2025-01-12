@@ -2,7 +2,7 @@ package sportmateinc.sportmatepresentationlayer.application.security;
 
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 
-import sportmateinc.sportmatepresentationlayer.application.views.login.LoginView;
+import sportmateinc.sportmatepresentationlayer.application.views.comuni.LoginView;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

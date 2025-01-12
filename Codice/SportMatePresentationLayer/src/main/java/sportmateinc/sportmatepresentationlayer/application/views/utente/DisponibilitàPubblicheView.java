@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.disponibilità;
+package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
@@ -38,22 +38,22 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Disponibilità")
-@Route("disponibilita")
-@Menu(order = 7, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
+@PageTitle("Disponibilità Pubbliche")
+@Route("dispPubb")
+@Menu(order = 11, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
 @AnonymousAllowed
 @Uses(Icon.class)
-public class DisponibilitàView extends Div {
+public class DisponibilitàPubblicheView extends Div {
 
     private Grid<SamplePerson> grid;
 
     private Filters filters;
     private final SamplePersonService samplePersonService;
 
-    public DisponibilitàView(SamplePersonService SamplePersonService) {
+    public DisponibilitàPubblicheView(SamplePersonService SamplePersonService) {
         this.samplePersonService = SamplePersonService;
         setSizeFull();
-        addClassNames("disponibilità-view");
+        addClassNames("disponibilità-pubbliche-view");
 
         filters = new Filters(() -> refreshGrid());
         VerticalLayout layout = new VerticalLayout(createMobileFilters(), filters, createGrid());

@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.gestionedisponibilità;
+package sportmateinc.sportmatepresentationlayer.application.views.gestore;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;

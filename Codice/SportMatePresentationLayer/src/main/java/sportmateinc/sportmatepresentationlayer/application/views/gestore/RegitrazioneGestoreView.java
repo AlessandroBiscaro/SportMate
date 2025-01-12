@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.regitrazionegestore;
+package sportmateinc.sportmatepresentationlayer.application.views.gestore;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
