@@ -8,7 +8,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.jooq.Record;
 
-import sportmateinc.sportmatebusinesslayer.generated.tables.Utenti;
+import SportMateInc.SportMateBusinessLayer.tables.Utenti;
 public class UtentiService {
 	
 	public static Record findByUsername(String username) {

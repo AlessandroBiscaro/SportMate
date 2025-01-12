@@ -38,7 +38,7 @@ public class Centrisportivi extends TableImpl<CentrisportiviRecord> {
     /**
      * The reference instance of <code>Centrisportivi</code>
      */
-    public static final Centrisportivi CENTRISPORTIVI = new CentrisportiviRecord();
+    public static final Centrisportivi CENTRISPORTIVI = new Centrisportivi();
 
     /**
      * The class holding records for this type
