@@ -33,7 +33,7 @@ public class SportMateDB {
 	 * @return l'istanza di <i>SpormateDB</i> attivata
 	 */
 
-	public static SportMateDB instance() {
+	public static SportMateDB getInstance() {
 		if (database == null) {
 			database = new SportMateDB();
 		}
