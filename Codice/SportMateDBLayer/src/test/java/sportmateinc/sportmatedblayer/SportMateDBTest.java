@@ -14,7 +14,7 @@ public class SportMateDBTest {
 	@Test
 	public final void testApriConnessione() throws SQLException {
 		//metodo che controlla se la connessione è aperta correttamente
-		SportMateDB connection = SportMateDB.getInstance();
+		SportMateDB connection = SportMateDB.instance();
 		connection.apriConnessione();
 		Statement stmt = null;
 		ResultSet rs =null;
@@ -31,7 +31,7 @@ public class SportMateDBTest {
 
 	@Test
 	public final void testChiudiConnessione() throws SQLException {
-		SportMateDB connection = SportMateDB.getInstance();
+		SportMateDB connection = SportMateDB.instance();
 		connection.apriConnessione();
 		connection.chiudiConnessione();
 		assertTrue("Connessione a SportMateDB non chiusa correttamente", connection.getConnectionDetails().isClosed());
@@ -39,9 +39,9 @@ public class SportMateDBTest {
 
 	@Test
 	public final void testGetInstance() {
-		SportMateDB connection = SportMateDB.getInstance();
+		SportMateDB connection = SportMateDB.instance();
 		assertNotNull("Metodo instance della classe SportMateDB errato", connection);
-		SportMateDB c2 = SportMateDB.getInstance();
+		SportMateDB c2 = SportMateDB.instance();
 		assertSame("Metodo instance della classe SportMateDB errato", connection, c2);
 	}
 

@@ -1,8 +1,7 @@
 package sportmateinc.sportmatepresentationlayer.application.security;
 
 import java.util.List;
-import java.util.Arrays;
-
+import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,36 +10,34 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.jooq.Record;
-
-import SportMateInc.SportMateBusinessLayer.GestoriService;
-import SportMateInc.SportMateBusinessLayer.UtentiService;
-import sportmateinc.sportmatebusinesslayer.generated.tables.Gestori;
-import sportmateinc.sportmatebusinesslayer.generated.tables.Utenti;
+import sportmateinc.sportmatepresentationlayer.application.data.User;
+import sportmateinc.sportmatepresentationlayer.application.data.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    private final UserRepository userRepository;
+
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	Record user = UtentiService.findByUsername(username);
+        User user = userRepository.findByUsername(username);
         if (user == null) {
-        	user = GestoriService.findByUsername(username);
-        	if(user == null) {
-        		throw new UsernameNotFoundException("No user present with username: " + username);
-        	}
-        	else {
-        		return new org.springframework.security.core.userdetails.User(user.field(Gestori.GESTORI.MAIL).toString(), user.field(Gestori.GESTORI.PASSWORD).toString(),
-                        getAuthorities(user, "GESTORE"));
-        	}
+            throw new UsernameNotFoundException("No user present with username: " + username);
         } else {
-            return new org.springframework.security.core.userdetails.User(user.field(Utenti.UTENTI.MAIL).toString(), user.field(Utenti.UTENTI.PASSWORD).toString(),
-                    getAuthorities(user, "UTENTE"));
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getHashedPassword(),
+                    getAuthorities(user));
         }
     }
 
-    private static List<GrantedAuthority> getAuthorities(Record user, String role) {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + role));
-        }
+    private static List<GrantedAuthority> getAuthorities(User user) {
+        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                .collect(Collectors.toList());
+
     }
+
+}
