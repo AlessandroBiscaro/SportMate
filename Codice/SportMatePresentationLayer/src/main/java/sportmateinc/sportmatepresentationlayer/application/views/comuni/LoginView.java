@@ -17,19 +17,14 @@ import sportmateinc.sportmatepresentationlayer.application.security.Authenticate
 @Route(value = "login")
 public class LoginView extends LoginOverlay implements BeforeEnterObserver {
 
-    private final AuthenticatedUser authenticatedUser;
+	private static final long serialVersionUID = 1L;
+	private final AuthenticatedUser authenticatedUser;
 
     public LoginView(AuthenticatedUser authenticatedUser) {
         this.authenticatedUser = authenticatedUser;
+        
         setAction(RouteUtil.getRoutePath(VaadinService.getCurrent().getContext(), getClass()));
-
-        LoginI18n i18n = LoginI18n.createDefault();
-        i18n.setHeader(new LoginI18n.Header());
-        i18n.getHeader().setTitle("SportMate");
-        i18n.getHeader().setDescription("Login using user/user or admin/admin");
-        i18n.setAdditionalInformation(null);
-        setI18n(i18n);
-
+        setI18n(getDescrizione());
         setForgotPasswordButtonVisible(false);
         setOpened(true);
     }
@@ -43,5 +38,14 @@ public class LoginView extends LoginOverlay implements BeforeEnterObserver {
         }
 
         setError(event.getLocation().getQueryParameters().getParameters().containsKey("error"));
+    }
+    
+    private LoginI18n getDescrizione() {
+    	LoginI18n i18n = LoginI18n.createDefault();
+        i18n.setHeader(new LoginI18n.Header());
+        i18n.getHeader().setTitle("SportMate");
+        i18n.getHeader().setDescription("Inserisci le tue credenziali di accesso a SportMate");
+        i18n.setAdditionalInformation(null);
+        return i18n;
     }
 }
