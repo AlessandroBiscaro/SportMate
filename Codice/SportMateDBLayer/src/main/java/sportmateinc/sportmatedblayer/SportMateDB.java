@@ -3,6 +3,7 @@
  */
 package sportmateinc.sportmatedblayer;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class SportMateDB {
 
 	private Connection connection = null;
 	private static SportMateDB database = null;
-	private static final String DB_REL_FILE = "./src/main/resources/SportMateDB.db";
+	private static final String DB_REL_FILE = getDBRelFile();
 	private static final String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 	private static final Logger LOGGER = LogManager.getLogger(SportMateDB.class);
 
@@ -39,9 +40,20 @@ public class SportMateDB {
 		}
 		return database;
 	}
-
-	private SportMateDB() {
+	
+	/**
+	 * Determina il percorso al file che memorizza il database
+	 * @return il percorso del file d'implementazione all'interno del filesystem locale
+	 */
+	private static String getDBRelFile() {
+		URL resource = SportMateDB.class.getClassLoader().getResource("SportMateDB.db");
+        if (resource == null) {
+            throw new IllegalArgumentException("Database file not found!");
+        }
+        return resource.getPath();
 	}
+
+	private SportMateDB() {}
 
 	/**
 	 * Instaura una nuova connessione a <i>SportMateDB</i>.

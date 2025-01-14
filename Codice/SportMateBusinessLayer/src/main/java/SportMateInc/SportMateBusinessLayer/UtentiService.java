@@ -17,16 +17,19 @@ public class UtentiService {
 	private UtentiService() {}
  	
 	public static Record findByUsername(String username) {
-		SportMateDB db = SportMateDB.getInstance();
+	SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create = DSL.using(db.getConnectionDetails(), SQLDialect.SQLITE);
-		LOGGER.debug(db.getConnectionDetails().toString());
 		Record result = create.select(UTENTI.MAIL, UTENTI.PASSWORD)
 				.from(UTENTI)
 		//.where(UTENTI.MAIL.eq(username))
 		.fetchOne();
 		db.chiudiConnessione();
 		return result;
+	}
+	
+	public static void main(String args[]) {
+		findByUsername("aaa");
 	}
 	
 }
