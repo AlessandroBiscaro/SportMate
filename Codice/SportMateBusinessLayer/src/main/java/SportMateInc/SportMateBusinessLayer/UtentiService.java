@@ -22,14 +22,11 @@ public class UtentiService {
 		DSLContext create = DSL.using(db.getConnectionDetails(), SQLDialect.SQLITE);
 		Record result = create.select(UTENTI.MAIL, UTENTI.PASSWORD)
 				.from(UTENTI)
-		//.where(UTENTI.MAIL.eq(username))
+		.where(UTENTI.MAIL.eq(username))
 		.fetchOne();
 		db.chiudiConnessione();
 		return result;
 	}
-	
-	public static void main(String args[]) {
-		findByUsername("aaa");
-	}
+
 	
 }
