@@ -61,7 +61,7 @@
     <message xmi:type="uml:Message" xmi:id="_P-SjgNWqEe-FTaC9GOWvGQ" name="5.2 Avatar" messageSort="asynchCall" receiveEvent="_P-8DwNWqEe-FTaC9GOWvGQ" sendEvent="_P-2kMNWqEe-FTaC9GOWvGQ"/>
     <message xmi:type="uml:Message" xmi:id="_gMqPkNWqEe-FTaC9GOWvGQ" name="2.5 Confronta Dati" messageSort="asynchCall" receiveEvent="_gND4MNWqEe-FTaC9GOWvGQ" sendEvent="_gNAN0NWqEe-FTaC9GOWvGQ"/>
     <message xmi:type="uml:Message" xmi:id="_tVJv0NWqEe-FTaC9GOWvGQ" name="4.4 Cerca Avatar" messageSort="asynchCall" receiveEvent="_tVpfENWqEe-FTaC9GOWvGQ" sendEvent="_tVl0sNWqEe-FTaC9GOWvGQ"/>
-    <message xmi:type="uml:Message" xmi:id="_LntvYNWrEe-FTaC9GOWvGQ" name="2.1 getInstance()" messageSort="asynchCall" receiveEvent="_Ln58oNWrEe-FTaC9GOWvGQ" sendEvent="_Ln3gYNWrEe-FTaC9GOWvGQ"/>
+    <message xmi:type="uml:Message" xmi:id="_LntvYNWrEe-FTaC9GOWvGQ" name="2.1 getInstance" messageSort="asynchCall" receiveEvent="_Ln58oNWrEe-FTaC9GOWvGQ" sendEvent="_Ln3gYNWrEe-FTaC9GOWvGQ"/>
     <message xmi:type="uml:Message" xmi:id="_QxUGcNWrEe-FTaC9GOWvGQ" name="2.2 Apri Connessione" messageSort="asynchCall" receiveEvent="_QxqEsNWrEe-FTaC9GOWvGQ" sendEvent="_QxnocNWrEe-FTaC9GOWvGQ"/>
     <message xmi:type="uml:Message" xmi:id="_bf8MUNWrEe-FTaC9GOWvGQ" name="2.3 Ricerca per Username" messageSort="asynchCall" receiveEvent="_bgatcNWrEe-FTaC9GOWvGQ" sendEvent="_bgXqINWrEe-FTaC9GOWvGQ"/>
     <message xmi:type="uml:Message" xmi:id="_si1soNWrEe-FTaC9GOWvGQ" name="4.2 Ricerca Informazioni User" messageSort="asynchCall" receiveEvent="_sjcwoNWrEe-FTaC9GOWvGQ" sendEvent="_sjX4INWrEe-FTaC9GOWvGQ"/>
