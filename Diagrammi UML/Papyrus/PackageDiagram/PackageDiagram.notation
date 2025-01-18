@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmi:id="_5sMFINWCEe-v_o-6OB-PLA" type="PapyrusUMLClassDiagram" name="Package Diagram" measurementUnit="Pixel">
+  <styles xsi:type="notation:StringValueStyle" xmi:id="_5sMFIdWCEe-v_o-6OB-PLA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+  <styles xsi:type="notation:DiagramStyle" xmi:id="_5sMFItWCEe-v_o-6OB-PLA"/>
+  <styles xsi:type="style:PapyrusDiagramStyle" xmi:id="_5sMFI9WCEe-v_o-6OB-PLA" diagramKindId="org.eclipse.papyrus.uml.diagram.package">
+    <owner href="PackageDiagram.uml#_5qnX0NWCEe-v_o-6OB-PLA"/>
+  </styles>
+  <element href="PackageDiagram.uml#_5qnX0NWCEe-v_o-6OB-PLA"/>
+</notation:Diagram>
