@@ -93,7 +93,20 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_q_gq8dWmEe-FTaC9GOWvGQ"/>
     <element xmi:type="uml:Message" href="CommunicationDiagramLogin.uml#_q94TQNWmEe-FTaC9GOWvGQ"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_q_gq8tWmEe-FTaC9GOWvGQ" points="[11, 3, -317, 3]$[326, 3, -2, 3]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rA81YNWmEe-FTaC9GOWvGQ" id="(0.9241379310344827,0.7551020408163265)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rA9ccNWmEe-FTaC9GOWvGQ" id="(0.013793103448275862,0.7551020408163265)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rA81YNWmEe-FTaC9GOWvGQ" id="(0.9655172413793104,0.40816326530612246)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rA9ccNWmEe-FTaC9GOWvGQ" id="(0.0,0.40816326530612246)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_SJbswNWnEe-FTaC9GOWvGQ" type="Path_Edge" source="_C4PQENWmEe-FTaC9GOWvGQ" target="_Es99ENWmEe-FTaC9GOWvGQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_SJc64NWnEe-FTaC9GOWvGQ" type="Path_MessageLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_SJdh8NWnEe-FTaC9GOWvGQ" x="13" y="10"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_SJdh8dWnEe-FTaC9GOWvGQ" type="Path_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_SJdh8tWnEe-FTaC9GOWvGQ" x="1" y="-53"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_SJbswdWnEe-FTaC9GOWvGQ"/>
+    <element xmi:type="uml:Message" href="CommunicationDiagramLogin.uml#_SHyuANWnEe-FTaC9GOWvGQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SJbswtWnEe-FTaC9GOWvGQ" points="[8, 4, -324, 5]$[323, 4, -9, 5]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SKrC4NWnEe-FTaC9GOWvGQ" id="(0.9448275862068966,0.7346938775510204)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SKrC4dWnEe-FTaC9GOWvGQ" id="(0.06206896551724138,0.7142857142857143)"/>
   </edges>
 </notation:Diagram>
