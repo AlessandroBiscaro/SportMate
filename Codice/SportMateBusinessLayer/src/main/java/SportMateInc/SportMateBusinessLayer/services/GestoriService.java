@@ -1,4 +1,4 @@
-package SportMateInc.SportMateBusinessLayer;
+package SportMateInc.SportMateBusinessLayer.services;
 
 import sportmateinc.sportmatedblayer.SportMateDB;
 

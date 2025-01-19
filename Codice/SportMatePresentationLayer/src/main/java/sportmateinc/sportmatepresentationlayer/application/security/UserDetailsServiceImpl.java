@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.jooq.Record;
 
-import SportMateInc.SportMateBusinessLayer.GestoriService;
-import SportMateInc.SportMateBusinessLayer.UtentiService;
+import SportMateInc.SportMateBusinessLayer.services.GestoriService;
+import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import SportMateInc.SportMateBusinessLayer.tables.Gestori;
 import SportMateInc.SportMateBusinessLayer.tables.Utenti;
 
