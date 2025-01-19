@@ -26,8 +26,20 @@
       <packagedElement xmi:type="uml:Package" xmi:id="_wHLdQNWDEe-v_o-6OB-PLA" name="application.security">
         <packageImport xmi:type="uml:PackageImport" xmi:id="_nvY2cNWEEe-v_o-6OB-PLA"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_C0vcoNZVEe-L4MqsUhNOjw" client="_6C-eUNZPEe-1PpdMPsPu9w" supplier="_zIzsENZQEe-1PpdMPsPu9w"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_qPp6ENZQEe-1PpdMPsPu9w" name="sportmatedblayer"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_zIzsENZQEe-1PpdMPsPu9w" name="sportmatebusinesslayer"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_zIzsENZQEe-1PpdMPsPu9w" name="sportmatebusinesslayer">
+      <packagedElement xmi:type="uml:Package" xmi:id="_TWr24NZTEe-1PpdMPsPu9w" name="services">
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_dj9twNZUEe-L4MqsUhNOjw" client="_TWr24NZTEe-1PpdMPsPu9w" supplier="_IxC4cNZUEe-L4MqsUhNOjw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Model" xmi:id="_IxC4cNZUEe-L4MqsUhNOjw" name="sportmatebusinesslayer.tables">
+        <packagedElement xmi:type="uml:Package" xmi:id="_L5pBENZUEe-L4MqsUhNOjw" name="records">
+          <packagedElement xmi:type="uml:Dependency" xmi:id="_8V-pcNZUEe-L4MqsUhNOjw" name="&lt;&lt;merge>>" client="_L5pBENZUEe-L4MqsUhNOjw" supplier="_rZf6MNZUEe-L4MqsUhNOjw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_rZf6MNZUEe-L4MqsUhNOjw" name="tables"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_D5uuwNZVEe-L4MqsUhNOjw" client="_zIzsENZQEe-1PpdMPsPu9w" supplier="_qPp6ENZQEe-1PpdMPsPu9w"/>
+    </packagedElement>
   </packagedElement>
 </uml:Model>
