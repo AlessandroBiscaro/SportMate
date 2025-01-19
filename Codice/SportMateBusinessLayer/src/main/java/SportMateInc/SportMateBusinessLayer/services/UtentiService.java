@@ -10,6 +10,8 @@ import org.jooq.impl.DSL;
 import org.jooq.Record;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
+
+import java.sql.SQLException;
 public class UtentiService {
 	
 	private static final Logger LOGGER = LogManager.getLogger(UtentiService.class);
@@ -28,5 +30,8 @@ public class UtentiService {
 		return result;
 	}
 
+	public static void main(String[] args) {
+		System.out.println(findByUsername("t.fabbris@studenti.unibg.it"));
+	}
 	
 }

@@ -3,6 +3,8 @@
  */
 package sportmateinc.sportmatedblayer;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -44,13 +46,20 @@ public class SportMateDB {
 	/**
 	 * Determina il percorso al file che memorizza il database
 	 * @return il percorso del file d'implementazione all'interno del filesystem locale
+	 * @throws URISyntaxException 
 	 */
 	private static String getDBRelFile() {
+		System.out.println(SportMateDB.class.getClassLoader());
 		URL resource = SportMateDB.class.getClassLoader().getResource("SportMateDB.db");
         if (resource == null) {
             throw new IllegalArgumentException("Database file not found!");
         }
-        return resource.getPath();
+        System.out.println("Database trovato: " + resource);
+        try {
+			return new File(resource.toURI()).getAbsolutePath();
+		} catch (URISyntaxException e) {
+			return null;
+		}
 	}
 
 	private SportMateDB() {}
