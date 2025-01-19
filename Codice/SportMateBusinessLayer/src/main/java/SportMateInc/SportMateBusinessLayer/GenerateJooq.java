@@ -18,7 +18,7 @@ import sportmateinc.sportmatedblayer.SportMateDB;
  * @since 1.0
  */
 public class GenerateJooq {
-	private static final String DB_URL = "jdbc:sqlite:" + "../SportMateDBLayer/" + SportMateDB.getDbRelFile();
+	private static final String DB_URL = "jdbc:sqlite:" + SportMateDB.getDbRelFile();
 	private GenerateJooq() {}
 	
 	/**

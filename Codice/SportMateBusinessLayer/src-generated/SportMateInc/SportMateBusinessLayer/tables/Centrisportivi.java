@@ -198,3 +198,4 @@ public class Centrisportivi extends TableImpl<CentrisportiviRecord> {
 
 
 
+
