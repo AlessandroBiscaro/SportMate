@@ -1,6 +1,5 @@
 package sportmateinc.sportmatepresentationlayer.application.security;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
@@ -43,10 +42,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private static List<GrantedAuthority> getAuthorities(String role) {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + role));
     }
-    
-    public static void main(String[] args) {
-    	UserDetailsServiceImpl u = new UserDetailsServiceImpl();
-		System.out.println(u.loadUserByUsername("t.fabbris@studenti.unibg.it"));
-	}
 
 }

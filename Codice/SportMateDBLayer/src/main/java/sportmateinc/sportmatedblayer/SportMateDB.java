@@ -4,15 +4,18 @@
 package sportmateinc.sportmatedblayer;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 /**
  * La classe fornisce un'utile astrazione per gestire la connessione al database
@@ -24,11 +27,12 @@ import org.apache.logging.log4j.Logger;
 
 public class SportMateDB {
 
-	private Connection connection = null;
-	private static SportMateDB database = null;
+	private static final String DB_NAME = "SportMateDB.db";
+	private static final Logger LOGGER = LogManager.getLogger(SportMateDB.class);
 	private static final String DB_REL_FILE = getDBRelFile();
 	private static final String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
-	private static final Logger LOGGER = LogManager.getLogger(SportMateDB.class);
+	private Connection connection = null;
+	private static SportMateDB database = null;
 
 	/**
 	 * Instanzia un nuovo componente <i>SportMateDB</i>.
@@ -42,27 +46,41 @@ public class SportMateDB {
 		}
 		return database;
 	}
-	
-	/**
-	 * Determina il percorso al file che memorizza il database
-	 * @return il percorso del file d'implementazione all'interno del filesystem locale
-	 * @throws URISyntaxException 
-	 */
+
 	private static String getDBRelFile() {
-		System.out.println(SportMateDB.class.getClassLoader());
-		URL resource = SportMateDB.class.getClassLoader().getResource("SportMateDB.db");
-        if (resource == null) {
-            throw new IllegalArgumentException("Database file not found!");
-        }
-        System.out.println("Database trovato: " + resource);
-        try {
-			return new File(resource.toURI()).getAbsolutePath();
-		} catch (URISyntaxException e) {
-			return null;
+		String filePath = System.getProperty("user.home") + "/SportMate/data";
+		URL resource = SportMateDB.class.getClassLoader().getResource(DB_NAME);
+		
+		if (resource == null) {
+			LOGGER.error("SportMateDBFile not found!");
 		}
+		
+		File permanentDbFile = new File(filePath, DB_NAME);
+		try {
+			Files.createDirectories(Paths.get(filePath));
+			if (!permanentDbFile.exists()) {
+				extractDatabase(permanentDbFile);
+				LOGGER.info(String.format("Database initiliazed in %s: ", permanentDbFile.getAbsolutePath()));
+			}
+		} catch (IOException e) {
+			LOGGER.error(String.format("Error while initializing SportMateDB: %s", e.getMessage()));
+		}
+		return permanentDbFile.getAbsolutePath();
+
 	}
 
-	private SportMateDB() {}
+	private static void extractDatabase(File permanentDbFile) throws IOException {
+
+		InputStream inputStream = SportMateDB.class.getClassLoader().getResourceAsStream(DB_NAME);
+		if (inputStream == null) {
+			throw new IllegalStateException("Impossibile aprire il file database: " + DB_NAME);
+		}
+		Files.copy(inputStream, permanentDbFile.toPath());
+
+	}
+
+	private SportMateDB() {
+	}
 
 	/**
 	 * Instaura una nuova connessione a <i>SportMateDB</i>.
