@@ -127,9 +127,6 @@ Il sistema software necessita, per la sua corretta esecuzione, dei seguenti requ
 - Sistema operativo: Windows 10 o versioni successive; OS X 10.8.3 o versioni successive
 - RAM: almeno 1 GB per SO a 32 bit; 2 GB per SO a 64 bit
 - Spazio di archiviazione: almeno 128 MB 
-:::danger
-Aggiornare dopo creazione DBMS!!
-:::
 - Processore: almeno 1 GHz di frequenza di clock
 - Browser Internet: Microsoft Edge, Google Chrome, Mozilla Firefox, Safari
 
