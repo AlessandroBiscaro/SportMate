@@ -18,7 +18,7 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 ### Indice
 
 1. [Diagrammi UML](#Diagrammi-UML)<br/>
-    1.1. [Diagramma dei casi d'uso](#Diagramma-dei-casi-d'uso)<br/>
+    1.1. [Diagramma dei casi d'uso](#Diagramma-dei-casi-d-uso)<br/>
     1.2. [Diagramma delle classi](#Diagramma-delle-classi)<br/>
     1.3. [Diagramma della macchina a stati Gestore](#Diagramma-della-macchina-a-stati-Gestore)<br/>
     1.4. [Diagramma di sequenza](#Diagramma-di-sequenza)<br/>
