@@ -7,9 +7,9 @@
  </p> 
  <p align="center"> <em> Università degli Studi di Bergamo <br/>
 Ingegneria Informatica <br/>
-Biscaro Alessandro 1087892 <br/>
-Fabbris Thomas 1086063 <br/>
-Gambirasio Lorenzo Umberto 1087441 </em>
+Biscaro Alessandro [1087892] <br/>
+Fabbris Thomas [1086063] <br/>
+Gambirasio Lorenzo Umberto [1087441] </em>
 </p >
 
 <p align="center">
