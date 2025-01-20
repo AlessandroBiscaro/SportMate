@@ -17,19 +17,19 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 
 ### Indice
 
-1. [Diagrammi UML](#Diagrammi-UML)
-    1.1. [Diagramma dei casi d'uso](#Diagramma-dei-casi-d'uso)
-    1.2. [Diagramma delle classi](#Diagramma-delle-classi)
-    1.3. [Diagramma della macchina a stati Change Request](#Diagramma-della-macchina-a-stati-Change-Request)
-    1.4. [Diagramma della macchina a stati Gestore](#Diagramma-della-macchina-a-stati-Gestore)
-    1.5. [Diagramma di sequenza](#Diagramma-di-sequenza)
-    1.6. [Diagramma delle attività](Diagramma-delle-attività)
-2. [Viste architettoniche](#Viste-architettoniche)
-3. [Architettura del software](#Architettura-del-software)
-4. [Software Design](#Software-Design)
-    4.1. [Diagramma delle componenti](#Diagramma-delle-componenti)
-    4.2. [Design pattern utilizzati](#Design-pattern-utilizzati)
-    4.3. [Metriche di complessità](#Metriche-di-complessità)
+1. [Diagrammi UML](#Diagrammi-UML)<br/>
+    1.1. [Diagramma dei casi d'uso](#Diagramma-dei-casi-d'uso)<br/>
+    1.2. [Diagramma delle classi](#Diagramma-delle-classi)<br/>
+    1.3. [Diagramma della macchina a stati Change Request](#Diagramma-della-macchina-a-stati-Change-Request)<br/>
+    1.4. [Diagramma della macchina a stati Gestore](#Diagramma-della-macchina-a-stati-Gestore)<br/>
+    1.5. [Diagramma di sequenza](#Diagramma-di-sequenza)<br/>
+    1.6. [Diagramma delle attività](Diagramma-delle-attività)<br/>
+2. [Viste architettoniche](#Viste-architettoniche)<br/>
+3. [Architettura del software](#Architettura-del-software)<br/>
+4. [Software Design](#Software-Design)<br/>
+    4.1. [Diagramma delle componenti](#Diagramma-delle-componenti)<br/>
+    4.2. [Design pattern utilizzati](#Design-pattern-utilizzati)<br/>
+    4.3. [Metriche di complessità](#Metriche-di-complessità)<br/>
 
 
 
@@ -39,32 +39,32 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 #### Diagramma dei casi d'uso
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/UseCaseDiagram2.png" width="250" />
+      <img src="../Diagrammi UML/Immagini/UseCaseDiagram2.png" />
  </p> 
 
 #### Diagramma delle classi
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/ClassDiagram2.png" width="250" />
+      <img src="../Diagrammi UML/Immagini/ClassDiagram2.png" />
  </p>  
 
 #### Diagramma della macchina a stati
 Il seguendo diagramma della macchina a stati modella i possibili stati in cui si può trovare il gestore nel corso della sua interazione con SportMate.
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/MacchinaStatiGestore.png" width="250" />
+      <img src="../Diagrammi UML/Immagini/MacchinaStatiGestore.png" />
  </p> 
 
 #### Diagramma di sequenza
 Il seguente diagramma di sequenza modella dettagliatamente il processo di login a SportMate eseguito dall'utente finale. Il processo è totalmente analogo anche per gli utenti organizzatori o i gestori dei centri sportivi.
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/SequenceDiagramLogin.png" width="250" />
+      <img src="../Diagrammi UML/Immagini/SequenceDiagramLogin.png" />
  </p> 
 
 #### Diagramma delle attività
 Il seguente diagramma delle attività modella il processo di unione ad una partita pubblica (ancora aperta) da parte di un utente finale, scegliendo come modalità di pagamento l'utilizzo del credito associato al profilo su SportMate.
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/ActivityDiagramPrenotazione.png" width="250" />
+      <img src="../Diagrammi UML/Immagini/ActivityDiagramPrenotazione.png" />
  </p> 
  
 ### Viste architettoniche
@@ -104,7 +104,7 @@ I componenti architetturali interagiscono tramite chiamate di procedura locale, 
 #### Diagramma delle componenti
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/ComponentDiagram.png" width="250" />
+      <img src="../Diagrammi UML/Immagini/ComponentDiagram.png" />
  </p> 
 
 #### Design pattern utilizzati
