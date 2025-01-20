@@ -44,5 +44,15 @@ public class SportMateDBTest {
 		SportMateDB c2 = SportMateDB.getInstance();
 		assertSame("Metodo instance della classe SportMateDB errato", connection, c2);
 	}
-
+	
+	@Test
+	public final void testGetDbURL() {
+		assertEquals("Metodo getDbUrl della classe SportMateDB errato", SportMateDB.getDbUrl(), "jdbc:sqlite:" + SportMateDB.getDbRelFile());
+	}
+	
+	@Test
+	public final void testGetDbRelFile() {
+		assertEquals("Metodo getDbUrl della classe SportMateDB errato", SportMateDB.DB_REL_FILE, SportMateDB.getDbRelFile());
+	}
+	
 }

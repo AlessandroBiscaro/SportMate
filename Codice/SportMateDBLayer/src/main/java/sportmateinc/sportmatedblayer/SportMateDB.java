@@ -29,7 +29,7 @@ public class SportMateDB {
 
 	private static final String DB_NAME = "SportMateDB.db";
 	private static final Logger LOGGER = LogManager.getLogger(SportMateDB.class);
-	private static final String DB_REL_FILE = getDBRelFile();
+	protected static final String DB_REL_FILE = getDBPath();
 	private static final String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 	private Connection connection = null;
 	private static SportMateDB database = null;
@@ -47,7 +47,7 @@ public class SportMateDB {
 		return database;
 	}
 
-	private static String getDBRelFile() {
+	private static String getDBPath() {
 		String filePath = System.getProperty("user.home") + "/SportMate/data";
 		URL resource = SportMateDB.class.getClassLoader().getResource(DB_NAME);
 		
@@ -60,7 +60,6 @@ public class SportMateDB {
 			Files.createDirectories(Paths.get(filePath));
 			if (!permanentDbFile.exists()) {
 				extractDatabase(permanentDbFile);
-				LOGGER.info(String.format("Database initiliazed in %s: ", permanentDbFile.getAbsolutePath()));
 			}
 		} catch (IOException e) {
 			LOGGER.error(String.format("Error while initializing SportMateDB: %s", e.getMessage()));
@@ -76,7 +75,8 @@ public class SportMateDB {
 			throw new IllegalStateException("Impossibile aprire il file database: " + DB_NAME);
 		}
 		Files.copy(inputStream, permanentDbFile.toPath());
-
+		LOGGER.info(String.format("Database initiliazed in %s: ", permanentDbFile.getAbsolutePath()));
+		
 	}
 
 	private SportMateDB() {
