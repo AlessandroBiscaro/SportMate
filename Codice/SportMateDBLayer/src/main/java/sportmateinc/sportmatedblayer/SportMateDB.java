@@ -27,13 +27,13 @@ import org.apache.logging.log4j.Logger;
 
 public class SportMateDB {
 
-	private static final String DB_NAME = "SportMateDB.db";
+	private static SportMateDB database = null;
 	private static final Logger LOGGER = LogManager.getLogger(SportMateDB.class);
+	protected static final String DB_NAME = "SportMateDB.db";
 	protected static final String DB_REL_FILE = getDBPath();
 	private static final String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 	private Connection connection = null;
-	private static SportMateDB database = null;
-
+	
 	/**
 	 * Instanzia un nuovo componente <i>SportMateDB</i>.
 	 * 
@@ -47,7 +47,7 @@ public class SportMateDB {
 		return database;
 	}
 
-	private static String getDBPath() {
+	protected static String getDBPath() {
 		String filePath = System.getProperty("user.home") + "/SportMate/data";
 		URL resource = SportMateDB.class.getClassLoader().getResource(DB_NAME);
 		
@@ -68,7 +68,7 @@ public class SportMateDB {
 
 	}
 
-	private static void extractDatabase(File permanentDbFile) throws IOException {
+	protected static void extractDatabase(File permanentDbFile) throws IOException {
 
 		InputStream inputStream = SportMateDB.class.getClassLoader().getResourceAsStream(DB_NAME);
 		if (inputStream == null) {
@@ -134,6 +134,16 @@ public class SportMateDB {
 	 */
 	public Connection getConnectionDetails() {
 		return connection;
+	}
+	
+	/**
+	 * Restituisce il nome del file che implementa
+	 * <i>SportMateDB</i>.
+	 * 
+	 * @return il nome del file associato a <i>SportMateDB</i>
+	 */
+	public static String getDbName() {
+		return DB_NAME;
 	}
 
 }
