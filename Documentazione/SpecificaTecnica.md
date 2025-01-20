@@ -20,10 +20,9 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 1. [Diagrammi UML](#Diagrammi-UML)<br/>
     1.1. [Diagramma dei casi d'uso](#Diagramma-dei-casi-d'uso)<br/>
     1.2. [Diagramma delle classi](#Diagramma-delle-classi)<br/>
-    1.3. [Diagramma della macchina a stati Change Request](#Diagramma-della-macchina-a-stati-Change-Request)<br/>
-    1.4. [Diagramma della macchina a stati Gestore](#Diagramma-della-macchina-a-stati-Gestore)<br/>
-    1.5. [Diagramma di sequenza](#Diagramma-di-sequenza)<br/>
-    1.6. [Diagramma delle attività](Diagramma-delle-attività)<br/>
+    1.3. [Diagramma della macchina a stati Gestore](#Diagramma-della-macchina-a-stati-Gestore)<br/>
+    1.4. [Diagramma di sequenza](#Diagramma-di-sequenza)<br/>
+    1.5. [Diagramma delle attività](#Diagramma-delle-attività)<br/>
 2. [Viste architettoniche](#Viste-architettoniche)<br/>
 3. [Architettura del software](#Architettura-del-software)<br/>
 4. [Software Design](#Software-Design)<br/>
@@ -48,7 +47,7 @@ Gambirasio Lorenzo Umberto 1087441 </em>
       <img src="../Diagrammi UML/Immagini/ClassDiagram2.png" />
  </p>  
 
-#### Diagramma della macchina a stati
+#### Diagramma della macchina a stati Gestore
 Il seguendo diagramma della macchina a stati modella i possibili stati in cui si può trovare il gestore nel corso della sua interazione con SportMate.
 <p align="center"  >
       <img src="../Diagrammi UML/Immagini/MacchinaStatiGestore.png" />
