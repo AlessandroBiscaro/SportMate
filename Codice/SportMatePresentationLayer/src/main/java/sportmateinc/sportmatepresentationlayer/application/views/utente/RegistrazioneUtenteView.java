@@ -30,9 +30,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Route("regitrazioneUtente")
 @Menu(order = 2, icon = LineAwesomeIconUrl.PENCIL_RULER_SOLID)
 @AnonymousAllowed
-public class RegitrazioneUtenteView extends Composite<VerticalLayout> {
+public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 
-    public RegitrazioneUtenteView() {
+    public RegistrazioneUtenteView() {
         H1 h1 = new H1();
         H5 h5 = new H5();
         HorizontalLayout layoutRow = new HorizontalLayout();

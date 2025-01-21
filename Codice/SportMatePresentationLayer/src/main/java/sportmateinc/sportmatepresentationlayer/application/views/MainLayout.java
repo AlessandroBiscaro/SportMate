@@ -1,5 +1,6 @@
 package sportmateinc.sportmatepresentationlayer.application.views;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -110,6 +111,9 @@ public class MainLayout extends AppLayout {
             userName.add(div);
             userName.getSubMenu().addItem("Sign out", e -> {
                 authenticatedUser.logout();
+            });
+            userName.getSubMenu().addItem("My profile", e -> {
+            	UI.getCurrent().getPage().setLocation("/myprofile");
             });
 
             layout.add(userMenu);
