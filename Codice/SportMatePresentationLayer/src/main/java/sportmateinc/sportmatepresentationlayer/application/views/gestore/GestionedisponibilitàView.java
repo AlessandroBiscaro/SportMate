@@ -29,6 +29,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 
+import jakarta.annotation.security.PermitAll;
 import sportmateinc.sportmatepresentationlayer.application.data.TypeDisp;
 import sportmateinc.sportmatepresentationlayer.application.services.TypeDispService;
 
@@ -41,7 +42,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("Gestione disponibilità")
 @Route("gestDisp/:typeDispID?/:action?(edit)")
 @Menu(order = 8, icon = LineAwesomeIconUrl.ADDRESS_BOOK_SOLID)
-@AnonymousAllowed
+@PermitAll
 @Uses(Icon.class)
 @Uses(Icon.class)
 public class GestionedisponibilitàView extends Div implements BeforeEnterObserver {

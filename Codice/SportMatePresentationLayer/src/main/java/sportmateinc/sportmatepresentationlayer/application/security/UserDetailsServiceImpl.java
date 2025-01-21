@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,13 +31,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         		 throw new UsernameNotFoundException("No user present with username: " + username);
         	}
         	else {
-        		return new org.springframework.security.core.userdetails.User(user.field(Gestori.GESTORI.MAIL).toString(),user.field(Gestori.GESTORI.PASSWORD).toString(),
-                        getAuthorities("GESTORE"));
+        		return User.withUsername(user.get(Utenti.UTENTI.MAIL))
+                		.password("{noop}" + user.get(Utenti.UTENTI.PASSWORD))
+                		.roles("USER")
+                		.build();
         	}
            
         } else {
-        	return new org.springframework.security.core.userdetails.User(user.field(Utenti.UTENTI.MAIL).toString(),user.field(Utenti.UTENTI.PASSWORD).toString(),
-                    getAuthorities("UTENTE"));        }
+        	return User.withUsername(user.get(Gestori.GESTORI.MAIL))
+            		.password("{noop}" + user.get(Gestori.GESTORI.PASSWORD))
+            		.roles("ADMIN")
+            		.build();      
+    	}
     }
 
     private static List<GrantedAuthority> getAuthorities(String role) {

@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Homepage")
+@PageTitle("SportMate | Homepage")
 @Route("")
 @Menu(order = 0, icon = LineAwesomeIconUrl.HOME_SOLID)
 @AnonymousAllowed
@@ -155,7 +155,8 @@ public class HomepageView extends Composite<VerticalLayout> {
     }
     
     
-    private void setMessageListSampleData(MessageList messageList) {
+   private void setMessageListSampleData(MessageList messageList) {
+	   
         MessageListItem message1 = new MessageListItem("Nature does not hurry, yet everything gets accomplished.",
                 LocalDateTime.now().minusDays(1).toInstant(ZoneOffset.UTC), "Matt Mambo");
         message1.setUserColorIndex(1);
