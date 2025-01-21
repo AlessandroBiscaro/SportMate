@@ -19,16 +19,26 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+import static SportMateInc.SportMateBusinessLayer.tables.Feedback.FEEDBACK;
+import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
+
+import SportMateInc.SportMateBusinessLayer.services.FeedbackService;
+
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import org.jooq.Record3;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("SportMate | Homepage")
+@PageTitle("Homepage")
 @Route("")
 @Menu(order = 0, icon = LineAwesomeIconUrl.HOME_SOLID)
 @AnonymousAllowed
 public class HomepageView extends Composite<VerticalLayout> {
-	 HorizontalLayout layoutRow = new HorizontalLayout();
+	private static final long serialVersionUID = 1L;
+	HorizontalLayout layoutRow = new HorizontalLayout();
      H1 titoloHomePage = new H1();
      HorizontalLayout layoutRow2 = new HorizontalLayout();
      VerticalLayout layoutColumn2 = new VerticalLayout();
@@ -156,14 +166,18 @@ public class HomepageView extends Composite<VerticalLayout> {
     
     
    private void setMessageListSampleData(MessageList messageList) {
+	   List<Record3<String, String, String>> feedback = FeedbackService.findAll();
+	   List<MessageListItem> lista = new ArrayList<>();
+	   int colorId = 0;
 	   
-        MessageListItem message1 = new MessageListItem("Nature does not hurry, yet everything gets accomplished.",
-                LocalDateTime.now().minusDays(1).toInstant(ZoneOffset.UTC), "Matt Mambo");
-        message1.setUserColorIndex(1);
-        MessageListItem message2 = new MessageListItem(
-                "Using your talent, hobby or profession in a way that makes you contribute with something good to this world is truly the way to go.",
-                LocalDateTime.now().minusMinutes(55).toInstant(ZoneOffset.UTC), "Linsey Listy");
-        message2.setUserColorIndex(2);
-        messageList.setItems(message1, message2);
+	   for( Record3<String, String, String> f : feedback) {
+		   MessageListItem message = new MessageListItem(f.get(FEEDBACK.TESTO),
+				   LocalDateTime.now().minusMinutes(new Random().nextLong(0,2000)).toInstant(ZoneOffset.UTC),
+				   f.get(UTENTI.NOME) + " " +  f.get(UTENTI.COGNOME));
+		   message.setUserColorIndex(colorId++);
+		   lista.add(message);
+	   }
+	   messageList.setItems(lista);
+	   
     }
 }
