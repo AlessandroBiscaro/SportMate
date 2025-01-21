@@ -11,12 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.jooq.Record;
-
-import SportMateInc.SportMateBusinessLayer.services.GestoriService;
-import SportMateInc.SportMateBusinessLayer.services.UtentiService;
-import SportMateInc.SportMateBusinessLayer.tables.Gestori;
-import SportMateInc.SportMateBusinessLayer.tables.Utenti;
+import SportMateInc.SportMateBusinessLayer.services.AuthenticatedProfileService;
+import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -24,29 +20,23 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	Record user = UtentiService.findByUsername(username);
+    	AuthenticatedProfile user = AuthenticatedProfileService.findUserByUsername(username);
         if (user == null) {
-        	user = GestoriService.findByUsername(username);
+        	user = AuthenticatedProfileService.findManagerByUsername(username);
         	if(user == null) {
         		 throw new UsernameNotFoundException("No user present with username: " + username);
         	}
         	else {
-        		return User.withUsername(user.get(Utenti.UTENTI.MAIL))
-                		.password("{noop}" + user.get(Utenti.UTENTI.PASSWORD))
-                		.roles("USER")
+        		return User.withUsername(user.getUsername())
+                		.password("{noop}" + user.getPassword())
+                		.roles("ADMIN")
                 		.build();
         	}
-           
         } else {
-        	return User.withUsername(user.get(Gestori.GESTORI.MAIL))
-            		.password("{noop}" + user.get(Gestori.GESTORI.PASSWORD))
-            		.roles("ADMIN")
+        	return User.withUsername(user.getUsername())
+            		.password("{noop}" + user.getPassword())
+            		.roles("USER")
             		.build();      
     	}
     }
-
-    private static List<GrantedAuthority> getAuthorities(String role) {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + role));
-    }
-
 }

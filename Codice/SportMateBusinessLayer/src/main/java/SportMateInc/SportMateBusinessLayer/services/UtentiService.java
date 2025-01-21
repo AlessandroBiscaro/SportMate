@@ -2,52 +2,41 @@ package SportMateInc.SportMateBusinessLayer.services;
 
 import sportmateinc.sportmatedblayer.SportMateDB;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jooq.DSLContext;
-import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
-
-import SportMateInc.SportMateBusinessLayer.entity.Livello;
-import SportMateInc.SportMateBusinessLayer.entity.User;
+import SportMateInc.SportMateBusinessLayer.entity.Utente;
 
 import org.jooq.Record;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
-import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 public class UtentiService {
 	
-	private static final Logger LOGGER = LogManager.getLogger(UtentiService.class);
-	
 	private UtentiService() {}
  	
-	public static Record findByUsername(String username) {
-	SportMateDB db = SportMateDB.getInstance();
+	public static Utente findByUsername(String username) {
+		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
-		DSLContext create = DSL.using(db.getConnectionDetails(), SQLDialect.SQLITE);
-		Record result = create.select(UTENTI.MAIL, UTENTI.PASSWORD)
+		DSLContext create = db.getContext();
+		Record result = create.select()
 				.from(UTENTI)
 		.where(UTENTI.MAIL.eq(username))
 		.fetchOne();
 		db.chiudiConnessione();
-		return result;
+		return new Utente(result.get(UTENTI.MAIL), result.get(UTENTI.NOME),result.get(UTENTI.COGNOME), LocalDate.parse(result.get(UTENTI.DATANASCITA)), result.get(UTENTI.TELEFONO), result.get(UTENTI.PASSWORD),
+				result.get(UTENTI.CREDITO), LivelliService.findLivello(result.get(UTENTI.LIVELLO)));
 	}
 
-	public static void main(String[] args) {
-		System.out.println(findByUsername("t.fabbris@studenti.unibg.it"));
-	}
 	
-	
-	public static int aggiungiUtente(User user) {
+	public static int aggiungiUtente(Utente user) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		
-		DSLContext create = DSL.using(db.getConnectionDetails(), SQLDialect.SQLITE);
+		DSLContext create =  db.getContext();
 				
 		return create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
-		.values(user.getName(), user.getCognome(), DateTimeFormatter.ofPattern("YYYY/MM/DD").format(user.getDataNascita()), user.getMail(), user.getTelefono(), user.getPassword(), user.getLivello().getIdLivello())
+		.values(user.getName(), user.getCognome(), DateTimeFormatter.ofPattern("yyyy/MM/DD").format(user.getDataNascita()), user.getMail(), user.getTelefono(), user.getPassword(), user.getLivello().getIdLivello())
 		.execute();
 	}
 	

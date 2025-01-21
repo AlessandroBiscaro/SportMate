@@ -16,6 +16,9 @@ import java.sql.SQLException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 
 /**
  * La classe fornisce un'utile astrazione per gestire la connessione al database
@@ -134,6 +137,15 @@ public class SportMateDB {
 	 */
 	public Connection getConnectionDetails() {
 		return connection;
+	}
+	
+	/**
+	 * Restituisce il DSLContext associato alla connessione attualmente attiva a
+	 * <i>SportMateDB</i>
+	 * @return {@link DSLContext} contesto associato a <i>SportMateDB</i>
+	 */
+	public DSLContext getContext() {
+		return DSL.using(this.getConnectionDetails(), SQLDialect.SQLITE);
 	}
 	
 	/**

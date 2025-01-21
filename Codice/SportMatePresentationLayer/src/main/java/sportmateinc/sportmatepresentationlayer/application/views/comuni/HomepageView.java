@@ -57,7 +57,7 @@ public class HomepageView extends Composite<VerticalLayout> {
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         messageList.setWidth("100%");
-        setMessageListSampleData(messageList);
+        setMessageList(messageList);
         setTitolo();
         setLayoutRow();
         setLayoutRow2();
@@ -165,7 +165,7 @@ public class HomepageView extends Composite<VerticalLayout> {
     }
     
     
-   private void setMessageListSampleData(MessageList messageList) {
+   private void setMessageList(MessageList messageList) {
 	   List<Record3<String, String, String>> feedback = FeedbackService.findAll();
 	   List<MessageListItem> lista = new ArrayList<>();
 	   int colorId = 0;
