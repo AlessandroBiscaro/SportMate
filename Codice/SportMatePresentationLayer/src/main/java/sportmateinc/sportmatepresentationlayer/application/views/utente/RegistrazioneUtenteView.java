@@ -22,6 +22,9 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+
+import jakarta.annotation.security.PermitAll;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
@@ -29,7 +32,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("Regitrazione Utente")
 @Route("regitrazioneUtente")
 @Menu(order = 2, icon = LineAwesomeIconUrl.PENCIL_RULER_SOLID)
-@AnonymousAllowed
+@PermitAll
+
+//da nascondere dal menu
 public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 
     public RegistrazioneUtenteView() {

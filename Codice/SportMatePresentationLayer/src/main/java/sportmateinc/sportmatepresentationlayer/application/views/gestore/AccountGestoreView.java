@@ -20,6 +20,10 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
@@ -27,7 +31,8 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("AccountGestore")
 @Route("accountGestore")
 @Menu(order = 10, icon = LineAwesomeIconUrl.USER_TIE_SOLID)
-@AnonymousAllowed
+@PermitAll
+//@RolesAllowed({"ADMIN"})
 public class AccountGestoreView extends Composite<VerticalLayout> {
 
     public AccountGestoreView() {

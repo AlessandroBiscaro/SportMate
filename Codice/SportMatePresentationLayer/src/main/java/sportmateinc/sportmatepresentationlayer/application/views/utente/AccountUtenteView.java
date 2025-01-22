@@ -26,6 +26,8 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import SportMateInc.SportMateBusinessLayer.entity.Livello;
 import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
+import sportmateinc.sportmatepresentationlayer.application.data.Role;
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
 import sportmateinc.sportmatepresentationlayer.application.services.SamplePersonService;
 
@@ -39,6 +41,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Route("myprofile")
 @Menu(order = 9, icon = LineAwesomeIconUrl.USER)
 @PermitAll
+//@RolesAllowed({"USER"})
 @Uses(Icon.class)
 public class AccountUtenteView extends Composite<VerticalLayout> {
 

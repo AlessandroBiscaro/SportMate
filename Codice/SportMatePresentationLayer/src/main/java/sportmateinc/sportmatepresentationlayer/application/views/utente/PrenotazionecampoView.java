@@ -19,6 +19,9 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
+import jakarta.annotation.security.PermitAll;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
@@ -26,7 +29,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("Prenotazione campo")
 @Route("prenotazione")
 @Menu(order = 5, icon = LineAwesomeIconUrl.EDIT)
-@AnonymousAllowed
+@PermitAll
+//@RolesAllowed({"USER"})
+//da nascondere dal menu
 public class PrenotazionecampoView extends Composite<VerticalLayout> {
 
     public PrenotazionecampoView() {

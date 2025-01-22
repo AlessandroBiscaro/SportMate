@@ -24,6 +24,8 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+
+import jakarta.annotation.security.PermitAll;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
@@ -41,7 +43,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("Disponibilità")
 @Route("disponibilita")
 @Menu(order = 7, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
-@AnonymousAllowed
+@PermitAll
+//@RolesAllowed({"USER"})
+
 @Uses(Icon.class)
 public class DisponibilitàView extends Div {
 

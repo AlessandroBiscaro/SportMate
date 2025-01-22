@@ -30,6 +30,8 @@ import sportmateinc.sportmatepresentationlayer.application.security.Authenticate
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.security.core.userdetails.User;
+
 /**
  * The main view is a top-level placeholder for other views.
  */
@@ -113,7 +115,10 @@ public class MainLayout extends AppLayout {
                 authenticatedUser.logout();
             });
             userName.getSubMenu().addItem("My profile", e -> {
-            	UI.getCurrent().getPage().setLocation("/myprofile");
+            	//Inserimento if per indirizzare a pagina personale utente o gestore in base a Role
+            		UI.getCurrent().getPage().setLocation("/myprofile");
+            	
+            	
             });
 
             layout.add(userMenu);

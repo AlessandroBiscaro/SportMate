@@ -43,6 +43,8 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Route("gestDisp/:typeDispID?/:action?(edit)")
 @Menu(order = 8, icon = LineAwesomeIconUrl.ADDRESS_BOOK_SOLID)
 @PermitAll
+//@RolesAllowed({"ADMIN"})
+
 @Uses(Icon.class)
 @Uses(Icon.class)
 public class GestionedisponibilitàView extends Div implements BeforeEnterObserver {

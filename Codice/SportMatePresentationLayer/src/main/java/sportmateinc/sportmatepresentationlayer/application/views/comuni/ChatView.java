@@ -31,13 +31,17 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 import com.vaadin.flow.theme.lumo.LumoUtility.Overflow;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
+
+import jakarta.annotation.security.PermitAll;
+
 import java.util.UUID;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Chat")
 @Route("chat")
 @Menu(order = 13, icon = LineAwesomeIconUrl.COMMENTS)
-@AnonymousAllowed
+@PermitAll
+
 public class ChatView extends HorizontalLayout {
 
     public static class ChatTab extends Tab {

@@ -1,6 +1,7 @@
 package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.flow.component.Composite;
+
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -14,12 +15,22 @@ import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
+
+import org.hibernate.annotations.processing.Exclude;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
+
+
+
 
 @PageTitle("Registrazione")
 @Route("registration")
-@Menu(order = 1, icon = LineAwesomeIconUrl.USER_EDIT_SOLID)
 @AnonymousAllowed
+@Menu(order = 1, icon = LineAwesomeIconUrl.USER_EDIT_SOLID)
+
+
 public class RegistrazioneView extends Composite<VerticalLayout> {
 
 	H1 sportMateH1;
