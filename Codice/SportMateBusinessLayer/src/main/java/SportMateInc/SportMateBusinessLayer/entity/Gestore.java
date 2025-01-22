@@ -3,45 +3,35 @@ package SportMateInc.SportMateBusinessLayer.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Utente {
+public class Gestore {
 
-	private int idUtente;
+	private int idGestore;
 	private String mail;
 	private String nome;
 	private String cognome;
 	private LocalDate dataNascita;
 	private String telefono;
 	private String password;
-	private BigDecimal credito;
-	private Livello livello;
 
-	public Utente(int idUtente, String mail, String nome, String cognome, LocalDate dataNascita, String telefono, String password,
-			BigDecimal credito, Livello livello) {
+	public Gestore(int idGestore, String mail, String nome, String cognome, LocalDate dataNascita, String telefono, String password) {
 		
-		this.idUtente = idUtente;
+		this.idGestore = idGestore;
 		this.mail = mail;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = dataNascita;
 		this.telefono = telefono;
 		this.password = password;
-		this.credito = credito;
-		this.livello = livello;
+		
 	}
-
 	
-	
-	public int getIdUtente() {
-		return idUtente;
+	public int getIdGestore() {
+		return idGestore;
 	}
 
-
-
-	public void setIdUtente(int idUtente) {
-		this.idUtente = idUtente;
+	public void setIdGestore(int idGestore) {
+		this.idGestore = idGestore;
 	}
-
-
 
 	public String getMail() {
 		return mail;
@@ -55,8 +45,8 @@ public class Utente {
 		return nome;
 	}
 
-	public void setNome(String name) {
-		this.nome = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getCognome() {
@@ -90,21 +80,7 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public BigDecimal getCredito() {
-		return credito;
-	}
-
-	public void setCredito(BigDecimal credito) {
-		this.credito = credito;
-	}
-
-	public Livello getLivello() {
-		return livello;
-	}
-
-	public void setLivello(Livello livello) {
-		this.livello = livello;
-	}
-
+	
+	
+	
 }
