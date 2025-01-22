@@ -3,7 +3,6 @@ package SportMateInc.SportMateBusinessLayer.services;
 import static SportMateInc.SportMateBusinessLayer.tables.Gestori.GESTORI;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import SportMateInc.SportMateBusinessLayer.entity.Gestore;

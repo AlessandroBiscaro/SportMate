@@ -5,13 +5,13 @@ import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
 import java.util.List;
 
+
 import org.jooq.DSLContext;
 import org.jooq.Record3;
 
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class FeedbackService {
-	
 	public static List<Record3<String, String, String>> findAll() {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();

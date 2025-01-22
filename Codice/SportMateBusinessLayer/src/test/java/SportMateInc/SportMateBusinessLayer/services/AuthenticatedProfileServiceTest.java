@@ -1,4 +1,4 @@
-package SportMateInc.SportMateBusinessLayer;
+package SportMateInc.SportMateBusinessLayer.services;
 import static org.junit.Assert.*;
 import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 import static SportMateInc.SportMateBusinessLayer.tables.Gestori.GESTORI;
@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
-import SportMateInc.SportMateBusinessLayer.services.AuthenticatedProfileService;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class AuthenticatedProfileServiceTest {

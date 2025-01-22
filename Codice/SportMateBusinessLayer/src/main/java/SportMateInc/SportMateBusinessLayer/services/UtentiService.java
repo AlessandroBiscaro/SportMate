@@ -5,7 +5,6 @@ import org.jooq.DSLContext;
 import SportMateInc.SportMateBusinessLayer.entity.Utente;
 import org.jooq.Record;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
