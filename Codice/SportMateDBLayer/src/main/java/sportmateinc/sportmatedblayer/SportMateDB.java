@@ -48,6 +48,13 @@ public class SportMateDB {
 		}
 		return database;
 	}
+	
+	/**
+	 * Restituisce il percorso di <i>SportMateDB</i>. Se il database non esiste nella posizione predefinita,
+	 * viene estratto dalla risorsa del progetto e salvato nella directory dell'utente.
+	 *
+	 * @return il percorso assoluto del file che implementa <i>SportMateDB</i>.
+	 */
 
 	protected static String getDBPath() {
 		String filePath = System.getProperty("user.home") + "/SportMate/data";
@@ -69,6 +76,13 @@ public class SportMateDB {
 		return permanentDbFile.getAbsolutePath();
 
 	}
+	
+	/**
+	 * Estrae il file d'implementazione di <i>SportMateDB</i> dalla risorsa del progetto e lo copia nella posizione specificata.
+	 *
+	 * @param permanentDbFile il file di destinazione in cui verrà copiato il database.
+	 * @throws IOException se si verifica un errore durante la copia del file del database.
+	 */
 
 	protected static void extractDatabase(File permanentDbFile) throws IOException {
 
@@ -139,9 +153,10 @@ public class SportMateDB {
 	}
 	
 	/**
-	 * Restituisce il DSLContext associato alla connessione attualmente attiva a
-	 * <i>SportMateDB</i>
-	 * @return {@link DSLContext} contesto associato a <i>SportMateDB</i>
+	 * Crea e restituisce un'istanza di {@link DSLContext} utilizzando i dettagli di connessione 
+	 * forniti e il dialect SQL specificato per SQLite.
+	 *
+	 * @return un'istanza configurata di {@link DSLContext} per interagire con <i>SportMateDB</i>.
 	 */
 	public DSLContext getContext() {
 		return DSL.using(this.getConnectionDetails(), SQLDialect.SQLITE);

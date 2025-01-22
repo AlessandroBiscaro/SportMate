@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.jooq.DSLContext;
+import org.jooq.SQLDialect;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,6 +97,16 @@ public class SportMateDBTest {
 	@Test(expected = NullPointerException.class)
 	public void testExtractDatabaseNullFileThrowsNullPointerException() throws IOException {
 		SportMateDB.extractDatabase(null);
+	}
+
+	@Test
+	public void testGetContext() {
+		SportMateDB connection = SportMateDB.getInstance();
+		connection.apriConnessione();
+		DSLContext context = connection.getContext();
+		assertNotNull("Il contesto restituito non dovrebbe essere nullo", context);
+		assertEquals("Il dialect SQL dovrebbe essere SQLITE", SQLDialect.SQLITE, context.configuration().dialect());
+		assertNotNull("I dettagli di connessione non dovrebbero essere nulli", connection.getConnectionDetails());
 	}
 
 }
