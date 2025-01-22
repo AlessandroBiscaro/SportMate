@@ -1,16 +1,12 @@
 package SportMateInc.SportMateBusinessLayer.services;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Gestori.GESTORI;
-import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import org.jooq.DSLContext;
 import org.jooq.Record;
-
 import SportMateInc.SportMateBusinessLayer.entity.Gestore;
-import SportMateInc.SportMateBusinessLayer.entity.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class GestoriService {
@@ -40,12 +36,12 @@ public class GestoriService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		return create.insertInto(GESTORI, GESTORI.IDGESTORE, GESTORI.NOME, GESTORI.COGNOME, GESTORI.DATANASCITA, GESTORI.MAIL, GESTORI.TELEFONO, GESTORI.PASSWORD)
-		.values(admin.getIdGestore(), admin.getNome(), admin.getCognome(), DateTimeFormatter.ofPattern("YYYY/MM/DD").format(admin.getDataNascita()), admin.getMail(), admin.getTelefono(), admin.getPassword())
+		return create.insertInto(GESTORI, GESTORI.NOME, GESTORI.COGNOME, GESTORI.DATANASCITA, GESTORI.MAIL, GESTORI.TELEFONO, GESTORI.PASSWORD)
+		.values(admin.getNome(), admin.getCognome(), admin.getDataNascita().toString(), admin.getMail(), admin.getTelefono(), admin.getPassword())
 		.execute();
 	}
 	
-	public static int AggiornaDatiGestore(Gestore admin) {
+	public static int aggiornaDatiGestore(Gestore admin) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();
@@ -53,15 +49,10 @@ public class GestoriService {
 	            .set(GESTORI.NOME, admin.getNome())
 	            .set(GESTORI.COGNOME, admin.getCognome())
 	            .set(GESTORI.MAIL, admin.getMail())
-	            .set(GESTORI.DATANASCITA, DateTimeFormatter.ofPattern("YYYY/MM/DD").format(admin.getDataNascita())) 
+	            .set(GESTORI.DATANASCITA, admin.getDataNascita().toString()) 
 	            .set(GESTORI.TELEFONO, admin.getTelefono())
 	            .set(GESTORI.PASSWORD, admin.getPassword())
 	            .where(GESTORI.IDGESTORE.eq(admin.getIdGestore())) 
 	            .execute(); 
 	}
-	
-	
-	
-	
-	
 }

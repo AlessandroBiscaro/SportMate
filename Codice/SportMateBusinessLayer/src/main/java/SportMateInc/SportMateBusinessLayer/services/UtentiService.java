@@ -1,19 +1,14 @@
 package SportMateInc.SportMateBusinessLayer.services;
 
 import sportmateinc.sportmatedblayer.SportMateDB;
-
 import org.jooq.DSLContext;
-
-import SportMateInc.SportMateBusinessLayer.entity.Gestore;
 import SportMateInc.SportMateBusinessLayer.entity.Utente;
-
 import org.jooq.Record;
-
-import static SportMateInc.SportMateBusinessLayer.tables.Gestori.GESTORI;
-import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
+
 public class UtentiService {
 	
 	private UtentiService() {}
@@ -38,11 +33,10 @@ public class UtentiService {
 		
 		DSLContext create =  db.getContext();
 				
-		return create.insertInto(UTENTI, UTENTI.IDUTENTE, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
-		.values(user.getIdUtente(), 
-				user.getNome(), 
+		return create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
+		.values(user.getNome(), 
 				user.getCognome(), 
-				DateTimeFormatter.ofPattern("YYYY/MM/DD").format(user.getDataNascita()), 
+				user.getDataNascita().toString(), 
 				user.getMail(), 
 				user.getTelefono(), 
 				user.getPassword(), 
@@ -51,7 +45,7 @@ public class UtentiService {
 	}
 	
 	
-	public static int AggiornaDatiUtente(Utente user) {
+	public static int aggiornaDatiUtente(Utente user) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();
@@ -59,7 +53,7 @@ public class UtentiService {
 	            .set(UTENTI.NOME, user.getNome())
 	            .set(UTENTI.COGNOME, user.getCognome())
 	            .set(UTENTI.MAIL, user.getMail())
-	            .set(UTENTI.DATANASCITA, DateTimeFormatter.ofPattern("YYYY/MM/DD").format(user.getDataNascita())) 
+	            .set(UTENTI.DATANASCITA, user.getDataNascita().toString()) 
 	            .set(UTENTI.TELEFONO, user.getTelefono())
 	            .set(UTENTI.PASSWORD, user.getPassword())
 	            .set(UTENTI.LIVELLO, user.getLivello().getIdLivello())

@@ -35,8 +35,6 @@ public class Utente {
 		return idUtente;
 	}
 
-
-
 	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}

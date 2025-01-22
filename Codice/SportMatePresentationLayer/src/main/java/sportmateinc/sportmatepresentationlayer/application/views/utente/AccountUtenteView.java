@@ -1,6 +1,9 @@
 package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
+import com.vaadin.flow.theme.lumo.LumoUtility;
+
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -19,22 +22,23 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
+import com.vaadin.flow.server.VaadinRequest;
+import com.vaadin.flow.spring.security.AuthenticationContext;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
+import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
 import SportMateInc.SportMateBusinessLayer.entity.Livello;
+import SportMateInc.SportMateBusinessLayer.entity.Utente;
 import SportMateInc.SportMateBusinessLayer.services.LivelliService;
-import jakarta.annotation.security.PermitAll;
+import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatepresentationlayer.application.data.Role;
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
-import sportmateinc.sportmatepresentationlayer.application.services.SamplePersonService;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+import java.util.Optional;
+
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("MySportmate")
@@ -42,8 +46,10 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Menu(order = 4, icon = LineAwesomeIconUrl.USER)
 @RolesAllowed({"USER"})
 @Uses(Icon.class)
+
 public class AccountUtenteView extends Composite<VerticalLayout> {
 
+	Utente utente;
 	H1 titoloAccountUtente = new H1();
 	VerticalLayout layoutColumn2 = new VerticalLayout();
 	H5 titoloDatiPersonali = new H5();
@@ -51,12 +57,11 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	VerticalLayout layoutColumn3 = new VerticalLayout();
 	TextField txtNome = new TextField();
 	TextField txtMail = new TextField();
-	Button btnModfica = new Button();
 	VerticalLayout layoutColumn4 = new VerticalLayout();
-	TextField textField3 = new TextField();
+	TextField txtCognome = new TextField();
 	TextField txtCellulare = new TextField();
 	VerticalLayout layoutColumn5 = new VerticalLayout();
-	DatePicker datePicker = new DatePicker();
+	DatePicker dtpDataNascita = new DatePicker();
 	ComboBox<Livello> cmbLivello = new ComboBox<>();
 	Button btnSalva = new Button();
 	H5 titoloCredito = new H5();
@@ -65,7 +70,6 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	HorizontalLayout layoutRow2 = new HorizontalLayout();
 	HorizontalLayout layoutRow3 = new HorizontalLayout();
 	Button btnRicaricaCredito = new Button();
-	Button btnDatiPagamento = new Button();
 	H5 titoloPartitePrenotate = new H5();
 	VerticalLayout layoutColumn7 = new VerticalLayout();
 	Grid gridPartitePrenotate = new Grid(SamplePerson.class);
@@ -75,7 +79,8 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		getContent().setWidth("100%");
 		getContent().getStyle().set("flex-grow", "1");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, titoloAccountUtente);
-
+		
+		getUtenteInfo();
 		setTitoloAccountUtente();
 		setH5();
 		setLayoutColumn2();
@@ -87,10 +92,8 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		setLayoutColumn5();
 		setLayoutColumn6();
 		setLayoutColumn7();
-		setButtonPrimary();
-		setButtonPrimary2();
-		setButtonPrimary3();
-		setButtonPrimary4();
+		setBtnSalva();
+		setBtnRicarica();
 		setTxtNome();
 		setTxtMail();
 		setTxtCognome();
@@ -103,14 +106,21 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		setGridPartitePrenotate();
 	}
 
+	private void getUtenteInfo() {
+		String username = VaadinRequest.getCurrent().getUserPrincipal().getName();
+		if(username != null) {
+			this.utente = UtentiService.findByUsername(username);
+		}
+	}
+
 	private void setTitoloAccountUtente() {
-		titoloAccountUtente.setText("SportMate");
+		titoloAccountUtente.setText("My SportMate");
 		titoloAccountUtente.setWidth("max-content");
 		getContent().add(titoloAccountUtente);
 	}
 	
 	private void setH5() {
-		titoloDatiPersonali.setText("Dati personali:");
+		titoloDatiPersonali.setText("Dati personali");
 		titoloDatiPersonali.setWidth("max-content");
 	}
 
@@ -147,7 +157,6 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutRow.add(layoutColumn5);
 		layoutRow2.setWidthFull();
 		layoutRow2.add(layoutRow3);
-		layoutRow2.add(btnDatiPagamento);
 	}
 
 	private void setLayoutRow2() {
@@ -165,7 +174,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutColumn3.setHeightFull();
 		layoutColumn3.add(txtNome);
 		layoutColumn3.add(txtMail);
-		layoutColumn3.add(btnModfica);
+		layoutColumn3.addClassNames(LumoUtility.Padding.MEDIUM);
 	}
 	
 	private void setLayoutRow3() {
@@ -181,26 +190,24 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutColumn4.setWidth("100%");
 		layoutColumn4.setHeight("min-content");
 		layoutColumn4.setJustifyContentMode(JustifyContentMode.START);
-		layoutColumn4.setAlignItems(Alignment.CENTER);
-		layoutColumn4.add(textField3);
+		layoutColumn4.setAlignItems(Alignment.START);
+		layoutColumn4.add(txtCognome);
 		layoutColumn4.add(txtCellulare);
+		layoutColumn4.add(btnSalva);
 	}
 	
 	private void setLayoutColumn5() {
 		layoutColumn5.setWidth("100%");
 		layoutColumn5.setHeight("min-content");
 		layoutColumn5.setJustifyContentMode(JustifyContentMode.START);
-		layoutColumn5.setAlignItems(Alignment.END);
+		layoutColumn5.setAlignItems(Alignment.START);
 		layoutColumn5.setHeightFull();
-		layoutColumn5.add(datePicker);
+		layoutColumn5.add(dtpDataNascita);
 		layoutColumn5.add(cmbLivello);
-		layoutColumn5.add(btnSalva);
-		layoutColumn5.setAlignSelf(FlexComponent.Alignment.END, btnSalva);
 	}
 	
 	private void setLayoutColumn6() {
 		layoutColumn6.setWidthFull();
-
 		layoutColumn6.setWidth("100%");
 		layoutColumn6.getStyle().set("flex-grow", "1");
 		layoutColumn6.setFlexGrow(1.0, layoutRow2);
@@ -215,64 +222,89 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutColumn7.add(gridPartitePrenotate);
 	}
 	
-	private void setButtonPrimary() {
-		btnModfica.setText("Modifica");
-		btnModfica.setWidth("min-content");
-		btnModfica.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-	}
-	
-	private void setButtonPrimary2() {
+	private void setBtnSalva() {
 		btnSalva.setText("Salva");
 		btnSalva.setWidth("107px");
 		btnSalva.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnSalva.addClickListener(event -> validateAndSave());
 	}
 	
-	private void setButtonPrimary3() {
+	private void validateAndSave() {
+		if(txtCognome.isInvalid() || txtNome.isInvalid() || txtCellulare.isInvalid() || dtpDataNascita.isInvalid()) {
+			return;
+		}
+		Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
+		utente.setCognome(txtCognome.getValue());
+		utente.setNome(txtNome.getValue());
+		utente.setTelefono(txtCellulare.getValue());
+		if(maybeDataNascita.isPresent()) {
+			utente.setDataNascita(maybeDataNascita.get());
+		}
+		utente.setLivello(cmbLivello.getValue());
+		UtentiService.aggiornaDatiUtente(utente);
+		UI.getCurrent().getPage().reload();
+	}
+
+	private void setBtnRicarica() {
 		btnRicaricaCredito.setText("Ricarica");
 		btnRicaricaCredito.setWidth("107px");
 		btnRicaricaCredito.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 	}
 	
-	private void setButtonPrimary4() {
-		btnDatiPagamento.setText("Dati pagamento");
-		btnDatiPagamento.setWidth("min-content");
-		btnDatiPagamento.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-	}
-	
 	private void setTxtNome() {
 		txtNome.setLabel("Nome");
-		txtNome.setWidth("192px");
+		txtNome.setWidth("220px");
+		txtNome.setValue(utente.getNome());
+		txtNome.setRequired(true);
+		txtNome.setErrorMessage("Campo richiesto");
 	}
 	
 	private void setTxtMail() {
 		txtMail.setLabel("Mail");
-		txtMail.setWidth("192px");
+		txtMail.setWidth("220px");
+		txtMail.setValue(utente.getMail());
+		txtMail.setEnabled(false);
 	}
 	
 	private void setTxtCognome() {
-		textField3.setLabel("Cognome");
-		textField3.setWidth("192px");
+		txtCognome.setLabel("Cognome");
+		txtCognome.setWidth("220px");
+		txtCognome.setValue(utente.getCognome());
+		txtCognome.setRequired(true);
+		txtCognome.setErrorMessage("Campo richiesto");
 	}
 	
 	private void setTxtCellulare() {
-		txtCellulare.setLabel("Cellulare");
-		txtCellulare.setWidth("192px");
+		txtCellulare.setLabel("Telefono");
+		txtCellulare.setWidth("220px");
+		txtCellulare.setValue(utente.getTelefono());
+		txtCellulare.setRequiredIndicatorVisible(true);
+		txtCellulare.setAllowedCharPattern("[0-9+-]");
+		txtCellulare.setMinLength(5);
+		txtCellulare.setMaxLength(18);
+		txtCellulare.setErrorMessage("Numero di telefono non valido");
 	}
 	
 	private void setTxtImporto() {
 		txtImporto.setLabel("Importo");
-		txtImporto.setWidth("192px");
+		txtImporto.setWidth("220px");
 	}
 	
 	private void setDtpDataNascita() {
-		datePicker.setLabel("Data di nascita");
-		datePicker.setWidth("min-content");
+		dtpDataNascita.setLabel("Data di nascita");
+		dtpDataNascita.setWidth("min-content");
+		dtpDataNascita.setValue(utente.getDataNascita());
+		dtpDataNascita.setRequired(true);
+		dtpDataNascita.setMax(LocalDate.now());
+		dtpDataNascita.setErrorMessage("Data non valida");
 	}
 	
 	private void setCmbLivello() {
 		cmbLivello.setLabel("Livello");
 		cmbLivello.setWidth("min-content");
+		cmbLivello.setAllowCustomValue(false);
 		setCmbLivelloData(cmbLivello);
+		cmbLivello.setValue(utente.getLivello());
 	}
 	
 	private void setTitoloCredito() {
