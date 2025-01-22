@@ -14,15 +14,16 @@ import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import jakarta.annotation.security.PermitAll;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
+
 import java.util.Arrays;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Feedback")
 @Route("feedback")
-@Menu(order = 4, icon = LineAwesomeIconUrl.LIST_SOLID)
-@PermitAll
+@Menu(order = 14, icon = LineAwesomeIconUrl.LIST_SOLID)
+@AnonymousAllowed
 public class FeedbackView extends Div implements AfterNavigationObserver {
 
     Grid<Person> grid = new Grid<>();

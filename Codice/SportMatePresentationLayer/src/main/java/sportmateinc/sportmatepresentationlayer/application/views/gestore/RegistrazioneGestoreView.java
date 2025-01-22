@@ -25,19 +25,18 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Regitrazione Gestore")
-@Route("regitrazioneGestore")
-@Menu(order = 3, icon = LineAwesomeIconUrl.PENCIL_RULER_SOLID)
-@PermitAll
-//da nascondere dal menu
-public class RegitrazioneGestoreView extends Composite<VerticalLayout> {
+@Route("registrazioneGestore")
+@AnonymousAllowed
+public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
 
-    public RegitrazioneGestoreView() {
+    public RegistrazioneGestoreView() {
         H1 h1 = new H1();
         H5 h5 = new H5();
         HorizontalLayout layoutRow = new HorizontalLayout();

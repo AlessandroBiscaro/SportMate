@@ -26,6 +26,7 @@ import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
@@ -40,21 +41,20 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Disponibilità")
-@Route("disponibilita")
-@Menu(order = 7, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
-@PermitAll
-//@RolesAllowed({"USER"})
+@PageTitle("Partite Private")
+@Route("disponibilitaPrivate")
+@Menu(order = 2, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
+@RolesAllowed({"USER"})
 
 @Uses(Icon.class)
-public class DisponibilitàView extends Div {
+public class DisponibilitàPrivateView extends Div {
 
     private Grid<SamplePerson> grid;
 
     private Filters filters;
     private final SamplePersonService samplePersonService;
 
-    public DisponibilitàView(SamplePersonService SamplePersonService) {
+    public DisponibilitàPrivateView(SamplePersonService SamplePersonService) {
         this.samplePersonService = SamplePersonService;
         setSizeFull();
         addClassNames("disponibilità-view");

@@ -30,9 +30,8 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("AccountGestore")
 @Route("accountGestore")
-@Menu(order = 10, icon = LineAwesomeIconUrl.USER_TIE_SOLID)
-@PermitAll
-//@RolesAllowed({"ADMIN"})
+@Menu(order = 10, icon = LineAwesomeIconUrl.USER_SOLID)
+@RolesAllowed({"ADMIN"})
 public class AccountGestoreView extends Composite<VerticalLayout> {
 
     public AccountGestoreView() {

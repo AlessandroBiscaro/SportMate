@@ -27,13 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("AggiungitiPubblica")
+@PageTitle("Partite Pubbliche")
 @Route("aggiungitiPubblica")
-@Menu(order = 12, icon = LineAwesomeIconUrl.PLUS_SOLID)
+@RolesAllowed({"USER"})
 
-@PermitAll
-//@RolesAllowed({"USER"})
-//da nascondere daal menu
 public class AggiungitiPubblicaView extends Composite<VerticalLayout> {
 
     public AggiungitiPubblicaView() {

@@ -24,10 +24,8 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Dati pagamento")
 @Route("datiPagamento")
-@Menu(order = 14, icon = LineAwesomeIconUrl.CREDIT_CARD)
-@PermitAll
-//@RolesAllowed({"USER"})
-//da nascondere dal menu
+@RolesAllowed({"USER"})
+
 public class DatipagamentoView extends Div {
 
     private TextField cardNumber;

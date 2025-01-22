@@ -22,6 +22,7 @@ import com.vaadin.flow.server.auth.AccessAnnotationChecker;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.server.menu.MenuConfiguration;
 import com.vaadin.flow.server.menu.MenuEntry;
+import com.vaadin.flow.spring.security.AuthenticationContext;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
@@ -43,10 +44,12 @@ public class MainLayout extends AppLayout {
 
     private AuthenticatedUser authenticatedUser;
     private AccessAnnotationChecker accessChecker;
+    private AuthenticationContext authenticationContext;
 
     public MainLayout(AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker) {
         this.authenticatedUser = authenticatedUser;
         this.accessChecker = accessChecker;
+        authenticationContext = new AuthenticationContext();
 
         setPrimarySection(Section.DRAWER);
         addDrawerContent();
@@ -78,11 +81,14 @@ public class MainLayout extends AppLayout {
 
         List<MenuEntry> menuEntries = MenuConfiguration.getMenuEntries();
         menuEntries.forEach(entry -> {
-            if (entry.icon() != null) {
-                nav.addItem(new SideNavItem(entry.title(), entry.path(), new SvgIcon(entry.icon())));
-            } else {
-                nav.addItem(new SideNavItem(entry.title(), entry.path()));
-            }
+        		if(authenticationContext.isAuthenticated() && (entry.path().equals("/registrazione") || entry.path().equals("/registrazioneUtente") || entry.path().equals("/registrazioneGestore"))) {
+        			return;
+        		}
+    			if (entry.icon() != null) {
+    				nav.addItem(new SideNavItem(entry.title(), entry.path(), new SvgIcon(entry.icon())));
+    			} else {
+    				nav.addItem(new SideNavItem(entry.title(), entry.path()));
+    			}
         });
 
         return nav;
@@ -114,11 +120,13 @@ public class MainLayout extends AppLayout {
             userName.getSubMenu().addItem("Sign out", e -> {
                 authenticatedUser.logout();
             });
-            userName.getSubMenu().addItem("My profile", e -> {
-            	//Inserimento if per indirizzare a pagina personale utente o gestore in base a Role
-            		UI.getCurrent().getPage().setLocation("/myprofile");
-            	
-            	
+            userName.getSubMenu().addItem("My SportMate", e -> {
+        		if(authenticationContext.hasRole("USER")) {
+        			UI.getCurrent().getPage().setLocation("/myprofile");
+        		}
+        		else {
+        			UI.getCurrent().getPage().setLocation("/accountGestore");
+        		}
             });
 
             layout.add(userMenu);

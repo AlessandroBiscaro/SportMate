@@ -35,6 +35,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
 
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,11 +43,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Map")
+@PageTitle("Mappa Centri")
 @Route("map")
-@Menu(order = 6, icon = LineAwesomeIconUrl.MAP)
-@PermitAll
-//@RolesAllowed({"USER"})
+@Menu(order = 1, icon = LineAwesomeIconUrl.MAP)
+@RolesAllowed({"USER"})
 
 public class MapView extends HorizontalLayout {
 

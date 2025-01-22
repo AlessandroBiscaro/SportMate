@@ -16,17 +16,14 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.RolesAllowed;
 
-import org.hibernate.annotations.processing.Exclude;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 
-
-
 @PageTitle("Registrazione")
-@Route("registration")
+@Route("registrazione")
 @AnonymousAllowed
 @Menu(order = 1, icon = LineAwesomeIconUrl.USER_EDIT_SOLID)
 

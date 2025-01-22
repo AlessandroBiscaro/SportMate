@@ -26,6 +26,7 @@ import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
@@ -40,11 +41,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Disponibilità Pubbliche")
-@Route("dispPubb")
-@Menu(order = 11, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
-@PermitAll
-//@RolesAllowed({"USER"})
+@PageTitle("Partite Pubbliche")
+@Route("disponibilitaPubbliche")
+@Menu(order = 3, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
+@RolesAllowed({"USER"})
 
 @Uses(Icon.class)
 public class DisponibilitàPubblicheView extends Div {

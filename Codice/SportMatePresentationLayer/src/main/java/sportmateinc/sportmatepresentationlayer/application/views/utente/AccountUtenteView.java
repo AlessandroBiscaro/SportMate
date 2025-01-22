@@ -37,11 +37,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("My Profile")
+@PageTitle("MySportmate")
 @Route("myprofile")
-@Menu(order = 9, icon = LineAwesomeIconUrl.USER)
-@PermitAll
-//@RolesAllowed({"USER"})
+@Menu(order = 4, icon = LineAwesomeIconUrl.USER)
+@RolesAllowed({"USER"})
 @Uses(Icon.class)
 public class AccountUtenteView extends Composite<VerticalLayout> {
 
