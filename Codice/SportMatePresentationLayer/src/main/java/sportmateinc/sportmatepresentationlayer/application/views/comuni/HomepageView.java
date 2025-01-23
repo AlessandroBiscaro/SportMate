@@ -7,7 +7,6 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.messages.MessageList;
-import com.vaadin.flow.component.messages.MessageListItem;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -20,15 +19,8 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
-import SportMateInc.SportMateBusinessLayer.entity.Feedback;
-import SportMateInc.SportMateBusinessLayer.services.FeedbackService;
 import sportmateinc.sportmatepresentationlayer.application.services.MessageListDelegator;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Homepage")
@@ -36,7 +28,6 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Menu(order = 0, icon = LineAwesomeIconUrl.HOME_SOLID)
 @AnonymousAllowed
 public class HomepageView extends Composite<VerticalLayout> {
-	private static final long serialVersionUID = 1L;
 	HorizontalLayout layoutRow = new HorizontalLayout();
      H1 titoloHomePage = new H1();
      HorizontalLayout layoutRow2 = new HorizontalLayout();
@@ -48,7 +39,6 @@ public class HomepageView extends Composite<VerticalLayout> {
      Button btnBasket3v3 = new Button();
      MessageList messageList = new MessageList();
      MessageListDelegator delegator = new MessageListDelegator();
-     Button btnFeedback = new Button();
      HorizontalLayout layoutRow4 = new HorizontalLayout();
 
     public HomepageView() {
@@ -66,7 +56,6 @@ public class HomepageView extends Composite<VerticalLayout> {
         setBtnCalcio5();
         setBtnCalcio7();
         setBtnBasket3v3();
-        setBtnFeedback();
         setLayoutRow4();
     }
     
@@ -114,11 +103,9 @@ public class HomepageView extends Composite<VerticalLayout> {
          textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
          layoutColumn2.setFlexGrow(1.0, layoutRow3);
          layoutColumn2.setAlignSelf(FlexComponent.Alignment.START, messageList);
-         layoutColumn2.setAlignSelf(FlexComponent.Alignment.END, btnFeedback);
          layoutColumn2.add(textSmall);
          layoutColumn2.add(layoutRow3);
          layoutColumn2.add(messageList);
-         layoutColumn2.add(btnFeedback);
     }
     
     private void setLayoutRow3() {
@@ -149,16 +136,9 @@ public class HomepageView extends Composite<VerticalLayout> {
     
     private void setBtnBasket3v3() {
     	btnBasket3v3.setText("Basket 3v3");
-        btnBasket3v3.setWidth("min-content");
+        btnBasket3v3.setWidth("127px");
         btnBasket3v3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         btnBasket3v3.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
-    }
-    
-    private void setBtnFeedback() {
-    	 btnFeedback.setText("Feedback");
-         btnFeedback.setWidth("min-content");
-         btnFeedback.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-         btnFeedback.addClickListener(e -> UI.getCurrent().getPage().setLocation("/feedback"));
     }
     
     private void setLayoutRow4() {
