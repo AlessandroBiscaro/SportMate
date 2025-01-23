@@ -124,21 +124,21 @@ public class HomepageView extends Composite<VerticalLayout> {
     	 btnCalcio5.setText("Calcio a 5");
          btnCalcio5.setWidth("127px");
          btnCalcio5.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-         btnCalcio5.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
+         btnCalcio5.addClickListener(e -> UI.getCurrent().getPage().setLocation("/disponibilitaPrivate"));
     }
 
     private void setBtnCalcio7() {
     	 btnCalcio7.setText("Calcio a 7");
          btnCalcio7.setWidth("127px");
          btnCalcio7.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-         btnCalcio7.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
+         btnCalcio7.addClickListener(e -> UI.getCurrent().getPage().setLocation("/disponibilitaPrivate"));
     }
     
     private void setBtnBasket3v3() {
     	btnBasket3v3.setText("Basket 3v3");
         btnBasket3v3.setWidth("127px");
         btnBasket3v3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        btnBasket3v3.addClickListener(e -> UI.getCurrent().getPage().setLocation("/prenotazione"));
+        btnBasket3v3.addClickListener(e -> UI.getCurrent().getPage().setLocation("/disponibilitaPrivate"));
     }
     
     private void setLayoutRow4() {

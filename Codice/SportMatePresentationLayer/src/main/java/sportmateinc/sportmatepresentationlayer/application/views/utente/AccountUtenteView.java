@@ -43,7 +43,6 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("MySportmate")
 @Route("myprofile")
-@Menu(order = 4, icon = LineAwesomeIconUrl.USER)
 @RolesAllowed({"USER"})
 @Uses(Icon.class)
 
