@@ -1,16 +1,11 @@
 package SportMateInc.SportMateBusinessLayer.services;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Feedback.FEEDBACK;
-import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 import org.jooq.DSLContext;
 import org.jooq.Record;
-import org.jooq.Record2;
-import org.jooq.Record3;
 
 import SportMateInc.SportMateBusinessLayer.entity.Feedback;
 import SportMateInc.SportMateBusinessLayer.entity.Utente;

@@ -2,7 +2,12 @@ package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.messages.MessageList;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
+import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.Menu;
@@ -19,18 +24,40 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Menu(order = 14, icon = LineAwesomeIconUrl.LIST_SOLID)
 @AnonymousAllowed
 public class FeedbackView extends Div implements AfterNavigationObserver {
-
+	
+	H1 title = new H1();
 	MessageList messageList = new MessageList();
 	MessageListDelegator delegator = new MessageListDelegator();
+	private VerticalLayout verticalLayout = new VerticalLayout();
 	
     public FeedbackView() {
         addClassName("feedback-view");
         setSizeFull();
-        messageList.setWidth("100%");
-        setMessageListDelegating(messageList);
-        add(messageList);
+        setVerticalLayout(verticalLayout);
+        add(verticalLayout);
     }
     
+    private void setVerticalLayout(VerticalLayout verticalLayout) {
+		verticalLayout.setWidth("100%");
+		verticalLayout.setHeight("min-content");
+		verticalLayout.setJustifyContentMode(JustifyContentMode.CENTER);
+		verticalLayout.setAlignItems(Alignment.CENTER);
+		verticalLayout.setWidthFull();
+		setSportMateTitle(title);
+		setMessageList(messageList);
+		verticalLayout.add(title, messageList);
+    }
+    
+	private void setSportMateTitle(H1 title) {
+		title.setText("Feedback");
+		title.setWidth("max-content");
+	}
+	
+	private void setMessageList(MessageList messageList) {
+		messageList.setWidth("100%");
+        setMessageListDelegating(messageList);
+	}
+
 	@Override
 	public void afterNavigation(AfterNavigationEvent event) {
 		delegator.setMessageList(messageList);
