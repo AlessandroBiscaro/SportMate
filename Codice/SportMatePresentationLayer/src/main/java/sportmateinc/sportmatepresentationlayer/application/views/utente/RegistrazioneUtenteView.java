@@ -134,13 +134,14 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutRow.setFlexGrow(1.0, layoutColumn7);
         layoutColumn7.setWidth("135px");
         layoutColumn7.getStyle().set("flex-grow", "1");
-        setButtonRegistrazione();
+        
         progressBar.setValue(0.5);
         progressBar.setWidth("100%");
         progressBar.setHeight("15px");
         getContent().add(h1);
         getContent().add(h5);
         getContent().add(layoutRow);
+        setButtonRegistrazione();
         layoutRow.add(layoutColumn5);
         layoutRow.add(layoutColumn2);
         layoutColumn2.add(textFieldNome);
@@ -156,7 +157,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutColumn4.add(passwordFieldConferma);
         layoutRow.add(layoutColumn7);
         
-        getContent().add(progressBar);
+        //getContent().add(progressBar);
     }
 
     record SampleItem(String value, String label, Boolean disabled) {
