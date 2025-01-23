@@ -18,7 +18,13 @@ public class Location {
 
     }
 
-    public int getId() {
+    @Override
+	public String toString() {
+		return "Location [id=" + id + ", country=" + country + ", city=" + city + ", place=" + place + ", latitude="
+				+ latitude + ", longitude=" + longitude + "]";
+	}
+
+	public int getId() {
         return id;
     }
 

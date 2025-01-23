@@ -29,37 +29,37 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @AnonymousAllowed
 public class HomepageView extends Composite<VerticalLayout> {
 	HorizontalLayout layoutRow = new HorizontalLayout();
-     H1 titoloHomePage = new H1();
-     HorizontalLayout layoutRow2 = new HorizontalLayout();
-     VerticalLayout layoutColumn2 = new VerticalLayout();
-     Paragraph textSmall = new Paragraph();
-     HorizontalLayout layoutRow3 = new HorizontalLayout();
-     Button btnCalcio5 = new Button();
-     Button btnCalcio7 = new Button();
-     Button btnBasket3v3 = new Button();
-     MessageList messageList = new MessageList();
-     MessageListDelegator delegator = new MessageListDelegator();
-     HorizontalLayout layoutRow4 = new HorizontalLayout();
+	H1 titoloHomePage = new H1();
+	HorizontalLayout layoutRow2 = new HorizontalLayout();
+	VerticalLayout layoutColumn2 = new VerticalLayout();
+	Paragraph textSmall = new Paragraph();
+	HorizontalLayout layoutRow3 = new HorizontalLayout();
+	Button btnCalcio5 = new Button();
+	Button btnCalcio7 = new Button();
+	Button btnBasket3v3 = new Button();
+	MessageList messageList = new MessageList();
+	MessageListDelegator delegator = new MessageListDelegator();
+	HorizontalLayout layoutRow4 = new HorizontalLayout();
 
-    public HomepageView() {
-        getContent().addClassName(Gap.XSMALL);
-        getContent().addClassName(Padding.XSMALL);
-        getContent().setWidth("100%");
-        getContent().getStyle().set("flex-grow", "1");
-        messageList.setWidth("100%");
-        setMessageListDelegating(messageList);
-        setTitolo();
-        setLayoutRow();
-        setLayoutRow2();
-        setLayoutColumn2();
-        setLayoutRow3();
-        setBtnCalcio5();
-        setBtnCalcio7();
-        setBtnBasket3v3();
-        setLayoutRow4();
-    }
-    
-    private void setMessageListDelegating(MessageList messageList) {
+	public HomepageView() {
+		getContent().addClassName(Gap.XSMALL);
+		getContent().addClassName(Padding.XSMALL);
+		getContent().setWidth("100%");
+		getContent().getStyle().set("flex-grow", "1");
+		messageList.setWidth("100%");
+		setMessageListDelegating(messageList);
+		setTitolo();
+		setLayoutRow();
+		setLayoutRow2();
+		setLayoutColumn2();
+		setLayoutRow3();
+		setBtnCalcio5();
+		setBtnCalcio7();
+		setBtnBasket3v3();
+		setLayoutRow4();
+	}
+
+	private void setMessageListDelegating(MessageList messageList) {
 		delegator.setMessageList(messageList);
 	}
 
@@ -147,5 +147,4 @@ public class HomepageView extends Composite<VerticalLayout> {
          layoutRow4.setHeight("min-content");     
          getContent().add(layoutRow4);
     }
-    
 }

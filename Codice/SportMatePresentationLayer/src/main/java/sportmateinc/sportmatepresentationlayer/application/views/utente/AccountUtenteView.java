@@ -13,11 +13,13 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
@@ -65,7 +67,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	Button btnSalva = new Button();
 	H5 titoloCredito = new H5();
 	VerticalLayout layoutColumn6 = new VerticalLayout();
-	TextField txtImporto = new TextField();
+	NumberField txtImporto = new NumberField();
 	HorizontalLayout layoutRow2 = new HorizontalLayout();
 	HorizontalLayout layoutRow3 = new HorizontalLayout();
 	Button btnRicaricaCredito = new Button();
@@ -285,8 +287,19 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 	
 	private void setTxtImporto() {
-		txtImporto.setLabel("Importo");
-		txtImporto.setWidth("220px");
+		//txtImporto.setLabel("Importo");
+		//txtImporto.setWidth("220px");
+		//txtImporto.setValue(utente.getCredito().toString());
+		//txtCognome.setRequired(true);
+		//txtCognome.setErrorMessage("Campo richiesto");
+		/**
+		 * dollarField.setLabel("Balance");
+		dollarField.setValue(200.0);
+		Div dollarPrefix = new Div();
+		dollarPrefix.setText("$");
+		dollarField.setPrefixComponent(dollarPrefix);
+		 */
+		
 	}
 	
 	private void setDtpDataNascita() {
