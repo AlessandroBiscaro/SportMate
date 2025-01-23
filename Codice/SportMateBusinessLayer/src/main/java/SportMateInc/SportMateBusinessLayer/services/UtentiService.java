@@ -1,8 +1,9 @@
 package SportMateInc.SportMateBusinessLayer.services;
 
-import sportmateinc.sportmatedblayer.SportMateDB;
 import org.jooq.DSLContext;
 import SportMateInc.SportMateBusinessLayer.entity.Utente;
+import sportmateinc.sportmatedblayer.SportMateDB;
+
 import org.jooq.Record;
 import java.time.LocalDate;
 
@@ -10,7 +11,7 @@ import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
 public class UtentiService {
 	
-	private UtentiService() {}
+	public UtentiService() {}
  	
 	public static Utente findByUsername(String username) {
 		SportMateDB db = SportMateDB.getInstance();
