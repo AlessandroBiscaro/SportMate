@@ -59,4 +59,17 @@ public class UtentiService {
 	            .where(UTENTI.IDUTENTE.eq(user.getIdUtente())) 
 	            .execute(); 
 	}
+
+	public static Utente findById(Integer id) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		Record result = create.select()
+				.from(UTENTI)
+		.where(UTENTI.IDUTENTE.eq(id))
+		.fetchOne();
+		db.chiudiConnessione();
+		return new Utente(result.get(UTENTI.IDUTENTE),result.get(UTENTI.MAIL), result.get(UTENTI.NOME),result.get(UTENTI.COGNOME), LocalDate.parse(result.get(UTENTI.DATANASCITA)), result.get(UTENTI.TELEFONO), result.get(UTENTI.PASSWORD),
+				result.get(UTENTI.CREDITO), LivelliService.findLivello(result.get(UTENTI.LIVELLO)));
+	}
 }

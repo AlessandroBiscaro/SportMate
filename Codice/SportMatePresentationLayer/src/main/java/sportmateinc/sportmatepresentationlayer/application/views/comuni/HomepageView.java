@@ -19,17 +19,16 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
-import static SportMateInc.SportMateBusinessLayer.tables.Feedback.FEEDBACK;
-import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
+import SportMateInc.SportMateBusinessLayer.entity.Feedback;
 import SportMateInc.SportMateBusinessLayer.services.FeedbackService;
+import sportmateinc.sportmatepresentationlayer.application.services.MessageListDelegator;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import org.jooq.Record3;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Homepage")
@@ -48,6 +47,7 @@ public class HomepageView extends Composite<VerticalLayout> {
      Button btnCalcio7 = new Button();
      Button btnBasket3v3 = new Button();
      MessageList messageList = new MessageList();
+     MessageListDelegator delegator = new MessageListDelegator();
      Button btnFeedback = new Button();
      HorizontalLayout layoutRow4 = new HorizontalLayout();
 
@@ -57,7 +57,7 @@ public class HomepageView extends Composite<VerticalLayout> {
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         messageList.setWidth("100%");
-        setMessageList(messageList);
+        setMessageListDelegating(messageList);
         setTitolo();
         setLayoutRow();
         setLayoutRow2();
@@ -70,7 +70,11 @@ public class HomepageView extends Composite<VerticalLayout> {
         setLayoutRow4();
     }
     
-    private void setTitolo() {
+    private void setMessageListDelegating(MessageList messageList) {
+		delegator.setMessageList(messageList);
+	}
+
+	private void setTitolo() {
     	 titoloHomePage.setText("SportMate");
          titoloHomePage.setWidth("max-content");
          titoloHomePage.setHeight("80px");
@@ -164,20 +168,4 @@ public class HomepageView extends Composite<VerticalLayout> {
          getContent().add(layoutRow4);
     }
     
-    
-   private void setMessageList(MessageList messageList) {
-	   List<Record3<String, String, String>> feedback = FeedbackService.findAll();
-	   List<MessageListItem> lista = new ArrayList<>();
-	   int colorId = 0;
-	   
-	   for( Record3<String, String, String> f : feedback) {
-		   MessageListItem message = new MessageListItem(f.get(FEEDBACK.TESTO),
-				   LocalDateTime.now().minusMinutes(new Random().nextLong(0,2000)).toInstant(ZoneOffset.UTC),
-				   f.get(UTENTI.NOME) + " " +  f.get(UTENTI.COGNOME));
-		   message.setUserColorIndex(colorId++);
-		   lista.add(message);
-	   }
-	   messageList.setItems(lista);
-	   
-    }
 }
