@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Regitrazione Gestore")
+@PageTitle("Registrazione Gestore")
 @Route("registrazioneGestore")
 @AnonymousAllowed
 public class RegistrazioneGestoreView extends Composite<VerticalLayout> {

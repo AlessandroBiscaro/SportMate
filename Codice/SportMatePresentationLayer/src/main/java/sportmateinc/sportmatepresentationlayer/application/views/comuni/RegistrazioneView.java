@@ -27,7 +27,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("Registrazione")
 @Route("registrazione")
 @AnonymousAllowed
-@Menu(order = 1, icon = LineAwesomeIconUrl.USER_EDIT_SOLID)
+
 
 
 public class RegistrazioneView extends Composite<VerticalLayout> {
@@ -93,8 +93,8 @@ public class RegistrazioneView extends Composite<VerticalLayout> {
 		btnGestore.setWidth("125px");
 		btnGestore.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		
-		btnUtente.addClickListener(e -> UI.getCurrent().getPage().setLocation("/regitrazioneUtente"));
-		btnGestore.addClickListener(e -> UI.getCurrent().getPage().setLocation("/regitrazioneGestore"));
+		btnUtente.addClickListener(e -> UI.getCurrent().getPage().setLocation("/registrazioneUtente"));
+		btnGestore.addClickListener(e -> UI.getCurrent().getPage().setLocation("/registrazioneGestore"));
 	}
 
 	private void setSportMateTitle() {

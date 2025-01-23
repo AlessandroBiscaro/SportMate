@@ -133,6 +133,8 @@ public class MainLayout extends AppLayout {
         } else {
             Anchor loginLink = new Anchor("login", "Sign in");
             layout.add(loginLink);
+            Anchor registerLink = new Anchor("registrazione", "        Sign up");
+            layout.add(registerLink);
         }
 
         return layout;

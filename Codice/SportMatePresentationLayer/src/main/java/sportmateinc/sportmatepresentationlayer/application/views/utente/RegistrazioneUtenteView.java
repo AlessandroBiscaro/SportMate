@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Regitrazione Utente")
+@PageTitle("Registrazione Utente")
 @Route("registrazioneUtente")
 @AnonymousAllowed
 
