@@ -26,7 +26,7 @@ public class LocationService {
 			ResultSet result = stmt.executeQuery(sql);
 			while (result.next()) {
 				String[] parts = result.getString(3).split(",");
-				resultList.add(new Location(result.getInt(1), parts[3] + " " + parts[4], parts[0] + " " + parts[1] + ",1" + parts[2], result.getString(2),
+				resultList.add(new Location(result.getInt(1), parts[3] + " " + parts[4], parts[0] + ", " + parts[1] + " " + parts[2], result.getString(2),
 						result.getDouble(4), result.getDouble(5)));
 			}
 			stmt.close();
@@ -38,10 +38,4 @@ public class LocationService {
 		return resultList;
 
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(LocationService.getLocation());
-	}
-
-
 }
