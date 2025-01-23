@@ -14,7 +14,7 @@ import sportmateinc.sportmatedblayer.SportMateDB;
 public class LocationService {
 	private static Logger LOGGER = Logger.getLogger(LocationService.class);
 
-	public static List<Location> getLocation() {
+	public static List<Location> findAll() {
 
 		List<Location> resultList = new ArrayList<>();
 		Statement stmt = null;

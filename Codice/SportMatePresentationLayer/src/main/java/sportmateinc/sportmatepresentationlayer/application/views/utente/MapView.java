@@ -50,7 +50,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 public class MapView extends HorizontalLayout {
 	
-    private static Location[] locations = LocationService.getLocation().toArray(Location[]::new);
+    private static Location[] locations = LocationService.findAll().toArray(Location[]::new);
     private Map map = new Map();
 
     private UnorderedList cardList;
