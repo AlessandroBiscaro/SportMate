@@ -170,6 +170,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         getContent().add(buttonPrimary);
         buttonPrimary.addClickListener(e ->{
+        	System.out.println("entrato in click button");
         	String nome = textFieldNome.getValue();
         	String cognome = textFieldCognome.getValue();
         	String mail = emailField.getValue();
@@ -181,8 +182,13 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         	Utente utente = new Utente(0, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(10), livello);
         	if(UtentiService.aggiungiUtente(utente)==1){
         		//messaggio registrazione corretta utente
+        		System.out.println("entrato in query eseguita");
+        		//ricarico la pagina dopo il login
+        		//UI.getCurrent().getPage().reload();
+        	
         	}else {
         		//messaggio registrazione errata utente
+        		System.out.println("entrato in err query");
         	}
         	
         	

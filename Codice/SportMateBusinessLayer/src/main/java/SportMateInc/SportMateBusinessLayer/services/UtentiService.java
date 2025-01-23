@@ -5,6 +5,8 @@ import SportMateInc.SportMateBusinessLayer.entity.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 import org.jooq.Record;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
@@ -32,8 +34,9 @@ public class UtentiService {
 		db.apriConnessione();
 		
 		DSLContext create =  db.getContext();
+		System.out.println("entrato in aggiungi utente");
 				
-		return create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
+		int res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
 		.values(user.getNome(), 
 				user.getCognome(), 
 				user.getDataNascita().toString(), 
@@ -42,6 +45,17 @@ public class UtentiService {
 				user.getPassword(), 
 				user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
 		.execute();
+		try {
+			db.getConnectionDetails().commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("esecuzione query ris: " + res);
+		db.chiudiConnessione();
+		System.out.println("chiusura connessione db");
+		return res;
+		
 	}
 	
 	
@@ -49,7 +63,7 @@ public class UtentiService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();
-		return create.update(UTENTI)
+		int res= create.update(UTENTI)
 	            .set(UTENTI.NOME, user.getNome())
 	            .set(UTENTI.COGNOME, user.getCognome())
 	            .set(UTENTI.MAIL, user.getMail())
@@ -59,6 +73,8 @@ public class UtentiService {
 	            .set(UTENTI.LIVELLO, user.getLivello().getIdLivello())
 	            .where(UTENTI.IDUTENTE.eq(user.getIdUtente())) 
 	            .execute(); 
+		db.chiudiConnessione();
+		return res;
 	}
 
 	public static Utente findById(Integer id) {
