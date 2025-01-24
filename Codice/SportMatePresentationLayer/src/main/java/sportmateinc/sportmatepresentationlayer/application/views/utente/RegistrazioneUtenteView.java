@@ -1,7 +1,6 @@
 package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -9,8 +8,6 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -20,7 +17,6 @@ import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
@@ -30,20 +26,14 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import SportMateInc.SportMateBusinessLayer.entity.Livello;
 import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import SportMateInc.SportMateBusinessLayer.services.UtentiService;
-import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 import SportMateInc.SportMateBusinessLayer.entity.Utente;
 
-import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Registrazione Utente")
 @Route("registrazioneUtente")
@@ -83,7 +73,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         h1.setText("SportMate");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
         h1.setWidth("max-content");
-        h5.setText("Inserisci i tuoi dati:");
+        h5.setText("Inserisci i tuoi dati");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h5);
         h5.setWidth("max-content");
         layoutRow.setWidthFull();
@@ -373,7 +363,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     
     private void validateAndSave() {
     	NotificationDelegator notification = new NotificationDelegator();
-		if(textFieldCognome.isInvalid() || textFieldNome.isInvalid() || textFieldCellulare.isInvalid() || datePickerDataNascita.isInvalid()) {
+		if(textFieldCognome.isInvalid() || textFieldNome.isInvalid() || textFieldCellulare.isInvalid() || comboBoxLivello.isInvalid() ||datePickerDataNascita.isInvalid() || emailField.isInvalid() || passwordField.isInvalid() || passwordFieldConferma.isInvalid()) {
 			return;
 		}
 		if(!UtentiService.isCellulareUnique(textFieldCellulare.getValue())) {

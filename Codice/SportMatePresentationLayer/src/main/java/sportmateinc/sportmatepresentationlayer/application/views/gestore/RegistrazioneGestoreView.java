@@ -1,12 +1,14 @@
 package sportmateinc.sportmatepresentationlayer.application.views.gestore;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -29,55 +31,59 @@ import SportMateInc.SportMateBusinessLayer.entity.Gestore;
 import SportMateInc.SportMateBusinessLayer.entity.Livello;
 import SportMateInc.SportMateBusinessLayer.entity.ServiziAgg;
 import SportMateInc.SportMateBusinessLayer.entity.TipoCampo;
+import SportMateInc.SportMateBusinessLayer.services.CentriSportiviService;
+import SportMateInc.SportMateBusinessLayer.services.GestoriService;
 import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import SportMateInc.SportMateBusinessLayer.services.ServiziAggService;
 import SportMateInc.SportMateBusinessLayer.services.TipoCampoService;
+import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
+import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Registrazione Gestore")
 @Route("registrazioneGestore")
 @AnonymousAllowed
 public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
-
 	 H1 h1 = new H1();
      H5 h5 = new H5();
      HorizontalLayout layoutRow = new HorizontalLayout();
      VerticalLayout layoutColumn4 = new VerticalLayout();
      VerticalLayout layoutColumn2 = new VerticalLayout();
-     TextField txtNome = new TextField();
-     DatePicker dtpNascita = new DatePicker();
+     TextField textFieldNome = new TextField();
+     DatePicker datePickerDataNascita = new DatePicker();
      EmailField emailField = new EmailField();
-     TextField txtNomeCom = new TextField();
-     MultiSelectComboBox cmbTipoCampo = new MultiSelectComboBox();
-     TimePicker tpOpen = new TimePicker();
-     MultiSelectComboBox cmbServAgg = new MultiSelectComboBox();
+     TextField textFieldNomeCommerciale = new TextField();
+     MultiSelectComboBox<TipoCampo> multiSelectTipoCampo = new MultiSelectComboBox();
+     TimePicker timePickerOraApertura = new TimePicker();
+     MultiSelectComboBox<ServiziAgg> multiSelectServAgg = new MultiSelectComboBox();
      VerticalLayout layoutColumn5 = new VerticalLayout();
      VerticalLayout layoutColumn3 = new VerticalLayout();
-     TextField txtCognome = new TextField();
-     TextField txtCell = new TextField();
-     PasswordField txtPsw = new PasswordField();
-     PasswordField txtPswConf = new PasswordField();
-     TextField txtIndirizzo = new TextField();
-     TimePicker tpClose = new TimePicker();
-     TextField txtAltro = new TextField();
+     TextField textFieldCognome = new TextField();
+     TextField textFieldCellulare = new TextField();
+     PasswordField passwordField = new PasswordField();
+     PasswordField passwordFieldConferma = new PasswordField();
+     TextField textFieldIndirizzo = new TextField();
+     TimePicker timePickerOraChiusura = new TimePicker();
+     TextField textFieldAltro = new TextField();
      VerticalLayout layoutColumn6 = new VerticalLayout();
      Button btnRegistrazione = new Button();
-     ProgressBar progressBar = new ProgressBar();
 	
     public RegistrazioneGestoreView() {
-       
         getContent().setHeightFull();
         getContent().setWidthFull();
         h1.setText("SportMate");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
         h1.setWidth("max-content");
-        h5.setText("Inserisci i tuoi dati:");
+        h5.setText("Inserisci i tuoi dati e quelli del tuo centro");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h5);
         h5.setWidth("max-content");
         layoutRow.setWidthFull();
@@ -97,22 +103,24 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         layoutColumn2.setHeight("100%");
         layoutColumn2.setJustifyContentMode(JustifyContentMode.START);
         layoutColumn2.setAlignItems(Alignment.END);
-        txtNome.setLabel("Nome:");
-        txtNome.setWidth("192px");
-        dtpNascita.setLabel("Data di nascita:");
-        dtpNascita.setWidth("min-content");
-        emailField.setLabel("Email:");
-        emailField.setWidth("192px");
-        txtNomeCom.setLabel("Nome commerciale:");
-        txtNomeCom.setWidth("192px");
-        cmbTipoCampo.setLabel("Tipologie campi:");
-        cmbTipoCampo.setWidth("min-content");
-        setCmbTipoCampo(cmbTipoCampo);
-        tpOpen.setLabel("Orario di apertura:");
-        tpOpen.setWidth("min-content");
-        cmbServAgg.setLabel("Servizi aggiuntivi:");
-        cmbServAgg.setWidth("min-content");
-        setCmbServizi(cmbServAgg);
+        
+        setTextFieldNome();
+        
+        setDatePickerDataNascita();
+        
+        setEmailField();
+        
+        setTextFieldNomeCommerciale();
+        /**
+        setMultiSelectTipoCampo();
+        
+        setTimePickerOraApertura();
+        
+        setTimePickerOraChiusura();
+        
+        setMultiSelectServAgg();
+        **/
+        
         layoutColumn5.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn5);
         layoutColumn5.addClassName(Gap.XSMALL);
@@ -129,53 +137,70 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         layoutColumn3.setHeight("100%");
         layoutColumn3.setJustifyContentMode(JustifyContentMode.START);
         layoutColumn3.setAlignItems(Alignment.START);
-        txtCognome.setLabel("Cognome:");
-        txtCognome.setWidth("192px");
-        txtCell.setLabel("Cellulare:");
-        txtCell.setWidth("192px");
-        txtPsw.setLabel("Password:");
-        txtPsw.setWidth("192px");
-        txtPswConf.setLabel("Conferma password:");
-        txtPswConf.setWidth("192px");
-        txtIndirizzo.setLabel("Indirizzo:");
-        txtIndirizzo.setWidth("192px");
-        tpClose.setLabel("Orario di chiusura:");
-        tpClose.setWidth("min-content");
-        txtAltro.setLabel("Altro:");
-        txtAltro.setWidth("192px");
+        
+        setTextFieldCognome();
+        
+        setTextFieldCellulare();
+        
+        setPasswordField();
+        
+        setPasswordFieldConferma();
+        
+        setTextFieldIndirizzo();
+        
+        setTextFieldAltro();
+        
         layoutColumn6.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn6);
         layoutColumn6.setWidth("135px");
         layoutColumn6.setHeight("528px");
-        progressBar.setValue(0.5);
-        progressBar.setHeight("15px");
         getContent().add(h1);
         getContent().add(h5);
         getContent().add(layoutRow);
         layoutRow.add(layoutColumn4);
         layoutRow.add(layoutColumn2);
-        layoutColumn2.add(txtNome);
-        layoutColumn2.add(dtpNascita);
+        layoutColumn2.add(textFieldNome);
+        layoutColumn2.add(datePickerDataNascita);
         layoutColumn2.add(emailField);
-        layoutColumn2.add(txtNomeCom);
-        layoutColumn2.add(cmbTipoCampo);
-        layoutColumn2.add(tpOpen);
-        layoutColumn2.add(cmbServAgg);
+        layoutColumn2.add(textFieldNomeCommerciale);
+        layoutColumn2.add(multiSelectTipoCampo);
+        layoutColumn2.add(timePickerOraApertura);
+        layoutColumn2.add(multiSelectServAgg);
         layoutRow.add(layoutColumn5);
         layoutRow.add(layoutColumn3);
-        layoutColumn3.add(txtCognome);
-        layoutColumn3.add(txtCell);
-        layoutColumn3.add(txtPsw);
-        layoutColumn3.add(txtPswConf);
-        layoutColumn3.add(txtIndirizzo);
-        layoutColumn3.add(tpClose);
-        layoutColumn3.add(txtAltro);
+        layoutColumn3.add(textFieldCognome);
+        layoutColumn3.add(textFieldCellulare);
+        layoutColumn3.add(passwordField);
+        layoutColumn3.add(passwordFieldConferma);
+        layoutColumn3.add(textFieldIndirizzo);
+        layoutColumn3.add(timePickerOraChiusura);
+        layoutColumn3.add(textFieldAltro);
         layoutRow.add(layoutColumn6);
         setButtonRegistrazione();
-        getContent().add(progressBar);
     }
 
-    private void setButtonRegistrazione() {
+    private void setTextFieldAltro() {
+    	textFieldAltro.setLabel("Altro");
+        textFieldAltro.setWidth("192px");
+        textFieldAltro.setRequired(true);
+		textFieldAltro.setErrorMessage("Campo richiesto");
+	}
+
+	private void setTextFieldIndirizzo() {
+		textFieldIndirizzo.setLabel("Indirizzo");
+        textFieldIndirizzo.setWidth("192px");
+        textFieldIndirizzo.setRequired(true);
+		textFieldIndirizzo.setErrorMessage("Campo richiesto");
+	}
+
+	private void setTextFieldNomeCommerciale() {
+		textFieldNomeCommerciale.setLabel("Nome commerciale");
+        textFieldNomeCommerciale.setWidth("192px");
+        textFieldNomeCommerciale.setRequired(true);
+		textFieldNomeCommerciale.setErrorMessage("Campo richiesto");
+	}
+
+	private void setButtonRegistrazione() {
     	
         btnRegistrazione.setText("Registrati");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, btnRegistrazione);
@@ -183,34 +208,38 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         btnRegistrazione.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
     	getContent().add(btnRegistrazione);
     	btnRegistrazione.addClickListener(e ->{
-    		
-    		String nome = txtNome.getValue();
-        	String cognome = txtCognome.getValue();
+    		if(textFieldCognome.isInvalid() || datePickerDataNascita.isInvalid() || emailField.isInvalid()|| textFieldNome.isInvalid() || textFieldCellulare.isInvalid() || datePickerDataNascita.isInvalid() || textFieldNomeCommerciale.isInvalid() || textFieldIndirizzo.isInvalid() || textFieldAltro.isInvalid() || multiSelectTipoCampo.isInvalid() || multiSelectServAgg.isInvalid() || timePickerOraApertura.isInvalid() || timePickerOraChiusura.isInvalid()) {
+    			return;
+    		}
+    		NotificationDelegator notification = new NotificationDelegator();
+    		String nome = textFieldNome.getValue();
+        	String cognome = textFieldCognome.getValue();
         	String mail = emailField.getValue();
-        	String telefono = txtCell.getValue();
-        	String psw = txtPsw.getValue();
-        	String nomeComm =txtNomeCom.getValue();
-        	String indirizzo = txtIndirizzo.getValue();
-        	String confermaPsw = txtPswConf.getValue();
-        	LocalDate dataNascita = dtpNascita.getValue();
-        	TipoCampo tipo = (TipoCampo) cmbTipoCampo.getValue();
-        	String OraApertura = tpOpen.getValue().toString();
-        	String OraChiusura = tpClose.getValue().toString();
-			List<ServiziAgg> servizi = (List<ServiziAgg>) cmbServAgg.getValue();
-			//inserimento controlli e invio query
+        	String telefono = textFieldCellulare.getValue();
+        	String psw = passwordField.getValue();
+        	String nomeComm =textFieldNomeCommerciale.getValue();
+        	String indirizzo = textFieldIndirizzo.getValue();
+        	LocalDate dataNascita = datePickerDataNascita.getValue();
+        	Set<TipoCampo> tipologieCampo = multiSelectTipoCampo.getValue();
+        	String oraApertura = timePickerOraApertura.getValue().toString();
+        	String oraChiusura = timePickerOraChiusura.getValue().toString();
+			Set<ServiziAgg> servizi = multiSelectServAgg.getValue();
 			Gestore gestore = new Gestore(0,mail,nome,cognome,dataNascita,telefono,psw);
-			//creazione centri e poi richiamo inserimento query 
-			//CentriSportivi centro = new CentriSportivi();
-			
-        	
-        	
-    		
+			int idGestore = GestoriService.aggiungiGestore(gestore);
+			CentriSportivi centro = new CentriSportivi(0, nomeComm, indirizzo, BigDecimal.valueOf(0), BigDecimal.valueOf(0), BigDecimal.valueOf(0), oraApertura, oraChiusura, idGestore);
+			int idCentro = CentriSportiviService.aggiungiCentro(centro);
+			for(TipoCampo tipo : tipologieCampo) {
+				TipoCampoService.aggiungiTipoCampo(idCentro, tipo.getIdCampo());
+			}
+			for(ServiziAgg servizio : servizi) {
+				ServiziAggService.aggiungiServizioAgg(idCentro, servizio.getIdServizio());
+			}
+			notification.showSuccessNotification("Gestore registrato correttamente!");
+			UI.getCurrent().getPage().executeJs(
+				    "setTimeout(function() { window.location.href = $0; }, 5000);", 
+				    "http://localhost:8080/"
+			);
     	});
-    }
-    
-    
-    
-    record SampleItem(String value, String label, Boolean disabled) {
     }
 
     private void setCmbTipoCampo(MultiSelectComboBox<TipoCampo> cmbTipo) {
@@ -224,4 +253,84 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
 		cmbServizi.setItems(servizi);
 		cmbServizi.setItemLabelGenerator(item -> item.getNomeServizio());
     }
+    
+    private void setPasswordFieldConferma() {
+		passwordFieldConferma.setLabel("Conferma password");
+        passwordFieldConferma.setWidth("192px");
+        passwordFieldConferma.setRequired(true);
+        passwordFieldConferma.addBlurListener(e -> {
+			if(!passwordFieldConferma.getValue().equals(passwordField.getValue())) {
+				passwordFieldConferma.setErrorMessage("Le password non coincidono");
+				passwordFieldConferma.setInvalid(true);
+				}
+			else {	
+				passwordFieldConferma.setInvalid(false);
+			}
+		});
+	}
+
+
+	private void setPasswordField() {
+		passwordField.setLabel("Password");
+        passwordField.setWidth("192px");
+        passwordField.setRequired(true);
+        passwordField.setErrorMessage("Campo richiesto");
+	}
+
+	private void setTextFieldCognome() {
+		textFieldCognome.setLabel("Cognome");
+        textFieldCognome.setWidth("192px");
+        textFieldCognome.setRequired(true);
+		textFieldCognome.setErrorMessage("Campo richiesto");
+	}
+	
+	private void setTextFieldCellulare() {
+		textFieldCellulare.setLabel("Cellulare");
+        textFieldCellulare.setWidth("192px");
+        textFieldCellulare.setRequiredIndicatorVisible(true);
+		textFieldCellulare.setAllowedCharPattern("[0-9+-]");
+		textFieldCellulare.setMinLength(5);
+		textFieldCellulare.setMaxLength(18);
+        textFieldCellulare.addBlurListener(e -> {
+			if(!GestoriService.isCellulareUnique(textFieldCellulare.getValue())) {
+				textFieldCellulare.setErrorMessage("Telefono già registrato");
+				textFieldCellulare.setInvalid(true);
+			}
+			else {
+				textFieldCellulare.setInvalid(false);
+			}
+		});
+	}
+
+	private void setEmailField() {
+		emailField.setLabel("Email");
+        emailField.setWidth("192px");
+        emailField.setRequired(true);
+        emailField.setErrorMessage("Campo richiesto");
+        emailField.addBlurListener(e -> {
+			if(!GestoriService.isMailUnique(emailField.getValue())) {
+				emailField.setErrorMessage("Utente già registrato");
+				emailField.setInvalid(true);
+			}
+			else {
+				emailField.setInvalid(false);
+			}
+		});
+	}
+
+	private void setDatePickerDataNascita() {
+		datePickerDataNascita.setLabel("Data di nascita");
+		datePickerDataNascita.setWidth("min-content");
+		datePickerDataNascita.setRequired(true);
+		datePickerDataNascita.setMax(LocalDate.now());
+		datePickerDataNascita.setErrorMessage("Data non valida");
+	}
+
+	private void setTextFieldNome() {
+		textFieldNome.setLabel("Nome");
+        textFieldNome.setWidth("192px");
+        textFieldNome.setRequired(true);
+		textFieldNome.setErrorMessage("Campo richiesto");
+	}
+    
 }

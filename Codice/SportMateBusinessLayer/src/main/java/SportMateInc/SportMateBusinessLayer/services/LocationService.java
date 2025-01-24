@@ -22,7 +22,7 @@ public class LocationService {
 		try {
 			db.apriConnessione();
 			stmt = db.getConnectionDetails().createStatement();
-			String sql = "SELECT * FROM CENTRISPORTIVI ";
+			String sql = "SELECT * FROM CENTRISPORTIVI WHERE LATITUDINE != 0 OR LONGITUDINE != 0";
 			ResultSet result = stmt.executeQuery(sql);
 			while (result.next()) {
 				String[] parts = result.getString(3).split(",");

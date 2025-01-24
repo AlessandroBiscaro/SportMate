@@ -68,6 +68,7 @@ public class CentriSportiviService {
 				centro.getLongitudine(), centro.getCredito(),
 				centro.getOrarioApertura(),centro.getOrarioChiusura(),
 				centro.getIdGestore())
+		.returning(CENTRISPORTIVI.IDCENTRO)
 		.execute();
 	}
 	

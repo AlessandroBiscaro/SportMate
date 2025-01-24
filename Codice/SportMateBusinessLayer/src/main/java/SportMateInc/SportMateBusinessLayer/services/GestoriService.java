@@ -5,6 +5,8 @@ import static SportMateInc.SportMateBusinessLayer.tables.Gestori.GESTORI;
 import java.time.LocalDate;
 import org.jooq.DSLContext;
 import org.jooq.Record;
+import org.jooq.impl.DSL;
+
 import SportMateInc.SportMateBusinessLayer.entity.Gestore;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
@@ -37,6 +39,7 @@ public class GestoriService {
 		DSLContext create =  db.getContext();	
 		return create.insertInto(GESTORI, GESTORI.NOME, GESTORI.COGNOME, GESTORI.DATANASCITA, GESTORI.MAIL, GESTORI.TELEFONO, GESTORI.PASSWORD)
 		.values(admin.getNome(), admin.getCognome(), admin.getDataNascita().toString(), admin.getMail(), admin.getTelefono(), admin.getPassword())
+		.returning(GESTORI.IDGESTORE)
 		.execute();
 	}
 	
@@ -55,5 +58,21 @@ public class GestoriService {
 	            .execute(); 
 		db.chiudiConnessione();
 		return result;
+	}
+	
+	public static boolean isCellulareUnique(String cellulare) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		int count = create.fetchCount(DSL.selectFrom(GESTORI).where(GESTORI.TELEFONO.eq(cellulare)));
+		return count == 0;
+	}
+	
+	public static boolean isMailUnique(String mail) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		int count = create.fetchCount(DSL.selectFrom(GESTORI).where(GESTORI.MAIL.eq(mail)));
+		return count == 0;
 	}
 }

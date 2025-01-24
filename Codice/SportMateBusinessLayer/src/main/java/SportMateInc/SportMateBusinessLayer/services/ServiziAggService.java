@@ -1,5 +1,6 @@
 package SportMateInc.SportMateBusinessLayer.services;
 
+import static SportMateInc.SportMateBusinessLayer.tables.Dettaglioservizicentri.DETTAGLIOSERVIZICENTRI;
 import static SportMateInc.SportMateBusinessLayer.tables.Serviziaggiuntivi.SERVIZIAGGIUNTIVI;
 
 import java.util.ArrayList;
@@ -40,6 +41,16 @@ private ServiziAggService() {}
 			list.add(new ServiziAgg(servizi.get(SERVIZIAGGIUNTIVI.IDSERVIZIO), servizi.get(SERVIZIAGGIUNTIVI.NOMESERVIZIO), servizi.get(SERVIZIAGGIUNTIVI.DESCRIZIONE)));
 		}
 		return list;
+	}
+	
+	public static int aggiungiServizioAgg(int idCentro, int idServizio) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		int result = create.insertInto(DETTAGLIOSERVIZICENTRI, DETTAGLIOSERVIZICENTRI.IDCENTRO, DETTAGLIOSERVIZICENTRI.IDSERVIZIO)
+					.values(idCentro, idServizio).execute();
+		db.chiudiConnessione();
+		return result;
 	}
 
 }
