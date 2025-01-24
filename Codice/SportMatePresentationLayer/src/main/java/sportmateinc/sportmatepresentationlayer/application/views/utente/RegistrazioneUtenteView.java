@@ -49,8 +49,6 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Route("registrazioneUtente")
 @AnonymousAllowed
 
-
-
 public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	
 	private static int NUM_FIELD = 8;
@@ -74,10 +72,12 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     VerticalLayout layoutColumn7 = new VerticalLayout();
     Button btnRegistrazione = new Button();
     ProgressBar progressBar = new ProgressBar();
+
+	private String[] savedFields;
     
     
     public RegistrazioneUtenteView() {
-        
+        savedFields = new String[NUM_FIELD];
         getContent().setWidth("100%");
         getContent().setHeight("min-content");
         h1.setText("SportMate");
@@ -179,15 +179,20 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 		passwordFieldConferma.setLabel("Conferma password");
         passwordFieldConferma.setWidth("192px");
         passwordFieldConferma.setRequired(true);
+        savedFields[7] = "";
         passwordFieldConferma.addBlurListener(e -> {
-			if(!passwordFieldConferma.getValue().equals(passwordField.getValue())) {
-				passwordFieldConferma.setErrorMessage("Le password non coincidono");
-				passwordFieldConferma.setInvalid(true);
-				decrementProgressBar();
-			}
-			else {	
-				passwordFieldConferma.setInvalid(false);
-				incrementProgressBar();
+        	if(!savedFields[7].equals(passwordFieldConferma.getValue())) {
+        		
+				if(!passwordFieldConferma.getValue().equals(passwordField.getValue())) {
+					passwordFieldConferma.setErrorMessage("Le password non coincidono");
+					passwordFieldConferma.setInvalid(true);
+						decrementProgressBar();
+					}
+				else {	
+					passwordFieldConferma.setInvalid(false);
+					incrementProgressBar();
+				}
+				savedFields[7] = passwordFieldConferma.getValue();
 			}
 		});
 	}
@@ -209,33 +214,44 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 		passwordField.setLabel("Password");
         passwordField.setWidth("192px");
         passwordField.setRequired(true);
+        savedFields[6] = "";
         passwordField.setErrorMessage("Campo richiesto");
         passwordField.addBlurListener(e -> {
-        	if(passwordField.isEmpty()) {
-        		decrementProgressBar();
+        	if(!savedFields[6].equals(passwordField.getValue())) {
+        		
+	        	if(passwordField.isEmpty()) {
+	        		decrementProgressBar();
+	        	}
+	        	else {
+	        		incrementProgressBar();
+	        	}
         	}
-        	else {
-        		incrementProgressBar();
-        	}
+        	savedFields[6] = passwordField.getValue();
         });
 	}
 
 	private void setTextFieldCognome() {
+		savedFields[1] = "";
 		textFieldCognome.setLabel("Cognome");
         textFieldCognome.setWidth("192px");
         textFieldCognome.setRequired(true);
 		textFieldCognome.setErrorMessage("Campo richiesto");
 		textFieldCognome.addBlurListener(e -> {
+			if(!savedFields[1].equals(textFieldCognome.getValue())) {
+				
 	        	if(textFieldCognome.isInvalid()) {
 	        		decrementProgressBar();
 	        	}
 	        	else {
 	        		incrementProgressBar();
 	        	}
-	        });
+			}
+			savedFields[1] = textFieldCognome.getValue();
+        });
 	}
 	
 	private void setTextFieldCellulare() {
+		savedFields[3] = "";
 		textFieldCellulare.setLabel("Cellulare");
         textFieldCellulare.setWidth("192px");
         textFieldCellulare.setRequiredIndicatorVisible(true);
@@ -243,19 +259,24 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 		textFieldCellulare.setMinLength(5);
 		textFieldCellulare.setMaxLength(18);
         textFieldCellulare.addBlurListener(e -> {
-			if(!UtentiService.isCellulareUnique(textFieldCellulare.getValue())) {
-				textFieldCellulare.setErrorMessage("Telefono già registrato");
-				textFieldCellulare.setInvalid(true);
-				decrementProgressBar();
-			}
-			else {
-				textFieldCellulare.setInvalid(false);
-				incrementProgressBar();
-			}
+        	if(!savedFields[3].equals(textFieldCellulare.getValue())) {
+        		
+				if(!UtentiService.isCellulareUnique(textFieldCellulare.getValue())) {
+					textFieldCellulare.setErrorMessage("Telefono già registrato");
+					textFieldCellulare.setInvalid(true);
+					decrementProgressBar();
+				}
+				else {
+					textFieldCellulare.setInvalid(false);
+					incrementProgressBar();
+				}
+        	}
+        	savedFields[3] = textFieldCellulare.getValue();
 		});
 	}
 
 	private void setComboBoxLivello() {
+		savedFields[5] = "";
 		comboBoxLivello.setLabel("Livello giocatore");
         comboBoxLivello.setWidth("min-content");
         comboBoxLivello.setAllowCustomValue(false);
@@ -263,63 +284,82 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         comboBoxLivello.setErrorMessage("Campo richiesto");
         setCmbLivelloData(comboBoxLivello);
         comboBoxLivello.addBlurListener(e -> {
-        	if(comboBoxLivello.isInvalid()) {
-        		decrementProgressBar();
+        	if(!savedFields[5].equals(comboBoxLivello.getValue().getNomeLivello())) {
+	        	if(comboBoxLivello.isInvalid()) {
+	        		decrementProgressBar();
+	        	}
+	        	else {
+	        		incrementProgressBar();
+	        	}
         	}
-        	else {
-        		incrementProgressBar();
-        	}
+        	savedFields[5] = comboBoxLivello.getValue().getNomeLivello();
         });
 	}
 
 	private void setEmailField() {
+		savedFields[4] = "";
 		emailField.setLabel("Email");
         emailField.setWidth("192px");
         emailField.setRequired(true);
         emailField.setErrorMessage("Campo richiesto");
         emailField.addBlurListener(e -> {
-			if(!UtentiService.isMailUnique(textFieldCellulare.getValue())) {
-				emailField.setErrorMessage("Utente già registrato");
-				emailField.setInvalid(true);
-				decrementProgressBar();
-			}
-			else {
-				emailField.setInvalid(false);
-				incrementProgressBar();
-			}
+        	if(!savedFields[4].equals(emailField.getValue())) {
+				if(!UtentiService.isMailUnique(emailField.getValue())) {
+					emailField.setErrorMessage("Utente già registrato");
+					emailField.setInvalid(true);
+					decrementProgressBar();
+				}
+				else {
+					emailField.setInvalid(false);
+					incrementProgressBar();
+				}
+        	}
+        	savedFields[4] = emailField.getValue();
 		});
 	}
 
 	private void setDatePickerDataNascita() {
+		savedFields[2] = "";
 		datePickerDataNascita.setLabel("Data di nascita");
 		datePickerDataNascita.setWidth("min-content");
-		datePickerDataNascita.setValue(LocalDate.now());
 		datePickerDataNascita.setRequired(true);
 		datePickerDataNascita.setMax(LocalDate.now());
 		datePickerDataNascita.setErrorMessage("Data non valida");
 		datePickerDataNascita.addBlurListener(e -> {
-        	if(datePickerDataNascita.isInvalid()) {
-        		decrementProgressBar();
-        	}
-        	else {
-        		incrementProgressBar();
-        	}
+			if(!savedFields[2].equals(datePickerDataNascita.getValue().toString())) {
+	        	if(datePickerDataNascita.isInvalid()) {
+	        		decrementProgressBar();
+	        	}
+	        	else {
+	        		incrementProgressBar();
+	        	}
+			}
+			if(!datePickerDataNascita.isEmpty()) {
+				savedFields[2] = datePickerDataNascita.getValue().toString();
+			}
+			else {
+				savedFields[2] = "";
+			}
         });
 	}
 
 	private void setTextFieldNome() {
+		savedFields[0] = "";
 		textFieldNome.setLabel("Nome");
         textFieldNome.setWidth("192px");
         textFieldNome.setRequired(true);
 		textFieldNome.setErrorMessage("Campo richiesto");
 		textFieldNome.addBlurListener(e -> {
-        	if(textFieldNome.isInvalid()) {
-        		decrementProgressBar();
-        	}
-        	else {
-        		incrementProgressBar();
-        	}
-        });
+			if(!savedFields[0].equals(textFieldNome.getValue())) {
+	        	if(textFieldNome.isInvalid()) {
+	        		decrementProgressBar();
+	        	}
+	        	else {
+	        		incrementProgressBar();
+	        	}
+			}
+			savedFields[0] = textFieldNome.getValue();
+		});
 	}
     
     private void setButtonRegistrazione() {
@@ -357,6 +397,10 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         	Utente utente = new Utente(0, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(10), livello);
 			if(UtentiService.aggiungiUtente(utente) == 1) {
 				notification.showSuccessNotification("Utente registrato correttamente!");
+				UI.getCurrent().getPage().executeJs(
+					    "setTimeout(function() { window.location.href = $0; }, 5000);", 
+					    "http://localhost:8080/"
+				);
 			}
 		}
 	}

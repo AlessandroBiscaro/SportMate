@@ -7,12 +7,10 @@ import java.util.List;
 
 import org.jooq.DSLContext;
 import org.jooq.Record;
-import org.jooq.Record2;
 import org.jooq.Record3;
 import org.jooq.Result;
 
 import SportMateInc.SportMateBusinessLayer.entity.ServiziAgg;
-import SportMateInc.SportMateBusinessLayer.entity.TipoCampo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class ServiziAggService {
