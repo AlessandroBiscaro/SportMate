@@ -6,6 +6,8 @@ import sportmateinc.sportmatedblayer.SportMateDB;
 
 import org.jooq.Record;
 import org.jooq.impl.DSL;
+import org.jooq.exception.DataAccessException;
+import org.jooq.exception.IntegrityConstraintViolationException;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

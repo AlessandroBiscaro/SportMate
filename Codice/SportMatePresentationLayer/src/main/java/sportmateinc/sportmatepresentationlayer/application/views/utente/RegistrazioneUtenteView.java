@@ -353,7 +353,6 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         	String mail = emailField.getValue();
         	String telefono = textFieldCellulare.getValue();
         	String password = passwordField.getValue();
-        	String confermaPassword = passwordFieldConferma.getValue();
         	Livello livello = comboBoxLivello.getValue();
         	Utente utente = new Utente(0, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(10), livello);
 			if(UtentiService.aggiungiUtente(utente) == 1) {
