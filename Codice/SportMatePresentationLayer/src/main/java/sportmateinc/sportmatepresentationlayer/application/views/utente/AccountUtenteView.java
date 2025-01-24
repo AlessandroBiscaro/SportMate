@@ -3,6 +3,7 @@ package sportmateinc.sportmatepresentationlayer.application.views.utente;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -14,6 +15,7 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -36,6 +38,7 @@ import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import jakarta.annotation.security.RolesAllowed;
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
+import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -231,20 +234,25 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 	
 	private void validateAndSave() {
+		NotificationDelegator notification = new NotificationDelegator();
 		if(txtCognome.isInvalid() || txtNome.isInvalid() || txtCellulare.isInvalid() || dtpDataNascita.isInvalid()) {
 			return;
 		}
-		Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
-		utente.setCognome(txtCognome.getValue());
-		utente.setNome(txtNome.getValue());
-		utente.setTelefono(txtCellulare.getValue());
-		if(maybeDataNascita.isPresent()) {
-			utente.setDataNascita(maybeDataNascita.get());
+		else {
+			Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
+			utente.setCognome(txtCognome.getValue());
+			utente.setNome(txtNome.getValue());
+			utente.setTelefono(txtCellulare.getValue());
+			if(maybeDataNascita.isPresent()) {
+				utente.setDataNascita(maybeDataNascita.get());
+			}
+			utente.setLivello(cmbLivello.getValue());
+			if(UtentiService.aggiornaDatiUtente(utente) == 1) {
+				notification.showSuccessNotification("Dati modificati correttamente!");
+			}
 		}
-		utente.setLivello(cmbLivello.getValue());
-		UtentiService.aggiornaDatiUtente(utente);
-		UI.getCurrent().getPage().reload();
 	}
+	
 
 	private void setBtnRicarica() {
 		btnRicaricaCredito.setText("Ricarica");
@@ -284,6 +292,15 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		txtCellulare.setMinLength(5);
 		txtCellulare.setMaxLength(18);
 		txtCellulare.setErrorMessage("Numero di telefono non valido");
+		txtCellulare.addFocusListener(e -> {
+			if(!UtentiService.isCellulareUnique(txtCellulare.getValue())) {
+				txtCellulare.setErrorMessage("Telefono già registrato");
+				txtCellulare.setInvalid(true);
+			}
+			else {
+				txtCellulare.setInvalid(false);
+			}
+		});
 	}
 	
 	private void setTxtImporto() {
@@ -315,6 +332,8 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		cmbLivello.setLabel("Livello");
 		cmbLivello.setWidth("min-content");
 		cmbLivello.setAllowCustomValue(false);
+		cmbLivello.setRequired(true);
+		cmbLivello.setErrorMessage("Campo richiesto");
 		setCmbLivelloData(cmbLivello);
 		cmbLivello.setValue(utente.getLivello());
 	}

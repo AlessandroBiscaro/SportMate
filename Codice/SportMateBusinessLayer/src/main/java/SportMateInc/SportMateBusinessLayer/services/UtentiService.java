@@ -5,6 +5,7 @@ import SportMateInc.SportMateBusinessLayer.entity.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 import org.jooq.Record;
+import org.jooq.impl.DSL;
 import org.jooq.exception.DataAccessException;
 import org.jooq.exception.IntegrityConstraintViolationException;
 
@@ -34,26 +35,18 @@ public class UtentiService {
 	public static int aggiungiUtente(Utente user) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
-		
-		DSLContext create =  db.getContext();
-				
-		try {
-			return create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
-			.values(user.getNome(), 
-					user.getCognome(), 
-					user.getDataNascita().toString(), 
-					user.getMail(), 
-					user.getTelefono(), 
-					user.getPassword(), 
-					user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
-			.execute();
-			
-		} catch (IntegrityConstraintViolationException e) {
-			return -1;
-		}finally {
-			db.chiudiConnessione();
-		}
-		
+		DSLContext create =  db.getContext();	
+		int res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
+					.values(user.getNome(), 
+							user.getCognome(), 
+							user.getDataNascita().toString(), 
+							user.getMail(), 
+							user.getTelefono(), 
+							user.getPassword(), 
+							user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
+					.execute();
+		db.chiudiConnessione();
+		return res;
 	}
 	
 	
@@ -61,7 +54,7 @@ public class UtentiService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();
-		int res= create.update(UTENTI)
+		int res = create.update(UTENTI)
 	            .set(UTENTI.NOME, user.getNome())
 	            .set(UTENTI.COGNOME, user.getCognome())
 	            .set(UTENTI.MAIL, user.getMail())
@@ -88,6 +81,19 @@ public class UtentiService {
 				result.get(UTENTI.CREDITO), LivelliService.findLivello(result.get(UTENTI.LIVELLO)));
 	}
 	
+	public static boolean isCellulareUnique(String cellulare) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.TELEFONO.eq(cellulare)));
+		return count == 0;
+	}
 	
-	
+	public static boolean isMailUnique(String mail) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.MAIL.eq(mail)));
+		return count == 0;
+	}
 }
