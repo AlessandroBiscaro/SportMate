@@ -1,6 +1,7 @@
 package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -8,6 +9,8 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -44,6 +47,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @AnonymousAllowed
 
 public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
+	
 	H1 h1 = new H1();
     H5 h5 = new H5();
     HorizontalLayout layoutRow = new HorizontalLayout();
@@ -179,20 +183,19 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         	String confermaPassword = passwordFieldConferma.getValue();
         	LocalDate dataNascita = datePickerDataNascita.getValue();
         	Livello livello = (Livello) comboBoxLivello.getValue();
+        	
         	Utente utente = new Utente(0, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(10), livello);
-        	if(UtentiService.aggiungiUtente(utente)==1){
+        	if(UtentiService.aggiungiUtente(utente)==1) {
         		//messaggio registrazione corretta utente
-        		System.out.println("entrato in query eseguita");
+        		//System.out.println("entrato in query eseguita");
         		//ricarico la pagina dopo il login
-        		//UI.getCurrent().getPage().reload();
+        		UI.getCurrent().getPage().reload();
         	
         	}else {
         		//messaggio registrazione errata utente
         		System.out.println("entrato in err query");
+        		
         	}
-        	
-        	
-        	
         });
         
     }

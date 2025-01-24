@@ -3,6 +3,7 @@ package sportmateinc.sportmatepresentationlayer.application.views.utente;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -14,6 +15,7 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -234,16 +236,33 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		if(txtCognome.isInvalid() || txtNome.isInvalid() || txtCellulare.isInvalid() || dtpDataNascita.isInvalid()) {
 			return;
 		}
-		Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
-		utente.setCognome(txtCognome.getValue());
-		utente.setNome(txtNome.getValue());
-		utente.setTelefono(txtCellulare.getValue());
-		if(maybeDataNascita.isPresent()) {
-			utente.setDataNascita(maybeDataNascita.get());
+		if(!UtentiService.isCellulareUnique(txtCellulare.getValue())) {
+    		showErrorNotification("Numero di cellulare già registrato");
+		} else {
+			Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
+			utente.setCognome(txtCognome.getValue());
+			utente.setNome(txtNome.getValue());
+			utente.setTelefono(txtCellulare.getValue());
+			if(maybeDataNascita.isPresent()) {
+				utente.setDataNascita(maybeDataNascita.get());
+			}
+			utente.setLivello(cmbLivello.getValue());
+			if(UtentiService.aggiornaDatiUtente(utente) == 1) {
+				showSuccessNotification("Dati modificati correttamente!");
+			}
 		}
-		utente.setLivello(cmbLivello.getValue());
-		UtentiService.aggiornaDatiUtente(utente);
-		UI.getCurrent().getPage().reload();
+	}
+	
+	private Notification showErrorNotification(String message) {
+		Notification notification = Notification.show(message);
+		notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+		return notification;
+	}
+	
+	private Notification showSuccessNotification(String message) {
+		Notification notification = Notification.show(message);
+		notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+		return notification;
 	}
 
 	private void setBtnRicarica() {
