@@ -38,6 +38,7 @@ import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import jakarta.annotation.security.RolesAllowed;
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
+import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -233,12 +234,11 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 	
 	private void validateAndSave() {
+		NotificationDelegator notification = new NotificationDelegator();
 		if(txtCognome.isInvalid() || txtNome.isInvalid() || txtCellulare.isInvalid() || dtpDataNascita.isInvalid()) {
 			return;
 		}
-		if(!UtentiService.isCellulareUnique(txtCellulare.getValue())) {
-    		showErrorNotification("Numero di cellulare già registrato");
-		} else {
+		else {
 			Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
 			utente.setCognome(txtCognome.getValue());
 			utente.setNome(txtNome.getValue());
@@ -248,22 +248,11 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 			}
 			utente.setLivello(cmbLivello.getValue());
 			if(UtentiService.aggiornaDatiUtente(utente) == 1) {
-				showSuccessNotification("Dati modificati correttamente!");
+				notification.showSuccessNotification("Dati modificati correttamente!");
 			}
 		}
 	}
 	
-	private Notification showErrorNotification(String message) {
-		Notification notification = Notification.show(message);
-		notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
-		return notification;
-	}
-	
-	private Notification showSuccessNotification(String message) {
-		Notification notification = Notification.show(message);
-		notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-		return notification;
-	}
 
 	private void setBtnRicarica() {
 		btnRicaricaCredito.setText("Ricarica");
@@ -303,6 +292,15 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		txtCellulare.setMinLength(5);
 		txtCellulare.setMaxLength(18);
 		txtCellulare.setErrorMessage("Numero di telefono non valido");
+		txtCellulare.addFocusListener(e -> {
+			if(!UtentiService.isCellulareUnique(txtCellulare.getValue())) {
+				txtCellulare.setErrorMessage("Telefono già registrato");
+				txtCellulare.setInvalid(true);
+			}
+			else {
+				txtCellulare.setInvalid(false);
+			}
+		});
 	}
 	
 	private void setTxtImporto() {
@@ -334,6 +332,8 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		cmbLivello.setLabel("Livello");
 		cmbLivello.setWidth("min-content");
 		cmbLivello.setAllowCustomValue(false);
+		cmbLivello.setRequired(true);
+		cmbLivello.setErrorMessage("Campo richiesto");
 		setCmbLivelloData(cmbLivello);
 		cmbLivello.setValue(utente.getLivello());
 	}

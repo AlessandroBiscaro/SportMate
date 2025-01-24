@@ -32,6 +32,7 @@ import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
+import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 import SportMateInc.SportMateBusinessLayer.entity.Utente;
 
 import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
@@ -40,13 +41,19 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Registrazione Utente")
 @Route("registrazioneUtente")
 @AnonymousAllowed
 
+
+
 public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
+	
+	private static int NUM_FIELD = 8;
 	
 	H1 h1 = new H1();
     H5 h5 = new H5();
@@ -56,7 +63,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     TextField textFieldNome = new TextField();
     DatePicker datePickerDataNascita = new DatePicker();
     EmailField emailField = new EmailField();
-    ComboBox comboBoxLivello = new ComboBox();
+    ComboBox<Livello> comboBoxLivello = new ComboBox<>();
     VerticalLayout layoutColumn3 = new VerticalLayout();
     VerticalLayout layoutColumn6 = new VerticalLayout();
     VerticalLayout layoutColumn4 = new VerticalLayout();
@@ -65,7 +72,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     PasswordField passwordField = new PasswordField();
     PasswordField passwordFieldConferma = new PasswordField();
     VerticalLayout layoutColumn7 = new VerticalLayout();
-    Button buttonPrimary = new Button();
+    Button btnRegistrazione = new Button();
     ProgressBar progressBar = new ProgressBar();
     
     
@@ -96,16 +103,15 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutColumn2.setHeight("450px");
         layoutColumn2.setJustifyContentMode(JustifyContentMode.START);
         layoutColumn2.setAlignItems(Alignment.END);
-        textFieldNome.setLabel("Nome:");
-        textFieldNome.setWidth("192px");
-        datePickerDataNascita.setLabel("Data di nascita:");
-        datePickerDataNascita.setWidth("min-content");
-        emailField.setLabel("Email:");
-        emailField.setWidth("192px");
-        comboBoxLivello.setLabel("Livello giocatore:");
-        comboBoxLivello.setWidth("min-content");
-        comboBoxLivello.setAllowCustomValue(false);
-        setCmbLivelloData(comboBoxLivello);
+        
+        setTextFieldNome();
+        
+        setDatePickerDataNascita();
+        
+        setEmailField();
+        
+        setComboBoxLivello();
+        
         layoutColumn3.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn3);
         layoutColumn3.addClassName(Gap.XSMALL);
@@ -126,22 +132,19 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutColumn4.setHeight("450px");
         layoutColumn4.setJustifyContentMode(JustifyContentMode.START);
         layoutColumn4.setAlignItems(Alignment.START);
-        textFieldCognome.setLabel("Cognome:");
-        textFieldCognome.setWidth("192px");
-        textFieldCellulare.setLabel("Cellulare:");
-        textFieldCellulare.setWidth("192px");
-        passwordField.setLabel("Password:");
-        passwordField.setWidth("192px");
-        passwordFieldConferma.setLabel("Conferma password:");
-        passwordFieldConferma.setWidth("192px");
+        
+        setTextFieldCognome();
+        setTextFieldCellulare();
+        setPasswordField();
+        setPasswordConfermaField();
+        
         layoutColumn7.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn7);
         layoutColumn7.setWidth("135px");
         layoutColumn7.getStyle().set("flex-grow", "1");
         
-        progressBar.setValue(0.5);
-        progressBar.setWidth("100%");
-        progressBar.setHeight("15px");
+        setProgressBar();
+        
         getContent().add(h1);
         getContent().add(h5);
         getContent().add(layoutRow);
@@ -161,54 +164,204 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutColumn4.add(passwordFieldConferma);
         layoutRow.add(layoutColumn7);
         
-        //getContent().add(progressBar);
+        getContent().add(progressBar);
     }
 
-    record SampleItem(String value, String label, Boolean disabled) {
-    }
+	private void setProgressBar() {
+		progressBar.setValue(0);
+		progressBar.setMin(0);
+		progressBar.setMax(1);
+        progressBar.setWidth("100%");
+        progressBar.setHeight("15px");
+	}
+
+	private void setPasswordConfermaField() {
+		passwordFieldConferma.setLabel("Conferma password");
+        passwordFieldConferma.setWidth("192px");
+        passwordFieldConferma.setRequired(true);
+        passwordFieldConferma.addBlurListener(e -> {
+			if(!passwordFieldConferma.getValue().equals(passwordField.getValue())) {
+				passwordFieldConferma.setErrorMessage("Le password non coincidono");
+				passwordFieldConferma.setInvalid(true);
+				decrementProgressBar();
+			}
+			else {	
+				passwordFieldConferma.setInvalid(false);
+				incrementProgressBar();
+			}
+		});
+	}
+
+	private void decrementProgressBar() {
+		double progress = progressBar.getValue();
+		if(progress > 0) {
+			progress -= (double) 1/NUM_FIELD;
+			progressBar.setValue(progress);
+		}
+	}
+	
+	private void incrementProgressBar() {
+		double progress = progressBar.getValue() + ((double) 1/NUM_FIELD);
+		progressBar.setValue(progress);
+	}
+
+	private void setPasswordField() {
+		passwordField.setLabel("Password");
+        passwordField.setWidth("192px");
+        passwordField.setRequired(true);
+        passwordField.setErrorMessage("Campo richiesto");
+        passwordField.addBlurListener(e -> {
+        	if(passwordField.isEmpty()) {
+        		decrementProgressBar();
+        	}
+        	else {
+        		incrementProgressBar();
+        	}
+        });
+	}
+
+	private void setTextFieldCognome() {
+		textFieldCognome.setLabel("Cognome");
+        textFieldCognome.setWidth("192px");
+        textFieldCognome.setRequired(true);
+		textFieldCognome.setErrorMessage("Campo richiesto");
+		textFieldCognome.addBlurListener(e -> {
+	        	if(textFieldCognome.isInvalid()) {
+	        		decrementProgressBar();
+	        	}
+	        	else {
+	        		incrementProgressBar();
+	        	}
+	        });
+	}
+	
+	private void setTextFieldCellulare() {
+		textFieldCellulare.setLabel("Cellulare");
+        textFieldCellulare.setWidth("192px");
+        textFieldCellulare.setRequiredIndicatorVisible(true);
+		textFieldCellulare.setAllowedCharPattern("[0-9+-]");
+		textFieldCellulare.setMinLength(5);
+		textFieldCellulare.setMaxLength(18);
+        textFieldCellulare.addBlurListener(e -> {
+			if(!UtentiService.isCellulareUnique(textFieldCellulare.getValue())) {
+				textFieldCellulare.setErrorMessage("Telefono già registrato");
+				textFieldCellulare.setInvalid(true);
+				decrementProgressBar();
+			}
+			else {
+				textFieldCellulare.setInvalid(false);
+				incrementProgressBar();
+			}
+		});
+	}
+
+	private void setComboBoxLivello() {
+		comboBoxLivello.setLabel("Livello giocatore");
+        comboBoxLivello.setWidth("min-content");
+        comboBoxLivello.setAllowCustomValue(false);
+        comboBoxLivello.setRequired(true);
+        comboBoxLivello.setErrorMessage("Campo richiesto");
+        setCmbLivelloData(comboBoxLivello);
+        comboBoxLivello.addBlurListener(e -> {
+        	if(comboBoxLivello.isInvalid()) {
+        		decrementProgressBar();
+        	}
+        	else {
+        		incrementProgressBar();
+        	}
+        });
+	}
+
+	private void setEmailField() {
+		emailField.setLabel("Email");
+        emailField.setWidth("192px");
+        emailField.setRequired(true);
+        emailField.setErrorMessage("Campo richiesto");
+        emailField.addBlurListener(e -> {
+			if(!UtentiService.isMailUnique(textFieldCellulare.getValue())) {
+				emailField.setErrorMessage("Utente già registrato");
+				emailField.setInvalid(true);
+				decrementProgressBar();
+			}
+			else {
+				emailField.setInvalid(false);
+				incrementProgressBar();
+			}
+		});
+	}
+
+	private void setDatePickerDataNascita() {
+		datePickerDataNascita.setLabel("Data di nascita");
+		datePickerDataNascita.setWidth("min-content");
+		datePickerDataNascita.setValue(LocalDate.now());
+		datePickerDataNascita.setRequired(true);
+		datePickerDataNascita.setMax(LocalDate.now());
+		datePickerDataNascita.setErrorMessage("Data non valida");
+		datePickerDataNascita.addBlurListener(e -> {
+        	if(datePickerDataNascita.isInvalid()) {
+        		decrementProgressBar();
+        	}
+        	else {
+        		incrementProgressBar();
+        	}
+        });
+	}
+
+	private void setTextFieldNome() {
+		textFieldNome.setLabel("Nome");
+        textFieldNome.setWidth("192px");
+        textFieldNome.setRequired(true);
+		textFieldNome.setErrorMessage("Campo richiesto");
+		textFieldNome.addBlurListener(e -> {
+        	if(textFieldNome.isInvalid()) {
+        		decrementProgressBar();
+        	}
+        	else {
+        		incrementProgressBar();
+        	}
+        });
+	}
     
     private void setButtonRegistrazione() {
-    	buttonPrimary.setText("Registrati");
-        getContent().setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
-        buttonPrimary.setWidth("min-content");
-        buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        getContent().add(buttonPrimary);
-        buttonPrimary.addClickListener(e ->{
-        	System.out.println("entrato in click button");
-        	String nome = textFieldNome.getValue();
+    	btnRegistrazione.setText("Registrati");
+        getContent().setAlignSelf(FlexComponent.Alignment.CENTER, btnRegistrazione);
+        btnRegistrazione.setWidth("min-content");
+        btnRegistrazione.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        getContent().add(btnRegistrazione);
+        btnRegistrazione.addClickListener(event -> validateAndSave());
+    }
+    
+    private void validateAndSave() {
+    	NotificationDelegator notification = new NotificationDelegator();
+		if(textFieldCognome.isInvalid() || textFieldNome.isInvalid() || textFieldCellulare.isInvalid() || datePickerDataNascita.isInvalid()) {
+			return;
+		}
+		if(!UtentiService.isCellulareUnique(textFieldCellulare.getValue())) {
+    		notification.showErrorNotification("Numero di cellulare già registrato");
+		}
+		else if(!UtentiService.isMailUnique(emailField.getValue())) {
+			notification.showErrorNotification("Utente già registrato");
+		}
+		else {	
+			Optional<LocalDate> maybeDataNascita = datePickerDataNascita.getOptionalValue();
+			LocalDate dataNascita = null;
+			if(maybeDataNascita.isPresent()) {
+				dataNascita = maybeDataNascita.get();
+			}
+			String nome = textFieldNome.getValue();
         	String cognome = textFieldCognome.getValue();
         	String mail = emailField.getValue();
         	String telefono = textFieldCellulare.getValue();
         	String password = passwordField.getValue();
         	String confermaPassword = passwordFieldConferma.getValue();
-        	LocalDate dataNascita = datePickerDataNascita.getValue();
-        	Livello livello = (Livello) comboBoxLivello.getValue();
-        	
+        	Livello livello = comboBoxLivello.getValue();
         	Utente utente = new Utente(0, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(10), livello);
-        	if(UtentiService.aggiungiUtente(utente)==1) {
-        		//messaggio registrazione corretta utente
-        		//System.out.println("entrato in query eseguita");
-        		//ricarico la pagina dopo il login
-        		UI.getCurrent().getPage().reload();
-        	
-        	}else {
-        		//messaggio registrazione errata utente
-        		System.out.println("entrato in err query");
-        		
-        	}
-        });
-        
-    }
+			if(UtentiService.aggiungiUtente(utente) == 1) {
+				notification.showSuccessNotification("Utente registrato correttamente!");
+			}
+		}
+	}
 
-//    private void setComboBoxSampleData(ComboBox comboBox) {
-//        List<SampleItem> sampleItems = new ArrayList<>();
-//        sampleItems.add(new SampleItem("1", "Principiante", null));
-//        sampleItems.add(new SampleItem("second", "Second", null));
-//        sampleItems.add(new SampleItem("third", "Third", Boolean.TRUE));
-//        sampleItems.add(new SampleItem("fourth", "Fourth", null));
-//        comboBox.setItems(sampleItems);
-//        comboBox.setItemLabelGenerator(item -> ((SampleItem) item).label());
-//    }
     private void setCmbLivelloData(ComboBox<Livello> cmbLivello) {
 		List<Livello> livelli = LivelliService.findAll();
 		cmbLivello.setItems(livelli);

@@ -31,12 +31,10 @@ public class UtentiService {
 
 	
 	public static int aggiungiUtente(Utente user) {
-		int res = 0;
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		try {
-			res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
+		int res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
 					.values(user.getNome(), 
 							user.getCognome(), 
 							user.getDataNascita().toString(), 
@@ -45,13 +43,7 @@ public class UtentiService {
 							user.getPassword(), 
 							user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
 					.execute();
-		}
-		catch(Exception ex) {
-			return -1;
-		}
-		finally {
-			db.chiudiConnessione();
-		}
+		db.chiudiConnessione();
 		return res;
 	}
 	
@@ -92,6 +84,14 @@ public class UtentiService {
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.TELEFONO.eq(cellulare)));
+		return count == 0;
+	}
+	
+	public static boolean isMailUnique(String mail) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.MAIL.eq(mail)));
 		return count == 0;
 	}
 }
