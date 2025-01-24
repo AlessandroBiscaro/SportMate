@@ -44,7 +44,7 @@ public class GestoriService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();
-		return create.update(GESTORI)
+		int result = create.update(GESTORI)
 	            .set(GESTORI.NOME, admin.getNome())
 	            .set(GESTORI.COGNOME, admin.getCognome())
 	            .set(GESTORI.MAIL, admin.getMail())
@@ -53,5 +53,7 @@ public class GestoriService {
 	            .set(GESTORI.PASSWORD, admin.getPassword())
 	            .where(GESTORI.IDGESTORE.eq(admin.getIdGestore())) 
 	            .execute(); 
+		db.chiudiConnessione();
+		return result;
 	}
 }
