@@ -5,6 +5,8 @@ import SportMateInc.SportMateBusinessLayer.entity.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 import org.jooq.Record;
+import org.jooq.exception.DataAccessException;
+import org.jooq.exception.IntegrityConstraintViolationException;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -35,17 +37,23 @@ public class UtentiService {
 		
 		DSLContext create =  db.getContext();
 				
-		int res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
-		.values(user.getNome(), 
-				user.getCognome(), 
-				user.getDataNascita().toString(), 
-				user.getMail(), 
-				user.getTelefono(), 
-				user.getPassword(), 
-				user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
-		.execute();
-		db.chiudiConnessione();
-		return res;
+		try {
+			return create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
+			.values(user.getNome(), 
+					user.getCognome(), 
+					user.getDataNascita().toString(), 
+					user.getMail(), 
+					user.getTelefono(), 
+					user.getPassword(), 
+					user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
+			.execute();
+			
+		} catch (IntegrityConstraintViolationException e) {
+			return -1;
+		}finally {
+			db.chiudiConnessione();
+		}
+		
 	}
 	
 	
@@ -79,4 +87,7 @@ public class UtentiService {
 		return new Utente(result.get(UTENTI.IDUTENTE),result.get(UTENTI.MAIL), result.get(UTENTI.NOME),result.get(UTENTI.COGNOME), LocalDate.parse(result.get(UTENTI.DATANASCITA)), result.get(UTENTI.TELEFONO), result.get(UTENTI.PASSWORD),
 				result.get(UTENTI.CREDITO), LivelliService.findLivello(result.get(UTENTI.LIVELLO)));
 	}
+	
+	
+	
 }
