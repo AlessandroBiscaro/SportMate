@@ -11,6 +11,7 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
 import com.vaadin.flow.component.icon.Icon;
@@ -41,9 +42,11 @@ import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.jooq.Record6;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("MySportmate")
@@ -255,9 +258,18 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	
 
 	private void setBtnRicarica() {
+		NotificationDelegator delegator = new NotificationDelegator();
 		btnRicaricaCredito.setText("Ricarica");
 		btnRicaricaCredito.setWidth("107px");
 		btnRicaricaCredito.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnRicaricaCredito.addClickListener(e -> {
+			if(txtImporto.isEmpty() || txtImporto.isInvalid()) {
+				return;
+			}
+			//if(UtentiService.ricaricaCredito(utente.getIdUtente(), txtImporto.getValue()) == 2) {
+				//delegator.showSuccessNotification("Ricarica eseguita correttamente!");
+			//}
+		});
 	}
 	
 	private void setTxtNome() {
@@ -304,19 +316,14 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 	
 	private void setTxtImporto() {
-		//txtImporto.setLabel("Importo");
-		//txtImporto.setWidth("220px");
-		//txtImporto.setValue(utente.getCredito().toString());
-		//txtCognome.setRequired(true);
-		//txtCognome.setErrorMessage("Campo richiesto");
-		/**
-		 * dollarField.setLabel("Balance");
-		dollarField.setValue(200.0);
-		Div dollarPrefix = new Div();
-		dollarPrefix.setText("$");
-		dollarField.setPrefixComponent(dollarPrefix);
-		 */
-		
+		txtImporto.setWidth("220px");
+		txtImporto.setLabel("Importo");
+		txtImporto.setRequired(true);
+		txtImporto.setErrorMessage("Campo richiesto");
+		txtImporto.setValue(utente.getCredito().doubleValue());
+		Div sportMatePrefix = new Div();
+		sportMatePrefix.setText("SM");
+		txtImporto.setPrefixComponent(sportMatePrefix);
 	}
 	
 	private void setDtpDataNascita() {
@@ -362,7 +369,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 
 	private void setGridPartitePrenotateData(Grid grid) {
-		
+		grid.setItems(new ArrayList<>());
 	}
 
 }
