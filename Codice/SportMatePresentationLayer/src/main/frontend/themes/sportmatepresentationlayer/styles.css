@@ -28,3 +28,27 @@
       --lumo-base-color: #fcfcfc;
 
     }
+	/* Layout del filtro con flex-wrap */
+	.filter-layout {
+	    display: flex;
+	    flex-wrap: wrap; /* Permette agli elementi di andare a capo */
+	    gap: var(--lumo-space-m); /* Distanza tra gli elementi */
+	}
+
+	/* Regola la larghezza per ogni filtro */
+	.filter-layout > * {
+	    width: 100%;
+	    max-width: 400px; /* Imposta la larghezza massima per ogni filtro */
+	}
+
+	/* Aggiustamenti specifici per i filtri "Data e Ora" */
+	.date-range-component {
+	    width: 100%;
+	    margin-top: var(--lumo-space-m); /* Distanza tra gli altri campi */
+	}
+
+	/* Gestisce la disposizione verticale dei campi di data */
+	.date-range-component > input {
+	    width: 100%;
+	    margin-bottom: var(--lumo-space-xs); /* Spazio tra i due campi di data */
+	}

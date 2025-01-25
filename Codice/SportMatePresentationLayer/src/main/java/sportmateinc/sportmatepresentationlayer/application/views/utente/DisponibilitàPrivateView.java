@@ -7,6 +7,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -39,6 +40,7 @@ import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
 import sportmateinc.sportmatepresentationlayer.application.services.SamplePersonService;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -98,128 +100,112 @@ public class DisponibilitàPrivateView extends Div {
 		return mobileFilters;
 	}
 
-	public static class Filters extends Div implements Specification<SamplePerson> {
+	public static class Filters extends Div {
 
-		private final TextField filtroCentro = new TextField("Centro Sportivo");
-		private final TextField filtroPrezzo = new TextField("Prezzo");
-		private final DatePicker filtroInzioData = new DatePicker("Data e Ora");
-		private final DatePicker filtroFineData = new DatePicker();
-		private final CheckboxGroup<String> tipoCampo = new CheckboxGroup<>("Tipologia Campo");
+	    private final TextField filtroCentro = new TextField("Centro Sportivo");
+	    private final TextField filtroPrezzo = new TextField("Prezzo");
+	    private final DateTimePicker filtroInzioData = new DateTimePicker("Data e Ora");
+	    private final DateTimePicker filtroFineData = new DateTimePicker();
+	    private final CheckboxGroup<String> tipoCampo = new CheckboxGroup<>("Tipologia Campo");
 
-		public Filters(Runnable onSearch) {
+	    public Filters(Runnable onSearch) {
 
-			setWidthFull();
-			addClassName("filter-layout");
-			addClassNames(LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.MEDIUM,
-					LumoUtility.BoxSizing.BORDER);
-			filtroCentro.setPlaceholder("Nome centro sportivo");
+	        setWidthFull();
+	        addClassName("filter-layout");
+	        addClassNames(LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.MEDIUM,
+	                LumoUtility.BoxSizing.BORDER);
 
+	        // Configura i filtri visivi
+	        filtroCentro.setPlaceholder("Nome centro sportivo");
 
+	        tipoCampo.setItems("Calcio a 5", "Calcio a 7", "Basket 3vs3");
+	        tipoCampo.addClassName("double-width");
 
-			tipoCampo.setItems("Calcio a 5", "Calcio a 7", "Basket 3vs3");
-			tipoCampo.addClassName("double-width");
+	        // Pulsanti di azione
+	        Button resetBtn = new Button("Reset");
+	        resetBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+	        resetBtn.addClickListener(e -> {
+	            // Resetta i filtri
+	            filtroCentro.clear();
+	            filtroPrezzo.clear();
+	            filtroInzioData.clear();
+	            filtroFineData.clear();
+	            tipoCampo.clear();
+	            onSearch.run(); // Esegui la ricerca
+	        });
 
-			// Action buttons
-			Button resetBtn = new Button("Reset");
-			resetBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-			resetBtn.addClickListener(e -> {
-				filtroCentro.clear();
-				filtroPrezzo.clear();
-				filtroInzioData.clear();
-				filtroFineData.clear();
-				tipoCampo.clear();
-				onSearch.run();
-			});
-			Button searchBtn = new Button("Cerca");
-			searchBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-			searchBtn.addClickListener(e -> onSearch.run());
+	        Button searchBtn = new Button("Cerca");
+	        searchBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+	        searchBtn.addClickListener(e -> onSearch.run());
 
-			Div actions = new Div(resetBtn, searchBtn);
-			actions.addClassName(LumoUtility.Gap.SMALL);
-			actions.addClassName("actions");
+	        Div actions = new Div(resetBtn, searchBtn);
+	        actions.addClassName(LumoUtility.Gap.SMALL);
+	        actions.addClassName("actions");
 
-			add(filtroCentro, filtroPrezzo, createDateRangeFilter(), tipoCampo, actions);
-		}
+	        add(filtroCentro, filtroPrezzo, createDateRangeFilter(), tipoCampo, actions);
+	    }
 
-		private Component createDateRangeFilter() {
-			filtroInzioData.setPlaceholder("Da");
+	    private Component createDateRangeFilter() {
+	    	
+	    	
+	        filtroInzioData.setDatePlaceholder("Da");
+	        filtroFineData.setDatePlaceholder("A");
 
-			filtroFineData.setPlaceholder("A");
+	        // Accessibilità per screen readers
+	        filtroInzioData.setAriaLabel("Dalla data");
+	        filtroFineData.setAriaLabel("Alla data");
 
-			// For screen readers
-			filtroInzioData.setAriaLabel("Dalla data");
-			filtroFineData.setAriaLabel("Alla data");
+	        FlexLayout dateRangeComponent = new FlexLayout(filtroInzioData, new Text(" – "), filtroFineData);
+	        dateRangeComponent.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+	        dateRangeComponent.addClassName(LumoUtility.Gap.XSMALL);
+	        dateRangeComponent.addClassName("date-range-component");
+	        dateRangeComponent.setAlignItems(FlexComponent.Alignment.CENTER);
+	        return dateRangeComponent;
+	    }
 
-			FlexLayout dateRangeComponent = new FlexLayout(filtroInzioData, new Text(" – "), filtroFineData);
-			dateRangeComponent.setAlignItems(FlexComponent.Alignment.BASELINE);
-			dateRangeComponent.addClassName(LumoUtility.Gap.XSMALL);
+	    /**
+	     * Applica i filtri manualmente a una lista di `DisponibilitaUtente`.
+	     */
+	    public List<DisponibilitaUtente> applyFilters(List<DisponibilitaUtente> lista) {
+	        return lista.stream()
+	            .filter(disponibilita -> filtroCentro.isEmpty() || 
+	                disponibilita.getNomecentro().toLowerCase().contains(filtroCentro.getValue().toLowerCase()))
+	            .filter(disponibilita -> {
+	                if (filtroPrezzo.isEmpty()) {
+	                    return true;
+	                }
+	                try {
+	                    // Confronta il prezzo se è valido
+	                    BigDecimal prezzoFiltro = new BigDecimal(filtroPrezzo.getValue());
+	                    return disponibilita.getPrezzo().compareTo(prezzoFiltro) == 0;
+	                } catch (NumberFormatException e) {
+	                    return false; // Ignora se il prezzo inserito non è valido
+	                }
+	            })
+	            .filter(disponibilita -> {
+	                if (filtroInzioData.isEmpty()) {
+	                    return true; // Se non c'è un filtro, non fare nulla (ritorna true)
+	                }
+	                // Solo se filtroInzioData ha un valore valido (LocalDateTime)
+	                LocalDateTime dataFiltro = filtroInzioData.getValue();
+	                return dataFiltro != null && !disponibilita.getDataOra().isBefore(dataFiltro);
+	            })
+	            .filter(disponibilita -> {
+	                if (filtroFineData.isEmpty()) {
+	                    return true; // Se non c'è un filtro, non fare nulla (ritorna true)
+	                }
+	                // Solo se filtroFineData ha un valore valido (LocalDateTime)
+	                LocalDateTime dataFiltro = filtroFineData.getValue();
+	                return dataFiltro != null && !disponibilita.getDataOra().isAfter(dataFiltro);
+	            })
+	            .filter(disponibilita -> tipoCampo.isEmpty() || 
+	                tipoCampo.getValue().contains(disponibilita.getTipoCampo()))
+	            .toList(); // Ritorna i dati filtrati
+	    }
 
-			return dateRangeComponent;
-		}
-
-		@Override
-		public Predicate toPredicate(Root<SamplePerson> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-			List<Predicate> predicates = new ArrayList<>();
-
-			if (!filtroCentro.isEmpty()) {
-				String lowerCaseFilter = filtroCentro.getValue().toLowerCase();
-				Predicate firstNameMatch = criteriaBuilder.like(criteriaBuilder.lower(root.get("firstName")),
-						lowerCaseFilter + "%");
-				Predicate lastNameMatch = criteriaBuilder.like(criteriaBuilder.lower(root.get("lastName")),
-						lowerCaseFilter + "%");
-				predicates.add(criteriaBuilder.or(firstNameMatch, lastNameMatch));
-			}
-			if (!filtroPrezzo.isEmpty()) {
-				String databaseColumn = "phone";
-				String ignore = "- ()";
-
-				String lowerCaseFilter = ignoreCharacters(ignore, filtroPrezzo.getValue().toLowerCase());
-				Predicate phoneMatch = criteriaBuilder.like(
-						ignoreCharacters(ignore, criteriaBuilder, criteriaBuilder.lower(root.get(databaseColumn))),
-						"%" + lowerCaseFilter + "%");
-				predicates.add(phoneMatch);
-
-			}
-			if (filtroInzioData.getValue() != null) {
-				String databaseColumn = "dateOfBirth";
-				predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get(databaseColumn),
-						criteriaBuilder.literal(filtroInzioData.getValue())));
-			}
-			if (filtroFineData.getValue() != null) {
-				String databaseColumn = "dateOfBirth";
-				predicates.add(criteriaBuilder.greaterThanOrEqualTo(criteriaBuilder.literal(filtroFineData.getValue()),
-						root.get(databaseColumn)));
-			}
-			if (!tipoCampo.isEmpty()) {
-				String databaseColumn = "role";
-				List<Predicate> rolePredicates = new ArrayList<>();
-				for (String role : tipoCampo.getValue()) {
-					rolePredicates.add(criteriaBuilder.equal(criteriaBuilder.literal(role), root.get(databaseColumn)));
-				}
-				predicates.add(criteriaBuilder.or(rolePredicates.toArray(Predicate[]::new)));
-			}
-			return criteriaBuilder.and(predicates.toArray(Predicate[]::new));
-		}
-
-		private String ignoreCharacters(String characters, String in) {
-			String result = in;
-			for (int i = 0; i < characters.length(); i++) {
-				result = result.replace("" + characters.charAt(i), "");
-			}
-			return result;
-		}
-
-		private Expression<String> ignoreCharacters(String characters, CriteriaBuilder criteriaBuilder,
-				Expression<String> inExpression) {
-			Expression<String> expression = inExpression;
-			for (int i = 0; i < characters.length(); i++) {
-				expression = criteriaBuilder.function("replace", String.class, expression,
-						criteriaBuilder.literal(characters.charAt(i)), criteriaBuilder.literal(""));
-			}
-			return expression;
-		}
-
+	   
 	}
+
 
 	private Component createGrid() {
 		grid = new Grid<>(DisponibilitaUtente.class, false);
@@ -237,7 +223,13 @@ public class DisponibilitàPrivateView extends Div {
 	}
 
 	private void refreshGrid() {
-		grid.getDataProvider().refreshAll();
+	    List<DisponibilitaUtente> allDisponibilita = DisponibilitaService.findAllUtente(); // Lista originale
+	    List<DisponibilitaUtente> filteredDisponibilita = filters.applyFilters(allDisponibilita); // Applica i filtri
+	    grid.setItems(filteredDisponibilita); // Aggiorna la griglia
 	}
+
+	
+	
+
 
 }

@@ -85,7 +85,7 @@ public class DisponibilitaService {
 		for (Record4<Integer, String, BigDecimal, Integer > disp : result) {
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.get(DISPONIBILITA.TIPOCAMPO));
 			CentriSportivi centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
-			list.add(new DisponibilitaUtente(centro.getNomeComm(),disp.get(DISPONIBILITA.DATAORA), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO).toString()));
+			list.add(new DisponibilitaUtente(centro.getNomeComm(),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO)));
 		}
 		return list;
 	}

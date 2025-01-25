@@ -1,30 +1,31 @@
 package SportMateInc.SportMateBusinessLayer.entity;
 
-
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class DisponibilitaUtente {
 	
-	private String dataOra;
-	private String prezzo;
+	private LocalDateTime dataOra;
+	private BigDecimal prezzo;
 	private String tipoCampo;
 	private String nomecentro;
-	public DisponibilitaUtente(String dataOra, String prezzo, String tipoCampo, String nomecentro) {
-		
+	public DisponibilitaUtente(String nomecentro, LocalDateTime dataOra, String tipoCampo, BigDecimal prezzo ) {
+		this.nomecentro = nomecentro;
 		this.dataOra = dataOra;
 		this.prezzo = prezzo;
 		this.tipoCampo = tipoCampo;
-		this.nomecentro = nomecentro;
+		
 	}
-	public String getDataOra() {
+	public LocalDateTime getDataOra() {
 		return dataOra;
 	}
-	public void setDataOra(String dataOra) {
+	public void setDataOra(LocalDateTime dataOra) {
 		this.dataOra = dataOra;
 	}
-	public String getPrezzo() {
+	public BigDecimal getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(String prezzo) {
+	public void setPrezzo(BigDecimal prezzo) {
 		this.prezzo = prezzo;
 	}
 	public String getTipoCampo() {
