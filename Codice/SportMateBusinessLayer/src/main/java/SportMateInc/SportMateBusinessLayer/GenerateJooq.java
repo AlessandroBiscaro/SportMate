@@ -1,6 +1,7 @@
 package SportMateInc.SportMateBusinessLayer;
 
 
+import org.apache.log4j.chainsaw.Main;
 import org.jooq.codegen.GenerationTool;
 import org.jooq.meta.jaxb.Configuration;
 import org.jooq.meta.jaxb.Database;
@@ -37,6 +38,8 @@ public class GenerateJooq {
 		Configuration configuration = new Configuration().withJdbc(JDBC).withGenerator(generator);
 		GenerationTool.generate(configuration);
 	}
+	
+
 	
 	
 }
