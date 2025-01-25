@@ -61,7 +61,7 @@ public class Centrisportivi extends TableImpl<CentrisportiviRecord> {
     /**
      * The column <code>Centrisportivi.indirizzo</code>.
      */
-    public final TableField<CentrisportiviRecord, String> INDIRIZZO = createField(DSL.name("nomeCommerciale"), SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<CentrisportiviRecord, String> INDIRIZZO = createField(DSL.name("indirizzo"), SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * The column <code>Centrisportivi.latitudine</code>.
