@@ -37,10 +37,11 @@ public class GestoriService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		return create.insertInto(GESTORI, GESTORI.NOME, GESTORI.COGNOME, GESTORI.DATANASCITA, GESTORI.MAIL, GESTORI.TELEFONO, GESTORI.PASSWORD)
+		int res = create.insertInto(GESTORI, GESTORI.NOME, GESTORI.COGNOME, GESTORI.DATANASCITA, GESTORI.MAIL, GESTORI.TELEFONO, GESTORI.PASSWORD)
 		.values(admin.getNome(), admin.getCognome(), admin.getDataNascita().toString(), admin.getMail(), admin.getTelefono(), admin.getPassword())
 		.returning(GESTORI.IDGESTORE)
 		.execute();
+		return res;
 	}
 	
 	public static int aggiornaDatiGestore(Gestore admin) {

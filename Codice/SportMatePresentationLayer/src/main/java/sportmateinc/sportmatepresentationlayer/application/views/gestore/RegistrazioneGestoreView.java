@@ -8,18 +8,15 @@ import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.progressbar.ProgressBar;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
-import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
@@ -28,26 +25,18 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 import SportMateInc.SportMateBusinessLayer.entity.CentriSportivi;
 import SportMateInc.SportMateBusinessLayer.entity.Gestore;
-import SportMateInc.SportMateBusinessLayer.entity.Livello;
 import SportMateInc.SportMateBusinessLayer.entity.ServiziAgg;
 import SportMateInc.SportMateBusinessLayer.entity.TipoCampo;
 import SportMateInc.SportMateBusinessLayer.services.CentriSportiviService;
 import SportMateInc.SportMateBusinessLayer.services.GestoriService;
-import SportMateInc.SportMateBusinessLayer.services.LivelliService;
 import SportMateInc.SportMateBusinessLayer.services.ServiziAggService;
 import SportMateInc.SportMateBusinessLayer.services.TipoCampoService;
-import SportMateInc.SportMateBusinessLayer.services.UtentiService;
-import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Registrazione Gestore")
 @Route("registrazioneGestore")
@@ -62,9 +51,9 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
      DatePicker datePickerDataNascita = new DatePicker();
      EmailField emailField = new EmailField();
      TextField textFieldNomeCommerciale = new TextField();
-     MultiSelectComboBox<TipoCampo> multiSelectTipoCampo = new MultiSelectComboBox();
+     MultiSelectComboBox<TipoCampo> multiSelectTipoCampo = new MultiSelectComboBox<>();
      TimePicker timePickerOraApertura = new TimePicker();
-     MultiSelectComboBox<ServiziAgg> multiSelectServAgg = new MultiSelectComboBox();
+     MultiSelectComboBox<ServiziAgg> multiSelectServAgg = new MultiSelectComboBox<>();
      VerticalLayout layoutColumn5 = new VerticalLayout();
      VerticalLayout layoutColumn3 = new VerticalLayout();
      TextField textFieldCognome = new TextField();
@@ -111,7 +100,7 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         setEmailField();
         
         setTextFieldNomeCommerciale();
-        /**
+    
         setMultiSelectTipoCampo();
         
         setTimePickerOraApertura();
@@ -119,7 +108,6 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         setTimePickerOraChiusura();
         
         setMultiSelectServAgg();
-        **/
         
         layoutColumn5.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn5);
@@ -179,7 +167,37 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         setButtonRegistrazione();
     }
 
-    private void setTextFieldAltro() {
+    private void setMultiSelectServAgg() {
+    	 multiSelectServAgg.setLabel("Servizi aggiuntivi");
+         multiSelectServAgg.setWidth("min-content");
+		setMultiSelectServAggData(multiSelectServAgg);
+	}
+
+	private void setTimePickerOraChiusura() {
+		timePickerOraChiusura.setLabel("Orario chiusura");
+        timePickerOraChiusura.setWidth("min-content");
+        timePickerOraChiusura.setRequired(true);
+        timePickerOraChiusura.addBlurListener(e -> {
+        	if(timePickerOraChiusura.getValue().isBefore(timePickerOraApertura.getValue())) {
+        		timePickerOraChiusura.setErrorMessage("Orario chiusura non valido");
+        		timePickerOraChiusura.setInvalid(true);
+        	}
+        });
+	}
+
+	private void setTimePickerOraApertura() {
+		timePickerOraApertura.setLabel("Orario apertura");
+        timePickerOraApertura.setWidth("min-content");
+        timePickerOraApertura.setRequired(true);
+	}
+
+	private void setMultiSelectTipoCampo() {
+		multiSelectTipoCampo.setLabel("Tipologie campi");
+        multiSelectTipoCampo.setWidth("min-content");
+		setMultiSelectTipoCampoData(multiSelectTipoCampo);
+	}
+
+	private void setTextFieldAltro() {
     	textFieldAltro.setLabel("Altro");
         textFieldAltro.setWidth("192px");
         textFieldAltro.setRequired(true);
@@ -225,9 +243,11 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
         	String oraChiusura = timePickerOraChiusura.getValue().toString();
 			Set<ServiziAgg> servizi = multiSelectServAgg.getValue();
 			Gestore gestore = new Gestore(0,mail,nome,cognome,dataNascita,telefono,psw);
-			int idGestore = GestoriService.aggiungiGestore(gestore);
+			GestoriService.aggiungiGestore(gestore);
+			int idGestore = GestoriService.findByUsername(mail).getIdGestore();
 			CentriSportivi centro = new CentriSportivi(0, nomeComm, indirizzo, BigDecimal.valueOf(0), BigDecimal.valueOf(0), BigDecimal.valueOf(0), oraApertura, oraChiusura, idGestore);
-			int idCentro = CentriSportiviService.aggiungiCentro(centro);
+			CentriSportiviService.aggiungiCentro(centro);
+			int idCentro = CentriSportiviService.findByIdGest(idGestore).getIdCentro();
 			for(TipoCampo tipo : tipologieCampo) {
 				TipoCampoService.aggiungiTipoCampo(idCentro, tipo.getIdCampo());
 			}
@@ -242,13 +262,13 @@ public class RegistrazioneGestoreView extends Composite<VerticalLayout> {
     	});
     }
 
-    private void setCmbTipoCampo(MultiSelectComboBox<TipoCampo> cmbTipo) {
+    private void setMultiSelectTipoCampoData(MultiSelectComboBox<TipoCampo> cmbTipo) {
     	List<TipoCampo> tipo = TipoCampoService.findAll();
 		cmbTipo.setItems(tipo);
 		cmbTipo.setItemLabelGenerator(item -> item.getNomeCampo());
     }
     
-    private void setCmbServizi(MultiSelectComboBox<ServiziAgg> cmbServizi) {
+    private void setMultiSelectServAggData(MultiSelectComboBox<ServiziAgg> cmbServizi) {
     	List<ServiziAgg> servizi = ServiziAggService.findAll();
 		cmbServizi.setItems(servizi);
 		cmbServizi.setItemLabelGenerator(item -> item.getNomeServizio());
