@@ -9,8 +9,8 @@ import java.util.Random;
 import com.vaadin.flow.component.messages.MessageList;
 import com.vaadin.flow.component.messages.MessageListItem;
 
-import SportMateInc.SportMateBusinessLayer.entity.Feedback;
-import SportMateInc.SportMateBusinessLayer.services.FeedbackService;
+import sportmateinc.sportmatebusinesslayer.entity.Feedback;
+import sportmateinc.sportmatebusinesslayer.services.FeedbackService;
 
 public class MessageListDelegator {
 	

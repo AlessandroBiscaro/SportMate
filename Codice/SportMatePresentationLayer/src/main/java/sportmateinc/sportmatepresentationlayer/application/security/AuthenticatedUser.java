@@ -2,8 +2,8 @@ package sportmateinc.sportmatepresentationlayer.application.security;
 
 import com.vaadin.flow.spring.security.AuthenticationContext;
 
-import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
-import SportMateInc.SportMateBusinessLayer.services.AuthenticatedProfileService;
+import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.services.AuthenticatedProfileService;
 
 import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;

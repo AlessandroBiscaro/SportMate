@@ -1,5 +1,6 @@
 package SportMateInc.SportMateBusinessLayer.services;
 import static org.junit.Assert.*;
+import static sportmateinc.sportmatebusinesslayergenerated.tables.Utenti.UTENTI;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,10 +12,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import SportMateInc.SportMateBusinessLayer.entity.Livello;
-import SportMateInc.SportMateBusinessLayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.entity.Livello;
+import sportmateinc.sportmatebusinesslayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.services.LivelliService;
+import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatedblayer.SportMateDB;
-import static SportMateInc.SportMateBusinessLayer.tables.Utenti.UTENTI;
 
 public class UtentiServiceTest {
 

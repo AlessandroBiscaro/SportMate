@@ -23,14 +23,14 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
-import SportMateInc.SportMateBusinessLayer.entity.CentriSportivi;
-import SportMateInc.SportMateBusinessLayer.entity.Gestore;
-import SportMateInc.SportMateBusinessLayer.entity.ServiziAgg;
-import SportMateInc.SportMateBusinessLayer.entity.TipoCampo;
-import SportMateInc.SportMateBusinessLayer.services.CentriSportiviService;
-import SportMateInc.SportMateBusinessLayer.services.GestoriService;
-import SportMateInc.SportMateBusinessLayer.services.ServiziAggService;
-import SportMateInc.SportMateBusinessLayer.services.TipoCampoService;
+import sportmateinc.sportmatebusinesslayer.entity.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entity.Gestore;
+import sportmateinc.sportmatebusinesslayer.entity.ServiziAgg;
+import sportmateinc.sportmatebusinesslayer.entity.TipoCampo;
+import sportmateinc.sportmatebusinesslayer.services.CentriSportiviService;
+import sportmateinc.sportmatebusinesslayer.services.GestoriService;
+import sportmateinc.sportmatebusinesslayer.services.ServiziAggService;
+import sportmateinc.sportmatebusinesslayer.services.TipoCampoService;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.math.BigDecimal;

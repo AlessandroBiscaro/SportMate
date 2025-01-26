@@ -32,12 +32,12 @@ import com.vaadin.flow.spring.security.AuthenticationContext;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
-import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
-import SportMateInc.SportMateBusinessLayer.entity.Livello;
-import SportMateInc.SportMateBusinessLayer.entity.Utente;
-import SportMateInc.SportMateBusinessLayer.services.LivelliService;
-import SportMateInc.SportMateBusinessLayer.services.UtentiService;
 import jakarta.annotation.security.RolesAllowed;
+import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entity.Livello;
+import sportmateinc.sportmatebusinesslayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.services.LivelliService;
+import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 

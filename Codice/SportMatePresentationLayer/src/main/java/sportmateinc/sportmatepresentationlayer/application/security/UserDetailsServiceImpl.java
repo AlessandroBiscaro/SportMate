@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import SportMateInc.SportMateBusinessLayer.services.AuthenticatedProfileService;
-import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.services.AuthenticatedProfileService;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

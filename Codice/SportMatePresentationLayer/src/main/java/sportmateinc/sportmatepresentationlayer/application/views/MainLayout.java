@@ -25,7 +25,7 @@ import com.vaadin.flow.server.menu.MenuEntry;
 import com.vaadin.flow.spring.security.AuthenticationContext;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-import SportMateInc.SportMateBusinessLayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
 import sportmateinc.sportmatepresentationlayer.application.security.AuthenticatedUser;
 
 import java.util.List;

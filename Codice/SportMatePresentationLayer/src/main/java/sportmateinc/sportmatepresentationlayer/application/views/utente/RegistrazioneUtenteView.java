@@ -23,12 +23,11 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
-import SportMateInc.SportMateBusinessLayer.entity.Livello;
-import SportMateInc.SportMateBusinessLayer.services.LivelliService;
-import SportMateInc.SportMateBusinessLayer.services.UtentiService;
+import sportmateinc.sportmatebusinesslayer.entity.Livello;
+import sportmateinc.sportmatebusinesslayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.services.LivelliService;
+import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
-import SportMateInc.SportMateBusinessLayer.entity.Utente;
-
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

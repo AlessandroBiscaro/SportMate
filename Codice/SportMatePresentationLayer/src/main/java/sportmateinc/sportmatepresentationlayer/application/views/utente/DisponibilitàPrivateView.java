@@ -26,9 +26,6 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
-import SportMateInc.SportMateBusinessLayer.entity.Disponibilita;
-import SportMateInc.SportMateBusinessLayer.entity.DisponibilitaUtente;
-import SportMateInc.SportMateBusinessLayer.services.DisponibilitaService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -36,6 +33,9 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import sportmateinc.sportmatebusinesslayer.entity.Disponibilita;
+import sportmateinc.sportmatebusinesslayer.entity.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
 import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
 import sportmateinc.sportmatepresentationlayer.application.services.SamplePersonService;
 
