@@ -4,42 +4,29 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Model" xmi:id="__EzvoNWCEe-v_o-6OB-PLA" name="sportmateinc">
-    <packagedElement xmi:type="uml:Package" xmi:id="_6C-eUNZPEe-1PpdMPsPu9w" name="sportmatepresentationlayer">
-      <packagedElement xmi:type="uml:Model" xmi:id="_Rtb3oNWDEe-v_o-6OB-PLA" name="application.view">
-        <packageImport xmi:type="uml:PackageImport" xmi:id="_z74d8NWDEe-v_o-6OB-PLA" importedPackage="_wHLdQNWDEe-v_o-6OB-PLA"/>
-        <packageImport xmi:type="uml:PackageImport" xmi:id="_Z6pUMNWEEe-v_o-6OB-PLA"/>
-        <packageImport xmi:type="uml:PackageImport" xmi:id="_piB4wNWEEe-v_o-6OB-PLA"/>
-        <packagedElement xmi:type="uml:Package" xmi:id="_NuLz0NWDEe-v_o-6OB-PLA" name="view"/>
-        <packagedElement xmi:type="uml:Package" xmi:id="_iewfwNWDEe-v_o-6OB-PLA" name="view.comuni">
-          <packagedElement xmi:type="uml:Dependency" xmi:id="_GYKMANWEEe-v_o-6OB-PLA" name="&lt;&lt;merge>>" client="_iewfwNWDEe-v_o-6OB-PLA" supplier="_NuLz0NWDEe-v_o-6OB-PLA"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_k3FCANWDEe-v_o-6OB-PLA" name="view.gestore">
-          <packagedElement xmi:type="uml:Dependency" xmi:id="_TgRRwNWEEe-v_o-6OB-PLA" name="&lt;&lt;merge>>" client="_k3FCANWDEe-v_o-6OB-PLA" supplier="_NuLz0NWDEe-v_o-6OB-PLA"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_uOrDgNWDEe-v_o-6OB-PLA" name="view.utente">
-          <packagedElement xmi:type="uml:Dependency" xmi:id="_UTpPcNWEEe-v_o-6OB-PLA" name="&lt;&lt;merge>>" client="_uOrDgNWDEe-v_o-6OB-PLA" supplier="_NuLz0NWDEe-v_o-6OB-PLA"/>
-        </packagedElement>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_d3bS0NWEEe-v_o-6OB-PLA" name="application">
-        <packageImport xmi:type="uml:PackageImport" xmi:id="_olNEINWEEe-v_o-6OB-PLA"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_wHLdQNWDEe-v_o-6OB-PLA" name="application.security">
+    <packagedElement xmi:type="uml:Package" xmi:id="_6C-eUNZPEe-1PpdMPsPu9w" name="sportmatepresentationlayer.application">
+      <packagedElement xmi:type="uml:Package" xmi:id="_wHLdQNWDEe-v_o-6OB-PLA" name="security">
         <packageImport xmi:type="uml:PackageImport" xmi:id="_nvY2cNWEEe-v_o-6OB-PLA"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Dependency" xmi:id="_C0vcoNZVEe-L4MqsUhNOjw" client="_6C-eUNZPEe-1PpdMPsPu9w" supplier="_zIzsENZQEe-1PpdMPsPu9w"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_NuLz0NWDEe-v_o-6OB-PLA" name="view">
+        <packagedElement xmi:type="uml:Package" xmi:id="_iewfwNWDEe-v_o-6OB-PLA" name="comuni"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_k3FCANWDEe-v_o-6OB-PLA" name="gestore"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_uOrDgNWDEe-v_o-6OB-PLA" name="utente"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_qPp6ENZQEe-1PpdMPsPu9w" name="sportmatedblayer"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_zIzsENZQEe-1PpdMPsPu9w" name="sportmatebusinesslayer">
       <packagedElement xmi:type="uml:Package" xmi:id="_TWr24NZTEe-1PpdMPsPu9w" name="services">
-        <packagedElement xmi:type="uml:Dependency" xmi:id="_dj9twNZUEe-L4MqsUhNOjw" client="_TWr24NZTEe-1PpdMPsPu9w" supplier="_IxC4cNZUEe-L4MqsUhNOjw"/>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_DDyQENv5Ee-2GYUGArOHog" client="_TWr24NZTEe-1PpdMPsPu9w" supplier="_m5EGwNv4Ee-2GYUGArOHog"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Model" xmi:id="_IxC4cNZUEe-L4MqsUhNOjw" name="sportmatebusinesslayer.tables">
-        <packagedElement xmi:type="uml:Package" xmi:id="_L5pBENZUEe-L4MqsUhNOjw" name="records">
-          <packagedElement xmi:type="uml:Dependency" xmi:id="_8V-pcNZUEe-L4MqsUhNOjw" name="&lt;&lt;merge>>" client="_L5pBENZUEe-L4MqsUhNOjw" supplier="_rZf6MNZUEe-L4MqsUhNOjw"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_rZf6MNZUEe-L4MqsUhNOjw" name="tables"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Dependency" xmi:id="_D5uuwNZVEe-L4MqsUhNOjw" client="_zIzsENZQEe-1PpdMPsPu9w" supplier="_qPp6ENZQEe-1PpdMPsPu9w"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_m5EGwNv4Ee-2GYUGArOHog" name="entities"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_eq-1kNv5Ee-2GYUGArOHog" name="sportmatebusinesslayergenerated">
+      <packagedElement xmi:type="uml:Package" xmi:id="_L5pBENZUEe-L4MqsUhNOjw" name="records">
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_8V-pcNZUEe-L4MqsUhNOjw" client="_L5pBENZUEe-L4MqsUhNOjw" supplier="_rZf6MNZUEe-L4MqsUhNOjw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_rZf6MNZUEe-L4MqsUhNOjw" name="tables"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_k3hQUNv5Ee-2GYUGArOHog" name="&lt;&lt;merge>>" client="_zIzsENZQEe-1PpdMPsPu9w" supplier="_eq-1kNv5Ee-2GYUGArOHog"/>
   </packagedElement>
 </uml:Model>
