@@ -34,7 +34,7 @@ Il seguente documento ha come obiettivo spiegare in modo approfondito la gestion
 ### Modello di processo
 --- 
 
-La *vision* comune del team, ovvero l'offerta di un sistema software di qualità che possieda valore per gli utenti finali, unita alla mancanza di esperienza dei coinvolti al progetto, hanno fatto convergere verso la scelta di un metodo agile. <br/> Il metodo adottato è stato *eXtreme Programming* (XP), un metodo agile puro il cui obiettivo principale è ottenere sempre un sistema in esecuzione, coerentemente con la nostra *vision*. <br/> In particolare, le *best practices* di XP rivelatesi maggiormente utili sono state: 
+La *vision* comune del team, ovvero l'offerta di un sistema software di qualità che possieda valore per gli utenti finali, unita alla mancanza di esperienza dei membri coinvolti nel progetto, hanno fatto convergere verso la scelta di un metodo agile. <br/> Il metodo adottato è stato *eXtreme Programming* (XP), un metodo agile puro il cui obiettivo principale è ottenere sempre un sistema in esecuzione, coerentemente con la nostra *vision*. <br/> In particolare, le *best practices* di XP rivelatesi maggiormente utili sono state: 
 - la programmazione in coppia, 
 - la proprietà colletiva del codice
 - l'adozione di un ritmo sostenibile
@@ -64,20 +64,26 @@ Le *Change Request* (CR) sono state gestite come segue:
     
  </p> 
 
-La repository del progetto è stata organizzata nel seguente modo:
-- **Documentazione**: contiene tutta la documentazione relativa al progetto. Comprende *Project Plan*, *Gestione del Progetto*, *Specifica dei Requisiti*, *Specifica Tecnica*, *Piano di Test* e *Piano di Manutenzione*.
-- **Immagini**: contiene le immagini utilizzate per i documenti.
-- **Codice**: contiene il codice del sistema software.
-- **Diagrammi UML**: contiene i diagrammi UML creati, tra cui *Use Case Diagram*, *Class Diagram*, *State Machine Diagram*, *Sequence Diagram*, *Communication Diagram*, *Activity Diagram* e *Component Diagram*.
-- **Test**: contiene vari test per la verifica del sistema.
+In particolare, durante l'implementazione dell'architettura a tre livelli del sistema, sono stati creati principalmente due nuovi branch, denominati rispettivamente *SportMateBusinessLayer* e *SportMatePresentationLayer*, a partire dal branch *main* così da apportare le modifiche più sostanziali senza timore di intaccare la *codebase* del progetto funzionante e mantenere la versione stabile del progetto sul branch principale.
 
-Inoltre, è stata utilizzata una Kanban Board per una visualizzazione immediata del *workflow*, per rispettare il principio di limitazione del lavoro in corso e ottenere aggiornamenti tempestivi sullo stato di avanzamento del progetto e sul progresso generale.
+Si può notare che tra i contributori della *repository* vengano elencati, oltre ai componenti del gruppo, anche due autori "sconosciuti":
+- **DependaBot**: uno strumento offerto gratuitamente da Github per la gestione delle dipendenze del progetto, che si occupa di aprire una *pull request* sul branch principale quando si accorge che dipendenze non sicure (ad esempio non aggiornate) vengono usate dal progetto, al fine di aggiornare i riferimenti ad esse presenti all'interno del codice
+- **HackMD**:  un editor real-time e collaborativo, utile per la stesura di file markdown 
+
+La repository del progetto è stata organizzata nel seguente modo:
+
+- **Codice**: contiene il codice del sistema software.
+- **Diagrammi UML**: contiene i diagrammi UML creati, tra cui *Use Case Diagram*, *Class Diagram*, *State Machine Diagram*, *Sequence Diagram*, *Communication Diagram*, *Activity Diagram*, *Component Diagram* e *Package Diagram*.
+- **Documentazione**: contiene tutta la documentazione relativa al progetto, sotto forma di file markdown. Comprende *Project Plan*, *Gestione del Progetto*, *Specifica dei Requisiti*, *Specifica Tecnica*, *Piano di Test* e *SportMateManteinance*.
+- **Immagini**: contiene le immagini utilizzate per i documenti.
+
+Inoltre, è stata utilizzata una Kanban Board per una visualizzazione immediata del *workflow*, al fine di rispettare il principio di limitazione del lavoro in corso e ottenere aggiornamenti tempestivi sullo stato di avanzamento del progetto e sul progresso generale.
 <br/>
 
 
 ### Organizzazione del team
 ---
-Il team è composto da 3 persone, di pari competenze e conoscenze, senza gerarchie interne, basandosi su un modello di team *eXtreme Programming (XP)* come specificato nel [Modello di Processo](#Modello-di-processo). Indipendentemente dalla modalità di lavoro, i membri sono sempre rimasti a stretto contatto e il confronto tra loro é stato continuo.
+Il team è composto da 3 persone, di pari competenze e conoscenze, senza gerarchie interne, basandosi su un modello di team *eXtreme Programming (XP)* come specificato nella sezione [Modello di Processo](#Modello-di-processo). Indipendentemente dalla modalità di lavoro, i membri sono sempre rimasti a stretto contatto e il confronto tra loro é stato continuo.
 
 Tutti i membri del team sono stati coinvolti attivamente in tutte le fasi del progetto. 
 Nello specifico:
@@ -88,6 +94,6 @@ Nello specifico:
 
 Le **fasi di codifica** e **gestione della documentazione** sono state sviluppate cooperativamente da tutti i membri del team.
 
-Sono stati  coinvolti all'interno del progetto anche **collaboratori esterni**, nello specifico figure come *tester del software* in fase di sviluppo e *gestori di impianti* sportivi per la raccolta dei requisiti funzionali.
+Sono stati  coinvolti all'interno del progetto anche **collaboratori esterni**, nello specifico figure come *tester* del software e gestori di impianti sportivi per la raccolta dei requisiti funzionali.
 
 <br/>
