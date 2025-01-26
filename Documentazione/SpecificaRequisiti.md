@@ -70,7 +70,7 @@ La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti è
 
 #### 2.3 - Caratteristiche dell'utente
 
-I gestori saranno formati riguardo al funzionamento del sistema softwar.<br/> Gli utenti finali useranno occasionalmente SportMate, non necessitando di alcuna conoscenza specifica sul funzionamento del sistema.
+I gestori saranno formati riguardo al funzionamento del sistema software.<br/> Gli utenti finali useranno occasionalmente SportMate, non necessitando di alcuna conoscenza specifica sul funzionamento del sistema.
 
 #### 2.4 - Vincoli
 
@@ -110,15 +110,12 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 
 | Must Have | Should Have  |  Could Have | Won't Have |
 | :--------: | :--------: | :--: | :--------: | 
-|FUN.1|FUN.5|FUN.3.2|FUN.12|
-|FUN.2|FUN.6.1|FUN.6.2|FUN.13|
-|FUN.3.1|FUN.10|FUN.7|
-|FUN.4|FUN.15|FUN.14|
-|FUN.8|
-|FUN.9|
-|FUN.11|
-|FUN.16|
-|FUN.17|
+|FUN.2|FUN.1|FUN.3.2|FUN.10|
+|FUN.3.1|FUN.4|FUN.6.2|FUN.12|
+|FUN.5|FUN.6.1|FUN.7|FUN.13|
+|FUN.8||FUN.15|FUN.14|
+|FUN.9|||FUN.16|
+|FUN.11|||FUN.17|
 
 
 #### 3.3 - Requisiti di prestazione
