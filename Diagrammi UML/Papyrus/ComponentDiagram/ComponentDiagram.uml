@@ -6,30 +6,36 @@
   <packagedElement xmi:type="uml:Model" xmi:id="_mz_3ENZGEe-0BK2WkdTO3g" name="ComponentDiagram">
     <packagedElement xmi:type="uml:Component" xmi:id="_pQMzwNZGEe-0BK2WkdTO3g" name="SportMateDBLayer">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_FQ_oMNZLEe-0BK2WkdTO3g" visibility="public" type="_KNCrcNZLEe-0BK2WkdTO3g" aggregation="composite"/>
-      <nestedClassifier xmi:type="uml:Interface" xmi:id="_0QLvYNZGEe-0BK2WkdTO3g" name="SportMateDBLayerInterface">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_KeVzoNZHEe-0BK2WkdTO3g" name="getInstance"/>
+      <nestedClassifier xmi:type="uml:Interface" xmi:id="_0QLvYNZGEe-0BK2WkdTO3g" name="SportMateDBLayerInterface" visibility="public">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_KeVzoNZHEe-0BK2WkdTO3g" name="getInstance" isStatic="true"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_QtUeYNZHEe-0BK2WkdTO3g" name="apriConnessione"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_UFLLANZHEe-0BK2WkdTO3g" name="chiudiConnessione" concurrency="concurrent"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_lKJu8NZHEe-0BK2WkdTO3g" name="getConnectionDetails"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_eW3D4NvyEe-2GYUGArOHog" name="getContext"/>
       </nestedClassifier>
       <packagedElement xmi:type="uml:Usage" xmi:id="_xjUrENZHEe-0BK2WkdTO3g" client="_pQMzwNZGEe-0BK2WkdTO3g" supplier="_u_1QENZGEe-0BK2WkdTO3g"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_u_1QENZGEe-0BK2WkdTO3g" name="Database"/>
     <packagedElement xmi:type="uml:Component" xmi:id="_r0hVMNZHEe-0BK2WkdTO3g" name="SportMateBusinessLayer">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_jY6TcNZKEe-0BK2WkdTO3g" type="_2TGskNZKEe-0BK2WkdTO3g" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_09nRgNv2Ee-2GYUGArOHog" type="_2TGskNZKEe-0BK2WkdTO3g" aggregation="composite"/>
       <nestedClassifier xmi:type="uml:Interface" xmi:id="_Ggsc4NZIEe-0BK2WkdTO3g" name="SportMateBusinessLayerInterface" visibility="public">
         <ownedOperation xmi:type="uml:Operation" xmi:id="_OTOlENZIEe-0BK2WkdTO3g" name="generateJooq"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_gdGfENZJEe-0BK2WkdTO3g" name="executeScalar" isQuery="true">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gb8N0NZKEe-0BK2WkdTO3g" name="query" type="_F7bhwNZKEe-0BK2WkdTO3g"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_VVxv4NZKEe-0BK2WkdTO3g" name="executeQuery">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VVxv4dZKEe-0BK2WkdTO3g" name="query" type="_F7bhwNZKEe-0BK2WkdTO3g"/>
-        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_RBl2cNvzEe-2GYUGArOHog" name="findAll"/>
       </nestedClassifier>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_AiyUANZIEe-0BK2WkdTO3g" name="SportMatePresentationLayer">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_Q6deUNZOEe-0BK2WkdTO3g" type="_UxwgANZOEe-0BK2WkdTO3g" aggregation="composite"/>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_BXVcsNv2Ee-2GYUGArOHog">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_BXWDwNv2Ee-2GYUGArOHog" role="_B6m-UNv1Ee-2GYUGArOHog"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_BXXR4Nv2Ee-2GYUGArOHog" role="_ND1K8Nv0Ee-2GYUGArOHog"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_CZNwcNv2Ee-2GYUGArOHog">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_CZO-kNv2Ee-2GYUGArOHog" role="_XFHpsNv0Ee-2GYUGArOHog"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_CZPloNv2Ee-2GYUGArOHog" role="_me2z0Nv0Ee-2GYUGArOHog"/>
+      </ownedConnector>
       <packagedElement xmi:type="uml:Component" xmi:id="_9vBZoNZMEe-0BK2WkdTO3g" name="Security">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_me2z0Nv0Ee-2GYUGArOHog" type="_roUA8Nv0Ee-2GYUGArOHog" aggregation="composite"/>
         <nestedClassifier xmi:type="uml:Interface" xmi:id="_FlQ9INZNEe-0BK2WkdTO3g" name="SecurityInterface" visibility="package">
           <ownedOperation xmi:type="uml:Operation" xmi:id="_Tfus4NZNEe-0BK2WkdTO3g" name="loadUserByUsername">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_Tfus4dZNEe-0BK2WkdTO3g" name="username">
@@ -37,10 +43,14 @@
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_ZqoI4NZNEe-0BK2WkdTO3g" name="logout"/>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_hQKW4NZNEe-0BK2WkdTO3g" name="configure"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_hQKW4NZNEe-0BK2WkdTO3g" name="configure">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ugdIMNvzEe-2GYUGArOHog" name="http" type="_uEbTgNvzEe-2GYUGArOHog" direction="inout"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_kYsOANvzEe-2GYUGArOHog" name="getAuthenticatedUser"/>
         </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Component" xmi:id="_nzoD4NZNEe-0BK2WkdTO3g" name="Application">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_ND1K8Nv0Ee-2GYUGArOHog" type="_TTDGQNv0Ee-2GYUGArOHog" aggregation="composite"/>
         <nestedClassifier xmi:type="uml:Interface" xmi:id="_svaBYNZNEe-0BK2WkdTO3g" name="ApplicationInterface">
           <ownedOperation xmi:type="uml:Operation" xmi:id="_4DY3ENZNEe-0BK2WkdTO3g" name="main" isStatic="true">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_4DY3EdZNEe-0BK2WkdTO3g" name="args">
@@ -49,13 +59,21 @@
           </ownedOperation>
         </nestedClassifier>
       </packagedElement>
-      <packagedElement xmi:type="uml:Component" xmi:id="_Fuf8MNZOEe-0BK2WkdTO3g" name="GUI"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_Fuf8MNZOEe-0BK2WkdTO3g" name="GUI">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_XFHpsNv0Ee-2GYUGArOHog" type="_Zh9fkNv0Ee-2GYUGArOHog" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_B6m-UNv1Ee-2GYUGArOHog" type="_Zh9fkNv0Ee-2GYUGArOHog" aggregation="composite"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_0R3QwNZOEe-0BK2WkdTO3g" client="_jY6TcNZKEe-0BK2WkdTO3g" supplier="_FQ_oMNZLEe-0BK2WkdTO3g"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_4-ZRUNZOEe-0BK2WkdTO3g" client="_Q6deUNZOEe-0BK2WkdTO3g" supplier="_jY6TcNZKEe-0BK2WkdTO3g"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_im2gINv3Ee-2GYUGArOHog" client="_Q6deUNZOEe-0BK2WkdTO3g" supplier="_09nRgNv2Ee-2GYUGArOHog"/>
   </packagedElement>
   <packagedElement xmi:type="uml:DataType" xmi:id="_F7bhwNZKEe-0BK2WkdTO3g" name="DSLContext"/>
   <packagedElement xmi:type="uml:DataType" xmi:id="_2TGskNZKEe-0BK2WkdTO3g" name="SMBL"/>
   <packagedElement xmi:type="uml:DataType" xmi:id="_KNCrcNZLEe-0BK2WkdTO3g" name="SMDBL"/>
   <packagedElement xmi:type="uml:DataType" xmi:id="_UxwgANZOEe-0BK2WkdTO3g" name="SMPL"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_uEbTgNvzEe-2GYUGArOHog" name="HttpSecurity"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_TTDGQNv0Ee-2GYUGArOHog" name="APPPORT"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_Zh9fkNv0Ee-2GYUGArOHog" name="GUIPORT"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_roUA8Nv0Ee-2GYUGArOHog" name="SECPORT"/>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_Fu4hMNv1Ee-2GYUGArOHog" name="GUIPORT2"/>
 </uml:Model>
