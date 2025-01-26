@@ -7,6 +7,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -32,7 +33,15 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.Partita;
+import sportmateinc.sportmatebusinesslayer.entities.PartitaPubblica;
+import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
+import sportmateinc.sportmatebusinesslayer.services.PartitaService;
+import sportmateinc.sportmatepresentationlayer.application.views.utente.DisponibilitàPrivateView.Filters;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.domain.PageRequest;
@@ -46,205 +55,175 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @Uses(Icon.class)
 public class DisponibilitàPubblicheView extends Div {
-	/**
-    private Grid<SamplePerson> grid;
 
-    private Filters filters;
-    private final SamplePersonService samplePersonService;
 
-    public DisponibilitàPubblicheView(SamplePersonService SamplePersonService) {
-        this.samplePersonService = SamplePersonService;
-        setSizeFull();
-        addClassNames("disponibilità-pubbliche-view");
+	private Grid<PartitaPubblica> grid;
 
-        filters = new Filters(() -> refreshGrid());
-        VerticalLayout layout = new VerticalLayout(createMobileFilters(), filters, createGrid());
-        layout.setSizeFull();
-        layout.setPadding(false);
-        layout.setSpacing(false);
-        add(layout);
-    }
+	private Filters filters;
 
-    private HorizontalLayout createMobileFilters() {
-        // Mobile version
-        HorizontalLayout mobileFilters = new HorizontalLayout();
-        mobileFilters.setWidthFull();
-        mobileFilters.addClassNames(LumoUtility.Padding.MEDIUM, LumoUtility.BoxSizing.BORDER,
-                LumoUtility.AlignItems.CENTER);
-        mobileFilters.addClassName("mobile-filters");
+	public DisponibilitàPubblicheView() {
+		setSizeFull();
+		addClassNames("disponibilità-view");
 
-        Icon mobileIcon = new Icon("lumo", "plus");
-        Span filtersHeading = new Span("Filters");
-        mobileFilters.add(mobileIcon, filtersHeading);
-        mobileFilters.setFlexGrow(1, filtersHeading);
-        mobileFilters.addClickListener(e -> {
-            if (filters.getClassNames().contains("visible")) {
-                filters.removeClassName("visible");
-                mobileIcon.getElement().setAttribute("icon", "lumo:plus");
-            } else {
-                filters.addClassName("visible");
-                mobileIcon.getElement().setAttribute("icon", "lumo:minus");
-            }
-        });
-        return mobileFilters;
-    }
+		filters = new Filters(() -> refreshGrid());
+		VerticalLayout layout = new VerticalLayout(createMobileFilters(), filters, createGrid());
+		layout.setSizeFull();
+		layout.setPadding(false);
+		layout.setSpacing(false);
+		add(layout);
+	}
 
-    public static class Filters extends Div implements Specification<SamplePerson> {
+	private HorizontalLayout createMobileFilters() {
+		// Mobile version
+		HorizontalLayout mobileFilters = new HorizontalLayout();
+		mobileFilters.setWidthFull();
+		mobileFilters.addClassNames(LumoUtility.Padding.MEDIUM, LumoUtility.BoxSizing.BORDER,
+				LumoUtility.AlignItems.CENTER);
+		mobileFilters.addClassName("mobile-filters");
 
-        private final TextField name = new TextField("Name");
-        private final TextField phone = new TextField("Phone");
-        private final DatePicker startDate = new DatePicker("Date of Birth");
-        private final DatePicker endDate = new DatePicker();
-        private final MultiSelectComboBox<String> occupations = new MultiSelectComboBox<>("Occupation");
-        private final CheckboxGroup<String> roles = new CheckboxGroup<>("Role");
+		Icon mobileIcon = new Icon("lumo", "plus");
+		Span filtersHeading = new Span("Filters");
+		mobileFilters.add(mobileIcon, filtersHeading);
+		mobileFilters.setFlexGrow(1, filtersHeading);
+		mobileFilters.addClickListener(e -> {
+			if (filters.getClassNames().contains("visible")) {
+				filters.removeClassName("visible");
+				mobileIcon.getElement().setAttribute("icon", "lumo:plus");
+			} else {
+				filters.addClassName("visible");
+				mobileIcon.getElement().setAttribute("icon", "lumo:minus");
+			}
+		});
+		return mobileFilters;
+	}
 
-        public Filters(Runnable onSearch) {
+	public static class Filters extends Div {
 
-            setWidthFull();
-            addClassName("filter-layout");
-            addClassNames(LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.MEDIUM,
-                    LumoUtility.BoxSizing.BORDER);
-            name.setPlaceholder("First or last name");
+		private final TextField filtroCentro = new TextField("Centro Sportivo");
+		private final TextField filtroPrezzo = new TextField("Prezzo");
+		private final DateTimePicker filtroInzioData = new DateTimePicker("Data e Ora");
+		private final DateTimePicker filtroFineData = new DateTimePicker();
+		private final CheckboxGroup<String> tipoCampo = new CheckboxGroup<>("Tipologia Campo");
 
-            occupations.setItems("Insurance Clerk", "Mortarman", "Beer Coil Cleaner", "Scale Attendant");
+		public Filters(Runnable onSearch) {
 
-            roles.setItems("Worker", "Supervisor", "Manager", "External");
-            roles.addClassName("double-width");
+			setWidthFull();
+			addClassName("filter-layout");
+			addClassNames(LumoUtility.Padding.Horizontal.LARGE, LumoUtility.Padding.Vertical.MEDIUM,
+					LumoUtility.BoxSizing.BORDER);
 
-            // Action buttons
-            Button resetBtn = new Button("Reset");
-            resetBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-            resetBtn.addClickListener(e -> {
-                name.clear();
-                phone.clear();
-                startDate.clear();
-                endDate.clear();
-                occupations.clear();
-                roles.clear();
-                onSearch.run();
-            });
-            Button searchBtn = new Button("Search");
-            searchBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-            searchBtn.addClickListener(e -> onSearch.run());
+			// Configura i filtri visivi
+			filtroCentro.setPlaceholder("Nome centro sportivo");
 
-            Div actions = new Div(resetBtn, searchBtn);
-            actions.addClassName(LumoUtility.Gap.SMALL);
-            actions.addClassName("actions");
+			tipoCampo.setItems("Calcio a 5", "Calcio a 7", "Basket 3vs3");
+			tipoCampo.addClassName("double-width");
 
-            add(name, phone, createDateRangeFilter(), occupations, roles, actions);
-        }
+			// Pulsanti di azione
+			Button resetBtn = new Button("Reset");
+			resetBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+			resetBtn.addClickListener(e -> {
+				// Resetta i filtri
+				filtroCentro.clear();
+				filtroPrezzo.clear();
+				filtroInzioData.clear();
+				filtroFineData.clear();
+				tipoCampo.clear();
+				onSearch.run(); // Esegui la ricerca
+			});
 
-        private Component createDateRangeFilter() {
-            startDate.setPlaceholder("From");
+			Button searchBtn = new Button("Cerca");
+			searchBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+			searchBtn.addClickListener(e -> onSearch.run());
 
-            endDate.setPlaceholder("To");
+			Div actions = new Div(resetBtn, searchBtn);
+			actions.addClassName(LumoUtility.Gap.SMALL);
+			actions.addClassName("actions");
 
-            // For screen readers
-            startDate.setAriaLabel("From date");
-            endDate.setAriaLabel("To date");
+			add(filtroCentro, filtroPrezzo, createDateRangeFilter(), tipoCampo, actions);
+		}
 
-            FlexLayout dateRangeComponent = new FlexLayout(startDate, new Text(" – "), endDate);
-            dateRangeComponent.setAlignItems(FlexComponent.Alignment.BASELINE);
-            dateRangeComponent.addClassName(LumoUtility.Gap.XSMALL);
+		private Component createDateRangeFilter() {
 
-            return dateRangeComponent;
-        }
 
-        @Override
-        public Predicate toPredicate(Root<SamplePerson> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            List<Predicate> predicates = new ArrayList<>();
+			filtroInzioData.setDatePlaceholder("Da");
+			filtroFineData.setDatePlaceholder("A");
 
-            if (!name.isEmpty()) {
-                String lowerCaseFilter = name.getValue().toLowerCase();
-                Predicate firstNameMatch = criteriaBuilder.like(criteriaBuilder.lower(root.get("firstName")),
-                        lowerCaseFilter + "%");
-                Predicate lastNameMatch = criteriaBuilder.like(criteriaBuilder.lower(root.get("lastName")),
-                        lowerCaseFilter + "%");
-                predicates.add(criteriaBuilder.or(firstNameMatch, lastNameMatch));
-            }
-            if (!phone.isEmpty()) {
-                String databaseColumn = "phone";
-                String ignore = "- ()";
+			// Accessibilità per screen readers
+			filtroInzioData.setAriaLabel("Dalla data");
+			filtroFineData.setAriaLabel("Alla data");
 
-                String lowerCaseFilter = ignoreCharacters(ignore, phone.getValue().toLowerCase());
-                Predicate phoneMatch = criteriaBuilder.like(
-                        ignoreCharacters(ignore, criteriaBuilder, criteriaBuilder.lower(root.get(databaseColumn))),
-                        "%" + lowerCaseFilter + "%");
-                predicates.add(phoneMatch);
+			FlexLayout dateRangeComponent = new FlexLayout(filtroInzioData, new Text(" – "), filtroFineData);
+			dateRangeComponent.setFlexDirection(FlexLayout.FlexDirection.COLUMN);
+			dateRangeComponent.addClassName(LumoUtility.Gap.XSMALL);
+			dateRangeComponent.addClassName("date-range-component");
+			dateRangeComponent.setAlignItems(FlexComponent.Alignment.CENTER);
+			return dateRangeComponent;
+		}
 
-            }
-            if (startDate.getValue() != null) {
-                String databaseColumn = "dateOfBirth";
-                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get(databaseColumn),
-                        criteriaBuilder.literal(startDate.getValue())));
-            }
-            if (endDate.getValue() != null) {
-                String databaseColumn = "dateOfBirth";
-                predicates.add(criteriaBuilder.greaterThanOrEqualTo(criteriaBuilder.literal(endDate.getValue()),
-                        root.get(databaseColumn)));
-            }
-            if (!occupations.isEmpty()) {
-                String databaseColumn = "occupation";
-                List<Predicate> occupationPredicates = new ArrayList<>();
-                for (String occupation : occupations.getValue()) {
-                    occupationPredicates
-                            .add(criteriaBuilder.equal(criteriaBuilder.literal(occupation), root.get(databaseColumn)));
-                }
-                predicates.add(criteriaBuilder.or(occupationPredicates.toArray(Predicate[]::new)));
-            }
-            if (!roles.isEmpty()) {
-                String databaseColumn = "role";
-                List<Predicate> rolePredicates = new ArrayList<>();
-                for (String role : roles.getValue()) {
-                    rolePredicates.add(criteriaBuilder.equal(criteriaBuilder.literal(role), root.get(databaseColumn)));
-                }
-                predicates.add(criteriaBuilder.or(rolePredicates.toArray(Predicate[]::new)));
-            }
-            return criteriaBuilder.and(predicates.toArray(Predicate[]::new));
-        }
+		/**
+		 * Applica i filtri manualmente a una lista di `DisponibilitaUtente`.
+		 */
+		public List<PartitaPubblica> applyFilters(List<PartitaPubblica> lista) {
+			return lista.stream()
+					.filter(disponibilita -> filtroCentro.isEmpty() || 
+							disponibilita.getNomecentro().toLowerCase().contains(filtroCentro.getValue().toLowerCase()))
+					.filter(disponibilita -> {
+						if (filtroPrezzo.isEmpty()) {
+							return true;
+						}
+						try {
+							// Confronta il prezzo se è valido
+							BigDecimal prezzoFiltro = new BigDecimal(filtroPrezzo.getValue());
+							return disponibilita.getPrezzo().compareTo(prezzoFiltro) == 0;
+						} catch (NumberFormatException e) {
+							return false; // Ignora se il prezzo inserito non è valido
+						}
+					})
+					.filter(disponibilita -> {
+						if (filtroInzioData.isEmpty()) {
+							return true; // Se non c'è un filtro, non fare nulla (ritorna true)
+						}
+						// Solo se filtroInzioData ha un valore valido (LocalDateTime)
+						LocalDateTime dataFiltro = filtroInzioData.getValue();
+						return dataFiltro != null && !disponibilita.getDataOra().isBefore(dataFiltro);
+					})
+					.filter(disponibilita -> {
+						if (filtroFineData.isEmpty()) {
+							return true; // Se non c'è un filtro, non fare nulla (ritorna true)
+						}
+						// Solo se filtroFineData ha un valore valido (LocalDateTime)
+						LocalDateTime dataFiltro = filtroFineData.getValue();
+						return dataFiltro != null && !disponibilita.getDataOra().isAfter(dataFiltro);
+					})
+					.filter(disponibilita -> tipoCampo.isEmpty() || 
+							tipoCampo.getValue().contains(disponibilita.getTipoCampo()))
+					.toList(); // Ritorna i dati filtrati
+		}
 
-        private String ignoreCharacters(String characters, String in) {
-            String result = in;
-            for (int i = 0; i < characters.length(); i++) {
-                result = result.replace("" + characters.charAt(i), "");
-            }
-            return result;
-        }
 
-        private Expression<String> ignoreCharacters(String characters, CriteriaBuilder criteriaBuilder,
-                Expression<String> inExpression) {
-            Expression<String> expression = inExpression;
-            for (int i = 0; i < characters.length(); i++) {
-                expression = criteriaBuilder.function("replace", String.class, expression,
-                        criteriaBuilder.literal(characters.charAt(i)), criteriaBuilder.literal(""));
-            }
-            return expression;
-        }
+	}
 
-    }
 
-    private Component createGrid() {
-        grid = new Grid<>(SamplePerson.class, false);
-        grid.addColumn("firstName").setAutoWidth(true);
-        grid.addColumn("lastName").setAutoWidth(true);
-        grid.addColumn("email").setAutoWidth(true);
-        grid.addColumn("phone").setAutoWidth(true);
-        grid.addColumn("dateOfBirth").setAutoWidth(true);
-        grid.addColumn("occupation").setAutoWidth(true);
-        grid.addColumn("role").setAutoWidth(true);
+	private Component createGrid() {
+		grid = new Grid<>(PartitaPubblica.class, false);
+		grid.addColumn("idPartita").setAutoWidth(true).setVisible(false);
+		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
+		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
+		grid.addColumn("prezzo").setAutoWidth(true).setHeader("Prezzo a utente");
+		grid.addColumn("tipoCampo").setAutoWidth(true);
+		List<PartitaPubblica> list = PartitaService.findAllPubbliche();
 
-        grid.setItems(query -> samplePersonService.list(
-                PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)),
-                filters).stream());
-        grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
-        grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
+		grid.setItems(list);
+		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
+		grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
 
-        return grid;
-    }
+		return grid;
+	}
 
-    private void refreshGrid() {
-        grid.getDataProvider().refreshAll();
-    }
-    **/
+	private void refreshGrid() {
+		List<PartitaPubblica> allDisponibilita = PartitaService.findAllPubbliche(); // Lista originale
+		List<PartitaPubblica> filteredDisponibilita = filters.applyFilters(allDisponibilita); // Applica i filtri
+		grid.setItems(filteredDisponibilita); // Aggiorna la griglia
+	}
 
 }

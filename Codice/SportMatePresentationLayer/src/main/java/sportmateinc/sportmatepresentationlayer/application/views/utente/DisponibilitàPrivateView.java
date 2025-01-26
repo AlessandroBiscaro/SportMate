@@ -188,8 +188,9 @@ public class DisponibilitàPrivateView extends Div {
 
 	private Component createGrid() {
 		grid = new Grid<>(DisponibilitaUtente.class, false);
-		grid.addColumn("nomecentro").setAutoWidth(true);
-		grid.addColumn("dataOra").setAutoWidth(true);
+		grid.addColumn("idDisp").setAutoWidth(true).setVisible(false);
+		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
+		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
 		grid.addColumn("prezzo").setAutoWidth(true);
 		grid.addColumn("tipoCampo").setAutoWidth(true);
 		List<DisponibilitaUtente> list = DisponibilitaService.findAllUtente();
