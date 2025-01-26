@@ -33,9 +33,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
-import sportmateinc.sportmatebusinesslayer.entity.Livello;
-import sportmateinc.sportmatebusinesslayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.entities.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entities.Livello;
+import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatebusinesslayer.services.LivelliService;
 import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;

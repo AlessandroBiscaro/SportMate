@@ -7,8 +7,8 @@ import java.util.List;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 
-import sportmateinc.sportmatebusinesslayer.entity.Feedback;
-import sportmateinc.sportmatebusinesslayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.entities.Feedback;
+import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class FeedbackService {

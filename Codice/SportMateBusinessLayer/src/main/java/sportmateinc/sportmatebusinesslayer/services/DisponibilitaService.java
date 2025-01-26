@@ -13,10 +13,10 @@ import org.jooq.Record4;
 import org.jooq.Record6;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entity.CentriSportivi;
-import sportmateinc.sportmatebusinesslayer.entity.Disponibilita;
-import sportmateinc.sportmatebusinesslayer.entity.DisponibilitaUtente;
-import sportmateinc.sportmatebusinesslayer.entity.TipoCampo;
+import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
+import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 

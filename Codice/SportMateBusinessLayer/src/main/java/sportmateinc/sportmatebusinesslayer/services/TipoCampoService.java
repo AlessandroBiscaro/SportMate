@@ -11,7 +11,7 @@ import org.jooq.Record;
 import org.jooq.Record2;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entity.TipoCampo;
+import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class TipoCampoService {

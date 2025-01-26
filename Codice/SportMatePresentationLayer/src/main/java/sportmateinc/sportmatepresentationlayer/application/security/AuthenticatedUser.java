@@ -2,7 +2,7 @@ package sportmateinc.sportmatepresentationlayer.application.security;
 
 import com.vaadin.flow.spring.security.AuthenticationContext;
 
-import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entities.AuthenticatedProfile;
 import sportmateinc.sportmatebusinesslayer.services.AuthenticatedProfileService;
 
 import java.util.Optional;

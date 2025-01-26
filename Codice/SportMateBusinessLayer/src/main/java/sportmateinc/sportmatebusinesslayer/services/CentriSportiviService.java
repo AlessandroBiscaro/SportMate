@@ -5,7 +5,7 @@ import static sportmateinc.sportmatebusinesslayergenerated.tables.Centrisportivi
 import org.jooq.DSLContext;
 import org.jooq.Record;
 
-import sportmateinc.sportmatebusinesslayer.entity.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class CentriSportiviService {

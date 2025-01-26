@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import sportmateinc.sportmatebusinesslayer.entity.Location;
+import sportmateinc.sportmatebusinesslayer.entities.Location;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class LocationService {

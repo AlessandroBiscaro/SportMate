@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sportmateinc.sportmatebusinesslayer.entity.Livello;
+import sportmateinc.sportmatebusinesslayer.entities.Livello;
 import sportmateinc.sportmatebusinesslayer.services.LivelliService;
 
 import java.util.List;

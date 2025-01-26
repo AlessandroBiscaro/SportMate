@@ -11,7 +11,7 @@ import org.jooq.Record;
 import org.jooq.Record3;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entity.ServiziAgg;
+import sportmateinc.sportmatebusinesslayer.entities.ServiziAgg;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class ServiziAggService {

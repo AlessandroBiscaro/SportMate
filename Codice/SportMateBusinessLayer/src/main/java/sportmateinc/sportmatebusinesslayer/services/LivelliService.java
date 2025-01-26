@@ -5,7 +5,7 @@ import org.jooq.Record;
 import org.jooq.Record2;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entity.Livello;
+import sportmateinc.sportmatebusinesslayer.entities.Livello;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Livelli.LIVELLI;

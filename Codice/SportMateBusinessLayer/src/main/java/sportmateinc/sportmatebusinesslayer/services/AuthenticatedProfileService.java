@@ -6,7 +6,7 @@ import static sportmateinc.sportmatebusinesslayergenerated.tables.Utenti.UTENTI;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 
-import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entities.AuthenticatedProfile;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class AuthenticatedProfileService {

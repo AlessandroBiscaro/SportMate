@@ -23,10 +23,10 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
-import sportmateinc.sportmatebusinesslayer.entity.CentriSportivi;
-import sportmateinc.sportmatebusinesslayer.entity.Gestore;
-import sportmateinc.sportmatebusinesslayer.entity.ServiziAgg;
-import sportmateinc.sportmatebusinesslayer.entity.TipoCampo;
+import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.Gestore;
+import sportmateinc.sportmatebusinesslayer.entities.ServiziAgg;
+import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatebusinesslayer.services.CentriSportiviService;
 import sportmateinc.sportmatebusinesslayer.services.GestoriService;
 import sportmateinc.sportmatebusinesslayer.services.ServiziAggService;

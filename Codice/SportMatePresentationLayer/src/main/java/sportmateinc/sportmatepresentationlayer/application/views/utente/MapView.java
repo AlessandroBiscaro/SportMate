@@ -34,7 +34,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
 
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatebusinesslayer.entity.Location;
+import sportmateinc.sportmatebusinesslayer.entities.Location;
 import sportmateinc.sportmatebusinesslayer.services.LocationService;
 
 import java.util.HashMap;

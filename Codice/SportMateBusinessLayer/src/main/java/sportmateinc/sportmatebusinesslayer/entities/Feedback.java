@@ -1,4 +1,4 @@
-package sportmateinc.sportmatebusinesslayer.entity;
+package sportmateinc.sportmatebusinesslayer.entities;
 
 public class Feedback {
 	private final Integer idFeedback;

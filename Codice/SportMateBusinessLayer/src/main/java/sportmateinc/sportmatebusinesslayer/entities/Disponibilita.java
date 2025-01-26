@@ -1,4 +1,4 @@
-package sportmateinc.sportmatebusinesslayer.entity;
+package sportmateinc.sportmatebusinesslayer.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

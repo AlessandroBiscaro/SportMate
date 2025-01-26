@@ -23,8 +23,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import jakarta.annotation.security.RolesAllowed;
-
-import sportmateinc.sportmatebusinesslayer.entity.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
 import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -2,7 +2,7 @@ package sportmateinc.sportmatebusinesslayer.services;
 
 import org.jooq.DSLContext;
 
-import sportmateinc.sportmatebusinesslayer.entity.Utente;
+import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 import org.jooq.Record;

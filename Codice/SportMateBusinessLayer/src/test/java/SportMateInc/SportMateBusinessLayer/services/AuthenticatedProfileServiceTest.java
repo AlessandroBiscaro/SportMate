@@ -7,7 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import sportmateinc.sportmatebusinesslayer.entity.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.entities.AuthenticatedProfile;
 import sportmateinc.sportmatebusinesslayer.services.AuthenticatedProfileService;
 import sportmateinc.sportmatedblayer.SportMateDB;
 

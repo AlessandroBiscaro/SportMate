@@ -7,7 +7,7 @@ import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.impl.DSL;
 
-import sportmateinc.sportmatebusinesslayer.entity.Gestore;
+import sportmateinc.sportmatebusinesslayer.entities.Gestore;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class GestoriService {
