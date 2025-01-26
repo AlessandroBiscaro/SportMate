@@ -12,15 +12,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
-
-import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
-
-import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Dati pagamento")
 @Route("datiPagamento")

@@ -11,7 +11,6 @@ import org.jooq.Record;
 import org.jooq.Record2;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entity.CentriSportivi;
 import sportmateinc.sportmatebusinesslayer.entity.TipoCampo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 

@@ -32,8 +32,6 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
-import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
-import sportmateinc.sportmatepresentationlayer.application.services.SamplePersonService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +46,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @Uses(Icon.class)
 public class DisponibilitàPubblicheView extends Div {
-
+	/**
     private Grid<SamplePerson> grid;
 
     private Filters filters;
@@ -247,5 +245,6 @@ public class DisponibilitàPubblicheView extends Div {
     private void refreshGrid() {
         grid.getDataProvider().refreshAll();
     }
+    **/
 
 }

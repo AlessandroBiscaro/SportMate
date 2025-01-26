@@ -1,7 +1,6 @@
 package sportmateinc.sportmatebusinesslayer;
 
 
-import org.apache.log4j.chainsaw.Main;
 import org.jooq.codegen.GenerationTool;
 import org.jooq.meta.jaxb.Configuration;
 import org.jooq.meta.jaxb.Database;
@@ -29,13 +28,13 @@ public class GenerateJooq {
 	 */
 	
 	public static void generateJooq() throws Exception {
-		Jdbc JDBC = new Jdbc().withDriver("org.sqlite.JDBC").withUrl(DB_URL);
+		Jdbc jdbc = new Jdbc().withDriver("org.sqlite.JDBC").withUrl(DB_URL);
 		Database database = new Database().withName("org.jooq.meta.sqlite.SQLiteDatabase").withIncludes(".*")
 				.withExcludes("");
 		
 		Target target = new Target().withPackageName("sportmateinc.sportmatebusinesslayergenerated").withDirectory("src-generated/");
 		Generator generator = new Generator().withDatabase(database).withTarget(target);
-		Configuration configuration = new Configuration().withJdbc(JDBC).withGenerator(generator);
+		Configuration configuration = new Configuration().withJdbc(jdbc).withGenerator(generator);
 		GenerationTool.generate(configuration);
 	}
 	

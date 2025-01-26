@@ -26,13 +26,9 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 
-import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatepresentationlayer.application.data.TypeDisp;
-import sportmateinc.sportmatepresentationlayer.application.services.TypeDispService;
 
 import java.time.Duration;
 import java.util.Optional;
@@ -49,6 +45,12 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Uses(Icon.class)
 public class GestionedisponibilitàView extends Div implements BeforeEnterObserver {
 
+	@Override
+	public void beforeEnter(BeforeEnterEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
+	/**
     private final String TYPEDISP_ID = "typeDispID";
     private final String TYPEDISP_EDIT_ROUTE_TEMPLATE = "gestDisp/%s/edit";
 
@@ -227,4 +229,5 @@ public class GestionedisponibilitàView extends Div implements BeforeEnterObserv
         binder.readBean(this.typeDisp);
 
     }
+    **/
 }

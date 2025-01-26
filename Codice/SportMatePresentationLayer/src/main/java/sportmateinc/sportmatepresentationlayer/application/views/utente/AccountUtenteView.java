@@ -38,7 +38,6 @@ import sportmateinc.sportmatebusinesslayer.entity.Livello;
 import sportmateinc.sportmatebusinesslayer.entity.Utente;
 import sportmateinc.sportmatebusinesslayer.services.LivelliService;
 import sportmateinc.sportmatebusinesslayer.services.UtentiService;
-import sportmateinc.sportmatepresentationlayer.application.data.SamplePerson;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.time.LocalDate;
@@ -79,7 +78,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	Button btnRicaricaCredito = new Button();
 	H5 titoloPartitePrenotate = new H5();
 	VerticalLayout layoutColumn7 = new VerticalLayout();
-	Grid gridPartitePrenotate = new Grid(SamplePerson.class);
+	Grid gridPartitePrenotate = new Grid();
 
 	public AccountUtenteView() {
 

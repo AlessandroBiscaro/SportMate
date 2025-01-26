@@ -1,7 +1,6 @@
 package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -12,23 +11,14 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
-import jakarta.annotation.security.DenyAll;
-import jakarta.annotation.security.RolesAllowed;
-
-import org.vaadin.lineawesome.LineAwesomeIconUrl;
-
-
 @PageTitle("Registrazione")
 @Route("registrazione")
 @AnonymousAllowed
-
-
 
 public class RegistrazioneView extends Composite<VerticalLayout> {
 

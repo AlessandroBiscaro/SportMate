@@ -1,12 +1,8 @@
 package sportmateinc.sportmatepresentationlayer.application.services;
 
-import java.time.LocalDate;
-import java.util.Optional;
 
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
-
-import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 
 public class NotificationDelegator {
 	public  Notification showErrorNotification(String message) {

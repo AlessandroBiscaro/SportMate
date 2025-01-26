@@ -12,19 +12,18 @@ import org.jooq.DSLContext;
 import org.jooq.Record4;
 import org.jooq.Record6;
 import org.jooq.Result;
-import org.jooq.impl.DSL;
 
 import sportmateinc.sportmatebusinesslayer.entity.CentriSportivi;
 import sportmateinc.sportmatebusinesslayer.entity.Disponibilita;
 import sportmateinc.sportmatebusinesslayer.entity.DisponibilitaUtente;
-import sportmateinc.sportmatebusinesslayer.entity.ServiziAgg;
 import sportmateinc.sportmatebusinesslayer.entity.TipoCampo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 
 public class DisponibilitaService {
-
-	public DisponibilitaService() {}
+	private DisponibilitaService() {
+		//Utility class
+	}
 	
 	public static int aggiungiDisponibilita(Disponibilita disponibilita) {
 		SportMateDB db = SportMateDB.getInstance();
