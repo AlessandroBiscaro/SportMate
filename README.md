@@ -52,9 +52,7 @@ Successivamente eseguire questi passaggi nell'ordine indicato per avviare corret
    - Esegui l'installazione del progetto SportMateBusinessLayer come hai fatto per SportMateDBLayer.
 
 3. **Esegui il progetto SportPresentationLayer:**
-   - Importa il progetto SportMatePresentationLayer in Eclipse seguendo gli stessi passaggi di cui sopra.
+   - Importa il progetto SportMatePresentationLayer in Eclipse seguendo gli stessi passaggi di cui al punto 1.
    - Esegui il progetto SportMatePresentationaLayer:
      1. Fai clic destro sul progetto nel project explorer;
      2. Seleziona `Run As` > `Maven build`.
-
-La repository clonata dovrebbe essere pronta all'uso con i progetti SportMateDBLayer e SportMatePresentationLayer precompilati, ma si consiglia di eseguire in ogni caso i passi sopra indicati per essere certi di usare la versione più recente dell'applicazione.

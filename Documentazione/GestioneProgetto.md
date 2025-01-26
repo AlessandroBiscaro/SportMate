@@ -60,7 +60,7 @@ Le *Change Request* (CR) sono state gestite come segue:
 - **Chiusura del branch locale** e conseguente chiusura dell'issue.
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/MacchinaStatiGestioneCR.png" width="700" />   
+      <img src="../Diagrammi UML/Immagini/StateMachineGestioneCR.png" width="700" />   
     
  </p> 
 
