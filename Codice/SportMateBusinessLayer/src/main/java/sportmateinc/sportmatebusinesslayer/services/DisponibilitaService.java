@@ -2,17 +2,14 @@ package sportmateinc.sportmatebusinesslayer.services;
 
 
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Disponibilita.DISPONIBILITA;
-import static sportmateinc.sportmatebusinesslayergenerated.tables.Utenti.UTENTI;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jooq.DSLContext;
 import org.jooq.Record;
-import org.jooq.Record4;
 import org.jooq.Record5;
 import org.jooq.Record6;
 import org.jooq.Result;
@@ -21,12 +18,12 @@ import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
-import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 
+
 public class DisponibilitaService {
-	private DisponibilitaService() {
+	public DisponibilitaService() {
 		//Utility class
 	}
 	
@@ -36,10 +33,10 @@ public class DisponibilitaService {
 		DSLContext create =  db.getContext();	
 		return create.insertInto(DISPONIBILITA, DISPONIBILITA.DATAORA, 
 				DISPONIBILITA.PREZZO, DISPONIBILITA.TIPOCAMPO,
-				DISPONIBILITA.IDCENTRO)
+				DISPONIBILITA.IDCENTRO,DISPONIBILITA.PRENOTATO)
 		.values( disponibilita.getDataOra().toString(), 
 				disponibilita.getPrezzo(), disponibilita.getTipoCampo().getIdCampo(),
-				disponibilita.getCentro().getIdCentro())
+				disponibilita.getCentro().getIdCentro(),disponibilita.getPrenotato())
 		.returning(DISPONIBILITA.IDDISPONIBILITA)
 		.execute();
 	}

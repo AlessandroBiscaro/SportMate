@@ -5,20 +5,16 @@ import static sportmateinc.sportmatebusinesslayergenerated.tables.Partite.PARTIT
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jooq.DSLContext;
 import org.jooq.Record3;
-import org.jooq.Record4;
-import org.jooq.Record5;
 import org.jooq.Record9;
 import org.jooq.Result;
 
 import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
-import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
 import sportmateinc.sportmatebusinesslayer.entities.Partita;
 import sportmateinc.sportmatebusinesslayer.entities.PartitaPubblica;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;

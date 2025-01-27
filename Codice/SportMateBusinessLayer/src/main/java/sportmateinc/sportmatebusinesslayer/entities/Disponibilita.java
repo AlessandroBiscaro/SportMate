@@ -21,6 +21,9 @@ public class Disponibilita {
 		this.centro = centro;
 		this.prenotato = prenotato;
 	}
+	
+	public Disponibilita() {}
+		
 	public int getIdDisp() {
 		return idDisp;
 	}
@@ -56,6 +59,21 @@ public class Disponibilita {
 	}
 	public void setPrenotato(int prenotato) {
 		this.prenotato = prenotato;
+	}
+	
+	public boolean getPrenotatoBoolean() {
+		if (prenotato ==1)
+			return true;
+		else
+			return false;
+		
+	}
+	public void setPrenotatoBoolean(boolean prenotato) {
+		if(prenotato)
+			this.prenotato = 1;
+		else
+			this.prenotato = 0;
+		
 	}
 	
 	
