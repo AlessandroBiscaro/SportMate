@@ -6,6 +6,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
@@ -14,6 +15,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.component.radiobutton.RadioGroupVariant;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -25,12 +27,18 @@ import jakarta.annotation.security.RolesAllowed;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 @PageTitle("Prenotazione campo")
-@Route("prenotazioneCampo")
+@Route("prenotazioneCampo/:id")
 @RolesAllowed({"USER"})
 public class PrenotazionecampoView extends Composite<VerticalLayout> {
+	
+
+    private final String ID_PARAMETER = "id";
+
 
     public PrenotazionecampoView() {
         HorizontalLayout layoutRow = new HorizontalLayout();
@@ -128,6 +136,17 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> {
     record SampleItem(String value, String label, Boolean disabled) {
     }
 
+    public void beforeEnter(BeforeEnterEvent event) {
+        Optional<String> disponibilitaId = event.getRouteParameters().get(ID_PARAMETER);
+        if (disponibilitaId.isPresent()) {
+            String id = disponibilitaId.get();
+            int idDisp = Integer.parseInt(id);
+            
+        } else {
+            Notification.show("ID non fornito!", 3000, Notification.Position.BOTTOM_START);
+        }
+    }
+    
     private void setComboBoxSampleData(ComboBox comboBox) {
         List<SampleItem> sampleItems = new ArrayList<>();
         sampleItems.add(new SampleItem("first", "First", null));

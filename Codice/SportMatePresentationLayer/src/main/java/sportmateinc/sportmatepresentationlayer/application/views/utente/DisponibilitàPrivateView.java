@@ -2,6 +2,7 @@ package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
@@ -193,6 +194,9 @@ public class DisponibilitàPrivateView extends Div {
 		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
 		grid.addColumn("prezzo").setAutoWidth(true);
 		grid.addColumn("tipoCampo").setAutoWidth(true);
+		grid.addComponentColumn(disponibilita -> createNavigateButton(disponibilita))
+	    .setHeader("Prenota").setAutoWidth(true);
+		
 		List<DisponibilitaUtente> list = DisponibilitaService.findAllUtente();
 	
 		grid.setItems(list);
@@ -209,7 +213,13 @@ public class DisponibilitàPrivateView extends Div {
 	}
 
 	
-	
+	private Button createNavigateButton(DisponibilitaUtente disponibilita) {
+	    Button navigateButton = new Button("Prenota");
+	    navigateButton.addClickListener(e -> {
+	        UI.getCurrent().navigate("prenotazioneCampo/" + disponibilita.getIdDisp());
+	    });
+	    return navigateButton;
+	}
 
 
 }
