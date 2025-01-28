@@ -2,8 +2,8 @@ package sportmateinc.sportmatepresentationlayer.application.security;
 
 import com.vaadin.flow.spring.security.AuthenticationContext;
 
-import sportmateinc.sportmatepresentationlayer.application.data.User;
-import sportmateinc.sportmatepresentationlayer.application.data.UserRepository;
+import sportmateinc.sportmatebusinesslayer.entities.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.services.AuthenticatedProfileService;
 
 import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,18 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class AuthenticatedUser {
 
-    private final UserRepository userRepository;
     private final AuthenticationContext authenticationContext;
 
-    public AuthenticatedUser(AuthenticationContext authenticationContext, UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public AuthenticatedUser(AuthenticationContext authenticationContext) {
         this.authenticationContext = authenticationContext;
     }
 
     @Transactional
-    public Optional<User> get() {
-        return authenticationContext.getAuthenticatedUser(UserDetails.class)
-                .map(userDetails -> userRepository.findByUsername(userDetails.getUsername()));
+    public Optional<AuthenticatedProfile> get() {
+    	return authenticationContext.getAuthenticatedUser(UserDetails.class).map(userDetails -> AuthenticatedProfileService.findProfileByUsername(userDetails.getUsername()));
     }
 
     public void logout() {

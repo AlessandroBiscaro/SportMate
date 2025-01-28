@@ -1,43 +1,38 @@
 package sportmateinc.sportmatepresentationlayer.application.security;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import sportmateinc.sportmatepresentationlayer.application.data.User;
-import sportmateinc.sportmatepresentationlayer.application.data.UserRepository;
+import sportmateinc.sportmatebusinesslayer.entities.AuthenticatedProfile;
+import sportmateinc.sportmatebusinesslayer.services.AuthenticatedProfileService;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository userRepository;
-
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+    	AuthenticatedProfile user = AuthenticatedProfileService.findUserByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("No user present with username: " + username);
+        	user = AuthenticatedProfileService.findManagerByUsername(username);
+        	if(user == null) {
+        		 throw new UsernameNotFoundException("No user present with username: " + username);
+        	}
+        	else {
+        		return User.withUsername(user.getUsername())
+                		.password("{noop}" + user.getPassword())
+                		.roles("ADMIN")
+                		.build();
+        	}
         } else {
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getHashedPassword(),
-                    getAuthorities(user));
-        }
+        	return User.withUsername(user.getUsername())
+            		.password("{noop}" + user.getPassword())
+            		.roles("USER")
+            		.build();      
+    	}
     }
-
-    private static List<GrantedAuthority> getAuthorities(User user) {
-        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                .collect(Collectors.toList());
-
-    }
-
 }

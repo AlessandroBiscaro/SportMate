@@ -14,7 +14,7 @@
 	</Appenders>
 	<Loggers>
 		<Root level="INFO">
-			<AppenderRef ref="DEBUG_LOG"></AppenderRef>
+			<AppenderRef ref="DEBUG_LOG" level="DEBUG"></AppenderRef>
 			<AppenderRef ref="ERROR_LOG" level = "ERROR"></AppenderRef>
 		</Root>
 	</Loggers>	
