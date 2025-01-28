@@ -34,13 +34,3 @@ jobs:
 
     - name: Build SportMatePresentationLayer
       run: mvn package --file ./Codice/SportMatePresentationLayer/pom.xml
-
-    - name: Save Build Artifacts
-      if: success()
-      uses: actions/upload-artifact@v3
-      with:
-        name: sportmate-artifacts
-        path: |
-          ./Codice/SportMatePresentationLayer/target/*.jar
-          ./Codice/SportMateBusinessLayer/target/*.jar
-          ./Codice/SportMateDBLayer/target/*.jar
