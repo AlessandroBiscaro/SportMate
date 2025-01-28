@@ -65,7 +65,7 @@ Gli utenti del sistema possono selezionare una delle funzionalità elencate nell
 
 #### 2.2 - Tecniche di elicitazione dei requisiti
 La principale fonte di informazione per il processo di elicitazione dei requisiti sono gli utenti dell'applicazione. Pertanto abbiamo coinvolto amici e colleghi, che identificano un campione rappresentativo dell'insieme degli utenti, grazie ai quali ci è stato possibile raccogliere requisiti realistici e concreti su ciò che vorrebbero trovare in un'applicazione come SportMate. <br/> Un'altra fonte di informazione per la fase di ingegneria dei requisiti sono i gestori, tramite i quali abbiamo potuto identificare funzionalità chiave per ottimizzare le prenotazioni e l'occupazione dei campi.<br/>
-La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti è stata l'*intervista aperta*;al contrario, abbiamo preferito un'analisi basata su scenari creati artificialmente e discussi con i gestori.
+La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti è stata l'*intervista aperta*; al contrario, abbiamo preferito un'analisi basata su scenari creati artificialmente e discussi con i gestori.
 
 
 #### 2.3 - Caratteristiche dell'utente
