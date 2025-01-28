@@ -22,4 +22,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B install --file ./Codice/SportMateDBLayer/pom.xml
+      run: mvn -B clean install --file ./Codice/SportMateDBLayer/pom.xml
