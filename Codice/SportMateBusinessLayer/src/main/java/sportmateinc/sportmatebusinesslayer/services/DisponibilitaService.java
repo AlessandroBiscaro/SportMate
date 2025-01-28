@@ -51,7 +51,7 @@ public class DisponibilitaService {
 	            .set(DISPONIBILITA.TIPOCAMPO, disponibilita.getTipoCampo().getIdCampo()) 
 	            .set(DISPONIBILITA.IDCENTRO, disponibilita.getCentro().getIdCentro())
 	            .set(DISPONIBILITA.PRENOTATO, disponibilita.getPrenotato())
-	            .where(DISPONIBILITA.IDCENTRO.eq(disponibilita.getIdDisp())) 
+	            .where(DISPONIBILITA.IDDISPONIBILITA.eq(disponibilita.getIdDisp())) 
 	            .execute(); 
 		db.chiudiConnessione();
 		return result;
