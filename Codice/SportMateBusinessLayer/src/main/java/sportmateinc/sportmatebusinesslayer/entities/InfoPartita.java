@@ -3,21 +3,24 @@ package sportmateinc.sportmatebusinesslayer.entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class DisponibilitaUtente {
+public class InfoPartita {
 	
-	private int idDisp;
+	private int idPartita;
 	private LocalDateTime dataOra;
 	private BigDecimal prezzo;
 	private String tipoCampo;
 	private String nomecentro;
+	private int postiTotali;
+
 	
-	public DisponibilitaUtente(int idDisp, String nomecentro, LocalDateTime dataOra, String tipoCampo, BigDecimal prezzo ) {
-		this.idDisp=idDisp;
-		this.nomecentro = nomecentro;
+	public InfoPartita(int idPartita, String nomecentro, LocalDateTime dataOra, String tipoCampo
+			, BigDecimal prezzo,int postiTotali) {
+		this.idPartita = idPartita;
 		this.dataOra = dataOra;
 		this.prezzo = prezzo;
 		this.tipoCampo = tipoCampo;
-		
+		this.nomecentro = nomecentro;
+		this.postiTotali = postiTotali;
 	}
 	public LocalDateTime getDataOra() {
 		return dataOra;
@@ -43,12 +46,19 @@ public class DisponibilitaUtente {
 	public void setNomecentro(String nomecentro) {
 		this.nomecentro = nomecentro;
 	}
-	public int getIdDisp() {
-		return idDisp;
+	public int getIdPartita() {
+		return idPartita;
 	}
-	public void setIdDisp(int idDisp) {
-		this.idDisp = idDisp;
+	public void setIdPartita(int idPartita) {
+		this.idPartita = idPartita;
 	}
-
+	public int getPostiTotali() {
+		return postiTotali;
+	}
+	public void setPostiTotali(int postiTotali) {
+		this.postiTotali = postiTotali;
+	}
 	
+	
+
 }

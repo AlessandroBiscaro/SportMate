@@ -1,7 +1,10 @@
 package sportmateinc.sportmatebusinesslayer.entities;
 
-public class Livello {
+import java.io.Serializable;
 
+public class Livello implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private final int idLivello;
 	private final String nomeLivello;
 	

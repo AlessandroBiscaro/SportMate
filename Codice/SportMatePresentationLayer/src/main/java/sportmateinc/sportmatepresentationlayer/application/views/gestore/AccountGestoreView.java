@@ -1,252 +1,235 @@
 package sportmateinc.sportmatepresentationlayer.application.views.gestore;
 
+import com.vaadin.flow.theme.lumo.LumoUtility;
+
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinRequest;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 import jakarta.annotation.security.RolesAllowed;
+import sportmateinc.sportmatebusinesslayer.entities.Gestore;
+import sportmateinc.sportmatebusinesslayer.services.GestoriService;
+import sportmateinc.sportmatebusinesslayer.services.UtentiService;
+import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Optional;
 
-@PageTitle("AccountGestore")
-@Route("accountGestore")
+
+@PageTitle("MySportmate")
+@Route("mygestore")
 @RolesAllowed({"ADMIN"})
+@Uses(Icon.class)
+
 public class AccountGestoreView extends Composite<VerticalLayout> {
 
-    public AccountGestoreView() {
-        H1 h1 = new H1();
-        VerticalLayout layoutColumn2 = new VerticalLayout();
-        H5 h5 = new H5();
-        HorizontalLayout layoutRow = new HorizontalLayout();
-        VerticalLayout layoutColumn3 = new VerticalLayout();
-        TextField textField = new TextField();
-        TextField textField2 = new TextField();
-        Button buttonPrimary = new Button();
-        VerticalLayout layoutColumn4 = new VerticalLayout();
-        TextField textField3 = new TextField();
-        TextField textField4 = new TextField();
-        VerticalLayout layoutColumn5 = new VerticalLayout();
-        DatePicker datePicker = new DatePicker();
-        HorizontalLayout layoutRow4 = new HorizontalLayout();
-        Button buttonPrimary2 = new Button();
-        H5 h52 = new H5();
-        VerticalLayout layoutColumn6 = new VerticalLayout();
-        HorizontalLayout layoutRow2 = new HorizontalLayout();
-        VerticalLayout layoutColumn7 = new VerticalLayout();
-        TextField textField5 = new TextField();
-        TimePicker timePicker = new TimePicker();
-        Button buttonPrimary3 = new Button();
-        VerticalLayout layoutColumn8 = new VerticalLayout();
-        TextField textField6 = new TextField();
-        TimePicker timePicker2 = new TimePicker();
-        VerticalLayout layoutColumn9 = new VerticalLayout();
-        MultiSelectComboBox multiSelectComboBox = new MultiSelectComboBox();
-        HorizontalLayout layoutRow5 = new HorizontalLayout();
-        Button buttonPrimary4 = new Button();
-        H5 h53 = new H5();
-        VerticalLayout layoutColumn10 = new VerticalLayout();
-        HorizontalLayout layoutRow3 = new HorizontalLayout();
-        VerticalLayout layoutColumn11 = new VerticalLayout();
-        TextField textField7 = new TextField();
-        Button buttonPrimary5 = new Button();
-        VerticalLayout layoutColumn12 = new VerticalLayout();
-        getContent().setWidth("100%");
-        getContent().getStyle().set("flex-grow", "1");
-        h1.setText("SportMate");
-        getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
-        h1.setWidth("max-content");
-        layoutColumn2.setWidthFull();
-        getContent().setFlexGrow(1.0, layoutColumn2);
-        layoutColumn2.addClassName(Gap.XSMALL);
-        layoutColumn2.addClassName(Padding.XSMALL);
-        layoutColumn2.setWidth("100%");
-        layoutColumn2.getStyle().set("flex-grow", "1");
-        h5.setText("Dati personali:");
-        h5.setWidth("max-content");
-        layoutRow.setWidthFull();
-        layoutColumn2.setFlexGrow(1.0, layoutRow);
-        layoutRow.addClassName(Gap.MEDIUM);
-        layoutRow.setWidth("100%");
-        layoutRow.setHeight("282px");
-        layoutRow.setAlignItems(Alignment.START);
-        layoutRow.setJustifyContentMode(JustifyContentMode.START);
-        layoutColumn3.setHeightFull();
-        layoutRow.setFlexGrow(1.0, layoutColumn3);
-        layoutColumn3.setWidth("100%");
-        layoutColumn3.setHeight("282px");
-        textField.setLabel("Nome:");
-        textField.setWidth("192px");
-        textField2.setLabel("Mail:");
-        textField2.setWidth("192px");
-        buttonPrimary.setText("Modifica");
-        buttonPrimary.setWidth("min-content");
-        buttonPrimary.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        layoutColumn4.setHeightFull();
-        layoutRow.setFlexGrow(1.0, layoutColumn4);
-        layoutColumn4.setWidth("100%");
-        layoutColumn4.getStyle().set("flex-grow", "1");
-        layoutColumn4.setJustifyContentMode(JustifyContentMode.START);
-        layoutColumn4.setAlignItems(Alignment.CENTER);
-        textField3.setLabel("Cognome:");
-        textField3.setWidth("192px");
-        textField4.setLabel("Cellulare:");
-        textField4.setWidth("192px");
-        textField4.setHeight("192px");
-        layoutColumn5.setHeightFull();
-        layoutRow.setFlexGrow(1.0, layoutColumn5);
-        layoutColumn5.setWidth("100%");
-        layoutColumn5.setHeight("282px");
-        layoutColumn5.setJustifyContentMode(JustifyContentMode.START);
-        layoutColumn5.setAlignItems(Alignment.END);
-        datePicker.setLabel("Data di nascita:");
-        datePicker.setWidth("min-content");
-        layoutRow4.setWidthFull();
-        layoutColumn5.setFlexGrow(1.0, layoutRow4);
-        layoutRow4.addClassName(Gap.MEDIUM);
-        layoutRow4.setWidth("100%");
-        layoutRow4.getStyle().set("flex-grow", "1");
-        buttonPrimary2.setText("Salva");
-        layoutColumn5.setAlignSelf(FlexComponent.Alignment.END, buttonPrimary2);
-        buttonPrimary2.setWidth("107px");
-        buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        h52.setText("Dati centro:");
-        h52.setWidth("max-content");
-        layoutColumn6.setWidthFull();
-        layoutColumn2.setFlexGrow(1.0, layoutColumn6);
-        layoutColumn6.setWidth("100%");
-        layoutColumn6.getStyle().set("flex-grow", "1");
-        layoutRow2.setWidthFull();
-        layoutColumn6.setFlexGrow(1.0, layoutRow2);
-        layoutRow2.addClassName(Gap.MEDIUM);
-        layoutRow2.setWidth("100%");
-        layoutRow2.getStyle().set("flex-grow", "1");
-        layoutColumn7.setHeightFull();
-        layoutRow2.setFlexGrow(1.0, layoutColumn7);
-        layoutColumn7.setWidth("100%");
-        layoutColumn7.getStyle().set("flex-grow", "1");
-        textField5.setLabel("Nome commerciale:");
-        textField5.setWidth("192px");
-        timePicker.setLabel("Orario di apertura:");
-        timePicker.setWidth("min-content");
-        buttonPrimary3.setText("Modifica");
-        buttonPrimary3.setWidth("min-content");
-        buttonPrimary3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        layoutColumn8.setHeightFull();
-        layoutRow2.setFlexGrow(1.0, layoutColumn8);
-        layoutColumn8.setWidth("100%");
-        layoutColumn8.getStyle().set("flex-grow", "1");
-        layoutColumn8.setJustifyContentMode(JustifyContentMode.START);
-        layoutColumn8.setAlignItems(Alignment.CENTER);
-        textField6.setLabel("Indirizzo:");
-        textField6.setWidth("192px");
-        timePicker2.setLabel("Orario di chiusura:");
-        timePicker2.setWidth("min-content");
-        layoutColumn9.setHeightFull();
-        layoutRow2.setFlexGrow(1.0, layoutColumn9);
-        layoutColumn9.setWidth("100%");
-        layoutColumn9.getStyle().set("flex-grow", "1");
-        layoutColumn9.setJustifyContentMode(JustifyContentMode.START);
-        layoutColumn9.setAlignItems(Alignment.END);
-        multiSelectComboBox.setLabel("Tipologie campi:");
-        multiSelectComboBox.setWidth("min-content");
-        setMultiSelectComboBoxSampleData(multiSelectComboBox);
-        layoutRow5.setWidthFull();
-        layoutColumn9.setFlexGrow(1.0, layoutRow5);
-        layoutRow5.addClassName(Gap.MEDIUM);
-        layoutRow5.setWidth("100%");
-        layoutRow5.getStyle().set("flex-grow", "1");
-        buttonPrimary4.setText("Salva");
-        layoutColumn9.setAlignSelf(FlexComponent.Alignment.END, buttonPrimary4);
-        buttonPrimary4.setWidth("107px");
-        buttonPrimary4.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        h53.setText("Credito:");
-        h53.setWidth("max-content");
-        layoutColumn10.setWidthFull();
-        layoutColumn2.setFlexGrow(1.0, layoutColumn10);
-        layoutColumn10.setWidth("100%");
-        layoutColumn10.getStyle().set("flex-grow", "1");
-        layoutRow3.setWidthFull();
-        layoutColumn10.setFlexGrow(1.0, layoutRow3);
-        layoutRow3.addClassName(Gap.MEDIUM);
-        layoutRow3.setWidth("100%");
-        layoutRow3.getStyle().set("flex-grow", "1");
-        layoutColumn11.setHeightFull();
-        layoutRow3.setFlexGrow(1.0, layoutColumn11);
-        layoutColumn11.setWidth("100%");
-        layoutColumn11.getStyle().set("flex-grow", "1");
-        textField7.setLabel("Importo:");
-        textField7.setWidth("192px");
-        buttonPrimary5.setText("Preleva");
-        buttonPrimary5.setWidth("min-content");
-        buttonPrimary5.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        layoutColumn12.setHeightFull();
-        layoutRow3.setFlexGrow(1.0, layoutColumn12);
-        layoutColumn12.setWidth("100%");
-        layoutColumn12.getStyle().set("flex-grow", "1");
-        getContent().add(h1);
-        getContent().add(layoutColumn2);
-        layoutColumn2.add(h5);
-        layoutColumn2.add(layoutRow);
-        layoutRow.add(layoutColumn3);
-        layoutColumn3.add(textField);
-        layoutColumn3.add(textField2);
-        layoutColumn3.add(buttonPrimary);
-        layoutRow.add(layoutColumn4);
-        layoutColumn4.add(textField3);
-        layoutColumn4.add(textField4);
-        layoutRow.add(layoutColumn5);
-        layoutColumn5.add(datePicker);
-        layoutColumn5.add(layoutRow4);
-        layoutColumn5.add(buttonPrimary2);
-        layoutColumn2.add(h52);
-        layoutColumn2.add(layoutColumn6);
-        layoutColumn6.add(layoutRow2);
-        layoutRow2.add(layoutColumn7);
-        layoutColumn7.add(textField5);
-        layoutColumn7.add(timePicker);
-        layoutColumn7.add(buttonPrimary3);
-        layoutRow2.add(layoutColumn8);
-        layoutColumn8.add(textField6);
-        layoutColumn8.add(timePicker2);
-        layoutRow2.add(layoutColumn9);
-        layoutColumn9.add(multiSelectComboBox);
-        layoutColumn9.add(layoutRow5);
-        layoutColumn9.add(buttonPrimary4);
-        layoutColumn2.add(h53);
-        layoutColumn2.add(layoutColumn10);
-        layoutColumn10.add(layoutRow3);
-        layoutRow3.add(layoutColumn11);
-        layoutColumn11.add(textField7);
-        layoutColumn11.add(buttonPrimary5);
-        layoutRow3.add(layoutColumn12);
-    }
+	private static final long serialVersionUID = 1L;
+	private static final String STANDARD_HEIGHT = "220px";
+	private static final String HEIGHT_STYLE = "min-content";
+	Gestore gestore;
+	H1 titoloAccountGestore = new H1();
+	VerticalLayout layoutColumn2 = new VerticalLayout();
+	H5 titoloDatiPersonali = new H5();
+	HorizontalLayout layoutRow = new HorizontalLayout();
+	VerticalLayout layoutColumn3 = new VerticalLayout();
+	TextField txtNome = new TextField();
+	TextField txtMail = new TextField();
+	VerticalLayout layoutColumn4 = new VerticalLayout();
+	TextField txtCognome = new TextField();
+	TextField txtCellulare = new TextField();
+	VerticalLayout layoutColumn5 = new VerticalLayout();
+	DatePicker dtpDataNascita = new DatePicker();
+	Button btnSalva = new Button();
+	
+	public AccountGestoreView() {
 
-    record SampleItem(String value, String label, Boolean disabled) {
-    }
+		getContent().setWidth("100%");
+		getContent().getStyle().set("flex-grow", "1");
+		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, titoloAccountGestore);
+		
+		getUtenteInfo();
+		setTitoloAccountUtente();
+		setH5();
+		setLayoutColumn2();
+		setLayoutRow();
+		setLayoutColumn3();
+		setLayoutColumn4();
+		setLayoutColumn5();
+		setBtnSalva();
+		setTxtNome();
+		setTxtMail();
+		setTxtCognome();
+		setTxtCellulare();
+		setDtpDataNascita();
+	}
 
-    private void setMultiSelectComboBoxSampleData(MultiSelectComboBox multiSelectComboBox) {
-        List<SampleItem> sampleItems = new ArrayList<>();
-        sampleItems.add(new SampleItem("first", "First", null));
-        sampleItems.add(new SampleItem("second", "Second", null));
-        sampleItems.add(new SampleItem("third", "Third", Boolean.TRUE));
-        sampleItems.add(new SampleItem("fourth", "Fourth", null));
-        multiSelectComboBox.setItems(sampleItems);
-        multiSelectComboBox.setItemLabelGenerator(item -> ((SampleItem) item).label());
-    }
+	private void getUtenteInfo() {
+		String username = VaadinRequest.getCurrent().getUserPrincipal().getName();
+		if(username != null) {
+			this.gestore = GestoriService.findByUsername(username);
+		}
+	}
+
+	private void setTitoloAccountUtente() {
+		titoloAccountGestore.setText("My SportMate");
+		titoloAccountGestore.setWidth("max-content");
+		getContent().add(titoloAccountGestore);
+	}
+	
+	private void setH5() {
+		titoloDatiPersonali.setText("Dati personali");
+		titoloDatiPersonali.setWidth("max-content");
+	}
+
+	private void setLayoutColumn2() {
+		layoutColumn2.setWidthFull();
+		getContent().setFlexGrow(1.0, layoutColumn2);
+		layoutColumn2.addClassName(Gap.XSMALL);
+		layoutColumn2.addClassName(Padding.XSMALL);
+		layoutColumn2.setWidth("100%");
+		layoutColumn2.getStyle().set("flex-grow", "1");
+		layoutColumn2.setAlignSelf(FlexComponent.Alignment.START, titoloDatiPersonali);
+		layoutColumn2.setFlexGrow(1.0, layoutRow);
+		getContent().add(layoutColumn2);
+		layoutColumn2.add(titoloDatiPersonali);
+		layoutColumn2.add(layoutRow);
+	}
+
+	private void setLayoutRow() {
+		layoutRow.setWidthFull();
+		layoutRow.addClassName(Gap.MEDIUM);
+		layoutRow.setWidth("100%");
+		layoutRow.setHeight(HEIGHT_STYLE);
+		layoutRow.setFlexGrow(1.0, layoutColumn3);
+		layoutRow.setFlexGrow(1.0, layoutColumn4);
+		layoutRow.setFlexGrow(1.0, layoutColumn5);
+		layoutRow.add(layoutColumn4);
+		layoutRow.add(layoutColumn3);
+		layoutRow.add(layoutColumn5);
+	}
+
+	
+	private void setLayoutColumn3() {
+		layoutColumn3.setWidth("100%");
+		layoutColumn3.setHeight(HEIGHT_STYLE);
+		layoutColumn3.setJustifyContentMode(JustifyContentMode.START);
+		layoutColumn3.setAlignItems(Alignment.START);
+		layoutColumn3.setHeightFull();
+		layoutColumn3.add(txtNome);
+		layoutColumn3.add(txtMail);
+		layoutColumn3.addClassNames(LumoUtility.Padding.MEDIUM);
+	}
+	
+	private void setLayoutColumn4() {
+		layoutColumn4.setHeightFull();
+		layoutColumn4.setWidth("100%");
+		layoutColumn4.setHeight(HEIGHT_STYLE);
+		layoutColumn4.setJustifyContentMode(JustifyContentMode.START);
+		layoutColumn4.setAlignItems(Alignment.START);
+		layoutColumn4.add(txtCognome);
+		layoutColumn4.add(txtCellulare);
+		layoutColumn4.add(btnSalva);
+	}
+	
+	private void setLayoutColumn5() {
+		layoutColumn5.setWidth("100%");
+		layoutColumn5.setHeight(HEIGHT_STYLE);
+		layoutColumn5.setJustifyContentMode(JustifyContentMode.START);
+		layoutColumn5.setAlignItems(Alignment.START);
+		layoutColumn5.setHeightFull();
+		layoutColumn5.add(dtpDataNascita);
+	}
+	
+	
+	private void setBtnSalva() {
+		btnSalva.setText("Salva");
+		btnSalva.setWidth("107px");
+		btnSalva.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnSalva.addClickListener(event -> validateAndSave());
+	}
+	
+	private void validateAndSave() {
+		NotificationDelegator notification = new NotificationDelegator();
+		if(! (txtCognome.isInvalid() && txtNome.isInvalid() && txtCellulare.isInvalid() && dtpDataNascita.isInvalid())) {
+			Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
+			gestore.setCognome(txtCognome.getValue());
+			gestore.setNome(txtNome.getValue());
+			gestore.setTelefono(txtCellulare.getValue());
+			if(maybeDataNascita.isPresent()) {
+				gestore.setDataNascita(maybeDataNascita.get());
+			}
+			if(GestoriService.aggiornaDatiGestore(gestore) == 1) {
+				notification.showSuccessNotification("Dati modificati correttamente!");
+			}
+		}
+	}
+	
+	private void setTxtNome() {
+		txtNome.setLabel("Nome");
+		txtNome.setWidth(STANDARD_HEIGHT);
+		txtNome.setValue(gestore.getNome());
+		txtNome.setRequired(true);
+		txtNome.setErrorMessage("Campo richiesto");
+	}
+	
+	private void setTxtMail() {
+		txtMail.setLabel("Mail");
+		txtMail.setWidth(STANDARD_HEIGHT);
+		txtMail.setValue(gestore.getMail());
+		txtMail.setEnabled(false);
+	}
+	
+	private void setTxtCognome() {
+		txtCognome.setLabel("Cognome");
+		txtCognome.setWidth(STANDARD_HEIGHT);
+		txtCognome.setValue(gestore.getCognome());
+		txtCognome.setRequired(true);
+		txtCognome.setErrorMessage("Campo richiesto");
+	}
+	
+	private void setTxtCellulare() {
+		txtCellulare.setLabel("Telefono");
+		txtCellulare.setWidth(STANDARD_HEIGHT);
+		txtCellulare.setValue(gestore.getTelefono());
+		txtCellulare.setRequiredIndicatorVisible(true);
+		txtCellulare.setAllowedCharPattern("[0-9+-]");
+		txtCellulare.setMinLength(5);
+		txtCellulare.setMaxLength(18);
+		txtCellulare.setErrorMessage("Numero di telefono non valido");
+		txtCellulare.addFocusListener(e -> {
+			if(!UtentiService.isCellulareUnique(txtCellulare.getValue())) {
+				txtCellulare.setErrorMessage("Telefono già registrato");
+				txtCellulare.setInvalid(true);
+			}
+			else {
+				txtCellulare.setInvalid(false);
+			}
+		});
+	}
+	
+	private void setDtpDataNascita() {
+		dtpDataNascita.setLabel("Data di nascita");
+		dtpDataNascita.setWidth(HEIGHT_STYLE);
+		dtpDataNascita.setValue(gestore.getDataNascita());
+		dtpDataNascita.setRequired(true);
+		dtpDataNascita.setMax(LocalDate.now());
+		dtpDataNascita.setErrorMessage("Data non valida");
+	}
+	
 }

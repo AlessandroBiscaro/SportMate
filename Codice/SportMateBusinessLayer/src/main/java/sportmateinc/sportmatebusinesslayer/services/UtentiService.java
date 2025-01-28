@@ -62,7 +62,7 @@ public class UtentiService {
 	            .set(UTENTI.TELEFONO, user.getTelefono())
 	            .set(UTENTI.PASSWORD, user.getPassword())
 	            .set(UTENTI.LIVELLO, user.getLivello().getIdLivello())
-	            .where(UTENTI.IDUTENTE.eq(user.getIdUtente())) 
+	            .where(UTENTI.IDUTENTE.eq(user.getId())) 
 	            .execute(); 
 		db.chiudiConnessione();
 		return res;
@@ -103,7 +103,7 @@ public class UtentiService {
 		DSLContext create = db.getContext();
 		return create.update(UTENTI)
 				.set(UTENTI.CREDITO, user.getCredito().add(BigDecimal.valueOf(value)).setScale(2, RoundingMode.HALF_UP))
-				.where(UTENTI.IDUTENTE.eq(user.getIdUtente()))
+				.where(UTENTI.IDUTENTE.eq(user.getId()))
 				.execute();
 	}
 }

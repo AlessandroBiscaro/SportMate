@@ -17,7 +17,9 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 public class ChatView extends HorizontalLayout {
 
-    public ChatView() {
+	private static final long serialVersionUID = 1L;
+
+	public ChatView() {
     	UI.getCurrent().getPage().setLocation("/empty");
     }
     

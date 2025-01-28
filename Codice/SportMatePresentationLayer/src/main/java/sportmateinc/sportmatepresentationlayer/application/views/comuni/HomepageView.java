@@ -28,6 +28,10 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @Menu(order = 0, icon = LineAwesomeIconUrl.HOME_SOLID)
 @AnonymousAllowed
 public class HomepageView extends Composite<VerticalLayout> {
+	private static final String GROW_MODE = "flex-grow";
+	private static final String DISPONIBILITA_PRIVATE_ROUTE = "/disponibilitaPrivate";
+	private static final String BUTTON_HEIGHT = "127px";
+	private static final long serialVersionUID = 1L;
 	HorizontalLayout layoutRow = new HorizontalLayout();
 	H1 titoloHomePage = new H1();
 	HorizontalLayout layoutRow2 = new HorizontalLayout();
@@ -45,7 +49,7 @@ public class HomepageView extends Composite<VerticalLayout> {
 		getContent().addClassName(Gap.XSMALL);
 		getContent().addClassName(Padding.XSMALL);
 		getContent().setWidth("100%");
-		getContent().getStyle().set("flex-grow", "1");
+		getContent().getStyle().set(GROW_MODE, "1");
 		messageList.setWidth("100%");
 		setMessageListDelegating(messageList);
 		setTitolo();
@@ -64,87 +68,87 @@ public class HomepageView extends Composite<VerticalLayout> {
 	}
 
 	private void setTitolo() {
-    	 titoloHomePage.setText("SportMate");
-         titoloHomePage.setWidth("max-content");
-         titoloHomePage.setHeight("80px");
-    }
-    
-    private void setLayoutRow() {
-    	layoutRow.addClassName(Gap.MEDIUM);
-        layoutRow.setWidth("100%");
-        layoutRow.setHeight("min-content");
-        layoutRow.setAlignItems(Alignment.CENTER);
-        layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
-        getContent().add(layoutRow);
-        layoutRow.add(titoloHomePage);
-    }
-    
-    private void setLayoutRow2() {
-    	layoutRow2.addClassName(Gap.MEDIUM);
-        layoutRow2.setWidth("100%");
-        layoutRow2.getStyle().set("flex-grow", "1");
-        layoutRow2.setAlignItems(Alignment.CENTER);
-        layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
-        getContent().add(layoutRow2);
-        layoutRow2.add(layoutColumn2);
-    }
-    
-    private void setLayoutColumn2() {
-    	 layoutColumn2.addClassName(Gap.XSMALL);
-         layoutColumn2.addClassName(Padding.SMALL);
-         layoutColumn2.setWidth("100%");
-         layoutColumn2.getStyle().set("flex-grow", "1");
-         layoutColumn2.setJustifyContentMode(JustifyContentMode.START);
-         layoutColumn2.setAlignItems(Alignment.CENTER);
-         textSmall.setText(
-                 "Benvenuto su SportMate! SportMate rivoluziona il modo di vivere lo sport con un sistema innovativo per la prenotazione di campi sportivi dedicati al calcio a 5, calcio a 7 e basket 3v3. La nostra piattaforma consente di consultare facilmente la disponibilità delle strutture sportive, organizzare partite pubbliche o private e semplificare la ricerca di giocatori, anche all’ultimo minuto. Dimentica le lunghe telefonate per prenotare un campo: con SportMate, tutto è a portata di click, rendendo il tuo sport ancora più accessibile e divertente. Scopri un nuovo modo di giocare!");
-         layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
-         textSmall.setWidth("100%");
-         textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
-         layoutColumn2.setFlexGrow(1.0, layoutRow3);
-         layoutColumn2.setAlignSelf(FlexComponent.Alignment.START, messageList);
-         layoutColumn2.add(textSmall);
-         layoutColumn2.add(layoutRow3);
-         layoutColumn2.add(messageList);
-    }
-    
-    private void setLayoutRow3() {
-    	layoutRow3.setWidthFull();
-        layoutRow3.addClassName(Gap.MEDIUM);
-        layoutRow3.setWidth("100%");
-        layoutRow3.getStyle().set("flex-grow", "1");
-        layoutRow3.setAlignItems(Alignment.START);
-        layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
-        layoutRow3.add(btnCalcio5);
-        layoutRow3.add(btnCalcio7);
-        layoutRow3.add(btnBasket3v3);
-    }
-    
-    private void setBtnCalcio5() {
-    	 btnCalcio5.setText("Calcio a 5");
-         btnCalcio5.setWidth("127px");
-         btnCalcio5.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-         btnCalcio5.addClickListener(e -> UI.getCurrent().getPage().setLocation("/disponibilitaPrivate"));
-    }
+		titoloHomePage.setText("SportMate");
+		titoloHomePage.setWidth("max-content");
+		titoloHomePage.setHeight("80px");
+	}
 
-    private void setBtnCalcio7() {
-    	 btnCalcio7.setText("Calcio a 7");
-         btnCalcio7.setWidth("127px");
-         btnCalcio7.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-         btnCalcio7.addClickListener(e -> UI.getCurrent().getPage().setLocation("/disponibilitaPrivate"));
-    }
-    
-    private void setBtnBasket3v3() {
-    	btnBasket3v3.setText("Basket 3v3");
-        btnBasket3v3.setWidth("127px");
-        btnBasket3v3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        btnBasket3v3.addClickListener(e -> UI.getCurrent().getPage().setLocation("/disponibilitaPrivate"));
-    }
-    
-    private void setLayoutRow4() {
-    	 layoutRow4.addClassName(Gap.MEDIUM);
-         layoutRow4.setWidth("100%");
-         layoutRow4.setHeight("min-content");     
-         getContent().add(layoutRow4);
-    }
+	private void setLayoutRow() {
+		layoutRow.addClassName(Gap.MEDIUM);
+		layoutRow.setWidth("100%");
+		layoutRow.setHeight("min-content");
+		layoutRow.setAlignItems(Alignment.CENTER);
+		layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
+		getContent().add(layoutRow);
+		layoutRow.add(titoloHomePage);
+	}
+
+	private void setLayoutRow2() {
+		layoutRow2.addClassName(Gap.MEDIUM);
+		layoutRow2.setWidth("100%");
+		layoutRow2.getStyle().set(GROW_MODE, "1");
+		layoutRow2.setAlignItems(Alignment.CENTER);
+		layoutRow2.setJustifyContentMode(JustifyContentMode.CENTER);
+		getContent().add(layoutRow2);
+		layoutRow2.add(layoutColumn2);
+	}
+
+	private void setLayoutColumn2() {
+		layoutColumn2.addClassName(Gap.XSMALL);
+		layoutColumn2.addClassName(Padding.SMALL);
+		layoutColumn2.setWidth("100%");
+		layoutColumn2.getStyle().set(GROW_MODE, "1");
+		layoutColumn2.setJustifyContentMode(JustifyContentMode.START);
+		layoutColumn2.setAlignItems(Alignment.CENTER);
+		textSmall.setText(
+				"Benvenuto su SportMate! SportMate rivoluziona il modo di vivere lo sport con un sistema innovativo per la prenotazione di campi sportivi dedicati al calcio a 5, calcio a 7 e basket 3v3. La nostra piattaforma consente di consultare facilmente la disponibilità delle strutture sportive, organizzare partite pubbliche o private e semplificare la ricerca di giocatori, anche all’ultimo minuto. Dimentica le lunghe telefonate per prenotare un campo: con SportMate, tutto è a portata di click, rendendo il tuo sport ancora più accessibile e divertente. Scopri un nuovo modo di giocare!");
+		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
+		textSmall.setWidth("100%");
+		textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+		layoutColumn2.setFlexGrow(1.0, layoutRow3);
+		layoutColumn2.setAlignSelf(FlexComponent.Alignment.START, messageList);
+		layoutColumn2.add(textSmall);
+		layoutColumn2.add(layoutRow3);
+		layoutColumn2.add(messageList);
+	}
+
+	private void setLayoutRow3() {
+		layoutRow3.setWidthFull();
+		layoutRow3.addClassName(Gap.MEDIUM);
+		layoutRow3.setWidth("100%");
+		layoutRow3.getStyle().set(GROW_MODE, "1");
+		layoutRow3.setAlignItems(Alignment.START);
+		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
+		layoutRow3.add(btnCalcio5);
+		layoutRow3.add(btnCalcio7);
+		layoutRow3.add(btnBasket3v3);
+	}
+
+	private void setBtnCalcio5() {
+		btnCalcio5.setText("Calcio a 5");
+		btnCalcio5.setWidth(BUTTON_HEIGHT);
+		btnCalcio5.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnCalcio5.addClickListener(e -> UI.getCurrent().getPage().setLocation(DISPONIBILITA_PRIVATE_ROUTE));
+	}
+
+	private void setBtnCalcio7() {
+		btnCalcio7.setText("Calcio a 7");
+		btnCalcio7.setWidth(BUTTON_HEIGHT);
+		btnCalcio7.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnCalcio7.addClickListener(e -> UI.getCurrent().getPage().setLocation(DISPONIBILITA_PRIVATE_ROUTE));
+	}
+
+	private void setBtnBasket3v3() {
+		btnBasket3v3.setText("Basket 3v3");
+		btnBasket3v3.setWidth(BUTTON_HEIGHT);
+		btnBasket3v3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnBasket3v3.addClickListener(e -> UI.getCurrent().getPage().setLocation(DISPONIBILITA_PRIVATE_ROUTE));
+	}
+
+	private void setLayoutRow4() {
+		layoutRow4.addClassName(Gap.MEDIUM);
+		layoutRow4.setWidth("100%");
+		layoutRow4.setHeight("min-content");
+		getContent().add(layoutRow4);
+	}
 }

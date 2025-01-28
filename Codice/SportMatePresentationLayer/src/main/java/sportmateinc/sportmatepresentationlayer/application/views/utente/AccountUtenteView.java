@@ -3,7 +3,6 @@ package sportmateinc.sportmatepresentationlayer.application.views.utente;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import com.vaadin.flow.component.Composite;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -14,7 +13,6 @@ import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
-import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
@@ -30,20 +28,16 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.InfoDisponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.Livello;
-import sportmateinc.sportmatebusinesslayer.entities.Prenotazione;
 import sportmateinc.sportmatebusinesslayer.entities.Utente;
-import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
 import sportmateinc.sportmatebusinesslayer.services.LivelliService;
 import sportmateinc.sportmatebusinesslayer.services.PrenotazioneService;
 import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,7 +48,12 @@ import java.util.Optional;
 @Uses(Icon.class)
 
 public class AccountUtenteView extends Composite<VerticalLayout> {
-
+	private static final String TEXTFIELD_WIDTH = "220px";
+	private static final String TEXTFIELD_ERROR_MESSAGE = "Campo richiesto";
+	private static final String HEIGHT_STYLE = "min-content";
+	private static final String TITLE_WIDTH = "max-content";
+	private static final String GROW_STYLE = "flex-grow";
+	private static final long serialVersionUID = 1L;
 	Utente utente;
 	H1 titoloAccountUtente = new H1();
 	VerticalLayout layoutColumn2 = new VerticalLayout();
@@ -79,12 +78,12 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	Button btnRicaricaCredito = new Button();
 	H5 titoloPartitePrenotate = new H5();
 	VerticalLayout layoutColumn7 = new VerticalLayout();
-	Grid<DisponibilitaUtente> gridPartitePrenotate = new Grid<>(DisponibilitaUtente.class, false);
+	Grid<InfoDisponibilita> gridPartitePrenotate = new Grid<>(InfoDisponibilita.class, false);
 
 	public AccountUtenteView() {
 
 		getContent().setWidth("100%");
-		getContent().getStyle().set("flex-grow", "1");
+		getContent().getStyle().set(GROW_STYLE, "1");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, titoloAccountUtente);
 		
 		getUtenteInfo();
@@ -123,13 +122,13 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 
 	private void setTitoloAccountUtente() {
 		titoloAccountUtente.setText("My SportMate");
-		titoloAccountUtente.setWidth("max-content");
+		titoloAccountUtente.setWidth(TITLE_WIDTH);
 		getContent().add(titoloAccountUtente);
 	}
 	
 	private void setH5() {
 		titoloDatiPersonali.setText("Dati personali");
-		titoloDatiPersonali.setWidth("max-content");
+		titoloDatiPersonali.setWidth(TITLE_WIDTH);
 	}
 
 	private void setLayoutColumn2() {
@@ -138,7 +137,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutColumn2.addClassName(Gap.XSMALL);
 		layoutColumn2.addClassName(Padding.XSMALL);
 		layoutColumn2.setWidth("100%");
-		layoutColumn2.getStyle().set("flex-grow", "1");
+		layoutColumn2.getStyle().set(GROW_STYLE, "1");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.START, titoloDatiPersonali);
 		layoutColumn2.setFlexGrow(1.0, layoutRow);
 		layoutColumn2.setFlexGrow(1.0, layoutColumn6);
@@ -156,7 +155,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutRow.setWidthFull();
 		layoutRow.addClassName(Gap.MEDIUM);
 		layoutRow.setWidth("100%");
-		layoutRow.setHeight("min-content");
+		layoutRow.setHeight(HEIGHT_STYLE);
 		layoutRow.setFlexGrow(1.0, layoutColumn3);
 		layoutRow.setFlexGrow(1.0, layoutColumn4);
 		layoutRow.setFlexGrow(1.0, layoutColumn5);
@@ -170,13 +169,13 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	private void setLayoutRow2() {
 		layoutRow2.addClassName(Gap.MEDIUM);
 		layoutRow2.setWidth("100%");
-		layoutRow2.getStyle().set("flex-grow", "1");
+		layoutRow2.getStyle().set(GROW_STYLE, "1");
 		layoutRow2.setFlexGrow(1.0, layoutRow3);
 	}
 	
 	private void setLayoutColumn3() {
 		layoutColumn3.setWidth("100%");
-		layoutColumn3.setHeight("min-content");
+		layoutColumn3.setHeight(HEIGHT_STYLE);
 		layoutColumn3.setJustifyContentMode(JustifyContentMode.START);
 		layoutColumn3.setAlignItems(Alignment.START);
 		layoutColumn3.setHeightFull();
@@ -189,7 +188,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutRow3.setHeightFull();
 		layoutRow3.addClassName(Gap.MEDIUM);
 		layoutRow3.setWidth("100%");
-		layoutRow3.getStyle().set("flex-grow", "1");
+		layoutRow3.getStyle().set(GROW_STYLE, "1");
 		HorizontalLayout rowLayout = new HorizontalLayout(txtCredito, txtRicarica);
 		rowLayout.setWidthFull();
 		rowLayout.setSpacing(true);
@@ -199,7 +198,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	private void setLayoutColumn4() {
 		layoutColumn4.setHeightFull();
 		layoutColumn4.setWidth("100%");
-		layoutColumn4.setHeight("min-content");
+		layoutColumn4.setHeight(HEIGHT_STYLE);
 		layoutColumn4.setJustifyContentMode(JustifyContentMode.START);
 		layoutColumn4.setAlignItems(Alignment.START);
 		layoutColumn4.add(txtCognome);
@@ -209,7 +208,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	
 	private void setLayoutColumn5() {
 		layoutColumn5.setWidth("100%");
-		layoutColumn5.setHeight("min-content");
+		layoutColumn5.setHeight(HEIGHT_STYLE);
 		layoutColumn5.setJustifyContentMode(JustifyContentMode.START);
 		layoutColumn5.setAlignItems(Alignment.START);
 		layoutColumn5.setHeightFull();
@@ -220,7 +219,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	private void setLayoutColumn6() {
 		layoutColumn6.setWidthFull();
 		layoutColumn6.setWidth("100%");
-		layoutColumn6.getStyle().set("flex-grow", "1");
+		layoutColumn6.getStyle().set(GROW_STYLE, "1");
 		layoutColumn6.setFlexGrow(1.0, layoutRow2);
 		layoutColumn6.add(layoutRow2);
 		layoutColumn6.add(btnRicaricaCredito);
@@ -229,7 +228,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	private void setLayoutColumn7() {
 		layoutColumn7.setWidthFull();
 		layoutColumn7.setWidth("100%");
-		layoutColumn7.getStyle().set("flex-grow", "1");
+		layoutColumn7.getStyle().set(GROW_STYLE, "1");
 		layoutColumn7.add(gridPartitePrenotate);
 	}
 	
@@ -242,10 +241,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	
 	private void validateAndSave() {
 		NotificationDelegator notification = new NotificationDelegator();
-		if(txtCognome.isInvalid() || txtNome.isInvalid() || txtCellulare.isInvalid() || dtpDataNascita.isInvalid()) {
-			return;
-		}
-		else {
+		if(!(txtCognome.isInvalid() && txtNome.isInvalid() && txtCellulare.isInvalid() && dtpDataNascita.isInvalid())) {
 			Optional<LocalDate> maybeDataNascita = dtpDataNascita.getOptionalValue();
 			utente.setCognome(txtCognome.getValue());
 			utente.setNome(txtNome.getValue());
@@ -279,30 +275,30 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	
 	private void setTxtNome() {
 		txtNome.setLabel("Nome");
-		txtNome.setWidth("220px");
+		txtNome.setWidth(TEXTFIELD_WIDTH);
 		txtNome.setValue(utente.getNome());
 		txtNome.setRequired(true);
-		txtNome.setErrorMessage("Campo richiesto");
+		txtNome.setErrorMessage(TEXTFIELD_ERROR_MESSAGE);
 	}
 	
 	private void setTxtMail() {
 		txtMail.setLabel("Mail");
-		txtMail.setWidth("220px");
+		txtMail.setWidth(TEXTFIELD_WIDTH);
 		txtMail.setValue(utente.getMail());
 		txtMail.setEnabled(false);
 	}
 	
 	private void setTxtCognome() {
 		txtCognome.setLabel("Cognome");
-		txtCognome.setWidth("220px");
+		txtCognome.setWidth(TEXTFIELD_WIDTH);
 		txtCognome.setValue(utente.getCognome());
 		txtCognome.setRequired(true);
-		txtCognome.setErrorMessage("Campo richiesto");
+		txtCognome.setErrorMessage(TEXTFIELD_ERROR_MESSAGE);
 	}
 	
 	private void setTxtCellulare() {
 		txtCellulare.setLabel("Telefono");
-		txtCellulare.setWidth("220px");
+		txtCellulare.setWidth(TEXTFIELD_WIDTH);
 		txtCellulare.setValue(utente.getTelefono());
 		txtCellulare.setRequiredIndicatorVisible(true);
 		txtCellulare.setAllowedCharPattern("[0-9+-]");
@@ -321,10 +317,10 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 	
 	private void setTxtImporto() {
-		txtRicarica.setWidth("220px");
+		txtRicarica.setWidth(TEXTFIELD_WIDTH);
 		txtRicarica.setLabel("Importo");
 		txtRicarica.setRequired(true);
-		txtRicarica.setErrorMessage("Campo richiesto");
+		txtRicarica.setErrorMessage(TEXTFIELD_ERROR_MESSAGE);
 		Div sportMatePrefix = new Div();
 		sportMatePrefix.setText("$M");
 		txtRicarica.setPrefixComponent(sportMatePrefix);
@@ -332,7 +328,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	
 	private void setDtpDataNascita() {
 		dtpDataNascita.setLabel("Data di nascita");
-		dtpDataNascita.setWidth("min-content");
+		dtpDataNascita.setWidth(HEIGHT_STYLE);
 		dtpDataNascita.setValue(utente.getDataNascita());
 		dtpDataNascita.setRequired(true);
 		dtpDataNascita.setMax(LocalDate.now());
@@ -341,32 +337,32 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	
 	private void setCmbLivello() {
 		cmbLivello.setLabel("Livello");
-		cmbLivello.setWidth("min-content");
+		cmbLivello.setWidth(HEIGHT_STYLE);
 		cmbLivello.setAllowCustomValue(false);
 		cmbLivello.setRequired(true);
-		cmbLivello.setErrorMessage("Campo richiesto");
+		cmbLivello.setErrorMessage(TEXTFIELD_ERROR_MESSAGE);
 		setCmbLivelloData(cmbLivello);
 		cmbLivello.setValue(utente.getLivello());
 	}
 	
 	private void setTitoloCredito() {
 		titoloCredito.setText("Credito SportMate");
-		titoloCredito.setWidth("max-content");
+		titoloCredito.setWidth(TITLE_WIDTH);
 	}
 	
 	private void setTitoloPartitePrenotate() {
 		titoloPartitePrenotate.setText("Partite prenotate");
-		titoloPartitePrenotate.setWidth("max-content");
+		titoloPartitePrenotate.setWidth(TITLE_WIDTH);
 	}
 	
 	private void setGridPartitePrenotate() {
 		gridPartitePrenotate.setWidth("100%");
-		gridPartitePrenotate.getStyle().set("flex-grow", "0");
+		gridPartitePrenotate.getStyle().set(GROW_STYLE, "0");
 		setGridPartitePrenotateData(gridPartitePrenotate);
 	}
 	
 	private void setTxtCredito() {
-		txtCredito.setWidth("220px");
+		txtCredito.setWidth(TEXTFIELD_WIDTH);
 		txtCredito.setLabel("Credito");
 		txtCredito.setValue(utente.getCredito().doubleValue());
 		txtCredito.setReadOnly(true);
@@ -378,16 +374,16 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	private void setCmbLivelloData(ComboBox<Livello> cmbLivello) {
 		List<Livello> livelli = LivelliService.findAll();
 		cmbLivello.setItems(livelli);
-		cmbLivello.setItemLabelGenerator(item -> item.getNomeLivello());
+		cmbLivello.setItemLabelGenerator(Livello::getNomeLivello);
 	}
 
-	private void setGridPartitePrenotateData(Grid<DisponibilitaUtente> grid) {
+	private void setGridPartitePrenotateData(Grid<InfoDisponibilita> grid) {
 		grid.addColumn("idDisp").setAutoWidth(true).setVisible(false);
 		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
 		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
 		grid.addColumn("prezzo").setAutoWidth(true);
 		grid.addColumn("tipoCampo").setAutoWidth(true);
-		List<DisponibilitaUtente> list = PrenotazioneService.findByUtente(utente);
+		List<InfoDisponibilita> list = PrenotazioneService.findByUtente(utente);
 		grid.setItems(list);
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
 		grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);

@@ -50,7 +50,8 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
 public class MapView extends HorizontalLayout {
 	
-    private static Location[] locations = LocationService.findAll().toArray(Location[]::new);
+	private static final long serialVersionUID = 1L;
+	private static Location[] locations = LocationService.findAll().toArray(Location[]::new);
     private Map map = new Map();
 
     private UnorderedList cardList;
@@ -79,9 +80,7 @@ public class MapView extends HorizontalLayout {
         searchField.setWidthFull();
         searchField.addClassNames(Padding.MEDIUM, BoxSizing.BORDER);
         searchField.setValueChangeMode(ValueChangeMode.EAGER);
-        searchField.addValueChangeListener(e -> {
-            updateFilter(searchField.getValue().toLowerCase());
-        });
+        searchField.addValueChangeListener(e -> updateFilter(searchField.getValue().toLowerCase()));
         searchField.setClearButtonVisible(true);
         searchField.setSuffixComponent(new Icon("lumo", "search"));
 
@@ -137,9 +136,7 @@ public class MapView extends HorizontalLayout {
         for (Location location : filteredLocations) {
             Button button = new Button();
             button.addClassNames(Height.AUTO, Padding.MEDIUM);
-            button.addClickListener(e -> {
-                centerMapOn(location);
-            });
+            button.addClickListener(e -> centerMapOn(location));
 
             Span card = new Span();
             card.addClassNames("card", Width.FULL, Display.FLEX, FlexDirection.COLUMN, AlignItems.START, Gap.XSMALL);
@@ -173,7 +170,7 @@ public class MapView extends HorizontalLayout {
             featureLayer.removeFeature(f);
         }
 
-        this.filteredLocations.forEach((location) -> {
+        this.filteredLocations.forEach(location -> {
             MarkerFeature feature = new MarkerFeature(new Coordinate(location.getLongitude(), location.getLatitude()));
             featureToLocation.put(feature, location);
             featureLayer.addFeature(feature);

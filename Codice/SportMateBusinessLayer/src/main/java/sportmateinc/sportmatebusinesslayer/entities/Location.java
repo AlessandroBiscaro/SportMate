@@ -1,7 +1,10 @@
 package sportmateinc.sportmatebusinesslayer.entities;
 
-public class Location {
-    private int id;
+import java.io.Serializable;
+
+public class Location implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private int id;
     private String country;
     private String city;
     private String place;

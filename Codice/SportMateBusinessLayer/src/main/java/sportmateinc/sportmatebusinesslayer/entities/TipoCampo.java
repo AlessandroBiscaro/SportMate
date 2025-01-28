@@ -1,7 +1,10 @@
 package sportmateinc.sportmatebusinesslayer.entities;
 
-public class TipoCampo {
+import java.io.Serializable;
+
+public class TipoCampo implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private final int idCampo;
 	private final String nomeCampo;
 	

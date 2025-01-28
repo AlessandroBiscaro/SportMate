@@ -23,7 +23,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinRequest;
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatebusinesslayer.services.CentriSportiviService;
@@ -41,13 +41,14 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @PageTitle("Gestione disponibilità")
 @Route("gestDisp/:typeDispID?/:action?(edit)")
 @Menu(order = 8, icon = LineAwesomeIconUrl.ADDRESS_BOOK_SOLID)
-@RolesAllowed({"ADMIN"})
+@RolesAllowed({ "ADMIN" })
 
 @Uses(Icon.class)
 @Uses(Icon.class)
-public class GestioneDisponibilitàView extends Div implements BeforeEnterObserver {
+public class GestioneDisponibilitaView extends Div implements BeforeEnterObserver {
 
-	private final String TYPEDISP_ID = "typeDispID";
+	private static final long serialVersionUID = 1L;
+	private static final String TYPEDISP_ID = "typeDispID";
 	private final Grid<Disponibilita> grid = new Grid<>(Disponibilita.class, false);
 
 	private Checkbox prenotato;
@@ -61,26 +62,27 @@ public class GestioneDisponibilitàView extends Div implements BeforeEnterObserv
 
 	private Disponibilita currentDisponibilita;
 	private List<Disponibilita> disponibilitaList = new ArrayList<>();
-	private List<TipoCampo> tipiCampoList = new ArrayList<>();
 
-	public GestioneDisponibilitàView() {
+	public GestioneDisponibilitaView() {
 		addClassNames("gestionedisponibilità-view");
 
-		// UI Layout
 		SplitLayout splitLayout = new SplitLayout();
 		createGridLayout(splitLayout);
 		createEditorLayout(splitLayout);
 
 		add(splitLayout);
 
-		// Configure Grid
 		grid.addColumn(d -> d.getPrenotatoBoolean() ? "✔" : "✖").setHeader("Prenotato").setAutoWidth(true);
 		grid.addColumn(Disponibilita::getDataOra).setHeader("Data e Ora").setAutoWidth(true);
 		grid.addColumn(d -> d.getTipoCampo().getNomeCampo()).setHeader("Tipologia Campo").setAutoWidth(true);
 		grid.addColumn(Disponibilita::getPrezzo).setHeader("Prezzo").setAutoWidth(true);
-
-
-		int idCentro= getUtenteInfo().getIdCentro(); 
+		
+		CentroSportivo centroSportivo = getCentroSportivoInfo();
+		
+		if(centroSportivo == null) {
+			return;
+		}
+		int idCentro  = centroSportivo.getIdCentro();
 		disponibilitaList = DisponibilitaService.findByGestore(idCentro);
 
 		grid.setItems(disponibilitaList);
@@ -99,14 +101,12 @@ public class GestioneDisponibilitàView extends Div implements BeforeEnterObserv
 		insert.addClickListener(e -> inserisciDisponibilita());
 	}
 
-
 	@Override
 	public void beforeEnter(BeforeEnterEvent event) {
 		Optional<String> typeDispId = event.getRouteParameters().get(TYPEDISP_ID);
 		if (typeDispId.isPresent()) {
 			int id = Integer.parseInt(typeDispId.get());
-			Optional<Disponibilita> matchingDisponibilita = disponibilitaList.stream()
-					.filter(d -> d.getIdDisp() == id)
+			Optional<Disponibilita> matchingDisponibilita = disponibilitaList.stream().filter(d -> d.getIdDisp() == id)
 					.findFirst();
 			if (matchingDisponibilita.isPresent()) {
 				populateForm(matchingDisponibilita.get());
@@ -147,7 +147,7 @@ public class GestioneDisponibilitàView extends Div implements BeforeEnterObserv
 		cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 		save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		insert.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-		buttonLayout.add(save, cancel,insert);
+		buttonLayout.add(save, cancel, insert);
 		editorLayoutDiv.add(buttonLayout);
 	}
 
@@ -164,23 +164,21 @@ public class GestioneDisponibilitàView extends Div implements BeforeEnterObserv
 			currentDisponibilita = new Disponibilita();
 			disponibilitaList.add(currentDisponibilita);
 		}
-		currentDisponibilita.setCentro(getUtenteInfo());
+		currentDisponibilita.setCentro(getCentroSportivoInfo());
 		currentDisponibilita.setPrenotatoBoolean(prenotato.getValue());
 		currentDisponibilita.setDataOra(dataOra.getValue());
 		currentDisponibilita.setTipoCampo(TipoCampoService.findTipoCampo(tipologiaCampo.getValue().getIdCampo()));
 		currentDisponibilita.setPrezzo(new BigDecimal(prezzo.getValue()));
 
-		if(DisponibilitaService.aggiungiDisponibilita(currentDisponibilita)==1) {
+		if (DisponibilitaService.aggiungiDisponibilita(currentDisponibilita) == 1) {
 			Notification.show("Disponibilità aggiunta correttamente", 2000, Position.BOTTOM_START);
 			clearForm();
 			refreshGrid();
-		}
-		else {
-			Notification.show("Disponibilità non aggiunta correttamente", 2000, Position.BOTTOM_START);	
+		} else {
+			Notification.show("Disponibilità non aggiunta correttamente", 2000, Position.BOTTOM_START);
 		}
 
 	}
-
 
 	private void saveDisponibilita() {
 		if (currentDisponibilita == null) {
@@ -192,13 +190,12 @@ public class GestioneDisponibilitàView extends Div implements BeforeEnterObserv
 		currentDisponibilita.setTipoCampo(TipoCampoService.findTipoCampo(tipologiaCampo.getValue().getIdCampo()));
 		currentDisponibilita.setPrezzo(new BigDecimal(prezzo.getValue()));
 
-		if(DisponibilitaService.aggiornaDisponibilita(currentDisponibilita)>0) {
+		if (DisponibilitaService.aggiornaDisponibilita(currentDisponibilita) > 0) {
 			Notification.show("Disponibilità aggiornata correttamente", 2000, Position.BOTTOM_START);
 			clearForm();
 			refreshGrid();
-		}
-		else {
-			Notification.show("Disponibilità non salvata correttamente", 2000, Position.BOTTOM_START);	
+		} else {
+			Notification.show("Disponibilità non salvata correttamente", 2000, Position.BOTTOM_START);
 		}
 	}
 
@@ -223,25 +220,23 @@ public class GestioneDisponibilitàView extends Div implements BeforeEnterObserv
 		prezzo.setValue(value.getPrezzo().toString());
 	}
 
-	private CentriSportivi getUtenteInfo() {
+	private CentroSportivo getCentroSportivoInfo() {
 		String username = VaadinRequest.getCurrent().getUserPrincipal().getName();
 		if (username != null) {
 
-			return CentriSportiviService.findByIdGest(GestoriService.findByUsername(username).getIdGestore());
+			return CentriSportiviService.findByIdGest(GestoriService.findByUsername(username).getId());
 
-		}else {
+		} else {
 			Notification.show("Username non trovato", 2000, Position.BOTTOM_START);
-			return null ;
+			return null;
 		}
-
 
 	}
 
-
 	private void setCmbTipiCampo() {
-		tipiCampoList = TipoCampoService.findAll();
+		List<TipoCampo> tipiCampoList = TipoCampoService.findAll();
 		tipologiaCampo.setItems(tipiCampoList);
-		tipologiaCampo.setItemLabelGenerator(item -> item.getNomeCampo());
+		tipologiaCampo.setItemLabelGenerator(TipoCampo::getNomeCampo);
 	}
 
 }

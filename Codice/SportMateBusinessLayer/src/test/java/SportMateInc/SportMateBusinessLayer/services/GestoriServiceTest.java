@@ -44,7 +44,7 @@ public class GestoriServiceTest {
 
 		// Recuperiamo il gestore inserito per ottenere il suo ID
 		Record record = create.select().from(GESTORI).where(GESTORI.MAIL.eq(testGestore.getMail())).fetchOne();
-		testGestore.setIdGestore(record.get(GESTORI.IDGESTORE));
+		testGestore.setId(record.get(GESTORI.IDGESTORE));
 	}
 
 	@Test
@@ -133,7 +133,7 @@ public class GestoriServiceTest {
 	@After
 	public void tearDown() {
 		// Eliminazione gestore di test
-		int deleteResult = create.deleteFrom(GESTORI).where(GESTORI.IDGESTORE.eq(testGestore.getIdGestore())).execute();
+		int deleteResult = create.deleteFrom(GESTORI).where(GESTORI.IDGESTORE.eq(testGestore.getId())).execute();
 		assertEquals("Eliminazione gestore fallita", 1, deleteResult);
 
 		db.chiudiConnessione();

@@ -24,6 +24,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @AnonymousAllowed
 public class FeedbackView extends Div implements AfterNavigationObserver {
 	
+	private static final long serialVersionUID = 1L;
 	H1 title = new H1();
 	MessageList messageList = new MessageList();
 	MessageListDelegator delegator = new MessageListDelegator();

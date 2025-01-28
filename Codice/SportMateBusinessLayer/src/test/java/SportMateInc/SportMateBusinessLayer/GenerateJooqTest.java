@@ -1,9 +1,14 @@
 package SportMateInc.SportMateBusinessLayer;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 import static org.junit.Assert.*;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import org.jooq.meta.jaxb.Jdbc;
 import org.jooq.meta.jaxb.Database;
 import org.jooq.meta.jaxb.Target;
@@ -11,7 +16,13 @@ import org.jooq.meta.jaxb.Generator;
 import org.jooq.meta.jaxb.Configuration;
 
 public class GenerateJooqTest {
-
+	
+	@BeforeClass
+	public static void setUp() {
+		 BasicConfigurator.configure();
+	     Logger.getRootLogger().setLevel(Level.ERROR);
+	}
+	
     @Test
     public void testJdbcConfiguration() {
         Jdbc jdbc = new Jdbc()

@@ -1,8 +1,6 @@
 package sportmateinc.sportmatebusinesslayer.services;
 
-
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Disponibilita.DISPONIBILITA;
-import static sportmateinc.sportmatebusinesslayergenerated.tables.Partite.PARTITE;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,19 +13,14 @@ import org.jooq.Record5;
 import org.jooq.Record6;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
-import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
-import sportmateinc.sportmatebusinesslayer.entities.Partita;
-import sportmateinc.sportmatebusinesslayer.entities.Prenotazione;
+import sportmateinc.sportmatebusinesslayer.entities.InfoDisponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
-import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
-
-
 public class DisponibilitaService {
-	public DisponibilitaService() {
+	private DisponibilitaService() {
 		//Utility class
 	}
 	
@@ -71,15 +64,15 @@ public class DisponibilitaService {
 		db.chiudiConnessione();
 		for (Record6<Integer, String, BigDecimal, Integer , Integer, Integer> disp : result) {
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.get(DISPONIBILITA.TIPOCAMPO));
-			CentriSportivi centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
+			CentroSportivo centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
 			list.add(new Disponibilita(disp.get(DISPONIBILITA.IDDISPONIBILITA),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), disp.get(DISPONIBILITA.PREZZO), tipo, centro , disp.get(DISPONIBILITA.PRENOTATO)));
 		}
 		return list;
 	}
 	
-	public static List<DisponibilitaUtente> findAllUtente() {
+	public static List<InfoDisponibilita> findAllUtente() {
 		SportMateDB db = SportMateDB.getInstance();
-		List<DisponibilitaUtente> list = new ArrayList<>();
+		List<InfoDisponibilita> list = new ArrayList<>();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		Result<Record5<Integer,Integer, String, BigDecimal, Integer >> result = create.select(DISPONIBILITA.IDDISPONIBILITA,DISPONIBILITA.IDCENTRO, DISPONIBILITA.DATAORA, DISPONIBILITA.PREZZO, DISPONIBILITA.TIPOCAMPO).from(DISPONIBILITA).fetch();
@@ -87,8 +80,8 @@ public class DisponibilitaService {
 		db.chiudiConnessione();
 		for (Record5<Integer,Integer, String, BigDecimal, Integer > disp : result) {
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.get(DISPONIBILITA.TIPOCAMPO));
-			CentriSportivi centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
-			list.add(new DisponibilitaUtente(disp.get(DISPONIBILITA.IDDISPONIBILITA),centro.getNomeComm(),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO)));
+			CentroSportivo centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
+			list.add(new InfoDisponibilita(disp.get(DISPONIBILITA.IDDISPONIBILITA),centro.getNomeComm(),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO)));
 		}
 		return list;
 	}
@@ -103,7 +96,7 @@ public class DisponibilitaService {
 		.fetchOne();
 		db.chiudiConnessione();
 		TipoCampo tipo = TipoCampoService.findTipoCampo(result.get(DISPONIBILITA.TIPOCAMPO));
-		CentriSportivi centro = CentriSportiviService.findByIdCentro(result.get(DISPONIBILITA.IDCENTRO));
+		CentroSportivo centro = CentriSportiviService.findByIdCentro(result.get(DISPONIBILITA.IDCENTRO));
 		return new Disponibilita(result.get(DISPONIBILITA.IDDISPONIBILITA),LocalDateTime.parse(result.get(DISPONIBILITA.DATAORA)), result.get(DISPONIBILITA.PREZZO), tipo, centro , result.get(DISPONIBILITA.PRENOTATO));
 	}
 	
@@ -119,7 +112,7 @@ public class DisponibilitaService {
 		db.chiudiConnessione();
 		for (Record6<Integer, String, BigDecimal, Integer , Integer, Integer> disp : result) {
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.get(DISPONIBILITA.TIPOCAMPO));
-			CentriSportivi centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
+			CentroSportivo centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
 			list.add(new Disponibilita(disp.get(DISPONIBILITA.IDDISPONIBILITA),
 					LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)),
 					disp.get(DISPONIBILITA.PREZZO), tipo, centro , disp.get(DISPONIBILITA.PRENOTATO)));

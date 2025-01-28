@@ -18,7 +18,6 @@ import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.Layout;
-import com.vaadin.flow.server.auth.AccessAnnotationChecker;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.server.menu.MenuConfiguration;
 import com.vaadin.flow.server.menu.MenuEntry;
@@ -31,24 +30,19 @@ import sportmateinc.sportmatepresentationlayer.application.security.Authenticate
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.security.core.userdetails.User;
-
-/**
- * The main view is a top-level placeholder for other views.
- */
 @Layout
 @AnonymousAllowed
 public class MainLayout extends AppLayout {
 
+	private static final long serialVersionUID = 1L;
+
 	private H1 viewTitle;
 
     private AuthenticatedUser authenticatedUser;
-    private AccessAnnotationChecker accessChecker;
     private AuthenticationContext authenticationContext;
 
-    public MainLayout(AuthenticatedUser authenticatedUser, AccessAnnotationChecker accessChecker) {
+    public MainLayout(AuthenticatedUser authenticatedUser) {
         this.authenticatedUser = authenticatedUser;
-        this.accessChecker = accessChecker;
         authenticationContext = new AuthenticationContext();
 
         setPrimarySection(Section.DRAWER);
@@ -117,15 +111,13 @@ public class MainLayout extends AppLayout {
             div.getElement().getStyle().set("align-items", "center");
             div.getElement().getStyle().set("gap", "var(--lumo-space-s)");
             userName.add(div);
-            userName.getSubMenu().addItem("Sign out", e -> {
-                authenticatedUser.logout();
-            });
+            userName.getSubMenu().addItem("Sign out", e -> authenticatedUser.logout());
             userName.getSubMenu().addItem("My SportMate", e -> {
         		if(authenticationContext.hasRole("USER")) {
         			UI.getCurrent().getPage().setLocation("/myprofile");
         		}
         		else {
-        			UI.getCurrent().getPage().setLocation("/accountGestore");
+        			UI.getCurrent().getPage().setLocation("/mygestore");
         		}
             });
 

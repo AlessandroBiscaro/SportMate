@@ -24,7 +24,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import jakarta.annotation.security.RolesAllowed;
 
-import sportmateinc.sportmatebusinesslayer.entities.PartitaPubblica;
+import sportmateinc.sportmatebusinesslayer.entities.InfoPartita;
 import sportmateinc.sportmatebusinesslayer.services.PartitaService;
 
 import java.math.BigDecimal;
@@ -39,18 +39,21 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @RolesAllowed({"USER"})
 
 @Uses(Icon.class)
-public class DisponibilitàPubblicheView extends Div {
+public class DisponibilitaPubblicheView extends Div {
 
+	private static final String VISIBILITY_LEVEL = "visible";
 
-	private Grid<PartitaPubblica> grid;
+	private static final long serialVersionUID = 1L;
+
+	private Grid<InfoPartita> grid;
 
 	private Filters filters;
 
-	public DisponibilitàPubblicheView() {
+	public DisponibilitaPubblicheView() {
 		setSizeFull();
 		addClassNames("disponibilità-view");
 
-		filters = new Filters(() -> refreshGrid());
+		filters = new Filters(this::refreshGrid);
 		VerticalLayout layout = new VerticalLayout(createMobileFilters(), filters, createGrid());
 		layout.setSizeFull();
 		layout.setPadding(false);
@@ -71,11 +74,11 @@ public class DisponibilitàPubblicheView extends Div {
 		mobileFilters.add(mobileIcon, filtersHeading);
 		mobileFilters.setFlexGrow(1, filtersHeading);
 		mobileFilters.addClickListener(e -> {
-			if (filters.getClassNames().contains("visible")) {
-				filters.removeClassName("visible");
+			if (filters.getClassNames().contains(VISIBILITY_LEVEL)) {
+				filters.removeClassName(VISIBILITY_LEVEL);
 				mobileIcon.getElement().setAttribute("icon", "lumo:plus");
 			} else {
-				filters.addClassName("visible");
+				filters.addClassName(VISIBILITY_LEVEL);
 				mobileIcon.getElement().setAttribute("icon", "lumo:minus");
 			}
 		});
@@ -84,6 +87,7 @@ public class DisponibilitàPubblicheView extends Div {
 
 	public static class Filters extends Div {
 
+		private static final long serialVersionUID = 1L;
 		private final TextField filtroCentro = new TextField("Centro Sportivo");
 		private final TextField filtroPrezzo = new TextField("Prezzo");
 		private final DateTimePicker filtroInzioData = new DateTimePicker("Data e Ora");
@@ -148,7 +152,7 @@ public class DisponibilitàPubblicheView extends Div {
 		/**
 		 * Applica i filtri manualmente a una lista di `DisponibilitaUtente`.
 		 */
-		public List<PartitaPubblica> applyFilters(List<PartitaPubblica> lista) {
+		public List<InfoPartita> applyFilters(List<InfoPartita> lista) {
 			return lista.stream()
 					.filter(disponibilita -> filtroCentro.isEmpty() || 
 							disponibilita.getNomecentro().toLowerCase().contains(filtroCentro.getValue().toLowerCase()))
@@ -190,13 +194,13 @@ public class DisponibilitàPubblicheView extends Div {
 
 
 	private Component createGrid() {
-		grid = new Grid<>(PartitaPubblica.class, false);
+		grid = new Grid<>(InfoPartita.class, false);
 		grid.addColumn("idPartita").setAutoWidth(true).setVisible(false);
 		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
 		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
 		grid.addColumn("prezzo").setAutoWidth(true).setHeader("Prezzo a utente");
 		grid.addColumn("tipoCampo").setAutoWidth(true);
-		List<PartitaPubblica> list = PartitaService.findAllPubbliche();
+		List<InfoPartita> list = PartitaService.findAllPubbliche();
 
 		grid.setItems(list);
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
@@ -206,8 +210,8 @@ public class DisponibilitàPubblicheView extends Div {
 	}
 
 	private void refreshGrid() {
-		List<PartitaPubblica> allDisponibilita = PartitaService.findAllPubbliche(); // Lista originale
-		List<PartitaPubblica> filteredDisponibilita = filters.applyFilters(allDisponibilita); // Applica i filtri
+		List<InfoPartita> allDisponibilita = PartitaService.findAllPubbliche(); // Lista originale
+		List<InfoPartita> filteredDisponibilita = filters.applyFilters(allDisponibilita); // Applica i filtri
 		grid.setItems(filteredDisponibilita); // Aggiorna la griglia
 	}
 

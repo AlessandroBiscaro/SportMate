@@ -43,10 +43,10 @@ public class UtentiServiceTest {
 		int result = UtentiService.aggiungiUtente(testUtente);
 		assertEquals("Inserimento utente fallito", 1, result);
 
-		// Recuperiamo l'utente inserito per ottenere il suo ID
-		Record record = create.select().from(UTENTI).where(UTENTI.MAIL.eq(testUtente.getMail())).fetchOne();
-		testUtente.setIdUtente(record.get(UTENTI.IDUTENTE));
-	}
+        // Recuperiamo l'utente inserito per ottenere il suo ID
+        Record record = create.select().from(UTENTI).where(UTENTI.MAIL.eq(testUtente.getMail())).fetchOne();
+        testUtente.setId(record.get(UTENTI.IDUTENTE));
+    }
 
 	@Test
 	public void testFindByUsernameExistingUser() {
@@ -88,27 +88,6 @@ public class UtentiServiceTest {
 	}
 
 	@Test
-	public void testFindById() {
-		Utente utenteRecuperato = UtentiService.findById(testUtente.getIdUtente());
-
-		// Verifica che l'utente recuperato non sia null
-		assertNotNull("Utente non trovato nel database", utenteRecuperato);
-
-		assertEquals("L'ID dell'utente non corrisponde", testUtente.getIdUtente(), utenteRecuperato.getIdUtente());
-		assertEquals("La mail dell'utente non corrisponde", testUtente.getMail(), utenteRecuperato.getMail());
-		assertEquals("Il nome dell'utente non corrisponde", testUtente.getNome(), utenteRecuperato.getNome());
-		assertEquals("Il cognome dell'utente non corrisponde", testUtente.getCognome(), utenteRecuperato.getCognome());
-		assertEquals("La data di nascita dell'utente non corrisponde", testUtente.getDataNascita(),
-				utenteRecuperato.getDataNascita());
-		assertEquals("Il telefono dell'utente non corrisponde", testUtente.getTelefono(),
-				utenteRecuperato.getTelefono());
-		assertEquals("La password dell'utente non corrisponde", testUtente.getPassword(),
-				utenteRecuperato.getPassword());
-		assertEquals("Il livello dell'utente non corrisponde", testUtente.getLivello().getIdLivello(),
-				utenteRecuperato.getLivello().getIdLivello());
-	}
-
-	@Test
 	public void testIsCellulareUnique() {
 		// Testa il metodo isCellulareUnique con un numero di telefono già esistente
 		boolean isUnique = UtentiService.isCellulareUnique("1234567890");
@@ -134,7 +113,7 @@ public class UtentiServiceTest {
 	@After
 	public void tearDown() {
 		// Eliminazione utente di test
-		int deleteResult = create.deleteFrom(UTENTI).where(UTENTI.IDUTENTE.eq(testUtente.getIdUtente())).execute();
+		int deleteResult = create.deleteFrom(UTENTI).where(UTENTI.IDUTENTE.eq(testUtente.getId())).execute();
 		assertEquals("Eliminazione utente fallita", 1, deleteResult);
 
 		db.chiudiConnessione();

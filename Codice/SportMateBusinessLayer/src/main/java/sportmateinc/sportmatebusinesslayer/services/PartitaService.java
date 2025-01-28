@@ -13,10 +13,10 @@ import org.jooq.Record3;
 import org.jooq.Record9;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.Partita;
-import sportmateinc.sportmatebusinesslayer.entities.PartitaPubblica;
+import sportmateinc.sportmatebusinesslayer.entities.InfoPartita;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
@@ -85,9 +85,8 @@ public class PartitaService {
 					partita.get(PARTITE.STATO),
 					partita.get(PARTITE.MODPAGAMENTO) , 
 					partita.get(PARTITE.IDORGANIZZATORE),
-					partita.get(PARTITE.IDDISPONIBILITA), 
-					partita.get(PARTITE.GOALSQUADRACASA),
-					partita.get(PARTITE.GOALSQUADRATRASFERTA)));
+					partita.get(PARTITE.IDDISPONIBILITA)
+					));
 		}
 		return list;
 	}
@@ -108,15 +107,13 @@ public class PartitaService {
 					partita.get(PARTITE.STATO),
 					partita.get(PARTITE.MODPAGAMENTO) , 
 					partita.get(PARTITE.IDORGANIZZATORE),
-					partita.get(PARTITE.IDDISPONIBILITA), 
-					partita.get(PARTITE.GOALSQUADRACASA),
-					partita.get(PARTITE.GOALSQUADRATRASFERTA));
+					partita.get(PARTITE.IDDISPONIBILITA));
 	}
 	
 	
-	public static List<PartitaPubblica> findAllPubbliche() {
+	public static List<InfoPartita> findAllPubbliche() {
 		SportMateDB db = SportMateDB.getInstance();
-		List<PartitaPubblica> list = new ArrayList<>();
+		List<InfoPartita> list = new ArrayList<>();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		Result<Record3<Integer,Integer, Integer >> result = create.select(PARTITE.IDPARTITA,PARTITE.POSTITOTALI, PARTITE.IDDISPONIBILITA ).from(PARTITE).where(PARTITE.PUBBLICA.eq(1)).fetch();
@@ -125,9 +122,9 @@ public class PartitaService {
 		for (Record3<Integer, Integer, Integer > partPubb : result) {
 			Disponibilita disp = DisponibilitaService.findById(partPubb.get(PARTITE.IDPARTITA));
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.getTipoCampo().getIdCampo());
-			CentriSportivi centro = CentriSportiviService.findByIdCentro(disp.getCentro().getIdCentro());
+			CentroSportivo centro = CentriSportiviService.findByIdCentro(disp.getCentro().getIdCentro());
 			BigDecimal prezzo = (disp.getPrezzo().divide(new BigDecimal("10"), RoundingMode.HALF_UP));
-			list.add(new PartitaPubblica(partPubb.get(PARTITE.IDPARTITA),centro.getNomeComm(),disp.getDataOra(), tipo.getNomeCampo(), prezzo, partPubb.get(PARTITE.POSTITOTALI)));
+			list.add(new InfoPartita(partPubb.get(PARTITE.IDPARTITA),centro.getNomeComm(),disp.getDataOra(), tipo.getNomeCampo(), prezzo, partPubb.get(PARTITE.POSTITOTALI)));
 		}
 		return list;
 	}

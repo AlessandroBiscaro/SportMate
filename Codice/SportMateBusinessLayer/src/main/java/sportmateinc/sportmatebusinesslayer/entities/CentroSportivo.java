@@ -2,8 +2,8 @@ package sportmateinc.sportmatebusinesslayer.entities;
 
 import java.math.BigDecimal;
 
-public class CentriSportivi {
-	
+public class CentroSportivo {
+
 	private int idCentro;
 	private String nomeComm;
 	private String indirizzo;
@@ -13,11 +13,11 @@ public class CentriSportivi {
 	private String orarioApertura;
 	private String orarioChiusura;
 	private int idGestore;
-	
-	public CentriSportivi(int idCentro, String nomeComm, String indirizzo, BigDecimal latitudine,
+
+	public CentroSportivo(int idCentro, String nomeCommerciale, String indirizzo, BigDecimal latitudine,
 			BigDecimal longitudine, BigDecimal credito, String orarioApertura, String orarioChiusura, int idGestore) {
 		this.idCentro = idCentro;
-		this.nomeComm = nomeComm;
+		this.nomeComm = nomeCommerciale;
 		this.indirizzo = indirizzo;
 		this.latitudine = latitudine;
 		this.longitudine = longitudine;
@@ -98,10 +98,5 @@ public class CentriSportivi {
 	public void setIdGestore(int idGestore) {
 		this.idGestore = idGestore;
 	}
-	
-	
-	
-	
-	
 
 }

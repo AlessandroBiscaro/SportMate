@@ -14,17 +14,19 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 @AnonymousAllowed
 public class EmptyView extends VerticalLayout {
 
-    public EmptyView() {
+	private static final long serialVersionUID = 1L;
+
+	public EmptyView() {
         setSpacing(false);
 
         Image img = new Image("images/empty-plant.png", "placeholder plant");
         img.setWidth("200px");
         add(img);
 
-        H2 header = new H2("Lavori in corso");
+        H2 header = new H2("Funzionalità in arrivo");
         header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
         add(header);
-        add(new Paragraph("Funzionalità presto in arrivo 🤗"));
+        add(new Paragraph("Lavori in corso 🤗"));
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);

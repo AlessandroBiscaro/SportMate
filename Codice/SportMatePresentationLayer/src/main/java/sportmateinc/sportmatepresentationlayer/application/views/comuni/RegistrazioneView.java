@@ -22,6 +22,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
 public class RegistrazioneView extends Composite<VerticalLayout> {
 
+	private static final long serialVersionUID = 1L;
 	H1 sportMateH1;
 	VerticalLayout verticalLayout;
 	H5 tipoRegistrazioneTitolo;

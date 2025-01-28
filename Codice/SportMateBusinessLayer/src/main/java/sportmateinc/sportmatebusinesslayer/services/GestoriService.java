@@ -55,7 +55,7 @@ public class GestoriService {
 	            .set(GESTORI.DATANASCITA, admin.getDataNascita().toString()) 
 	            .set(GESTORI.TELEFONO, admin.getTelefono())
 	            .set(GESTORI.PASSWORD, admin.getPassword())
-	            .where(GESTORI.IDGESTORE.eq(admin.getIdGestore())) 
+	            .where(GESTORI.IDGESTORE.eq(admin.getId())) 
 	            .execute(); 
 		db.chiudiConnessione();
 		return result;

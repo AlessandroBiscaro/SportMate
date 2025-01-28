@@ -5,14 +5,14 @@ import static sportmateinc.sportmatebusinesslayergenerated.tables.Centrisportivi
 import org.jooq.DSLContext;
 import org.jooq.Record;
 
-import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
+import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class CentriSportiviService {
 	
 	private CentriSportiviService() {}
 	
-	public static CentriSportivi findByIdGest(int idGest) {
+	public static CentroSportivo findByIdGest(int idGest) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
@@ -21,7 +21,7 @@ public class CentriSportiviService {
 		.where(CENTRISPORTIVI.IDGESTORE.eq(idGest))
 		.fetchOne();
 		db.chiudiConnessione();
-		return new CentriSportivi(result.get(CENTRISPORTIVI.IDCENTRO), 
+		return new CentroSportivo(result.get(CENTRISPORTIVI.IDCENTRO), 
 						   result.get(CENTRISPORTIVI.NOMECOMMERCIALE),
 						   result.get(CENTRISPORTIVI.INDIRIZZO),
 						   result.get(CENTRISPORTIVI.LATITUDINE),
@@ -32,7 +32,7 @@ public class CentriSportiviService {
 						   result.get(CENTRISPORTIVI.IDGESTORE));
 	}
 	
-	public static CentriSportivi findByIdCentro(int idCentro) {
+	public static CentroSportivo findByIdCentro(int idCentro) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
@@ -41,7 +41,7 @@ public class CentriSportiviService {
 		.where(CENTRISPORTIVI.IDCENTRO.eq(idCentro))
 		.fetchOne();
 		db.chiudiConnessione();
-		return new CentriSportivi(result.get(CENTRISPORTIVI.IDCENTRO), 
+		return new CentroSportivo(result.get(CENTRISPORTIVI.IDCENTRO), 
 						   result.get(CENTRISPORTIVI.NOMECOMMERCIALE),
 						   result.get(CENTRISPORTIVI.INDIRIZZO),
 						   result.get(CENTRISPORTIVI.LATITUDINE),
@@ -52,7 +52,7 @@ public class CentriSportiviService {
 						   result.get(CENTRISPORTIVI.IDGESTORE));
 	}
 	
-	public static int aggiungiCentro(CentriSportivi centro) {
+	public static int aggiungiCentro(CentroSportivo centro) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
@@ -70,7 +70,7 @@ public class CentriSportiviService {
 		.execute();
 	}
 	
-	public static int aggiornaDatiCentro(CentriSportivi centro) {
+	public static int aggiornaDatiCentro(CentroSportivo centro) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();

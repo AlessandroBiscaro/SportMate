@@ -40,7 +40,17 @@ import java.util.Optional;
 
 public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	
-	private static int NUM_FIELD = 8;
+	private static final String HEIGHT_STYLE = "min-content";
+
+	private static final String ERROR_MESSAGE = "Campo richiesto";
+
+	private static final String TEXTFIELD_WIDTH = "192px";
+
+	private static final String LAYOUT_ROW_HEIGHT = "360px";
+
+	private static final long serialVersionUID = 1L;
+
+	private static final int NUMBER_FIELD = 8;
 	
 	H1 h1 = new H1();
     H5 h5 = new H5();
@@ -66,9 +76,9 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     
     
     public RegistrazioneUtenteView() {
-        savedFields = new String[NUM_FIELD];
+        savedFields = new String[NUMBER_FIELD];
         getContent().setWidth("100%");
-        getContent().setHeight("min-content");
+        getContent().setHeight(HEIGHT_STYLE);
         h1.setText("SportMate");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, h1);
         h1.setWidth("max-content");
@@ -79,7 +89,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         getContent().setFlexGrow(1.0, layoutRow);
         layoutRow.addClassName(Gap.MEDIUM);
         layoutRow.setWidth("100%");
-        layoutRow.setHeight("360px");
+        layoutRow.setHeight(LAYOUT_ROW_HEIGHT);
         layoutColumn5.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn5);
         layoutColumn5.setWidth("135px");
@@ -88,7 +98,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutRow.setFlexGrow(1.0, layoutColumn2);
         layoutColumn2.addClassName(Gap.XSMALL);
         layoutColumn2.addClassName(Padding.XSMALL);
-        layoutColumn2.setWidth("360px");
+        layoutColumn2.setWidth(LAYOUT_ROW_HEIGHT);
         layoutColumn2.setHeight("450px");
         layoutColumn2.setJustifyContentMode(JustifyContentMode.START);
         layoutColumn2.setAlignItems(Alignment.END);
@@ -112,12 +122,12 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         layoutColumn6.setWidthFull();
         layoutColumn3.setFlexGrow(1.0, layoutColumn6);
         layoutColumn6.setWidth("100%");
-        layoutColumn6.setHeight("360px");
+        layoutColumn6.setHeight(LAYOUT_ROW_HEIGHT);
         layoutColumn4.setHeightFull();
         layoutRow.setFlexGrow(1.0, layoutColumn4);
         layoutColumn4.addClassName(Gap.XSMALL);
         layoutColumn4.addClassName(Padding.XSMALL);
-        layoutColumn4.setWidth("360px");
+        layoutColumn4.setWidth(LAYOUT_ROW_HEIGHT);
         layoutColumn4.setHeight("450px");
         layoutColumn4.setJustifyContentMode(JustifyContentMode.START);
         layoutColumn4.setAlignItems(Alignment.START);
@@ -166,7 +176,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 
 	private void setPasswordConfermaField() {
 		passwordFieldConferma.setLabel("Conferma password");
-        passwordFieldConferma.setWidth("192px");
+        passwordFieldConferma.setWidth(TEXTFIELD_WIDTH);
         passwordFieldConferma.setRequired(true);
         savedFields[7] = "";
         passwordFieldConferma.addBlurListener(e -> {
@@ -189,22 +199,22 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void decrementProgressBar() {
 		double progress = progressBar.getValue();
 		if(progress > 0) {
-			progress -= (double) 1/NUM_FIELD;
+			progress -= (double) 1/NUMBER_FIELD;
 			progressBar.setValue(progress);
 		}
 	}
 	
 	private void incrementProgressBar() {
-		double progress = progressBar.getValue() + ((double) 1/NUM_FIELD);
+		double progress = progressBar.getValue() + ((double) 1/NUMBER_FIELD);
 		progressBar.setValue(progress);
 	}
 
 	private void setPasswordField() {
 		passwordField.setLabel("Password");
-        passwordField.setWidth("192px");
+        passwordField.setWidth(TEXTFIELD_WIDTH);
         passwordField.setRequired(true);
         savedFields[6] = "";
-        passwordField.setErrorMessage("Campo richiesto");
+        passwordField.setErrorMessage(ERROR_MESSAGE);
         passwordField.addBlurListener(e -> {
         	if(!savedFields[6].equals(passwordField.getValue())) {
         		
@@ -222,9 +232,9 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void setTextFieldCognome() {
 		savedFields[1] = "";
 		textFieldCognome.setLabel("Cognome");
-        textFieldCognome.setWidth("192px");
+        textFieldCognome.setWidth(TEXTFIELD_WIDTH);
         textFieldCognome.setRequired(true);
-		textFieldCognome.setErrorMessage("Campo richiesto");
+		textFieldCognome.setErrorMessage(ERROR_MESSAGE);
 		textFieldCognome.addBlurListener(e -> {
 			if(!savedFields[1].equals(textFieldCognome.getValue())) {
 				
@@ -242,7 +252,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void setTextFieldCellulare() {
 		savedFields[3] = "";
 		textFieldCellulare.setLabel("Cellulare");
-        textFieldCellulare.setWidth("192px");
+        textFieldCellulare.setWidth(TEXTFIELD_WIDTH);
         textFieldCellulare.setRequiredIndicatorVisible(true);
 		textFieldCellulare.setAllowedCharPattern("[0-9+-]");
 		textFieldCellulare.setMinLength(5);
@@ -267,10 +277,10 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void setComboBoxLivello() {
 		savedFields[5] = "";
 		comboBoxLivello.setLabel("Livello giocatore");
-        comboBoxLivello.setWidth("min-content");
+        comboBoxLivello.setWidth(HEIGHT_STYLE);
         comboBoxLivello.setAllowCustomValue(false);
         comboBoxLivello.setRequired(true);
-        comboBoxLivello.setErrorMessage("Campo richiesto");
+        comboBoxLivello.setErrorMessage(ERROR_MESSAGE);
         setCmbLivelloData(comboBoxLivello);
         comboBoxLivello.addBlurListener(e -> {
         	if(!savedFields[5].equals(comboBoxLivello.getValue().getNomeLivello())) {
@@ -288,9 +298,9 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void setEmailField() {
 		savedFields[4] = "";
 		emailField.setLabel("Email");
-        emailField.setWidth("192px");
+        emailField.setWidth(TEXTFIELD_WIDTH);
         emailField.setRequired(true);
-        emailField.setErrorMessage("Campo richiesto");
+        emailField.setErrorMessage(ERROR_MESSAGE);
         emailField.addBlurListener(e -> {
         	if(!savedFields[4].equals(emailField.getValue())) {
 				if(!UtentiService.isMailUnique(emailField.getValue())) {
@@ -310,7 +320,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void setDatePickerDataNascita() {
 		savedFields[2] = "";
 		datePickerDataNascita.setLabel("Data di nascita");
-		datePickerDataNascita.setWidth("min-content");
+		datePickerDataNascita.setWidth(HEIGHT_STYLE);
 		datePickerDataNascita.setRequired(true);
 		datePickerDataNascita.setMax(LocalDate.now());
 		datePickerDataNascita.setErrorMessage("Data non valida");
@@ -335,9 +345,9 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
 	private void setTextFieldNome() {
 		savedFields[0] = "";
 		textFieldNome.setLabel("Nome");
-        textFieldNome.setWidth("192px");
+        textFieldNome.setWidth(TEXTFIELD_WIDTH);
         textFieldNome.setRequired(true);
-		textFieldNome.setErrorMessage("Campo richiesto");
+		textFieldNome.setErrorMessage(ERROR_MESSAGE);
 		textFieldNome.addBlurListener(e -> {
 			if(!savedFields[0].equals(textFieldNome.getValue())) {
 	        	if(textFieldNome.isInvalid()) {
@@ -354,7 +364,7 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     private void setButtonRegistrazione() {
     	btnRegistrazione.setText("Registrati");
         getContent().setAlignSelf(FlexComponent.Alignment.CENTER, btnRegistrazione);
-        btnRegistrazione.setWidth("min-content");
+        btnRegistrazione.setWidth(HEIGHT_STYLE);
         btnRegistrazione.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         getContent().add(btnRegistrazione);
         btnRegistrazione.addClickListener(event -> validateAndSave());
@@ -397,6 +407,6 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
     private void setCmbLivelloData(ComboBox<Livello> cmbLivello) {
 		List<Livello> livelli = LivelliService.findAll();
 		cmbLivello.setItems(livelli);
-		cmbLivello.setItemLabelGenerator(item -> item.getNomeLivello());
+		cmbLivello.setItemLabelGenerator(Livello::getNomeLivello);
 	}
 }

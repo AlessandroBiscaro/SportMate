@@ -1,6 +1,7 @@
 package sportmateinc.sportmatebusinesslayer.entities;
 
 public class AuthenticatedProfile {
+	
 	private final String username;
 	private final String password;
 	private final String nome;
@@ -20,27 +21,16 @@ public class AuthenticatedProfile {
 		this.nome = nome;
 	}
 
-	/**
-	 * @return the username
-	 */
 	public String getUsername() {
 		return username;
 	}
-
-	/**
-	 * @return the password
-	 */
+	
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 * @return the nome
-	 */
 	public String getNome() {
 		return nome;
 	}
-	
-	
 	
 }

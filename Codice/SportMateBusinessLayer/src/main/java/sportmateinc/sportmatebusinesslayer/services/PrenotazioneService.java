@@ -12,8 +12,8 @@ import org.jooq.DSLContext;
 import org.jooq.Record5;
 import org.jooq.Result;
 
-import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
-import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
+import sportmateinc.sportmatebusinesslayer.entities.InfoDisponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
@@ -22,20 +22,20 @@ public class PrenotazioneService {
 	
 	private PrenotazioneService() {}
 	
-	public static List<DisponibilitaUtente> findByUtente(Utente user) {
+	public static List<InfoDisponibilita> findByUtente(Utente user) {
 		SportMateDB db = SportMateDB.getInstance();
-		List<DisponibilitaUtente> list = new ArrayList<>();
+		List<InfoDisponibilita> list = new ArrayList<>();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		Result<Record5<Integer, Integer, String, BigDecimal, Integer>> result = create.select(DISPONIBILITA.IDDISPONIBILITA,DISPONIBILITA.IDCENTRO, DISPONIBILITA.DATAORA, DISPONIBILITA.PREZZO, DISPONIBILITA.TIPOCAMPO)
 				.from(DISPONIBILITA).join(PARTITE).on(PARTITE.IDDISPONIBILITA.eq(DISPONIBILITA.IDDISPONIBILITA))
-				.where(PARTITE.IDORGANIZZATORE.eq(user.getIdUtente()))
+				.where(PARTITE.IDORGANIZZATORE.eq(user.getId()))
 				.fetch();
 		db.chiudiConnessione();
 		for (Record5<Integer,Integer, String, BigDecimal, Integer > disp : result) {
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.get(DISPONIBILITA.TIPOCAMPO));
-			CentriSportivi centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
-			list.add(new DisponibilitaUtente(disp.get(DISPONIBILITA.IDDISPONIBILITA),centro.getNomeComm(),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO)));
+			CentroSportivo centro = CentriSportiviService.findByIdCentro(disp.get(DISPONIBILITA.IDCENTRO));
+			list.add(new InfoDisponibilita(disp.get(DISPONIBILITA.IDDISPONIBILITA),centro.getNomeComm(),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO)));
 		}
 		return list;
 	}

@@ -24,7 +24,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import jakarta.annotation.security.RolesAllowed;
-import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.InfoDisponibilita;
 import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -38,17 +38,21 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @RolesAllowed({"USER"})
 
 @Uses(Icon.class)
-public class DisponibilitàPrivateView extends Div {
+public class DisponibilitaPrivateView extends Div {
 
-	private Grid<DisponibilitaUtente> grid;
+	private static final String VISIBILITY_LEVEL = "visible";
+
+	private static final long serialVersionUID = 1L;
+
+	private Grid<InfoDisponibilita> grid;
 
 	private Filters filters;
 	
-	public DisponibilitàPrivateView() {
+	public DisponibilitaPrivateView() {
 		setSizeFull();
 		addClassNames("disponibilità-view");
 
-		filters = new Filters(() -> refreshGrid());
+		filters = new Filters(this::refreshGrid);
 		VerticalLayout layout = new VerticalLayout(createMobileFilters(), filters, createGrid());
 		layout.setSizeFull();
 		layout.setPadding(false);
@@ -69,11 +73,11 @@ public class DisponibilitàPrivateView extends Div {
 		mobileFilters.add(mobileIcon, filtersHeading);
 		mobileFilters.setFlexGrow(1, filtersHeading);
 		mobileFilters.addClickListener(e -> {
-			if (filters.getClassNames().contains("visible")) {
-				filters.removeClassName("visible");
+			if (filters.getClassNames().contains(VISIBILITY_LEVEL)) {
+				filters.removeClassName(VISIBILITY_LEVEL);
 				mobileIcon.getElement().setAttribute("icon", "lumo:plus");
 			} else {
-				filters.addClassName("visible");
+				filters.addClassName(VISIBILITY_LEVEL);
 				mobileIcon.getElement().setAttribute("icon", "lumo:minus");
 			}
 		});
@@ -82,7 +86,8 @@ public class DisponibilitàPrivateView extends Div {
 
 	public static class Filters extends Div {
 
-	    private final TextField filtroCentro = new TextField("Centro Sportivo");
+		private static final long serialVersionUID = 1L;
+		private final TextField filtroCentro = new TextField("Centro Sportivo");
 	    private final TextField filtroPrezzo = new TextField("Prezzo");
 	    private final DateTimePicker filtroInzioData = new DateTimePicker("Data e Ora");
 	    private final DateTimePicker filtroFineData = new DateTimePicker();
@@ -146,7 +151,7 @@ public class DisponibilitàPrivateView extends Div {
 	    /**
 	     * Applica i filtri manualmente a una lista di `DisponibilitaUtente`.
 	     */
-	    public List<DisponibilitaUtente> applyFilters(List<DisponibilitaUtente> lista) {
+	    public List<InfoDisponibilita> applyFilters(List<InfoDisponibilita> lista) {
 	        return lista.stream()
 	            .filter(disponibilita -> filtroCentro.isEmpty() || 
 	                disponibilita.getNomecentro().toLowerCase().contains(filtroCentro.getValue().toLowerCase()))
@@ -188,16 +193,16 @@ public class DisponibilitàPrivateView extends Div {
 
 
 	private Component createGrid() {
-		grid = new Grid<>(DisponibilitaUtente.class, false);
+		grid = new Grid<>(InfoDisponibilita.class, false);
 		grid.addColumn("idDisp").setAutoWidth(true).setVisible(false);
 		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
 		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
 		grid.addColumn("prezzo").setAutoWidth(true);
 		grid.addColumn("tipoCampo").setAutoWidth(true);
-		grid.addComponentColumn(disponibilita -> createNavigateButton(disponibilita))
+		grid.addComponentColumn(this::createNavigateButton)
 	    .setHeader("Prenota").setAutoWidth(true);
 		
-		List<DisponibilitaUtente> list = DisponibilitaService.findAllUtente();
+		List<InfoDisponibilita> list = DisponibilitaService.findAllUtente();
 	
 		grid.setItems(list);
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
@@ -207,19 +212,16 @@ public class DisponibilitàPrivateView extends Div {
 	}
 
 	private void refreshGrid() {
-	    List<DisponibilitaUtente> allDisponibilita = DisponibilitaService.findAllUtente(); // Lista originale
-	    List<DisponibilitaUtente> filteredDisponibilita = filters.applyFilters(allDisponibilita); // Applica i filtri
+	    List<InfoDisponibilita> allDisponibilita = DisponibilitaService.findAllUtente(); // Lista originale
+	    List<InfoDisponibilita> filteredDisponibilita = filters.applyFilters(allDisponibilita); // Applica i filtri
 	    grid.setItems(filteredDisponibilita); // Aggiorna la griglia
 	}
 
 	
-	private Button createNavigateButton(DisponibilitaUtente disponibilita) {
+	private Button createNavigateButton(InfoDisponibilita disponibilita) {
 	    Button navigateButton = new Button("Prenota");
-	    navigateButton.addClickListener(e -> {
-	        UI.getCurrent().navigate("prenotazioneCampo/" + disponibilita.getIdDisp());
-	    });
+	    navigateButton.addClickListener(e -> UI.getCurrent().navigate("prenotazioneCampo/" + disponibilita.getIdDisp()));
 	    return navigateButton;
 	}
-
 
 }
