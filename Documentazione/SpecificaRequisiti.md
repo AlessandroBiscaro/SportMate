@@ -65,12 +65,12 @@ Gli utenti del sistema possono selezionare una delle funzionalità elencate nell
 
 #### 2.2 - Tecniche di elicitazione dei requisiti
 La principale fonte di informazione per il processo di elicitazione dei requisiti sono gli utenti dell'applicazione. Pertanto abbiamo coinvolto amici e colleghi, che identificano un campione rappresentativo dell'insieme degli utenti, grazie ai quali ci è stato possibile raccogliere requisiti realistici e concreti su ciò che vorrebbero trovare in un'applicazione come SportMate. <br/> Un'altra fonte di informazione per la fase di ingegneria dei requisiti sono i gestori, tramite i quali abbiamo potuto identificare funzionalità chiave per ottimizzare le prenotazioni e l'occupazione dei campi.<br/>
-La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti è stata l'*intervista aperta*;al contrario, abbiamo preferito un'analisi basata su scenari creati artificialmente e discussi con i gestori.
+La principale tecnica di elicitazione dei requisiti utilizzata con gli utenti è stata l'*intervista aperta*; al contrario, abbiamo preferito un'analisi basata su scenari creati artificialmente e discussi con i gestori.
 
 
 #### 2.3 - Caratteristiche dell'utente
 
-I gestori saranno formati riguardo al funzionamento del sistema softwar.<br/> Gli utenti finali useranno occasionalmente SportMate, non necessitando di alcuna conoscenza specifica sul funzionamento del sistema.
+I gestori saranno formati riguardo al funzionamento del sistema software.<br/> Gli utenti finali useranno occasionalmente SportMate, non necessitando di alcuna conoscenza specifica sul funzionamento del sistema.
 
 #### 2.4 - Vincoli
 
@@ -110,15 +110,12 @@ SportMate, in questa sua prima versione, sarà disponibile e utilizzabile senza 
 
 | Must Have | Should Have  |  Could Have | Won't Have |
 | :--------: | :--------: | :--: | :--------: | 
-|FUN.1|FUN.5|FUN.3.2|FUN.12|
-|FUN.2|FUN.6.1|FUN.6.2|FUN.13|
-|FUN.3.1|FUN.10|FUN.7|
-|FUN.4|FUN.15|FUN.14|
-|FUN.8|
-|FUN.9|
-|FUN.11|
-|FUN.16|
-|FUN.17|
+|FUN.2|FUN.1|FUN.3.2|FUN.10|
+|FUN.3.1|FUN.4|FUN.6.2|FUN.12|
+|FUN.5|FUN.6.1|FUN.7|FUN.13|
+|FUN.8||FUN.15|FUN.14|
+|FUN.9|||FUN.16|
+|FUN.11|||FUN.17|
 
 
 #### 3.3 - Requisiti di prestazione
@@ -127,9 +124,6 @@ Il sistema software necessita, per la sua corretta esecuzione, dei seguenti requ
 - Sistema operativo: Windows 10 o versioni successive; OS X 10.8.3 o versioni successive
 - RAM: almeno 1 GB per SO a 32 bit; 2 GB per SO a 64 bit
 - Spazio di archiviazione: almeno 128 MB 
-:::danger
-Aggiornare dopo creazione DBMS!!
-:::
 - Processore: almeno 1 GHz di frequenza di clock
 - Browser Internet: Microsoft Edge, Google Chrome, Mozilla Firefox, Safari
 
@@ -145,13 +139,13 @@ I seguenti fattori di qualità, definiti all'interno della tassonomia di McCall,
 - Flessibilità: sforzo necessario per modificare il sistema una volta operativo.
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/UseCaseDiagram2.png" width="700" />   
+      <img src="../Diagrammi UML/Immagini/UseCaseDiagram.png" width="700" />   
     
  </p> 
  
 <br/>
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/MacchinaStatiGestore.png" width="700" />   
+      <img src="../Diagrammi UML/Immagini/StateMachineGestore.png" width="700" />   
     
  </p> 

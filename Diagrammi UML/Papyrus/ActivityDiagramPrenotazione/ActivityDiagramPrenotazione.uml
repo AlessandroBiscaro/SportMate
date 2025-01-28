@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_lQ-iANV-Ee-cksdVB92eIQ" name="ActivityDiagramPrenotazione">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_lTVScNV-Ee-cksdVB92eIQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_oVQyYNV-Ee-cksdVB92eIQ" name="ActivityDiagram" node="_uwiMsNV-Ee-cksdVB92eIQ _MvCAwNV_Ee-cksdVB92eIQ _BZzYcNWAEe-cksdVB92eIQ _T6jW0NWAEe-cksdVB92eIQ _LbNWgNWBEe-cksdVB92eIQ _dFr0MNWBEe-cksdVB92eIQ _gPaIwNWCEe-cksdVB92eIQ _wjZ7sNWCEe-cksdVB92eIQ _1rHcYNWCEe-cksdVB92eIQ _A-3BgNWDEe-cksdVB92eIQ _Tw8AcNWDEe-cksdVB92eIQ _gGF_QNWDEe-cksdVB92eIQ _kSUIENWDEe-cksdVB92eIQ _tV954NWDEe-cksdVB92eIQ _wHRj4NWDEe-cksdVB92eIQ _zD_MoNWDEe-cksdVB92eIQ _KNF2MNWEEe-cksdVB92eIQ _gjGO4NWEEe-cksdVB92eIQ">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_HrlDENWBEe-cksdVB92eIQ" target="_T6jW0NWAEe-cksdVB92eIQ" source="_BZzYcNWAEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_LfHmINWBEe-cksdVB92eIQ" target="_LbNWgNWBEe-cksdVB92eIQ" source="_T6jW0NWAEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_og4FINWBEe-cksdVB92eIQ" name="dati errati" value="dati errati"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_S75gwNWBEe-cksdVB92eIQ" target="_LbNWgNWBEe-cksdVB92eIQ" source="_MvCAwNV_Ee-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_V57YINWBEe-cksdVB92eIQ" target="_BZzYcNWAEe-cksdVB92eIQ" source="_LbNWgNWBEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gwTEwNWBEe-cksdVB92eIQ" target="_dFr0MNWBEe-cksdVB92eIQ" source="_T6jW0NWAEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_XWV2UNWCEe-cksdVB92eIQ" name="dati corretti" value="dati corretti"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_dbw8cNWCEe-cksdVB92eIQ" target="_MvCAwNV_Ee-cksdVB92eIQ" source="_uwiMsNV-Ee-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qWTgQNWCEe-cksdVB92eIQ" target="_gPaIwNWCEe-cksdVB92eIQ" source="_dFr0MNWBEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1wBKgNWCEe-cksdVB92eIQ" target="_1rHcYNWCEe-cksdVB92eIQ" source="_gPaIwNWCEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_43yzwNWCEe-cksdVB92eIQ" target="_wjZ7sNWCEe-cksdVB92eIQ" source="_1rHcYNWCEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_BAc88NWDEe-cksdVB92eIQ" target="_A-3BgNWDEe-cksdVB92eIQ" source="_wjZ7sNWCEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Jex0INWDEe-cksdVB92eIQ" target="_1rHcYNWCEe-cksdVB92eIQ" source="_A-3BgNWDEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_Ow2xwNWDEe-cksdVB92eIQ" name="nessuna ora disponibile" value="nessuna ora disponibile"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_WiYNUNWDEe-cksdVB92eIQ" target="_Tw8AcNWDEe-cksdVB92eIQ" source="_A-3BgNWDEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_buGEQNWDEe-cksdVB92eIQ" name="ore disponibili" value="ore disponibili"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gKunoNWDEe-cksdVB92eIQ" target="_gGF_QNWDEe-cksdVB92eIQ" source="_Tw8AcNWDEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_oOJrgNWDEe-cksdVB92eIQ" target="_kSUIENWDEe-cksdVB92eIQ" source="_gGF_QNWDEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_tYBIUNWDEe-cksdVB92eIQ" target="_tV954NWDEe-cksdVB92eIQ" source="_kSUIENWDEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_wKblkNWDEe-cksdVB92eIQ" target="_wHRj4NWDEe-cksdVB92eIQ" source="_tV954NWDEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_PhyqANWEEe-cksdVB92eIQ" name="pagamento sul posto" value="pagamento sul posto"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1x-c4NWDEe-cksdVB92eIQ" target="_zD_MoNWDEe-cksdVB92eIQ" source="_tV954NWDEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_UxSNsNWEEe-cksdVB92eIQ" name="pagamento con credito" value="pagamento con credito"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KSVikNWEEe-cksdVB92eIQ" target="_KNF2MNWEEe-cksdVB92eIQ" source="_zD_MoNWDEe-cksdVB92eIQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gntpINWEEe-cksdVB92eIQ" target="_gjGO4NWEEe-cksdVB92eIQ" source="_KNF2MNWEEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_s8qzoNWEEe-cksdVB92eIQ" name="credito sufficiente" value="credito sufficiente"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_i34U8NWEEe-cksdVB92eIQ" target="_gGF_QNWDEe-cksdVB92eIQ" source="_KNF2MNWEEe-cksdVB92eIQ">
+      <guard xmi:type="uml:LiteralString" xmi:id="_neHgQNWEEe-cksdVB92eIQ" name="credito insufficiente" value="credito insufficiente"/>
+    </edge>
+    <node xmi:type="uml:InitialNode" xmi:id="_uwiMsNV-Ee-cksdVB92eIQ" name="" outgoing="_dbw8cNWCEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_MvCAwNV_Ee-cksdVB92eIQ" name="Schermata login" incoming="_dbw8cNWCEe-cksdVB92eIQ" outgoing="_S75gwNWBEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_BZzYcNWAEe-cksdVB92eIQ" name="Inserisci dati" incoming="_V57YINWBEe-cksdVB92eIQ" outgoing="_HrlDENWBEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_T6jW0NWAEe-cksdVB92eIQ" incoming="_HrlDENWBEe-cksdVB92eIQ" outgoing="_LfHmINWBEe-cksdVB92eIQ _gwTEwNWBEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:MergeNode" xmi:id="_LbNWgNWBEe-cksdVB92eIQ" incoming="_LfHmINWBEe-cksdVB92eIQ _S75gwNWBEe-cksdVB92eIQ" outgoing="_V57YINWBEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_dFr0MNWBEe-cksdVB92eIQ" name="Visualizza homepage" incoming="_gwTEwNWBEe-cksdVB92eIQ" outgoing="_qWTgQNWCEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_gPaIwNWCEe-cksdVB92eIQ" name="Pagina di prenotazione partita pubblica" incoming="_qWTgQNWCEe-cksdVB92eIQ" outgoing="_1wBKgNWCEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_wjZ7sNWCEe-cksdVB92eIQ" name="Seleziona campo" incoming="_43yzwNWCEe-cksdVB92eIQ" outgoing="_BAc88NWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:MergeNode" xmi:id="_1rHcYNWCEe-cksdVB92eIQ" incoming="_1wBKgNWCEe-cksdVB92eIQ _Jex0INWDEe-cksdVB92eIQ" outgoing="_43yzwNWCEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_A-3BgNWDEe-cksdVB92eIQ" incoming="_BAc88NWDEe-cksdVB92eIQ" outgoing="_Jex0INWDEe-cksdVB92eIQ _WiYNUNWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Tw8AcNWDEe-cksdVB92eIQ" name="Seleziona ora" incoming="_WiYNUNWDEe-cksdVB92eIQ" outgoing="_gKunoNWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:MergeNode" xmi:id="_gGF_QNWDEe-cksdVB92eIQ" incoming="_gKunoNWDEe-cksdVB92eIQ _i34U8NWEEe-cksdVB92eIQ" outgoing="_oOJrgNWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_kSUIENWDEe-cksdVB92eIQ" name="Seleziona metodo di pagamento" incoming="_oOJrgNWDEe-cksdVB92eIQ" outgoing="_tYBIUNWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_tV954NWDEe-cksdVB92eIQ" name="" incoming="_tYBIUNWDEe-cksdVB92eIQ" outgoing="_wKblkNWDEe-cksdVB92eIQ _1x-c4NWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_wHRj4NWDEe-cksdVB92eIQ" name="" incoming="_wKblkNWDEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_zD_MoNWDEe-cksdVB92eIQ" name="Conferma pagamento" incoming="_1x-c4NWDEe-cksdVB92eIQ" outgoing="_KSVikNWEEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_KNF2MNWEEe-cksdVB92eIQ" name="" incoming="_KSVikNWEEe-cksdVB92eIQ" outgoing="_gntpINWEEe-cksdVB92eIQ _i34U8NWEEe-cksdVB92eIQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_gjGO4NWEEe-cksdVB92eIQ" name="" incoming="_gntpINWEEe-cksdVB92eIQ"/>
+  </packagedElement>
+</uml:Model>
