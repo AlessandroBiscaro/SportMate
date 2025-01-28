@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: ${{ fromJson('{"ubuntu-latest":"Build Linux","macos-latest":"Build MacOS","windows-latest":"Build Windows"}')[matrix.os] }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
