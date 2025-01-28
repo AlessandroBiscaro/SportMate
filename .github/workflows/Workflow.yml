@@ -2,22 +2,25 @@ name: CI/CD
 on:
   push:
     branches: [ "main" ]
-   # paths: ["Codice/**"]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-  call-SportMateDBLayerMaven:
-    uses: ./.github/workflows/SportMateDBLayerMaven.yml
-  call-SportMateBusinessLayerMaven:
-    if: ${{ always() }}
-    needs: call-SportMateDBLayerMaven
-    uses: ./.github/workflows/SportMateBusinessLayerMaven.yml
-  call-SportMatePresentationLayerMaven:
-    if: ${{ always() }}
-    needs: call-SportMateBusinessLayerMaven
-    uses: ./.github/workflows/SportMatePresentationLayerMaven.yml
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build and Install SportMateDBLayer
+        run: mvn clean install --file ./Codice/SportMateDBLayer/pom.xml
+      - name: Build and Install SportMateBusinessLayer
+        run: mvn clean install --file ./Codice/SportMateBusinessLayer/pom.xml
+      - name: Build SportMatePresentationLayer
+        run: mvn package --file ./Codice/SportMatePresentationLayer/pom.xml
+
