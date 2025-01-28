@@ -1,5 +1,5 @@
-/target/
-
+/target/*
+!SportMatePresentationLayer-1.0-SNAPSHOT.jar
 # Vaadin 
 .vaadin-designer
 .designer
