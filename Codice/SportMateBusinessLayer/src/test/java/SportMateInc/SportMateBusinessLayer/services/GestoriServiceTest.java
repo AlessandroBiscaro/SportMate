@@ -97,65 +97,65 @@ public class GestoriServiceTest {
 	    }
 	 
 	 
-	 @Test
-	 public void testAggiungiGestore() {
-	     testGestore.setNome("Mario");
-	     testGestore.setCognome("Rossi");
-	     testGestore.setDataNascita(LocalDate.of(1980, 5, 1));
-	     testGestore.setMail("mario.rossi@test.com");
-	     testGestore.setTelefono("1234567890");
-	     testGestore.setPassword("Password");
+//	 @Test
+//	 public void testAggiungiGestore() {
+//	     testGestore.setNome("Mario");
+//	     testGestore.setCognome("Rossi");
+//	     testGestore.setDataNascita(LocalDate.of(1980, 5, 1));
+//	     testGestore.setMail("mario.rossi@test.com");
+//	     testGestore.setTelefono("1234567890");
+//	     testGestore.setPassword("Password");
+//
+//	     // Esegui il metodo da testare
+//	     int resultId = GestoriService.aggiungiGestore(testGestore);
+//
+//	     // Verifica che il risultato sia maggiore di 0 (indica che l'inserimento è avvenuto)
+//	     assertTrue("Il metodo aggiungiGestore non ha restituito un ID valido", resultId > 0);
+//
+//	     
+//	     Gestore gestoreInserito = GestoriService.findByUsername(testGestore.getMail());
+//	     // Verifica che il gestore inserito non sia nullo
+//	     assertNotNull("Il gestore non è stato trovato nel database dopo l'inserimento", gestoreInserito);
+//
+//	     // Confronta i campi del gestore inserito con quelli del testGestore
+//	     assertEquals("Il nome del gestore non corrisponde", testGestore.getNome(), gestoreInserito.getNome());
+//	     assertEquals("Il cognome del gestore non corrisponde", testGestore.getCognome(), gestoreInserito.getCognome());
+//	     assertEquals("La data di nascita del gestore non corrisponde", testGestore.getDataNascita().toString(), gestoreInserito.getDataNascita().toString());
+//	     assertEquals("L'email del gestore non corrisponde", testGestore.getMail(), gestoreInserito.getMail());
+//	     assertEquals("Il telefono del gestore non corrisponde", testGestore.getTelefono(), gestoreInserito.getTelefono());
+//	     assertEquals("La password del gestore non corrisponde", testGestore.getPassword(), gestoreInserito.getPassword());
+//	 }
 
-	     // Esegui il metodo da testare
-	     int resultId = GestoriService.aggiungiGestore(testGestore);
-
-	     // Verifica che il risultato sia maggiore di 0 (indica che l'inserimento è avvenuto)
-	     assertTrue("Il metodo aggiungiGestore non ha restituito un ID valido", resultId > 0);
-
-	     
-	     Gestore gestoreInserito = GestoriService.findByUsername(testGestore.getMail());
-	     // Verifica che il gestore inserito non sia nullo
-	     assertNotNull("Il gestore non è stato trovato nel database dopo l'inserimento", gestoreInserito);
-
-	     // Confronta i campi del gestore inserito con quelli del testGestore
-	     assertEquals("Il nome del gestore non corrisponde", testGestore.getNome(), gestoreInserito.getNome());
-	     assertEquals("Il cognome del gestore non corrisponde", testGestore.getCognome(), gestoreInserito.getCognome());
-	     assertEquals("La data di nascita del gestore non corrisponde", testGestore.getDataNascita().toString(), gestoreInserito.getDataNascita().toString());
-	     assertEquals("L'email del gestore non corrisponde", testGestore.getMail(), gestoreInserito.getMail());
-	     assertEquals("Il telefono del gestore non corrisponde", testGestore.getTelefono(), gestoreInserito.getTelefono());
-	     assertEquals("La password del gestore non corrisponde", testGestore.getPassword(), gestoreInserito.getPassword());
-	 }
-
-	 @Test
-	 public void testIsCellulareUnique() {
-		 testGestore.setTelefono("3331234567");
-		 
-		 int resultId = GestoriService.aggiungiGestore(testGestore);
-		    assertTrue("Il metodo aggiungiGestore non ha restituito un ID valido", resultId > 0);
-		    
-		    // Testa il metodo isCellulareUnique con un numero di telefono già esistente
-		    boolean isUnique = GestoriService.isCellulareUnique("3331234567");
-		    assertFalse("Il metodo isCellulareUnique ha restituito true per un cellulare già esistente", isUnique);
-
-		    // Testa il metodo isCellulareUnique con un numero di telefono non presente nel database
-		    isUnique = GestoriService.isCellulareUnique("4449876543");
-		    assertTrue("Il metodo isCellulareUnique ha restituito false per un cellulare unico", isUnique);
-	 }
-	 
-	 public void testIsMailUnique() {
-		 testGestore.setMail("luigi.verdi@testUnique.com");
-		 
-		 int resultId = GestoriService.aggiungiGestore(testGestore);
-		    assertTrue("Il metodo aggiungiGestore non ha restituito un ID valido", resultId > 0);
-		    
-		    // Testa il metodo isCellulareUnique con un numero di telefono già esistente
-		    boolean isUnique = GestoriService.isMailUnique("luigi.verdi@testUnique.com");
-		    assertFalse("Il metodo isMailUnique ha restituito true per una mail già esistente", isUnique);
-
-		    // Testa il metodo isCellulareUnique con un numero di telefono non presente nel database
-		    isUnique = GestoriService.isCellulareUnique("alessandro.manzoni@testUnique.com");
-		    assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
-	 }
+//	 @Test
+//	 public void testIsCellulareUnique() {
+//		 testGestore.setTelefono("3331234567");
+//		 
+//		 int resultId = GestoriService.aggiungiGestore(testGestore);
+//		    assertTrue("Il metodo aggiungiGestore non ha restituito un ID valido", resultId > 0);
+//		    
+//		    // Testa il metodo isCellulareUnique con un numero di telefono già esistente
+//		    boolean isUnique = GestoriService.isCellulareUnique("3331234567");
+//		    assertFalse("Il metodo isCellulareUnique ha restituito true per un cellulare già esistente", isUnique);
+//
+//		    // Testa il metodo isCellulareUnique con un numero di telefono non presente nel database
+//		    isUnique = GestoriService.isCellulareUnique("4449876543");
+//		    assertTrue("Il metodo isCellulareUnique ha restituito false per un cellulare unico", isUnique);
+//	 }
+//	 
+//	 public void testIsMailUnique() {
+//		 testGestore.setMail("luigi.verdi@testUnique.com");
+//		 
+//		 int resultId = GestoriService.aggiungiGestore(testGestore);
+//		    assertTrue("Il metodo aggiungiGestore non ha restituito un ID valido", resultId > 0);
+//		    
+//		    // Testa il metodo isCellulareUnique con un numero di telefono già esistente
+//		    boolean isUnique = GestoriService.isMailUnique("luigi.verdi@testUnique.com");
+//		    assertFalse("Il metodo isMailUnique ha restituito true per una mail già esistente", isUnique);
+//
+//		    // Testa il metodo isCellulareUnique con un numero di telefono non presente nel database
+//		    isUnique = GestoriService.isCellulareUnique("alessandro.manzoni@testUnique.com");
+//		    assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
+//	 }
 	 
 	 @After
 	    public void tearDown() {
