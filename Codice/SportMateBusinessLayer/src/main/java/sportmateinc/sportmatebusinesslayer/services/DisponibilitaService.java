@@ -2,6 +2,7 @@ package sportmateinc.sportmatebusinesslayer.services;
 
 
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Disponibilita.DISPONIBILITA;
+import static sportmateinc.sportmatebusinesslayergenerated.tables.Partite.PARTITE;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,7 +18,10 @@ import org.jooq.Result;
 import sportmateinc.sportmatebusinesslayer.entities.CentriSportivi;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
+import sportmateinc.sportmatebusinesslayer.entities.Partita;
+import sportmateinc.sportmatebusinesslayer.entities.Prenotazione;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
+import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 
@@ -73,20 +77,6 @@ public class DisponibilitaService {
 		return list;
 	}
 	
-	public static Disponibilita findById(int idDisp) {
-		SportMateDB db = SportMateDB.getInstance();
-		db.apriConnessione();
-		DSLContext create = db.getContext();
-		Record result = create.select()
-				.from(DISPONIBILITA)
-		.where(DISPONIBILITA.IDDISPONIBILITA.eq(idDisp))
-		.fetchOne();
-		db.chiudiConnessione();
-		TipoCampo tipo = TipoCampoService.findTipoCampo(result.get(DISPONIBILITA.TIPOCAMPO));
-		CentriSportivi centro = CentriSportiviService.findByIdCentro(result.get(DISPONIBILITA.IDCENTRO));
-		return new Disponibilita(result.get(DISPONIBILITA.IDDISPONIBILITA),LocalDateTime.parse(result.get(DISPONIBILITA.DATAORA)), result.get(DISPONIBILITA.PREZZO), tipo, centro , result.get(DISPONIBILITA.PRENOTATO));
-	}
-	
 	public static List<DisponibilitaUtente> findAllUtente() {
 		SportMateDB db = SportMateDB.getInstance();
 		List<DisponibilitaUtente> list = new ArrayList<>();
@@ -101,6 +91,20 @@ public class DisponibilitaService {
 			list.add(new DisponibilitaUtente(disp.get(DISPONIBILITA.IDDISPONIBILITA),centro.getNomeComm(),LocalDateTime.parse(disp.get(DISPONIBILITA.DATAORA)), tipo.getNomeCampo(), disp.get(DISPONIBILITA.PREZZO)));
 		}
 		return list;
+	}
+	
+	public static Disponibilita findById(int idDisp) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		Record result = create.select()
+				.from(DISPONIBILITA)
+		.where(DISPONIBILITA.IDDISPONIBILITA.eq(idDisp))
+		.fetchOne();
+		db.chiudiConnessione();
+		TipoCampo tipo = TipoCampoService.findTipoCampo(result.get(DISPONIBILITA.TIPOCAMPO));
+		CentriSportivi centro = CentriSportiviService.findByIdCentro(result.get(DISPONIBILITA.IDCENTRO));
+		return new Disponibilita(result.get(DISPONIBILITA.IDDISPONIBILITA),LocalDateTime.parse(result.get(DISPONIBILITA.DATAORA)), result.get(DISPONIBILITA.PREZZO), tipo, centro , result.get(DISPONIBILITA.PRENOTATO));
 	}
 	
 	public static List<Disponibilita> findByGestore(int idCentro) {

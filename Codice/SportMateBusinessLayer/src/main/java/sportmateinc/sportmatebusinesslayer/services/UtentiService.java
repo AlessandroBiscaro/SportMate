@@ -10,6 +10,8 @@ import org.jooq.impl.DSL;
 
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Utenti.UTENTI;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class UtentiService {
@@ -93,5 +95,15 @@ public class UtentiService {
 		DSLContext create = db.getContext();
 		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.MAIL.eq(mail)));
 		return count == 0;
+	}
+
+	public static int ricaricaCredito(Utente user , Double value) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		return create.update(UTENTI)
+				.set(UTENTI.CREDITO, user.getCredito().add(BigDecimal.valueOf(value)).setScale(2, RoundingMode.HALF_UP))
+				.where(UTENTI.IDUTENTE.eq(user.getIdUtente()))
+				.execute();
 	}
 }

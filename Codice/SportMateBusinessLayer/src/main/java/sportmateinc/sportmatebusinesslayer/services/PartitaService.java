@@ -48,7 +48,7 @@ public class PartitaService {
 				.execute();
 	}
 
-	public static int aggiornaDisponibilita(Partita partita) {
+	public static int aggiornaPartita(Partita partita) {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();
@@ -90,6 +90,27 @@ public class PartitaService {
 					partita.get(PARTITE.GOALSQUADRATRASFERTA)));
 		}
 		return list;
+	}
+	
+	public static Partita findByDisponibilita(Integer idDisponibilita) {
+		SportMateDB db = SportMateDB.getInstance();
+		db.apriConnessione();
+		DSLContext create = db.getContext();
+		Record9<Integer, Integer, Integer, Integer, String, Integer, Integer, Integer, Integer> partita =
+				create.select(PARTITE.IDPARTITA, PARTITE.POSTITOTALI, PARTITE.PUBBLICA, 
+						PARTITE.STATO, PARTITE.MODPAGAMENTO, PARTITE.IDORGANIZZATORE,
+						PARTITE.IDDISPONIBILITA, PARTITE.GOALSQUADRACASA, 
+						PARTITE.GOALSQUADRATRASFERTA).
+				from(PARTITE).where(PARTITE.IDDISPONIBILITA.eq(idDisponibilita)).fetchOne();
+		db.chiudiConnessione();
+		return new Partita(partita.get(PARTITE.IDPARTITA),
+					(partita.get(PARTITE.POSTITOTALI)),partita.get(PARTITE.PUBBLICA),
+					partita.get(PARTITE.STATO),
+					partita.get(PARTITE.MODPAGAMENTO) , 
+					partita.get(PARTITE.IDORGANIZZATORE),
+					partita.get(PARTITE.IDDISPONIBILITA), 
+					partita.get(PARTITE.GOALSQUADRACASA),
+					partita.get(PARTITE.GOALSQUADRATRASFERTA));
 	}
 	
 	

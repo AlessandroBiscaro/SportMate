@@ -10,6 +10,7 @@ public class DisponibilitaUtente {
 	private BigDecimal prezzo;
 	private String tipoCampo;
 	private String nomecentro;
+	
 	public DisponibilitaUtente(int idDisp, String nomecentro, LocalDateTime dataOra, String tipoCampo, BigDecimal prezzo ) {
 		this.idDisp=idDisp;
 		this.nomecentro = nomecentro;

@@ -3,15 +3,18 @@ package sportmateinc.sportmatepresentationlayer.application.views.utente;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H5;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
@@ -27,12 +30,18 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 
 import jakarta.annotation.security.RolesAllowed;
+import sportmateinc.sportmatebusinesslayer.entities.DisponibilitaUtente;
 import sportmateinc.sportmatebusinesslayer.entities.Livello;
+import sportmateinc.sportmatebusinesslayer.entities.Prenotazione;
 import sportmateinc.sportmatebusinesslayer.entities.Utente;
+import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
 import sportmateinc.sportmatebusinesslayer.services.LivelliService;
+import sportmateinc.sportmatebusinesslayer.services.PrenotazioneService;
 import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,13 +72,14 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	Button btnSalva = new Button();
 	H5 titoloCredito = new H5();
 	VerticalLayout layoutColumn6 = new VerticalLayout();
-	NumberField txtImporto = new NumberField();
+	NumberField txtRicarica = new NumberField();
+	NumberField txtCredito = new NumberField();
 	HorizontalLayout layoutRow2 = new HorizontalLayout();
 	HorizontalLayout layoutRow3 = new HorizontalLayout();
 	Button btnRicaricaCredito = new Button();
 	H5 titoloPartitePrenotate = new H5();
 	VerticalLayout layoutColumn7 = new VerticalLayout();
-	Grid gridPartitePrenotate = new Grid();
+	Grid<DisponibilitaUtente> gridPartitePrenotate = new Grid<>(DisponibilitaUtente.class, false);
 
 	public AccountUtenteView() {
 
@@ -96,6 +106,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		setTxtCognome();
 		setTxtCellulare();
 		setTxtImporto();
+		setTxtCredito();
 		setDtpDataNascita();
 		setTitoloCredito();
 		setTitoloPartitePrenotate();
@@ -179,7 +190,10 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutRow3.addClassName(Gap.MEDIUM);
 		layoutRow3.setWidth("100%");
 		layoutRow3.getStyle().set("flex-grow", "1");
-		layoutRow3.add(btnRicaricaCredito);
+		HorizontalLayout rowLayout = new HorizontalLayout(txtCredito, txtRicarica);
+		rowLayout.setWidthFull();
+		rowLayout.setSpacing(true);
+		layoutRow3.add(rowLayout);
 	}
 	
 	private void setLayoutColumn4() {
@@ -208,8 +222,8 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		layoutColumn6.setWidth("100%");
 		layoutColumn6.getStyle().set("flex-grow", "1");
 		layoutColumn6.setFlexGrow(1.0, layoutRow2);
-		layoutColumn6.add(txtImporto);
 		layoutColumn6.add(layoutRow2);
+		layoutColumn6.add(btnRicaricaCredito);
 	}
 	
 	private void setLayoutColumn7() {
@@ -253,12 +267,13 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		btnRicaricaCredito.setWidth("107px");
 		btnRicaricaCredito.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		btnRicaricaCredito.addClickListener(e -> {
-			if(txtImporto.isEmpty() || txtImporto.isInvalid()) {
+			if(txtRicarica.isEmpty() || txtRicarica.isInvalid() || txtRicarica.getValue() < 0.0) {
 				return;
 			}
-			//if(UtentiService.ricaricaCredito(utente.getIdUtente(), txtImporto.getValue()) == 2) {
-				//delegator.showSuccessNotification("Ricarica eseguita correttamente!");
-			//}
+			utente.setCredito(BigDecimal.valueOf(txtRicarica.getValue()).add(utente.getCredito()).setScale(2));
+			txtCredito.setValue(utente.getCredito().doubleValue());
+			UtentiService.ricaricaCredito(utente, txtRicarica.getValue());
+			delegator.showSuccessNotification("Ricarica eseguita correttamente!");
 		});
 	}
 	
@@ -306,14 +321,13 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	}
 	
 	private void setTxtImporto() {
-		txtImporto.setWidth("220px");
-		txtImporto.setLabel("Importo");
-		txtImporto.setRequired(true);
-		txtImporto.setErrorMessage("Campo richiesto");
-		txtImporto.setValue(utente.getCredito().doubleValue());
+		txtRicarica.setWidth("220px");
+		txtRicarica.setLabel("Importo");
+		txtRicarica.setRequired(true);
+		txtRicarica.setErrorMessage("Campo richiesto");
 		Div sportMatePrefix = new Div();
-		sportMatePrefix.setText("SM");
-		txtImporto.setPrefixComponent(sportMatePrefix);
+		sportMatePrefix.setText("$M");
+		txtRicarica.setPrefixComponent(sportMatePrefix);
 	}
 	
 	private void setDtpDataNascita() {
@@ -350,7 +364,16 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		gridPartitePrenotate.getStyle().set("flex-grow", "0");
 		setGridPartitePrenotateData(gridPartitePrenotate);
 	}
-
+	
+	private void setTxtCredito() {
+		txtCredito.setWidth("220px");
+		txtCredito.setLabel("Credito");
+		txtCredito.setValue(utente.getCredito().doubleValue());
+		txtCredito.setReadOnly(true);
+		Div sportMatePrefix = new Div();
+		sportMatePrefix.setText("$M");
+		txtCredito.setPrefixComponent(sportMatePrefix);
+	}
 
 	private void setCmbLivelloData(ComboBox<Livello> cmbLivello) {
 		List<Livello> livelli = LivelliService.findAll();
@@ -358,8 +381,18 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		cmbLivello.setItemLabelGenerator(item -> item.getNomeLivello());
 	}
 
-	private void setGridPartitePrenotateData(Grid grid) {
-		grid.setItems(new ArrayList<>());
+	private void setGridPartitePrenotateData(Grid<DisponibilitaUtente> grid) {
+		grid.addColumn("idDisp").setAutoWidth(true).setVisible(false);
+		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
+		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
+		grid.addColumn("prezzo").setAutoWidth(true);
+		grid.addColumn("tipoCampo").setAutoWidth(true);
+		List<DisponibilitaUtente> list = PrenotazioneService.findByUtente(utente);
+		grid.setItems(list);
+		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
+		grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
 	}
+	
+	
 
 }
