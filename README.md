@@ -56,3 +56,5 @@ Successivamente eseguire questi passaggi nell'ordine indicato per avviare corret
    - Esegui il progetto SportMatePresentationaLayer:
      1. Fai clic destro sul progetto nel project explorer;
      2. Seleziona `Run As` > `Maven build`.
+> [!NOTE]
+> La repository clonata dovrebbe essere pronta all'uso con i progetti SportMateDBLayer e SportMatePresentationLayer precompilati (necessari per la corretta esecuzione delle GitHub Actions), ma si consiglia di eseguire in ogni caso i passi sopra indicati per essere certi di usare la versione più recente dell'applicazione.
