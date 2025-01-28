@@ -38,32 +38,32 @@ Gambirasio Lorenzo Umberto 1087441 </em>
 #### Diagramma dei casi d'uso
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/UseCaseDiagram2.png" />
+      <img src="../Diagrammi UML/Immagini/UseCaseDiagram.png" />
  </p> 
 
 #### Diagramma delle classi
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/ClassDiagram2.png" />
+      <img src="../Diagrammi UML/Immagini/ClassDiagram.png" />
  </p>  
 
 #### Diagramma della macchina a stati Gestore
 Il seguente diagramma della macchina a stati modella i possibili stati in cui si può trovare il gestore nel corso della sua interazione con SportMate.
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/MacchinaStatiGestore.png" />
+      <img src="../Diagrammi UML/Immagini/StateMachineGestore.png" />
  </p> 
 
 #### Diagramma di sequenza
 Il seguente diagramma di sequenza modella dettagliatamente il processo di login a SportMate eseguito dall'utente finale. Il processo è totalmente analogo anche per gli utenti organizzatori o i gestori dei centri sportivi.
 
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/SequenceDiagramLogin.png" />
+      <img src="../Diagrammi UML/Immagini/SequenceDiagram.png" />
  </p> 
 
 #### Diagramma delle attività
 Il seguente diagramma delle attività modella il processo di unione ad una partita pubblica (con posti ancora disponbili) da parte di un utente finale, che ha scelto di utilizzare il credito associato al profilo SportMate come modalità di pagamento.
 <p align="center"  >
-      <img src="../Diagrammi UML/Immagini/ActivityDiagramPrenotazione.png" />
+      <img src="../Diagrammi UML/Immagini/ActivityDiagram.png" />
  </p> 
  
 ### Viste architettoniche
