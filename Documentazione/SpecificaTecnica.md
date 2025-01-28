@@ -23,6 +23,8 @@ Gambirasio Lorenzo Umberto 1087441 </em>
     1.3. [Diagramma della macchina a stati Gestore](#Diagramma-della-macchina-a-stati-Gestore)<br/>
     1.4. [Diagramma di sequenza](#Diagramma-di-sequenza)<br/>
     1.5. [Diagramma delle attività](#Diagramma-delle-attività)<br/>
+    1.6. [Diagramma di comunicazione](#Diagramma-di-comunicazione)<br/>
+    1.7. [Diagramma dei pacchetti](#Diagramma-dei-pacchetti)<br/>
 2. [Viste architettoniche](#Viste-architettoniche)<br/>
 3. [Architettura del software](#Architettura-del-software)<br/>
 4. [Software Design](#Software-Design)<br/>
@@ -59,11 +61,22 @@ Il seguente diagramma di sequenza modella dettagliatamente il processo di login 
 <p align="center"  >
       <img src="../Diagrammi UML/Immagini/SequenceDiagram.png" />
  </p> 
-
+ 
+#### Diagramma di comunicazione
+Il seguente diagramma di comunicazione modella dettagliatamente il processo di login a SportMate eseguito dall'utente finale. Il processo è totalmente analogo anche per gli utenti organizzatori o i gestori dei centri sportivi.
+<p align="center"  >
+      <img src="../Diagrammi UML/Immagini/CommunicationDiagram.png" />
+ </p> 
+ 
 #### Diagramma delle attività
 Il seguente diagramma delle attività modella il processo di unione ad una partita pubblica (con posti ancora disponbili) da parte di un utente finale, che ha scelto di utilizzare il credito associato al profilo SportMate come modalità di pagamento.
 <p align="center"  >
       <img src="../Diagrammi UML/Immagini/ActivityDiagram.png" />
+ </p> 
+
+#### Diagramma dei pacchetti
+<p align="center"  >
+      <img src="../Diagrammi UML/Immagini/PackageDiagram.png" />
  </p> 
  
 ### Viste architettoniche
