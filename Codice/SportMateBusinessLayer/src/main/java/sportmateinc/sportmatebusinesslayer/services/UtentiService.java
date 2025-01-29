@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 public class UtentiService {
 	
-	public UtentiService() {}
+	private UtentiService() {}
  	
 	public static Utente findByUsername(String username) {
 		SportMateDB db = SportMateDB.getInstance();
@@ -103,7 +103,6 @@ public class UtentiService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
-		db.chiudiConnessione();
 		return create.update(UTENTI)
 				.set(UTENTI.CREDITO, user.getCredito().add(BigDecimal.valueOf(value)).setScale(2, RoundingMode.HALF_UP))
 				.where(UTENTI.IDUTENTE.eq(user.getId()))

@@ -15,7 +15,7 @@ import sportmateinc.sportmatedblayer.SportMateDB;
 public class GestoriService {
 
 	
-	public GestoriService() {}
+	private GestoriService() {}
 	
 	public static Gestore findByUsername(String username) {
 		SportMateDB db = SportMateDB.getInstance();

@@ -16,6 +16,11 @@ public class Utente extends Persona {
 		this.credito = credito;
 		this.livello = livello;
 	}
+	
+	public Utente(int idUtente, String mail, String nome, String cognome, LocalDate dataNascita, String telefono, String password, Livello livello) {
+		this(idUtente, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(0), livello);
+	}
+
 
 	public BigDecimal getCredito() {
 		return credito;

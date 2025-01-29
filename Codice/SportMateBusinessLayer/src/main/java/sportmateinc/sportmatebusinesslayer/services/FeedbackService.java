@@ -12,6 +12,9 @@ import sportmateinc.sportmatebusinesslayer.entities.Utente;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class FeedbackService {
+	
+	private FeedbackService() {}
+	
 	public static List<Feedback> findAll() {
 		List<Feedback> risultato = new ArrayList<>();
 		SportMateDB db = SportMateDB.getInstance();

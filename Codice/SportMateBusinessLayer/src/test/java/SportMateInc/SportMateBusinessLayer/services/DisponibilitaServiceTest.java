@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.jooq.DSLContext;
 import org.junit.After;
 import org.junit.Before;
@@ -38,6 +41,8 @@ public class DisponibilitaServiceTest {
 
 	@Before
 	public void setUp() {
+		BasicConfigurator.configure();
+	    Logger.getRootLogger().setLevel(Level.ERROR);
 		db = SportMateDB.getInstance();
 		db.apriConnessione();
 		create = db.getContext();

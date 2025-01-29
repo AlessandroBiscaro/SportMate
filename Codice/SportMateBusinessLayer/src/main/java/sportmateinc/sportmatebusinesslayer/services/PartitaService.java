@@ -12,6 +12,7 @@ import org.jooq.DSLContext;
 import org.jooq.Record3;
 import org.jooq.Record9;
 import org.jooq.Result;
+import org.jooq.Record;
 
 import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
@@ -30,7 +31,7 @@ public class PartitaService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		return create.insertInto(PARTITE, PARTITE.POSTITOTALI, 
+		 Record record = create.insertInto(PARTITE, PARTITE.POSTITOTALI, 
 				PARTITE.PUBBLICA, PARTITE.STATO,
 				PARTITE.MODPAGAMENTO,
 				PARTITE.IDORGANIZZATORE,
@@ -45,7 +46,8 @@ public class PartitaService {
 						partita.getGoalCasa(),
 						partita.getGoalFuori())
 				.returning(PARTITE.IDPARTITA)
-				.execute();
+				.fetchOne();
+		 return record.get(PARTITE.IDPARTITA);
 	}
 
 	public static int aggiornaPartita(Partita partita) {
@@ -117,7 +119,6 @@ public class PartitaService {
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		Result<Record3<Integer,Integer, Integer >> result = create.select(PARTITE.IDPARTITA,PARTITE.POSTITOTALI, PARTITE.IDDISPONIBILITA ).from(PARTITE).where(PARTITE.PUBBLICA.eq(1)).fetch();
-		// .where(DSL.timestamp(DISPONIBILITA.DATAORA.toString()).greaterThan(DSL.currentTimestamp()))
 		db.chiudiConnessione();
 		for (Record3<Integer, Integer, Integer > partPubb : result) {
 			Disponibilita disp = DisponibilitaService.findById(partPubb.get(PARTITE.IDPARTITA));

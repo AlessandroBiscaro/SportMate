@@ -1,6 +1,9 @@
 package SportMateInc.SportMateBusinessLayer.services;
 import static org.junit.Assert.*;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,6 +16,8 @@ public class LivelliServiceTest {
 
     @Test
     public void testFindLivelloExistingId() {
+    	BasicConfigurator.configure();
+	    Logger.getRootLogger().setLevel(Level.ERROR);
         Livello livello = LivelliService.findLivello(1);
         assertNotNull("Il livello con ID 1 dovrebbe esistere", livello);
         assertEquals("Principiante", livello.getNomeLivello());
@@ -27,8 +32,10 @@ public class LivelliServiceTest {
         	  livello = LivelliService.findLivello(999);
         	  Assert.fail("NullPointerException dovrebbe essere sollevata");
         }
-        catch(NullPointerException e) {}
-        assertNull("Il livello non dovrebbe essere trovato", livello);
+        catch(NullPointerException e) { 
+        	assertNull("Il livello non dovrebbe essere trovato", livello);
+    	}
+       
     }
 
     @Test

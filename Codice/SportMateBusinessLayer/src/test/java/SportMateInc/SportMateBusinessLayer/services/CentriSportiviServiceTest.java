@@ -6,6 +6,9 @@ import static org.junit.Assert.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.jooq.DSLContext;
 import org.junit.After;
 import org.junit.Before;
@@ -28,7 +31,9 @@ public class CentriSportiviServiceTest {
     private int testGestoreId;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
+    	BasicConfigurator.configure();
+	    Logger.getRootLogger().setLevel(Level.ERROR);
         db = SportMateDB.getInstance();
         db.apriConnessione();
         create = db.getContext();

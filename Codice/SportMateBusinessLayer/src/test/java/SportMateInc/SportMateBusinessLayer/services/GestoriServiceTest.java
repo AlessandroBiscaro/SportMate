@@ -11,6 +11,9 @@ import static sportmateinc.sportmatebusinesslayergenerated.tables.Gestori.GESTOR
 import java.time.LocalDate;
 import java.util.Random;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.jooq.DSLContext;
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +31,8 @@ public class GestoriServiceTest {
 
 	@Before
 	public void setUp() {
+		BasicConfigurator.configure();
+	    Logger.getRootLogger().setLevel(Level.ERROR);
 		db = SportMateDB.getInstance();
 		db.apriConnessione();
 		create = db.getContext();
@@ -60,8 +65,8 @@ public class GestoriServiceTest {
 			foundAdmin = GestoriService.findByUsername("nonexistentuser@mail.com");
 			fail("NullPointerException dovrebbe essere sollevata!");
 		} catch (NullPointerException e) {
+			assertNull("Il gestore inesistente dovrebbe essere null", foundAdmin);
 		}
-		assertNull("Il gestore inesistente dovrebbe essere null", foundAdmin);
 	}
 
 	@Test
@@ -112,6 +117,7 @@ public class GestoriServiceTest {
 		assertTrue("Il metodo isCellulareUnique ha restituito false per un cellulare unico", isUnique);
 	}
 
+	@Test
 	public void testIsMailUnique() {
 
 		

@@ -12,7 +12,10 @@ import sportmateinc.sportmatebusinesslayer.entities.Location;
 import sportmateinc.sportmatedblayer.SportMateDB;
 
 public class LocationService {
-	private static Logger LOGGER = Logger.getLogger(LocationService.class);
+	
+	private LocationService() {}
+	
+	private static Logger logger = Logger.getLogger(LocationService.class);
 
 	public static List<Location> findAll() {
 
@@ -31,7 +34,7 @@ public class LocationService {
 			}
 			stmt.close();
 		} catch (SQLException e) {
-			LOGGER.error(e.getMessage());
+			logger.error(e.getMessage());
 		} finally {
 			db.chiudiConnessione();
 		}

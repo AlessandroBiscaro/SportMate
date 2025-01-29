@@ -1,9 +1,11 @@
 package sportmateinc.sportmatebusinesslayer.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class CentroSportivo {
-
+public class CentroSportivo implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private int idCentro;
 	private String nomeComm;
 	private String indirizzo;

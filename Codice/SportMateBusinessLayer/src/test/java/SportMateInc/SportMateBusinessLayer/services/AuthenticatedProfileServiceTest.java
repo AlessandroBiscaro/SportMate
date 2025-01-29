@@ -1,8 +1,12 @@
 package SportMateInc.SportMateBusinessLayer.services;
+
 import static org.junit.Assert.*;
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Gestori.GESTORI;
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Utenti.UTENTI;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,32 +21,21 @@ public class AuthenticatedProfileServiceTest {
 
 	@Before
 	public void setUp() {
+		BasicConfigurator.configure();
+		Logger.getRootLogger().setLevel(Level.ERROR);
 		db = SportMateDB.getInstance();
 		db.apriConnessione();
 
+		db.getContext().insertInto(UTENTI).set(UTENTI.MAIL, "user@test.com").set(UTENTI.NOME, "Test")
+				.set(UTENTI.COGNOME, "User").set(UTENTI.DATANASCITA, "1977-01-01").set(UTENTI.TELEFONO, "000000000")
+				.set(UTENTI.PASSWORD, "password123").execute();
 
-		db.getContext().insertInto(UTENTI)
-		.set(UTENTI.MAIL, "user@test.com")
-		.set(UTENTI.NOME, "Test")
-		.set(UTENTI.COGNOME, "User")
-		.set(UTENTI.DATANASCITA, "1977-01-01")
-		.set(UTENTI.TELEFONO, "000000000")
-		.set(UTENTI.PASSWORD, "password123")
-		.execute();
-
-		db.getContext().insertInto(GESTORI)
-		.set(GESTORI.MAIL, "manager@test.com")
-		.set(GESTORI.NOME, "Test")
-		.set(GESTORI.COGNOME, "Manager")
-		.set(GESTORI.DATANASCITA, "1977-01-01")
-		.set(GESTORI.TELEFONO, "111111111")
-		.set(GESTORI.PASSWORD, "managerpass")
-		.execute();
+		db.getContext().insertInto(GESTORI).set(GESTORI.MAIL, "manager@test.com").set(GESTORI.NOME, "Test")
+				.set(GESTORI.COGNOME, "Manager").set(GESTORI.DATANASCITA, "1977-01-01")
+				.set(GESTORI.TELEFONO, "111111111").set(GESTORI.PASSWORD, "managerpass").execute();
 
 		db.chiudiConnessione();
 	}
-
-
 
 	@Test
 	public void testFindUserByUsernameFound() {
@@ -99,24 +92,19 @@ public class AuthenticatedProfileServiceTest {
 		try {
 			profile = AuthenticatedProfileService.findProfileByUsername("notfound@test.com");
 			fail("NullPointerException dovrebbe essere sollevata");
+		} catch (NullPointerException e) {	
+			assertNull("Il profilo non dovrebbe essere trovato per email inesistente", profile);
 		}
-		catch(NullPointerException e) {}
-		assertNull("Il profilo non dovrebbe essere trovato per email inesistente", profile);
+	
 	}
 
 	@After
 	public void tearDown() {
 
 		db.apriConnessione();
-		db.getContext()
-		.deleteFrom(UTENTI)
-		.where(UTENTI.MAIL.eq("user@test.com"))
-		.execute();
+		db.getContext().deleteFrom(UTENTI).where(UTENTI.MAIL.eq("user@test.com")).execute();
 
-		db.getContext()
-		.deleteFrom(GESTORI)
-		.where(GESTORI.MAIL.eq("manager@test.com"))
-		.execute();
+		db.getContext().deleteFrom(GESTORI).where(GESTORI.MAIL.eq("manager@test.com")).execute();
 
 		db.chiudiConnessione();
 	}

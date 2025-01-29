@@ -27,8 +27,8 @@ public class CentriSportiviService {
 						   result.get(CENTRISPORTIVI.LATITUDINE),
 						   result.get(CENTRISPORTIVI.LONGITUDINE), 
 						   result.get(CENTRISPORTIVI.CREDITO), 
-						   result.get(CENTRISPORTIVI.ORARIOAPERTURA).toString(),
-						   result.get(CENTRISPORTIVI.ORARIOCHIUSURA).toString(),
+						   result.get(CENTRISPORTIVI.ORARIOAPERTURA),
+						   result.get(CENTRISPORTIVI.ORARIOCHIUSURA),
 						   result.get(CENTRISPORTIVI.IDGESTORE));
 	}
 	
@@ -47,8 +47,8 @@ public class CentriSportiviService {
 						   result.get(CENTRISPORTIVI.LATITUDINE),
 						   result.get(CENTRISPORTIVI.LONGITUDINE), 
 						   result.get(CENTRISPORTIVI.CREDITO), 
-						   result.get(CENTRISPORTIVI.ORARIOAPERTURA).toString(),
-						   result.get(CENTRISPORTIVI.ORARIOCHIUSURA).toString(),
+						   result.get(CENTRISPORTIVI.ORARIOAPERTURA),
+						   result.get(CENTRISPORTIVI.ORARIOCHIUSURA),
 						   result.get(CENTRISPORTIVI.IDGESTORE));
 	}
 	

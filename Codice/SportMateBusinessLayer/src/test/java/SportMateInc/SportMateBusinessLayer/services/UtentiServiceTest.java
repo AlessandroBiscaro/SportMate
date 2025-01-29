@@ -7,8 +7,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Random;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.jooq.DSLContext;
-import org.jooq.Record;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,10 +29,11 @@ public class UtentiServiceTest {
 
 	@Before
 	public void setUp() {
+		BasicConfigurator.configure();
+	     Logger.getRootLogger().setLevel(Level.ERROR);
 		db = SportMateDB.getInstance();
 		db.apriConnessione();
 		create = db.getContext();
-
 
 		Livello livelloBase = LivelliService.findLivello(1);
 
@@ -62,7 +65,6 @@ public class UtentiServiceTest {
 		int updateResult = UtentiService.aggiornaDatiUtente(testUtente);
 		assertEquals("Aggiornamento utente fallito", 1, updateResult);
 
-
 		Utente updatedUser = UtentiService.findByUsername(testUtente.getMail());
 		assertEquals("Il nome aggiornato non corrisponde", "Luca", updatedUser.getNome());
 		assertEquals("Il cognome aggiornato non corrisponde", "Bianchi", updatedUser.getCognome());
@@ -76,8 +78,9 @@ public class UtentiServiceTest {
 			foundUser = UtentiService.findByUsername("nonexistentuser@mail.com");
 			fail("NullPointerException dovrebbe essere sollevata!");
 		} catch (NullPointerException e) {
+			assertNull("L'utente inesistente dovrebbe essere null", foundUser);
 		}
-		assertNull("L'utente inesistente dovrebbe essere null", foundUser);
+
 	}
 
 	@Test
@@ -90,6 +93,7 @@ public class UtentiServiceTest {
 		assertTrue("Il metodo isCellulareUnique ha restituito false per un cellulare unico", isUnique);
 	}
 
+	@Test
 	public void testIsMailUnique() {
 
 		boolean isUnique = UtentiService.isMailUnique(testUtente.getMail());
@@ -97,6 +101,16 @@ public class UtentiServiceTest {
 
 		isUnique = UtentiService.isMailUnique("alessandro.manzoni@testUnique.com");
 		assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
+	}
+	
+	@Test
+	public void testRicaricaCredito() {
+		double ricarica = 10;
+		Utente testUtenteRicaricato = null;
+		UtentiService.ricaricaCredito(testUtente, ricarica);
+		//Aggiorno informazioni utente
+		testUtenteRicaricato = UtentiService.findById(testUtente.getId());
+		assertEquals("Il metodo ricaricaCredito non è implementanto correttamente!", testUtente.getCredito().add(BigDecimal.valueOf(ricarica)).setScale(0), testUtenteRicaricato.getCredito()) ;
 	}
 
 	@After
