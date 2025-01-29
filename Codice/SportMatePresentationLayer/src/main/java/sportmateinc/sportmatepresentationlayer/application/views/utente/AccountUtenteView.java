@@ -54,6 +54,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 	private static final String TITLE_WIDTH = "max-content";
 	private static final String GROW_STYLE = "flex-grow";
 	private static final long serialVersionUID = 1L;
+	
 	Utente utente;
 	H1 titoloAccountUtente = new H1();
 	VerticalLayout layoutColumn2 = new VerticalLayout();
@@ -85,10 +86,11 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		getContent().setWidth("100%");
 		getContent().getStyle().set(GROW_STYLE, "1");
 		getContent().setAlignSelf(FlexComponent.Alignment.CENTER, titoloAccountUtente);
-		
-		getUtenteInfo();
 		setTitoloAccountUtente();
-		setH5();
+		titoloDatiPersonali = setSottotitolo("Dati personali");
+		titoloCredito = setSottotitolo("Credito SportMate");
+		titoloPartitePrenotate = setSottotitolo("Partite prenotate");
+		getUtenteInfo();
 		setLayoutColumn2();
 		setLayoutRow();
 		setLayoutRow2();
@@ -107,17 +109,13 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		setTxtImporto();
 		setTxtCredito();
 		setDtpDataNascita();
-		setTitoloCredito();
-		setTitoloPartitePrenotate();
 		setCmbLivello();
 		setGridPartitePrenotate();
 	}
 
 	private void getUtenteInfo() {
 		String username = VaadinRequest.getCurrent().getUserPrincipal().getName();
-		if(username != null) {
-			this.utente = UtentiService.findByUsername(username);
-		}
+		this.utente = UtentiService.findByUsername(username);
 	}
 
 	private void setTitoloAccountUtente() {
@@ -126,11 +124,6 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		getContent().add(titoloAccountUtente);
 	}
 	
-	private void setH5() {
-		titoloDatiPersonali.setText("Dati personali");
-		titoloDatiPersonali.setWidth(TITLE_WIDTH);
-	}
-
 	private void setLayoutColumn2() {
 		layoutColumn2.setWidthFull();
 		getContent().setFlexGrow(1.0, layoutColumn2);
@@ -250,9 +243,8 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 				utente.setDataNascita(maybeDataNascita.get());
 			}
 			utente.setLivello(cmbLivello.getValue());
-			if(UtentiService.aggiornaDatiUtente(utente) == 1) {
-				notification.showSuccessNotification("Dati modificati correttamente!");
-			}
+			UtentiService.aggiornaDatiUtente(utente);
+			notification.showSuccessNotification("Dati modificati correttamente!");
 		}
 	}
 	
@@ -263,13 +255,12 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		btnRicaricaCredito.setWidth("107px");
 		btnRicaricaCredito.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		btnRicaricaCredito.addClickListener(e -> {
-			if(txtRicarica.isEmpty() || txtRicarica.isInvalid() || txtRicarica.getValue() < 0.0) {
-				return;
+			if(!(txtRicarica.isEmpty() && txtRicarica.isInvalid() && txtRicarica.getValue() < 0.0)) {
+				utente.setCredito(BigDecimal.valueOf(txtRicarica.getValue()).add(utente.getCredito()).setScale(2));
+				txtCredito.setValue(utente.getCredito().doubleValue());
+				UtentiService.ricaricaCredito(utente, txtRicarica.getValue());
+				delegator.showSuccessNotification("Ricarica eseguita correttamente!");
 			}
-			utente.setCredito(BigDecimal.valueOf(txtRicarica.getValue()).add(utente.getCredito()).setScale(2));
-			txtCredito.setValue(utente.getCredito().doubleValue());
-			UtentiService.ricaricaCredito(utente, txtRicarica.getValue());
-			delegator.showSuccessNotification("Ricarica eseguita correttamente!");
 		});
 	}
 	
@@ -345,14 +336,12 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		cmbLivello.setValue(utente.getLivello());
 	}
 	
-	private void setTitoloCredito() {
-		titoloCredito.setText("Credito SportMate");
-		titoloCredito.setWidth(TITLE_WIDTH);
-	}
 	
-	private void setTitoloPartitePrenotate() {
-		titoloPartitePrenotate.setText("Partite prenotate");
-		titoloPartitePrenotate.setWidth(TITLE_WIDTH);
+	private H5 setSottotitolo(String testo) {
+		H5 titolo = new H5();
+		titolo.setText(testo);
+		titolo.setWidth(TITLE_WIDTH);
+		return titolo;
 	}
 	
 	private void setGridPartitePrenotate() {
@@ -389,6 +378,4 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
 	}
 	
-	
-
 }

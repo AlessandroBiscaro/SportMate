@@ -174,9 +174,8 @@ public class AccountGestoreView extends Composite<VerticalLayout> {
 			if(maybeDataNascita.isPresent()) {
 				gestore.setDataNascita(maybeDataNascita.get());
 			}
-			if(GestoriService.aggiornaDatiGestore(gestore) == 1) {
-				notification.showSuccessNotification("Dati modificati correttamente!");
-			}
+			GestoriService.aggiornaDatiGestore(gestore);
+			notification.showSuccessNotification("Dati modificati correttamente!");
 		}
 	}
 	

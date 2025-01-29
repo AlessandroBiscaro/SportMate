@@ -139,24 +139,18 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 			Utente utente = getUtenteInfo();
 			if(tipoPart.equals("Pubblica")) {
 				Partita partita = new Partita(0,postiLiberi,1,0,modPag,utente.getId(),idDisp);
-				if(PartitaService.aggiungiPartita(partita)==1){
-					disponibilita.setPrenotatoBoolean(true);
-					DisponibilitaService.aggiornaDisponibilita(disponibilita);
-					delegator.showSuccessNotification("Partita prenotata correttamente!");
-					UI.getCurrent().navigate("/myprofile");
-				} else {
-					Notification.show("Errore nella prenotazione", 2000, Position.BOTTOM_START);
-				}
+				PartitaService.aggiungiPartita(partita);
+				disponibilita.setPrenotatoBoolean(true);
+				DisponibilitaService.aggiornaDisponibilita(disponibilita);
+				delegator.showSuccessNotification("Partita prenotata correttamente!");
+				UI.getCurrent().navigate("/myprofile");
 			}else {
 				Partita partita = new Partita(0,postiLiberi,0,1,modPag,utente.getId(),idDisp);
-				if(PartitaService.aggiungiPartita(partita)==1){
-					disponibilita.setPrenotatoBoolean(true);
-					DisponibilitaService.aggiornaDisponibilita(disponibilita);
-					Notification.show("Partita prenotata correttamente", 2000, Position.BOTTOM_START);
-					UI.getCurrent().navigate("/myprofile");
-				} else {
-					Notification.show("Errore nella prenotazione", 2000, Position.BOTTOM_START);
-				}
+				PartitaService.aggiungiPartita(partita);
+				disponibilita.setPrenotatoBoolean(true);
+				DisponibilitaService.aggiornaDisponibilita(disponibilita);
+				delegator.showSuccessNotification("Partita prenotata correttamente!");
+				UI.getCurrent().navigate("/myprofile");
 			}
 		});
 	}

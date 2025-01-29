@@ -394,13 +394,12 @@ public class RegistrazioneUtenteView extends Composite<VerticalLayout> {
         	String password = passwordField.getValue();
         	Livello livello = comboBoxLivello.getValue();
         	Utente utente = new Utente(0, mail, nome, cognome, dataNascita, telefono, password, BigDecimal.valueOf(10), livello);
-			if(UtentiService.aggiungiUtente(utente) == 1) {
-				notification.showSuccessNotification("Utente registrato correttamente!");
-				UI.getCurrent().getPage().executeJs(
-					    "setTimeout(function() { window.location.href = $0; }, 5000);", 
-					    "http://localhost:8080/"
-				);
-			}
+			UtentiService.aggiungiUtente(utente);
+			notification.showSuccessNotification("Utente registrato correttamente!");
+			UI.getCurrent().getPage().executeJs(
+				    "setTimeout(function() { window.location.href = $0; }, 5000);", 
+				    "http://localhost:8080/"
+			);
 		}
 	}
 

@@ -171,13 +171,13 @@ public class PartitaServiceTest {
 		assertNotNull("La lista delle partite pubbliche è nulla", partitePubbliche);
 		assertFalse("La lista delle partite pubbliche è vuota", partitePubbliche.isEmpty());
 
-		boolean partitaTrovata = false;
+		boolean partitaPubblicaTrovata = false;
 		for (InfoPartita infoPartita : partitePubbliche) {
 			if (infoPartita.getIdPartita() == partitaPubblicaProva.getIdPartita()) {
-				partitaTrovata = true;
+				partitaPubblicaTrovata = true;
 				break;
 			}
 		}
-		assertTrue("La partita pubblica non è stata trovata", partitaTrovata);
+		assertTrue("La partita pubblica non è stata trovata", partitaPubblicaTrovata);
 	}
 }

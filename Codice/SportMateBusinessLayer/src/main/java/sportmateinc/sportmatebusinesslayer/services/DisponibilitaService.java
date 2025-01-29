@@ -77,8 +77,7 @@ public class DisponibilitaService {
 		List<InfoDisponibilita> list = new ArrayList<>();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
-		Result<Record5<Integer,Integer, String, BigDecimal, Integer >> result = create.select(DISPONIBILITA.IDDISPONIBILITA,DISPONIBILITA.IDCENTRO, DISPONIBILITA.DATAORA, DISPONIBILITA.PREZZO, DISPONIBILITA.TIPOCAMPO).from(DISPONIBILITA).fetch();
-		// .where(DSL.timestamp(DISPONIBILITA.DATAORA.toString()).greaterThan(DSL.currentTimestamp()))
+		Result<Record5<Integer,Integer, String, BigDecimal, Integer >> result = create.select(DISPONIBILITA.IDDISPONIBILITA,DISPONIBILITA.IDCENTRO, DISPONIBILITA.DATAORA, DISPONIBILITA.PREZZO, DISPONIBILITA.TIPOCAMPO).from(DISPONIBILITA).where(DISPONIBILITA.PRENOTATO.eq(0)).fetch();
 		db.chiudiConnessione();
 		for (Record5<Integer,Integer, String, BigDecimal, Integer > disp : result) {
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.get(DISPONIBILITA.TIPOCAMPO));
