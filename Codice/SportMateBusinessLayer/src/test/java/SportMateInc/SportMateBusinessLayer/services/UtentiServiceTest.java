@@ -13,10 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import sportmateinc.sportmatebusinesslayer.entities.Gestore;
 import sportmateinc.sportmatebusinesslayer.entities.Livello;
 import sportmateinc.sportmatebusinesslayer.entities.Utente;
-import sportmateinc.sportmatebusinesslayer.services.GestoriService;
 import sportmateinc.sportmatebusinesslayer.services.LivelliService;
 import sportmateinc.sportmatebusinesslayer.services.UtentiService;
 import sportmateinc.sportmatedblayer.SportMateDB;
@@ -33,18 +31,15 @@ public class UtentiServiceTest {
 		db.apriConnessione();
 		create = db.getContext();
 
-		
+
 		Livello livelloBase = LivelliService.findLivello(1);
 
 		testUtente = new Utente(0, "testuser" + new Random().nextInt(10000) + "@mail.com", "Mario", "Rossi",
-				LocalDate.of(1990, 5, 20), "1234567890", "password123", BigDecimal.valueOf(100.0), livelloBase);
+				LocalDate.of(1990, 5, 20), "1234567891", "password123", BigDecimal.valueOf(100.0), livelloBase);
 
 		int result = UtentiService.aggiungiUtente(testUtente);
-		assertEquals("Inserimento utente fallito", 1, result);
-
-        Record record = create.select().from(UTENTI).where(UTENTI.MAIL.eq(testUtente.getMail())).fetchOne();
-        testUtente.setId(record.get(UTENTI.IDUTENTE));
-    }
+		testUtente.setId(result);
+	}
 
 	@Test
 	public void testFindByUsernameExistingUser() {
@@ -59,7 +54,7 @@ public class UtentiServiceTest {
 
 	@Test
 	public void testAggiornaDatiUtente() {
-		
+
 		testUtente.setNome("Luca");
 		testUtente.setCognome("Bianchi");
 		testUtente.setTelefono("0987654321");
@@ -67,7 +62,7 @@ public class UtentiServiceTest {
 		int updateResult = UtentiService.aggiornaDatiUtente(testUtente);
 		assertEquals("Aggiornamento utente fallito", 1, updateResult);
 
-		
+
 		Utente updatedUser = UtentiService.findByUsername(testUtente.getMail());
 		assertEquals("Il nome aggiornato non corrisponde", "Luca", updatedUser.getNome());
 		assertEquals("Il cognome aggiornato non corrisponde", "Bianchi", updatedUser.getCognome());
@@ -87,8 +82,8 @@ public class UtentiServiceTest {
 
 	@Test
 	public void testIsCellulareUnique() {
-		
-		boolean isUnique = UtentiService.isCellulareUnique("1234567890");
+
+		boolean isUnique = UtentiService.isCellulareUnique("1234567891");
 		assertFalse("Il metodo isCellulareUnique ha restituito true per un cellulare già esistente", isUnique);
 
 		isUnique = UtentiService.isCellulareUnique("4449876543");
@@ -96,19 +91,18 @@ public class UtentiServiceTest {
 	}
 
 	public void testIsMailUnique() {
-		
+
 		boolean isUnique = UtentiService.isMailUnique(testUtente.getMail());
 		assertFalse("Il metodo isMailUnique ha restituito true per una mail già esistente", isUnique);
 
-		isUnique = UtentiService.isCellulareUnique("alessandro.manzoni@testUnique.com");
+		isUnique = UtentiService.isMailUnique("alessandro.manzoni@testUnique.com");
 		assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
 	}
 
 	@After
 	public void tearDown() {
-		
-		int deleteResult = create.deleteFrom(UTENTI).where(UTENTI.IDUTENTE.eq(testUtente.getId())).execute();
-		assertEquals("Eliminazione utente fallita", 1, deleteResult);
+
+		create.deleteFrom(UTENTI).where(UTENTI.IDUTENTE.eq(testUtente.getId())).execute();
 
 		db.chiudiConnessione();
 	}

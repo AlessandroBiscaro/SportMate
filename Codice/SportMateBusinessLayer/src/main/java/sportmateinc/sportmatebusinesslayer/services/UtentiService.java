@@ -36,7 +36,7 @@ public class UtentiService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		int res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
+		Record res = create.insertInto(UTENTI, UTENTI.NOME, UTENTI.COGNOME, UTENTI.DATANASCITA, UTENTI.MAIL, UTENTI.TELEFONO, UTENTI.PASSWORD, UTENTI.LIVELLO)
 					.values(user.getNome(), 
 							user.getCognome(), 
 							user.getDataNascita().toString(), 
@@ -44,9 +44,9 @@ public class UtentiService {
 							user.getTelefono(), 
 							user.getPassword(), 
 							user.getLivello().getIdLivello()).returning(UTENTI.IDUTENTE)
-					.execute();
+					.fetchOne();
 		db.chiudiConnessione();
-		return res;
+		return res.get(UTENTI.IDUTENTE);
 	}
 	
 	
@@ -86,6 +86,7 @@ public class UtentiService {
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.TELEFONO.eq(cellulare)));
+		db.chiudiConnessione();
 		return count == 0;
 	}
 	
@@ -94,6 +95,7 @@ public class UtentiService {
 		db.apriConnessione();
 		DSLContext create = db.getContext();
 		int count = create.fetchCount(DSL.selectFrom(UTENTI).where(UTENTI.MAIL.eq(mail)));
+		db.chiudiConnessione();
 		return count == 0;
 	}
 
@@ -101,6 +103,7 @@ public class UtentiService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create = db.getContext();
+		db.chiudiConnessione();
 		return create.update(UTENTI)
 				.set(UTENTI.CREDITO, user.getCredito().add(BigDecimal.valueOf(value)).setScale(2, RoundingMode.HALF_UP))
 				.where(UTENTI.IDUTENTE.eq(user.getId()))
