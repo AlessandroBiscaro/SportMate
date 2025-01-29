@@ -126,7 +126,7 @@ public class GestoriServiceTest {
 
 		// Testa il metodo isCellulareUnique con un numero di telefono non presente nel
 		// database
-		isUnique = GestoriService.isCellulareUnique("alessandro.manzoni@testUnique.com");
+		isUnique = GestoriService.isMailUnique("alessandro.manzoni@testUnique.com");
 		assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
 	}
 
