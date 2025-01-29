@@ -1,4 +1,4 @@
-package sportmateinc.sportmatepresentationlayer.application.views.comuni;
+package sportmateinc.sportmatepresentationlayer.application.security;
 
 import com.vaadin.flow.component.login.LoginI18n;
 import com.vaadin.flow.component.login.LoginOverlay;
@@ -9,8 +9,6 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.internal.RouteUtil;
 import com.vaadin.flow.server.VaadinService;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
-
-import sportmateinc.sportmatepresentationlayer.application.security.AuthenticatedUser;
 
 @AnonymousAllowed
 @PageTitle("Login")

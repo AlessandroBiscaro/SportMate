@@ -31,7 +31,7 @@ public class PartitaService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		 Record record = create.insertInto(PARTITE, PARTITE.POSTITOTALI, 
+		 Record result = create.insertInto(PARTITE, PARTITE.POSTITOTALI, 
 				PARTITE.PUBBLICA, PARTITE.STATO,
 				PARTITE.MODPAGAMENTO,
 				PARTITE.IDORGANIZZATORE,
@@ -47,7 +47,7 @@ public class PartitaService {
 						partita.getGoalFuori())
 				.returning(PARTITE.IDPARTITA)
 				.fetchOne();
-		 return record.get(PARTITE.IDPARTITA);
+		 return result.get(PARTITE.IDPARTITA);
 	}
 
 	public static int aggiornaPartita(Partita partita) {
