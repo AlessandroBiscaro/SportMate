@@ -2,6 +2,7 @@ package SportMateInc.SportMateBusinessLayer.services;
 
 import static org.junit.Assert.*;
 import static sportmateinc.sportmatebusinesslayergenerated.tables.Utenti.UTENTI;
+import static sportmateinc.sportmatebusinesslayergenerated.tables.Transazioni.TRANSAZIONI;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -115,9 +116,8 @@ public class UtentiServiceTest {
 
 	@After
 	public void tearDown() {
-
+		create.deleteFrom(TRANSAZIONI).where(TRANSAZIONI.IDUTENTE.eq(testUtente.getId())).execute();
 		create.deleteFrom(UTENTI).where(UTENTI.IDUTENTE.eq(testUtente.getId())).execute();
-
 		db.chiudiConnessione();
 	}
 }

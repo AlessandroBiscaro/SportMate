@@ -90,7 +90,7 @@ public class PrenotazioneServiceTest {
 
         // Elimina le partite, disponibilità, e la relazione tra centro sportivo e tipo di campo
         dsl.delete(PARTITE).where(PARTITE.IDPARTITA.eq(partitaProva.getIdPartita())).execute();
-        dsl.delete(DISPONIBILITA).where(DISPONIBILITA.IDCENTRO.eq(disponibilitaProva.getIdDisp())).execute();
+        dsl.delete(DISPONIBILITA).where(DISPONIBILITA.IDDISPONIBILITA.eq(disponibilitaProva.getIdDisp())).execute();
         dsl.delete(CENTRISPORTIVI).where(CENTRISPORTIVI.IDCENTRO.eq(centroProva.getIdCentro())).execute();
         dsl.delete(GESTORI).where(GESTORI.IDGESTORE.eq(gestoreProva.getId())).execute();
 

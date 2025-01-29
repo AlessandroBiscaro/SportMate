@@ -56,6 +56,9 @@ public class ServiziAggiuntiviServiceTest {
         db.apriConnessione();
         DSLContext dsl = db.getContext();
         
+        //Eliminazione servizio aggiuntivo
+        dsl.delete(SERVIZIAGGIUNTIVI).where(SERVIZIAGGIUNTIVI.IDSERVIZIO.eq(idServizio)).execute();
+        
         // Elimina la relazione tra centro e servizio
         dsl.delete(DETTAGLIOSERVIZICENTRI).where(DETTAGLIOSERVIZICENTRI.IDCENTRO.eq(idCentro)).and(DETTAGLIOSERVIZICENTRI.IDSERVIZIO.eq(idServizio)).execute();
         

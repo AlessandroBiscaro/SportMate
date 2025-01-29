@@ -80,10 +80,10 @@ public class PartitaServiceTest {
 		disponibilitaPrivataProva = new Disponibilita(0, dataOraPrivata, prezzo, tipoCampo, centroProva, 0);
 		disponibilitaPrivataProva.setIdDisp(DisponibilitaService.aggiungiDisponibilita(disponibilitaPrivataProva));
 		
-		LocalDateTime dataOraPubblica = LocalDateTime.now().plusDays(1);
+		LocalDateTime dataOraPubblica = LocalDateTime.now().plusDays(2);
 		// Aggiungi una disponibilità per la partita pubblica
 		disponibilitaPubblicaProva = new Disponibilita(0, dataOraPubblica, prezzo, tipoCampo, centroProva, 0);
-		disponibilitaPubblicaProva.setIdDisp(DisponibilitaService.aggiungiDisponibilita(disponibilitaPrivataProva));
+		disponibilitaPubblicaProva.setIdDisp(DisponibilitaService.aggiungiDisponibilita(disponibilitaPubblicaProva));
 
 		// Crea una nuova partita privata
 		partitaPrivataProva = new Partita(10, 0, 1, "Contanti", utenteProva.getId(), disponibilitaPrivataProva.getIdDisp());
@@ -93,7 +93,7 @@ public class PartitaServiceTest {
 		// Crea una nuova partita pubblica
 		partitaPubblicaProva = new Partita(10, 1, 0, "Credito", utenteProva.getId(), disponibilitaPubblicaProva.getIdDisp());
 		partitaPubblicaProva.setIdPartita(PartitaService.aggiungiPartita(partitaPubblicaProva));
-		disponibilitaPrivataProva.setPrenotato(1);
+		disponibilitaPubblicaProva.setPrenotato(1);
 	}
 
 	@After
@@ -106,9 +106,9 @@ public class PartitaServiceTest {
 		// Elimina le partite, disponibilità, e la relazione tra centro sportivo e tipo
 		// di campo
 		dsl.delete(PARTITE).where(PARTITE.IDPARTITA.eq(partitaPubblicaProva.getIdPartita())).execute();
-		dsl.delete(DISPONIBILITA).where(DISPONIBILITA.IDCENTRO.eq(disponibilitaPubblicaProva.getIdDisp())).execute();
+		dsl.delete(DISPONIBILITA).where(DISPONIBILITA.IDDISPONIBILITA.eq(disponibilitaPubblicaProva.getIdDisp())).execute();
 		dsl.delete(PARTITE).where(PARTITE.IDPARTITA.eq(partitaPrivataProva.getIdPartita())).execute();
-		dsl.delete(DISPONIBILITA).where(DISPONIBILITA.IDCENTRO.eq(disponibilitaPrivataProva.getIdDisp())).execute();
+		dsl.delete(DISPONIBILITA).where(DISPONIBILITA.IDDISPONIBILITA.eq(disponibilitaPrivataProva.getIdDisp())).execute();
 		dsl.delete(CENTRISPORTIVI).where(CENTRISPORTIVI.IDCENTRO.eq(centroProva.getIdCentro())).execute();
 		dsl.delete(GESTORI).where(GESTORI.IDGESTORE.eq(gestoreProva.getId())).execute();
 
