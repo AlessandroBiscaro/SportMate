@@ -25,11 +25,13 @@ import com.vaadin.flow.server.VaadinRequest;
 import jakarta.annotation.security.RolesAllowed;
 import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
+import sportmateinc.sportmatebusinesslayer.entities.InfoDisponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatebusinesslayer.services.CentriSportiviService;
 import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
 import sportmateinc.sportmatebusinesslayer.services.GestoriService;
 import sportmateinc.sportmatebusinesslayer.services.TipoCampoService;
+import sportmateinc.sportmatepresentationlayer.application.services.NotificationDelegator;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -62,7 +64,8 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 
 	private Disponibilita currentDisponibilita;
 	private List<Disponibilita> disponibilitaList = new ArrayList<>();
-
+	private NotificationDelegator delegator = new NotificationDelegator();
+	
 	public GestioneDisponibilitaView() {
 		addClassNames("gestionedisponibilità-view");
 
@@ -83,9 +86,13 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 			return;
 		}
 		int idCentro  = centroSportivo.getIdCentro();
-		disponibilitaList = DisponibilitaService.findByGestore(idCentro);
-
-		grid.setItems(disponibilitaList);
+		try {
+			disponibilitaList = DisponibilitaService.findByGestore(idCentro);
+			grid.setItems(disponibilitaList);
+		}catch(NullPointerException ex) {
+	        grid.setItems(List.of());
+		}
+	
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
 
 		grid.asSingleSelect().addValueChangeListener(event -> {
@@ -111,7 +118,7 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 			if (matchingDisponibilita.isPresent()) {
 				populateForm(matchingDisponibilita.get());
 			} else {
-				Notification.show("La disponibilità richiesta non è stata trovata.", 3000, Position.BOTTOM_START);
+				delegator.showErrorNotification("Disponibilità richiesta non trovata!");
 				clearForm();
 			}
 		}
@@ -171,11 +178,11 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 		currentDisponibilita.setPrezzo(new BigDecimal(prezzo.getValue()));
 
 		if (DisponibilitaService.aggiungiDisponibilita(currentDisponibilita) == 1) {
-			Notification.show("Disponibilità aggiunta correttamente", 2000, Position.BOTTOM_START);
+			delegator.showSuccessNotification("Disponibilità aggiunta correttamente");
 			clearForm();
 			refreshGrid();
 		} else {
-			Notification.show("Disponibilità non aggiunta correttamente", 2000, Position.BOTTOM_START);
+			delegator.showErrorNotification("Errore durante l'inserimento della disponibilità");
 		}
 
 	}
@@ -191,11 +198,11 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 		currentDisponibilita.setPrezzo(new BigDecimal(prezzo.getValue()));
 
 		if (DisponibilitaService.aggiornaDisponibilita(currentDisponibilita) > 0) {
-			Notification.show("Disponibilità aggiornata correttamente", 2000, Position.BOTTOM_START);
+			delegator.showSuccessNotification("Disponibilità aggiornata correttamente!");
 			clearForm();
 			refreshGrid();
 		} else {
-			Notification.show("Disponibilità non salvata correttamente", 2000, Position.BOTTOM_START);
+			delegator.showErrorNotification("Disponibilità non salvata correttamente");
 		}
 	}
 

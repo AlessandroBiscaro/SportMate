@@ -202,9 +202,13 @@ public class DisponibilitaPrivateView extends Div {
 		grid.addComponentColumn(this::createNavigateButton)
 	    .setHeader("Prenota").setAutoWidth(true);
 		
-		List<InfoDisponibilita> list = DisponibilitaService.findAllUtente();
-	
-		grid.setItems(list);
+		try {
+			List<InfoDisponibilita> list = DisponibilitaService.findAllUtente();
+			grid.setItems(list);
+		}catch(NullPointerException ex) {
+	        grid.setItems(List.of());
+		}
+		
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
 		grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
 

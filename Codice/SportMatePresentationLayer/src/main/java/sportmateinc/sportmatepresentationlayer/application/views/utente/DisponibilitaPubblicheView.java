@@ -23,7 +23,6 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
 import jakarta.annotation.security.RolesAllowed;
-
 import sportmateinc.sportmatebusinesslayer.entities.InfoPartita;
 import sportmateinc.sportmatebusinesslayer.services.PartitaService;
 
@@ -200,9 +199,13 @@ public class DisponibilitaPubblicheView extends Div {
 		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
 		grid.addColumn("prezzo").setAutoWidth(true).setHeader("Prezzo a utente");
 		grid.addColumn("tipoCampo").setAutoWidth(true);
-		List<InfoPartita> list = PartitaService.findAllPubbliche();
-
-		grid.setItems(list);
+		try {
+			List<InfoPartita> list = PartitaService.findAllPubbliche();
+			grid.setItems(list);
+		}catch(NullPointerException ex) {
+	        grid.setItems(List.of());
+		}
+		
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
 		grid.addClassNames(LumoUtility.Border.TOP, LumoUtility.BorderColor.CONTRAST_10);
 
