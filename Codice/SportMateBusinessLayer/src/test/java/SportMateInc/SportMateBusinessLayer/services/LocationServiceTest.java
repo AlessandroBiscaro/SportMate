@@ -60,3 +60,4 @@ public class LocationServiceTest {
         assertNotNull(locations);
     }
 }
+
