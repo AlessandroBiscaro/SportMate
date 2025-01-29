@@ -21,7 +21,7 @@ public class LivelliServiceTest {
 
     @Test
     public void testFindLivelloNonExistingId() {
-       //Livello non esistente nel database
+       
         Livello livello = null; 
         try {
         	  livello = LivelliService.findLivello(999);

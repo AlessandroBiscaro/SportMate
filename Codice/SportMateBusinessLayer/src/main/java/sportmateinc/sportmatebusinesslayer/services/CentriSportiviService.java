@@ -56,7 +56,7 @@ public class CentriSportiviService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		return create.insertInto(CENTRISPORTIVI, CENTRISPORTIVI.NOMECOMMERCIALE, 
+		Record res= create.insertInto(CENTRISPORTIVI, CENTRISPORTIVI.NOMECOMMERCIALE, 
 				CENTRISPORTIVI.INDIRIZZO, CENTRISPORTIVI.LATITUDINE,
 				CENTRISPORTIVI.LONGITUDINE, CENTRISPORTIVI.CREDITO,
 				CENTRISPORTIVI.ORARIOAPERTURA,CENTRISPORTIVI.ORARIOCHIUSURA,
@@ -67,7 +67,9 @@ public class CentriSportiviService {
 				centro.getOrarioApertura(),centro.getOrarioChiusura(),
 				centro.getIdGestore())
 		.returning(CENTRISPORTIVI.IDCENTRO)
-		.execute();
+		.fetchOne();
+		db.chiudiConnessione();
+		return res.get(CENTRISPORTIVI.IDCENTRO);
 	}
 	
 	public static int aggiornaDatiCentro(CentroSportivo centro) {

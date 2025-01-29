@@ -4,10 +4,10 @@ public class Feedback {
 	private final Integer idFeedback;
 	private String oggetto;
 	private String testo;
-	private Integer numLike;
+	private int numLike;
 	private Utente mittente;
 
-	public Feedback(Integer idFeedback, String oggetto, String testo, Integer numLike, Utente mittente) {
+	public Feedback(Integer idFeedback, String oggetto, String testo, int numLike, Utente mittente) {
 		this.idFeedback = idFeedback;
 		setOggetto(oggetto);
 		setTesto(testo);
@@ -38,11 +38,11 @@ public class Feedback {
 		this.testo = testo;
 	}
 
-	public Integer getNumLike() {
+	public int getNumLike() {
 		return numLike;
 	}
 
-	public void setNumLike(Integer numLike) {
+	public void setNumLike(int numLike) {
 		if (numLike < 0) {
 			throw new IllegalArgumentException("Feedback.numLike must be greater than zero!");
 		}

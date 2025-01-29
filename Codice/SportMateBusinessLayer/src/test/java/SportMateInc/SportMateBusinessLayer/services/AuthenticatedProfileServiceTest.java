@@ -20,7 +20,7 @@ public class AuthenticatedProfileServiceTest {
         db = SportMateDB.getInstance();
         db.apriConnessione();
         
-        // Popolamento del database con dati di test
+        
         db.getContext().insertInto(UTENTI)
             .set(UTENTI.MAIL, "user@test.com")
             .set(UTENTI.NOME, "Test")
@@ -42,7 +42,7 @@ public class AuthenticatedProfileServiceTest {
 
     @After
     public void tearDown() {
-        // Pulizia dei dati di test
+        
     	db.apriConnessione();
         db.getContext()
             .deleteFrom(UTENTI)

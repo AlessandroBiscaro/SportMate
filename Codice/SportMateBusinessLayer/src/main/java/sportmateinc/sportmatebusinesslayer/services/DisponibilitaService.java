@@ -28,14 +28,16 @@ public class DisponibilitaService {
 		SportMateDB db = SportMateDB.getInstance();
 		db.apriConnessione();
 		DSLContext create =  db.getContext();	
-		return create.insertInto(DISPONIBILITA, DISPONIBILITA.DATAORA, 
+		Record res = create.insertInto(DISPONIBILITA, DISPONIBILITA.DATAORA, 
 				DISPONIBILITA.PREZZO, DISPONIBILITA.TIPOCAMPO,
 				DISPONIBILITA.IDCENTRO,DISPONIBILITA.PRENOTATO)
 		.values( disponibilita.getDataOra().toString(), 
 				disponibilita.getPrezzo(), disponibilita.getTipoCampo().getIdCampo(),
 				disponibilita.getCentro().getIdCentro(),disponibilita.getPrenotato())
 		.returning(DISPONIBILITA.IDDISPONIBILITA)
-		.execute();
+		.fetchOne();
+		db.chiudiConnessione();
+		return res.get(DISPONIBILITA.IDDISPONIBILITA);
 	}
 	
 	public static int aggiornaDisponibilita(Disponibilita disponibilita) {

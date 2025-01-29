@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.Random;
 
 import org.jooq.DSLContext;
-import org.jooq.Record;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,18 +32,14 @@ public class GestoriServiceTest {
 		db.apriConnessione();
 		create = db.getContext();
 
-		// Creazione di un gestore di test con valori casuali
 		testGestore = new Gestore(0, "testadmin" + new Random().nextInt(9999) + "@mail.com", "Giuseppe", "Verdi",
 				LocalDate.of(1978, 2, 9), "123456789", "password1234"
 
 		);
 
 		int result = GestoriService.aggiungiGestore(testGestore);
-		assertEquals("Inserimento gestore fallito", 1, result);
-
-		// Recuperiamo il gestore inserito per ottenere il suo ID
-		Record record = create.select().from(GESTORI).where(GESTORI.MAIL.eq(testGestore.getMail())).fetchOne();
-		testGestore.setId(record.get(GESTORI.IDGESTORE));
+		
+		testGestore.setId(result);
 	}
 
 	@Test
@@ -71,7 +66,7 @@ public class GestoriServiceTest {
 
 	@Test
 	public void testAggiornaDatiUtente() {
-		// Modifica di alcuni dati del gestore
+		
 		testGestore.setNome("Matteo");
 		testGestore.setCognome("Bianchi");
 		testGestore.setTelefono("1357908642");
@@ -80,7 +75,7 @@ public class GestoriServiceTest {
 		int updateResult = GestoriService.aggiornaDatiGestore(testGestore);
 		assertEquals("Aggiornamento gestore fallito", 1, updateResult);
 
-		// Recuperiamo il gestore aggiornato e verifichiamo i nuovi dati
+		
 		Gestore updatedAdmin = GestoriService.findByUsername(testGestore.getMail());
 		assertEquals("Il nome aggiornato non corrisponde", "Matteo", updatedAdmin.getNome());
 		assertEquals("Il cognome aggiornato non corrisponde", "Bianchi", updatedAdmin.getCognome());
@@ -91,10 +86,10 @@ public class GestoriServiceTest {
 	@Test
 	public void testAggiungiGestore() {
 		Gestore gestoreInserito = GestoriService.findByUsername(testGestore.getMail());
-		// Verifica che il gestore inserito non sia nullo
+		
 		assertNotNull("Il gestore non è stato trovato nel database dopo l'inserimento", gestoreInserito);
 
-		// Confronta i campi del gestore inserito con quelli del testGestore
+		
 		assertEquals("Il nome del gestore non corrisponde", testGestore.getNome(), gestoreInserito.getNome());
 		assertEquals("Il cognome del gestore non corrisponde", testGestore.getCognome(), gestoreInserito.getCognome());
 		assertEquals("La data di nascita del gestore non corrisponde", testGestore.getDataNascita().toString(),
@@ -108,31 +103,29 @@ public class GestoriServiceTest {
 
 	@Test
 	public void testIsCellulareUnique() {
-		// Testa il metodo isCellulareUnique con un numero di telefono già esistente
+		
 		boolean isUnique = GestoriService.isCellulareUnique("123456789");
 		assertFalse("Il metodo isCellulareUnique ha restituito true per un cellulare già esistente", isUnique);
 
-		// Testa il metodo isCellulareUnique con un numero di telefono non presente nel
-		// database
+		
 		isUnique = GestoriService.isCellulareUnique("4449876543");
 		assertTrue("Il metodo isCellulareUnique ha restituito false per un cellulare unico", isUnique);
 	}
 
 	public void testIsMailUnique() {
 
-		// Testa il metodo isCellulareUnique con un numero di telefono già esistente
+		
 		boolean isUnique = GestoriService.isMailUnique(testGestore.getMail());
 		assertFalse("Il metodo isMailUnique ha restituito true per una mail già esistente", isUnique);
 
-		// Testa il metodo isCellulareUnique con un numero di telefono non presente nel
-		// database
+		
 		isUnique = GestoriService.isMailUnique("alessandro.manzoni@testUnique.com");
 		assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
 	}
 
 	@After
 	public void tearDown() {
-		// Eliminazione gestore di test
+		
 		int deleteResult = create.deleteFrom(GESTORI).where(GESTORI.IDGESTORE.eq(testGestore.getId())).execute();
 		assertEquals("Eliminazione gestore fallita", 1, deleteResult);
 

@@ -33,17 +33,15 @@ public class UtentiServiceTest {
 		db.apriConnessione();
 		create = db.getContext();
 
-		// Creazione di un livello di test esistente
+		
 		Livello livelloBase = LivelliService.findLivello(1);
 
-		// Creazione di un utente di test con valori casuali
 		testUtente = new Utente(0, "testuser" + new Random().nextInt(10000) + "@mail.com", "Mario", "Rossi",
 				LocalDate.of(1990, 5, 20), "1234567890", "password123", BigDecimal.valueOf(100.0), livelloBase);
 
 		int result = UtentiService.aggiungiUtente(testUtente);
 		assertEquals("Inserimento utente fallito", 1, result);
 
-        // Recuperiamo l'utente inserito per ottenere il suo ID
         Record record = create.select().from(UTENTI).where(UTENTI.MAIL.eq(testUtente.getMail())).fetchOne();
         testUtente.setId(record.get(UTENTI.IDUTENTE));
     }
@@ -61,7 +59,7 @@ public class UtentiServiceTest {
 
 	@Test
 	public void testAggiornaDatiUtente() {
-		// Modifica di alcuni dati dell'utente
+		
 		testUtente.setNome("Luca");
 		testUtente.setCognome("Bianchi");
 		testUtente.setTelefono("0987654321");
@@ -69,7 +67,7 @@ public class UtentiServiceTest {
 		int updateResult = UtentiService.aggiornaDatiUtente(testUtente);
 		assertEquals("Aggiornamento utente fallito", 1, updateResult);
 
-		// Recuperiamo l'utente aggiornato e verifichiamo i nuovi dati
+		
 		Utente updatedUser = UtentiService.findByUsername(testUtente.getMail());
 		assertEquals("Il nome aggiornato non corrisponde", "Luca", updatedUser.getNome());
 		assertEquals("Il cognome aggiornato non corrisponde", "Bianchi", updatedUser.getCognome());
@@ -89,30 +87,26 @@ public class UtentiServiceTest {
 
 	@Test
 	public void testIsCellulareUnique() {
-		// Testa il metodo isCellulareUnique con un numero di telefono già esistente
+		
 		boolean isUnique = UtentiService.isCellulareUnique("1234567890");
 		assertFalse("Il metodo isCellulareUnique ha restituito true per un cellulare già esistente", isUnique);
 
-		// Testa il metodo isCellulareUnique con un numero di telefono non presente nel
-		// database
 		isUnique = UtentiService.isCellulareUnique("4449876543");
 		assertTrue("Il metodo isCellulareUnique ha restituito false per un cellulare unico", isUnique);
 	}
 
 	public void testIsMailUnique() {
-		// Testa il metodo isCellulareUnique con una mail già esistente
+		
 		boolean isUnique = UtentiService.isMailUnique(testUtente.getMail());
 		assertFalse("Il metodo isMailUnique ha restituito true per una mail già esistente", isUnique);
 
-		// Testa il metodo isCellulareUnique con un numero di telefono non presente nel
-		// database
 		isUnique = UtentiService.isCellulareUnique("alessandro.manzoni@testUnique.com");
 		assertTrue("Il metodo isMailUnique ha restituito false per una mail unica", isUnique);
 	}
 
 	@After
 	public void tearDown() {
-		// Eliminazione utente di test
+		
 		int deleteResult = create.deleteFrom(UTENTI).where(UTENTI.IDUTENTE.eq(testUtente.getId())).execute();
 		assertEquals("Eliminazione utente fallita", 1, deleteResult);
 
