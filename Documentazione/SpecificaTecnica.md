@@ -124,13 +124,30 @@ I design pattern utilizzati durante lo sviluppo del codice del progetto software
 
 - **Singleton Pattern**: impiegato per fornire un'utile astrazione per gestire la connessione al database ***embedded*** usato in SportMate, denominato ***SportMateDB***. <br/> Questa scelta progettuale ha permesso di evitare la creazione di istanze duplicate migliorando la stabilità del programma e l'efficienza nella gestione della memoria e delle risorse. <br/> Il ***Singleton pattern*** non è stato utilizzato negli altri livelli del progetto in quanto non si è evidenziato il bisogno per uno sviluppo del codice migliore e più efficiente.
 - **Delegation Pattern**: quando un utente interagisce con un bottone, l'oggetto ***Button*** di Vaadin delega la gestione dell'evento associato ad un ***listener***, implementando in questo modo il ***Delegation Pattern***, secondo un approccio comune nella gestione degli eventi in applicazioni grafiche. <br/> L'utilizzo di questo pattern aumenta la flessibilità del sistema e incoraggia il riutilizzo del codice, ma comporta un incremento nel numero di livelli di comunicazione, che potrebbe avere un impatto sulle prestazioni complessive e determinare un aumento della complessità del sistema. Tale pattern è stato anche applicato nelle classi ***HomePageView*** e ***FeedbackView*** in ***SportMatePresentationLayer*** per delegare la visualizzazione della lista dei feedback alla classe ***MessageListDelegator***, consentendo il riutilizzo del codice senza dover ricorrere alla relazione di ereditarietà (che sarebbe inappropriata in questo contesto in quanto le due classi non sono collegate da un'associazione ISA). 
-<br/>
 
 #### Metriche di complessità
-Per valutare la qualità del sistema software, sono state calcolate le seguenti metriche di complessità con l'ausilio del tool **Stan4j**, suddivise per pacchetto.
 
-:::warning
-Work in progress!!!
-:::
+Per valutare la qualità del sistema software, sono state calcolate le seguenti metriche di complessità con l'ausilio del tool **Stan4j**, suddivise per pacchetto. Per semplicità di lettura, il suffisso *sportmateinc*, comune a tutti i pacchetti del progetto non è stato riportato.
+|Pacchetto|WMC|RFC|ACC|Coupling afferente|Coupling efferente|Astrattezza|Instabilità|
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|sportmatedblayer|19|12|1.58|13|0|0|0|
+|sportmatebusinesslayer.entities|10.07|9.64|1.06|25|0|0.07|0|
+|sportmatebusinesslayer.services|6|15|1.33|11|26|0|0.70|
+|sportmatebusinesslayergenerated|3|3|1|15|15|0|0.50|
+|sportmatebusinesslayergenerated.tables|19.07|18.07|1.06|28|16|0|0.36|
+|sportmatebusinesslayergenerated.records|36.60|36.60|1|15|15|0|0.5|
+|sportmatepresentationlayer.application|2|2|1|0|0|0|1|
+|sportmatepresentationlayer.application.security|3.25|3.75|1.3|1|2|0|0.67|
+|sportmatepresentationlayer.application.services|3|5|1.2|7|4|0|0.36|
+|sportmatepresentationlayer.application.views|8|9|1.14|0|2|0|1|
+|sportmatepresentationlayer.application.views.comuni|5|5.8|1|0|1|0|1|
+|sportmatepresentationlayer.application.views.gestore|20.33|28|1.33|0|12|0|1|
+|sportmatepresentationlayer.application.views.utente|13.12|15.62|1.33|0|16|0|1|
+
+Come si può vedere dalla tabella riportata, l'astrattezza del progetto è minima e future operazioni di refactoring potrebbero essere volte ad aumentare il numero di tipi astratti all'interno di ciascun pacchetto; in ogni caso, si può notare che l'instabilità dei pacchetti in ***SportMatePresentationLayer*** sia mediamente maggiore rispetto a quella degli altri due livelli, coerentemente con il fatto che il livello di presentazione sia suscettibile ai cambiamenti al livello di business e persistenza, che a sua volta dipende dal livello dati.<br/>
+Infine, riportiamo il grafo delle dipendenze per l'intero progetto, notando che l'unica dipendenza ciclica sia presente tra i package *sportmateinc.sportmatebusinesslayergenerated.tables* e *sportmateinc.sportmatebusinesslayergenerated.records*, contenente le classi Java generate automaticamente da *Jooq* a partire dallo schema di ***SportMateDB***.
+<p align="center"  >
+      <img src="../Immagini/dependency_graph.png" />
+ </p> 
 <br/>
 
