@@ -32,7 +32,7 @@ import java.util.List;
 
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Partite Private")
+@PageTitle("Partite")
 @Route("disponibilitaPrivate")
 @Menu(order = 2, icon = LineAwesomeIconUrl.CLIPBOARD_LIST_SOLID)
 @RolesAllowed({"USER"})

@@ -104,7 +104,8 @@ public class HomepageView extends Composite<VerticalLayout> {
 				"Benvenuto su SportMate! SportMate rivoluziona il modo di vivere lo sport con un sistema innovativo per la prenotazione di campi sportivi dedicati al calcio a 5, calcio a 7 e basket 3v3. La nostra piattaforma consente di consultare facilmente la disponibilità delle strutture sportive, organizzare partite pubbliche o private e semplificare la ricerca di giocatori, anche all’ultimo minuto. Dimentica le lunghe telefonate per prenotare un campo: con SportMate, tutto è a portata di click, rendendo il tuo sport ancora più accessibile e divertente. Scopri un nuovo modo di giocare!");
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.CENTER, textSmall);
 		textSmall.setWidth("100%");
-		textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+		textSmall.getStyle().set("font-size", "var(--lumo-font-size-m");
+		textSmall.getStyle().set("font-weight", "bold");
 		layoutColumn2.setFlexGrow(1.0, layoutRow3);
 		layoutColumn2.setAlignSelf(FlexComponent.Alignment.START, messageList);
 		layoutColumn2.add(textSmall);

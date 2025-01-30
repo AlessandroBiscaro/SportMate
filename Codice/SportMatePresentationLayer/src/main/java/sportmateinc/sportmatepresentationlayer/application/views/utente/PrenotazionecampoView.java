@@ -148,6 +148,7 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 				Partita partita = new Partita(0,postiLiberi,0,1,modPag,utente.getId(),idDisp);
 				PartitaService.aggiungiPartita(partita);
 				disponibilita.setPrenotatoBoolean(true);
+				UtentiService.ricaricaCredito(utente, disponibilita.getPrezzo().negate().doubleValue());
 				DisponibilitaService.aggiornaDisponibilita(disponibilita);
 				delegator.showSuccessNotification("Partita prenotata correttamente!");
 				UI.getCurrent().navigate("/myprofile");
@@ -159,6 +160,18 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 		cmbModPag.setLabel("Modalità pagamento");
 		cmbModPag.setWidth(WIDTH_STYLE);
 		setComboBox(cmbModPag);
+		cmbModPag.addBlurListener(e ->{
+			if(cmbModPag.getValue().equals("Credito")) {
+				Utente utente = getUtenteInfo();
+				if(utente.getCredito().doubleValue() < disponibilita.getPrezzo().doubleValue()) {
+					cmbModPag.setErrorMessage("Credito insufficiente");
+					cmbModPag.setInvalid(true);
+				}
+			}
+			else {
+				cmbModPag.setInvalid(false);
+			}
+		});
 	}
 
 	private void setTxtOrario() {
