@@ -25,7 +25,6 @@ import com.vaadin.flow.server.VaadinRequest;
 import jakarta.annotation.security.RolesAllowed;
 import sportmateinc.sportmatebusinesslayer.entities.CentroSportivo;
 import sportmateinc.sportmatebusinesslayer.entities.Disponibilita;
-import sportmateinc.sportmatebusinesslayer.entities.InfoDisponibilita;
 import sportmateinc.sportmatebusinesslayer.entities.TipoCampo;
 import sportmateinc.sportmatebusinesslayer.services.CentriSportiviService;
 import sportmateinc.sportmatebusinesslayer.services.DisponibilitaService;
@@ -35,6 +34,9 @@ import sportmateinc.sportmatepresentationlayer.application.services.Notification
 
 import java.math.BigDecimal;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -59,13 +61,13 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 	private TextField prezzo;
 
 	private final Button cancel = new Button("Reset");
-	private final Button save = new Button("Salva");
+	private final Button save = new Button("Aggiorna");
 	private final Button insert = new Button("Inserisci");
 
 	private Disponibilita currentDisponibilita;
 	private List<Disponibilita> disponibilitaList = new ArrayList<>();
 	private NotificationDelegator delegator = new NotificationDelegator();
-	
+
 	public GestioneDisponibilitaView() {
 		addClassNames("gestionedisponibilità-view");
 
@@ -79,9 +81,9 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 		grid.addColumn(Disponibilita::getDataOra).setHeader("Data e Ora").setAutoWidth(true);
 		grid.addColumn(d -> d.getTipoCampo().getNomeCampo()).setHeader("Tipologia Campo").setAutoWidth(true);
 		grid.addColumn(Disponibilita::getPrezzo).setHeader("Prezzo").setAutoWidth(true);
-		
+
 		CentroSportivo centroSportivo = getCentroSportivoInfo();
-		
+
 		if(centroSportivo == null) {
 			return;
 		}
@@ -90,9 +92,9 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 			disponibilitaList = DisponibilitaService.findByGestore(idCentro);
 			grid.setItems(disponibilitaList);
 		}catch(NullPointerException ex) {
-	        grid.setItems(List.of());
+			grid.setItems(List.of());
 		}
-	
+
 		grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
 
 		grid.asSingleSelect().addValueChangeListener(event -> {
@@ -135,7 +137,9 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 		FormLayout formLayout = new FormLayout();
 		prenotato = new Checkbox("Prenotato");
 		dataOra = new DateTimePicker("Data Ora");
+		dataOra.setErrorMessage("Orario fuori apertura");
 		dataOra.setStep(Duration.ofMinutes(60));
+		dataOra.setMin(LocalDateTime.now().withMinute(0).withSecond(0).plusHours(1));
 		tipologiaCampo = new ComboBox<>("Tipologia Campo");
 		tipologiaCampo.setPlaceholder("Selezionare una tipologia");
 		setCmbTipiCampo();
@@ -176,8 +180,17 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 		currentDisponibilita.setDataOra(dataOra.getValue());
 		currentDisponibilita.setTipoCampo(TipoCampoService.findTipoCampo(tipologiaCampo.getValue().getIdCampo()));
 		currentDisponibilita.setPrezzo(new BigDecimal(prezzo.getValue()));
-
-		if (DisponibilitaService.aggiungiDisponibilita(currentDisponibilita) == 1) {
+		if(getCentroSportivoInfo()==null) {
+			return;
+		}
+		LocalTime minTime = LocalTime.parse(getCentroSportivoInfo().getOrarioApertura(), DateTimeFormatter.ofPattern("HH:mm"));
+		LocalTime maxTime = LocalTime.parse(getCentroSportivoInfo().getOrarioChiusura(), DateTimeFormatter.ofPattern("HH:mm"));
+		LocalTime currentTime = dataOra.getValue().toLocalTime();
+		if(currentTime.isAfter(maxTime) || currentTime.isBefore(minTime)) {
+			delegator.showErrorNotification("Orario fuori fascia apertura");
+			return;
+		}
+		if (DisponibilitaService.aggiungiDisponibilita(currentDisponibilita) > 0) {
 			delegator.showSuccessNotification("Disponibilità aggiunta correttamente");
 			clearForm();
 			refreshGrid();
@@ -196,13 +209,16 @@ public class GestioneDisponibilitaView extends Div implements BeforeEnterObserve
 		currentDisponibilita.setDataOra(dataOra.getValue());
 		currentDisponibilita.setTipoCampo(TipoCampoService.findTipoCampo(tipologiaCampo.getValue().getIdCampo()));
 		currentDisponibilita.setPrezzo(new BigDecimal(prezzo.getValue()));
-
-		if (DisponibilitaService.aggiornaDisponibilita(currentDisponibilita) > 0) {
-			delegator.showSuccessNotification("Disponibilità aggiornata correttamente!");
-			clearForm();
-			refreshGrid();
-		} else {
-			delegator.showErrorNotification("Disponibilità non salvata correttamente");
+		try {
+			if (DisponibilitaService.aggiornaDisponibilita(currentDisponibilita) > 0) {
+				delegator.showSuccessNotification("Disponibilità aggiornata correttamente!");
+				clearForm();
+				refreshGrid();
+			} else {
+				delegator.showErrorNotification("Disponibilità non salvata correttamente");
+			}
+		}catch(Exception e){
+			delegator.showErrorNotification("Aggiornamneto fallito, disponibilità nuova");
 		}
 	}
 

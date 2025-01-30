@@ -64,7 +64,7 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 	VerticalLayout layoutColumn5 = new VerticalLayout();
 	int idDisp;
 	Disponibilita disponibilita;
-	
+
 	public PrenotazionecampoView() {
 		getContent().setWidth("100%");
 		getContent().getStyle().set(GROW_STYLE, "1");
@@ -131,7 +131,7 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 		btnProcedi.addClickListener(event -> {
 			int numPart= 0;
 			if (!txtNumPartecipanti.isEmpty()) {
-			numPart= Integer.parseInt(txtNumPartecipanti.getValue());
+				numPart= Integer.parseInt(txtNumPartecipanti.getValue());
 			}
 			String tipoPart = rdbTipoPartita.getValue();
 			String modPag = cmbModPag.getValue();
@@ -141,6 +141,9 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 				Partita partita = new Partita(0,postiLiberi,1,0,modPag,utente.getId(),idDisp);
 				PartitaService.aggiungiPartita(partita);
 				disponibilita.setPrenotatoBoolean(true);
+				if(cmbModPag.getValue().equals("Credito")) {
+					UtentiService.ricaricaCredito(utente, disponibilita.getPrezzo().negate().doubleValue());
+				}
 				DisponibilitaService.aggiornaDisponibilita(disponibilita);
 				delegator.showSuccessNotification("Partita prenotata correttamente!");
 				UI.getCurrent().navigate("/myprofile");
@@ -148,7 +151,9 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 				Partita partita = new Partita(0,postiLiberi,0,1,modPag,utente.getId(),idDisp);
 				PartitaService.aggiungiPartita(partita);
 				disponibilita.setPrenotatoBoolean(true);
-				UtentiService.ricaricaCredito(utente, disponibilita.getPrezzo().negate().doubleValue());
+				if(cmbModPag.getValue().equals("Credito")) {
+					UtentiService.ricaricaCredito(utente, disponibilita.getPrezzo().negate().doubleValue());
+				}
 				DisponibilitaService.aggiornaDisponibilita(disponibilita);
 				delegator.showSuccessNotification("Partita prenotata correttamente!");
 				UI.getCurrent().navigate("/myprofile");
@@ -191,7 +196,7 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 		txtCentro.setWidth(FIELD_WIDTH);
 		txtCentro.setReadOnly(true);
 	}
-	
+
 	private void setTitoloPrenotazioneCampo() {
 		titoloPrenotazioneCampo.setText("SportMate");
 		titoloPrenotazioneCampo.setWidth("max-content");
@@ -206,7 +211,7 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 		txtNumPartecipanti.setWidth(FIELD_WIDTH);
 		txtNumPartecipanti.setReadOnly(true);
 		txtNumPartecipanti.setErrorMessage(ERROR_MESSAGE);
-		
+
 		txtNumPartecipanti.addBlurListener(event -> {
 			if(!txtNumPartecipanti.isEmpty()) {
 				int value = Integer.parseInt(txtNumPartecipanti.getValue());
@@ -226,8 +231,8 @@ public class PrenotazionecampoView extends Composite<VerticalLayout> implements 
 		rdbTipoPartita.setValue("Privata");
 		rdbTipoPartita.addThemeVariants(RadioGroupVariant.LUMO_VERTICAL);
 		rdbTipoPartita.addValueChangeListener(event -> {
-		String selectedValue = event.getValue();
-		txtNumPartecipanti.setReadOnly(!selectedValue.equals("Pubblica"));
+			String selectedValue = event.getValue();
+			txtNumPartecipanti.setReadOnly(!selectedValue.equals("Pubblica"));
 		});
 	}
 	@Override
