@@ -260,6 +260,7 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 				txtCredito.setValue(utente.getCredito().doubleValue());
 				UtentiService.ricaricaCredito(utente, txtRicarica.getValue());
 				delegator.showSuccessNotification("Ricarica eseguita correttamente!");
+				txtRicarica.clear();
 			}
 		});
 	}
