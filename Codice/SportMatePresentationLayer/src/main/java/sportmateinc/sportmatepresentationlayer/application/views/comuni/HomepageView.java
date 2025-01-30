@@ -2,6 +2,7 @@ package sportmateinc.sportmatepresentationlayer.application.views.comuni;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.messages.MessageList;
@@ -27,6 +28,7 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 @AnonymousAllowed
 public class HomepageView extends Composite<VerticalLayout> {
 	private static final String GROW_MODE = "flex-grow";
+	private static final String BUTTON_HEIGHT = "127px";
 	private static final long serialVersionUID = 1L;
 	HorizontalLayout layoutRow = new HorizontalLayout();
 	H1 titoloHomePage = new H1();
@@ -53,6 +55,9 @@ public class HomepageView extends Composite<VerticalLayout> {
 		setLayoutRow2();
 		setLayoutColumn2();
 		setLayoutRow3();
+		setBtnCalcio5();
+		setBtnCalcio7();
+		setBtnBasket3v3();
 		setLayoutRow4();
 	}
 
@@ -113,10 +118,28 @@ public class HomepageView extends Composite<VerticalLayout> {
 		layoutRow3.getStyle().set(GROW_MODE, "1");
 		layoutRow3.setAlignItems(Alignment.START);
 		layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
-
+		layoutRow3.add(btnCalcio5);
+		layoutRow3.add(btnCalcio7);
+		layoutRow3.add(btnBasket3v3);
 	}
 
-	
+	private void setBtnCalcio5() {
+		btnCalcio5.setText("Calcio a 5");
+		btnCalcio5.setWidth(BUTTON_HEIGHT);
+		btnCalcio5.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+	}
+
+	private void setBtnCalcio7() {
+		btnCalcio7.setText("Calcio a 7");
+		btnCalcio7.setWidth(BUTTON_HEIGHT);
+		btnCalcio7.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+	}
+
+	private void setBtnBasket3v3() {
+		btnBasket3v3.setText("Basket 3v3");
+		btnBasket3v3.setWidth(BUTTON_HEIGHT);
+		btnBasket3v3.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+	}
 
 	private void setLayoutRow4() {
 		layoutRow4.addClassName(Gap.MEDIUM);
