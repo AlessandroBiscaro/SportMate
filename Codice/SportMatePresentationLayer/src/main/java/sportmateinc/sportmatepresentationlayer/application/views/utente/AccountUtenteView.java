@@ -256,12 +256,13 @@ public class AccountUtenteView extends Composite<VerticalLayout> {
 		btnRicaricaCredito.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		btnRicaricaCredito.addClickListener(e -> {
 			if(!(txtRicarica.isEmpty() && txtRicarica.isInvalid() && txtRicarica.getValue() < 0.0)) {
+				UtentiService.ricaricaCredito(utente, txtRicarica.getValue());
 				utente.setCredito(BigDecimal.valueOf(txtRicarica.getValue()).add(utente.getCredito()).setScale(2));
 				txtCredito.setValue(utente.getCredito().doubleValue());
-				UtentiService.ricaricaCredito(utente, txtRicarica.getValue());
 				delegator.showSuccessNotification("Ricarica eseguita correttamente!");
 				txtRicarica.clear();
 			}
+			
 		});
 	}
 	
