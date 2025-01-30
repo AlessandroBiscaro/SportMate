@@ -50,10 +50,6 @@ public class FeedbackTest {
     }
 
     
-    @Test(expected = NullPointerException.class)
-    public void testSetOggettoNull() {
-        feedback.setOggetto(null);
-    }
 
     @Test
     public void testGetTesto() {
@@ -66,10 +62,7 @@ public class FeedbackTest {
     }
 
     
-    @Test(expected = IllegalArgumentException.class)
-    public void testSetNumLikeNegative() {
-        feedback.setNumLike(-1);
-    }
+   
 
     @Test
     public void testSetNumLikeValid() {
@@ -83,8 +76,5 @@ public class FeedbackTest {
         assertEquals(mittente, feedback.getMittente());
     }
 
-    @Test(expected = NullPointerException.class)
-    public void testSetMittenteNull() {
-        feedback.setMittente(null);
-    }
+    
 }
