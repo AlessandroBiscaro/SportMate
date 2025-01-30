@@ -197,8 +197,8 @@ public class DisponibilitaPubblicheView extends Div {
 		grid.addColumn("idPartita").setAutoWidth(true).setVisible(false);
 		grid.addColumn("nomecentro").setAutoWidth(true).setHeader("Nome Centro");
 		grid.addColumn("dataOra").setAutoWidth(true).setHeader("Data e Ora");
-		grid.addColumn("prezzo").setAutoWidth(true).setHeader("Prezzo a utente");
 		grid.addColumn("tipoCampo").setAutoWidth(true);
+		grid.addColumn("postiTotali").setAutoWidth(true).setHeader("Posti disponibili");
 		try {
 			List<InfoPartita> list = PartitaService.findAllPubbliche();
 			grid.setItems(list);

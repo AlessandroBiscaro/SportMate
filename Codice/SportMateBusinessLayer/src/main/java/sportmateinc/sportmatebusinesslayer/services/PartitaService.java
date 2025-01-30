@@ -121,7 +121,7 @@ public class PartitaService {
 		Result<Record3<Integer,Integer, Integer >> result = create.select(PARTITE.IDPARTITA,PARTITE.POSTITOTALI, PARTITE.IDDISPONIBILITA ).from(PARTITE).where(PARTITE.PUBBLICA.eq(1)).fetch();
 		db.chiudiConnessione();
 		for (Record3<Integer, Integer, Integer > partPubb : result) {
-			Disponibilita disp = DisponibilitaService.findById(partPubb.get(PARTITE.IDPARTITA));
+			Disponibilita disp = DisponibilitaService.findById(partPubb.get(PARTITE.IDDISPONIBILITA));
 			TipoCampo tipo = TipoCampoService.findTipoCampo(disp.getTipoCampo().getIdCampo());
 			CentroSportivo centro = CentriSportiviService.findByIdCentro(disp.getCentro().getIdCentro());
 			BigDecimal prezzo = (disp.getPrezzo().divide(new BigDecimal("10"), RoundingMode.HALF_UP));
