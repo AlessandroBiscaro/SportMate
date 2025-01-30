@@ -14,7 +14,12 @@ public class PersonaTest {
     private Persona persona;
     
     private static class PersonaTestImpl extends Persona {
-        public PersonaTestImpl(Integer id, String mail, String nome, String cognome, LocalDate dataNascita, String telefono, String password) {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public PersonaTestImpl(Integer id, String mail, String nome, String cognome, LocalDate dataNascita, String telefono, String password) {
             super(id, mail, nome, cognome, dataNascita, telefono, password);
         }
     }

@@ -1,6 +1,7 @@
 package sportmateinc.sportmatepresentationlayer.application.views.utente;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.html.UnorderedList;
@@ -137,7 +138,10 @@ public class MapView extends HorizontalLayout {
             Button button = new Button();
             button.addClassNames(Height.AUTO, Padding.MEDIUM);
             button.addClickListener(e -> centerMapOn(location));
-
+            Button detailsButton = new Button("Visualizza");
+            //detailsButton.addClassNames(Height.AUTO, Padding.MEDIUM);
+            detailsButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+            detailsButton.addClickListener(e -> getUI().ifPresent(ui -> ui.navigate("disponibilitaPrivate/")));
             Span card = new Span();
             card.addClassNames("card", Width.FULL, Display.FLEX, FlexDirection.COLUMN, AlignItems.START, Gap.XSMALL);
             Span country = new Span(location.getCountry());
@@ -147,7 +151,7 @@ public class MapView extends HorizontalLayout {
             Span place = new Span(location.getPlace());
             place.addClassNames(TextColor.SECONDARY);
 
-            card.add(country, city, place);
+            card.add(country, city, place, detailsButton);
 
             button.getElement().appendChild(card.getElement());
             cardList.add(new ListItem(button));
