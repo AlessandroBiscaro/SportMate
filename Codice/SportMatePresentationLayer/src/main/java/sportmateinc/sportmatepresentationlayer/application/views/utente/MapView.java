@@ -138,7 +138,7 @@ public class MapView extends HorizontalLayout {
             Button button = new Button();
             button.addClassNames(Height.AUTO, Padding.MEDIUM);
             button.addClickListener(e -> centerMapOn(location));
-            Button detailsButton = new Button("Visualizza");
+            Button detailsButton = new Button("Visualizza disponibilità");
             //detailsButton.addClassNames(Height.AUTO, Padding.MEDIUM);
             detailsButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
             detailsButton.addClickListener(e -> getUI().ifPresent(ui -> ui.navigate("disponibilitaPrivate/")));
